@@ -1,0 +1,327 @@
+page {
+    width: 100vw;
+}
+
+/* // 清除浮动对父元素的影响 */
+.clearFloat::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_col {
+    display: flex;
+    flex-direction: column;
+}
+
+.al {
+    align-items: center;
+}
+
+.jc {
+    justify-content: center;
+}
+
+.jb {
+    justify-content: space-between;
+}
+
+.ja {
+    justify-content: space-around;
+}
+
+.pr {
+    position: relative;
+}
+
+.pa {
+    position: absolute;
+}
+
+.plr30 {
+    padding: 0 30rpx;
+}
+
+.pb0 {
+    padding-bottom: 0 !important;
+}
+
+.oh {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.tc {
+    text-align: center;
+}
+
+.line {
+    width: 100%;
+    height: 20rpx;
+    background: rgba(248, 248, 248, 1);
+    opacity: 1;
+}
+
+.boxs {
+    box-sizing: border-box;
+}
+
+.fb {
+    font-weight: bold;
+}
+
+.mb10 {
+    margin-bottom: 10rpx;
+}
+
+.mt40 {
+    margin-bottom: 20rpx;
+}
+
+.pb30 {
+    padding-bottom: 30rpx;
+}
+
+.f13 {
+    font-size: 13rpx;
+}
+
+.f18 {
+    font-size: 18rpx;
+}
+
+.f20 {
+    font-size: 20rpx;
+}
+
+.f22 {
+    font-size: 22rpx;
+}
+
+.f23 {
+    font-size: 23rpx;
+}
+
+.f24 {
+    font-size: 24rpx;
+}
+
+.f26 {
+    font-size: 26rpx;
+}
+
+.f28 {
+    font-size: 28rpx;
+}
+
+.f30 {
+    font-size: 30rpx;
+}
+
+.f32 {
+    font-size: 32rpx;
+}
+
+.f36 {
+    font-size: 36rpx;
+}
+
+.c33 {
+    color: #333333;
+}
+
+.c99 {
+    color: #999999;
+}
+
+.c66 {
+    color: #666666;
+}
+
+.cff {
+    color: white;
+}
+
+/* 店铺头像  start*/
+.comm_shopImg {
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 100%;
+    border: 1px solid #efefef;
+}
+
+/* 店铺头像 end */
+
+/* 商品模块css  start*/
+.goods_group {
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.goodsCell {
+    width: 49%;
+    margin-bottom: 40rpx;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.11);
+    border-radius: 20rpx;
+}
+
+.goodsCell .goodImg {
+    width: 100%;
+    height: 305rpx;
+    border-radius: 20rpx 20rpx 0 0;
+}
+
+.goods_title {
+    margin: 19rpx 0 16rpx 0;
+    padding: 0 15rpx;
+}
+
+.car_group {
+    padding: 0 15rpx;
+    padding-bottom: 25rpx;
+}
+
+.good_money {
+    color: #d32e32;
+}
+
+.good_buyCar {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+/* 商品模块css end*/
+
+/* 拼团按钮 start*/
+.ptBtn {
+    padding: 4rpx 20rpx;
+    color: white;
+    border-radius: 30rpx;
+    background: #009DFF;
+}
+
+/*拼团按钮  end  */
+
+/* 倒计时按钮 start*/
+.countdown {
+    padding-left: 30rpx;
+    padding-bottom: 26rpx;
+}
+
+.downBtn {
+    width: 37rpx;
+    height: 37rpx;
+    text-align: center;
+    line-height: 37rpx;
+    background: linear-gradient(90deg, rgba(255, 147, 20, 1) 0%, rgba(255, 77, 20, 1) 100%);
+    opacity: 1;
+    border-radius: 10rpx;
+    color: white;
+}
+
+.mh {
+    color: #E28700;
+    font-size: 26rpx;
+    margin: 0 15rpx;
+}
+
+/*倒计时按钮  end  */
+
+
+/* 限购标签 start*/
+.xg {
+    padding: 6rpx 14rpx;
+    border-radius: 0 10rpx 0 10rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #009DFF;
+}
+
+/* 限购标签 end*/
+
+/* 放大动画 */
+@keyframes scaleUp {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.scaleUp {
+    animation: scaleUp 0.5s ease both;
+}
+
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeUp {
+    animation: fadeUp 0.5s ease both;
+}
+
+
+
+
+/* 授权手机 */
+.auth1 {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 682rpx;
+    z-index: 999;
+    height: 423rpx;
+    background: rgba(255, 255, 255, 1);
+    border: 1rpx solid rgba(112, 112, 112, 1);
+    border-radius: 20rpx;
+}
+
+.auth1>.title {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-top: 108rpx;
+}
+
+.auth1 .content {
+    margin-top: 39rpx;
+}
+
+.auth1>.button {
+    background-color: #009DFF;
+    width: 568rpx;
+    font-size: 28rpx !important;
+    margin: 53rpx auto;
+    border-radius: 20rpx;
+}
+
+.close1 {
+    width: 24rpx;
+    height: 24rpx;
+    top: 36rpx;
+    right: 27rpx;
+}
+
+.unitMy {
+    font-size: 20rpx;
+    position: relative;
+    left: -6rpx;
+}

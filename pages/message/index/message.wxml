@@ -1,0 +1,19 @@
+<view class="line"></view>
+
+<!-- 消息 -->
+<view class="messageModel">
+	<view data-id="{{item.messageId}}" bindtap="goMessage" class='messList boxs flex_row al' wx:for="{{list}}" wx:key="messageId">
+		<!-- 订单消息 -->
+		<image wx:if="{{item.messageType==0}}" class="messsImg" src="../../../img/ordermes.png" />
+		<!-- 系统消息 -->
+		<image wx:else class="messsImg" src="../../../img/sysmes.png" />
+		<view class="messList_right">
+			<view class="flex_row al jb messList_right_top">
+				<view class="f30 c33">{{item.messageType==0?'订单':'系统'}}消息</view>
+				<view class='f24 c99'>{{item.time}}</view>
+			</view>
+			<view class="f26 c99">{{item.messageTittle}}</view>
+		</view>
+	</view>
+	<noData wx:if="{{list.length<1}}" style="margin-top:300rpx" />
+</view>

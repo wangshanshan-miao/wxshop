@@ -1,0 +1,82 @@
+<wxs src="../../../utils/formatTime.wxs" module="tools" />
+<wxs src="../../../utils/percent.wxs" module="tool" />
+<!-- 建材秒杀 -->
+<view class="msModel">
+    <swiper class="msSwiper" circular="{{true}}" indicator-color="#FFFFFF" indicator-active-color="rgba(255,255,255,.35)" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{10000}}" duration="{{1000}}">
+        <block wx:for="{{dataImg}}" wx:key="index">
+            <swiper-item>
+                <image class="swiper-image" src="{{imgBaseUrl + item+'?x-image-process=image/resize,p_40'}}" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="ms_card plr30" wx:if="{{type==1}}">
+        <view class="flex_row ms_cardContent jb al ">
+            <view class='ms_cardLeft f36 fb'>正在抢购中</view>
+            <view class="ms_cardRight flex_row al">
+                <view class="endTime f26 c99">距离结束：</view>
+                <view class="flex_row al">
+                    <view class="downBtn f26" wx:if="{{tools.diffDay(nowTime,endTime)}}">
+                        {{tools.diffDay(nowTime,endTime)}}天
+                    </view>
+                    <view class="mh" wx:if="{{tools.diffDay(nowTime,endTime)}}">:</view>
+                    <view class="downBtn f26">{{tools.diffHour(nowTime,endTime)}}</view>
+                    <view class="mh">:</view>
+                    <view class="downBtn f26">{{tools.diffMinute(nowTime,endTime)}}</view>
+                    <view class="mh">:</view>
+                    <view class="downBtn f26">{{tools.diffSecond(nowTime,endTime)}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="goodShow">
+        <!-- 商品类型 -->
+        <view class="ptGoods">
+            <view wx:if='{{!hideType}}' class="type_group">
+                <scroll-view class="typeScroll" scroll-x="{{true}}">
+                    <view data-id="{{item.classId}}" bindtap="choseType" data-index="{{index}}" wx:for="{{list}}" wx:key="index" class="type_name c99 f28 {{tabIndex==index?'choseTab':''}}">
+                        {{item.name}}
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <!-- 商品 -->
+        <view class="ms_good  boxs jb flex_row">
+            <view wx:for="{{arr}}" wx:key="index" data-id="{{item.seckillCommodityId}}" catchtap="detail" class="ms_goodCell flex_row boxs jb">
+                <view class="ms_goodCellImgShow pr">
+                    <image class="ms_goodCellImg" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" mode="aspectFit|aspectFill|widthFix"></image>
+                    <view class="xg f20 cff">限购{{item.restriction}}件</view>
+                </view>
+                <view class="ms_goodCell_left">
+                    <view class="goods_title ms_goodCell_title f26 c33 oh">
+                        {{item.commodityName}}
+                    </view>
+                    <view class="progress flex_row jb al">
+                        <view class="article flex_row al">
+                            <view class="article_line" style="width: {{tool.percent(item.num,item.inventory)/100*250}}rpx;"></view>
+                        </view>
+                        <view class="f22 hasGoodNum c99">
+                            剩余{{tool.percent(item.num,item.inventory)}}%
+                        </view>
+                    </view>
+                    <view class="car_group pb0 flex_row al jb">
+                        <view class="flex_row al">
+                            <view class="f36 good_money">
+                                ￥{{item.subscriptionPrice}}
+                                <text class='unitMy' wx:if="{{item.unit}}">/{{item.unit}}</text>
+                                起
+                            </view>
+                            <view class="f26 c99 oldPrice">
+                                ￥{{item.salePrice}}
+                                <text class='unitMy' wx:if="{{item.unit}}">/{{item.unit}}</text>
+                            </view>
+                        </view>
+                        <view class='ptBtn f24'>去秒杀</view>
+                    </view>
+                </view>
+            </view>
+            <noData style="margin:0 auto;" wx:if="{{arr.length<1}}" />
+        </view>
+    </view>
+</view>
+<!-- 回到顶部 -->
+<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>

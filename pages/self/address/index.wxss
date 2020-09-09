@@ -1,0 +1,101 @@
+/* pages/self/address/index.wxss */
+.bottom {
+  position: fixed;
+  overflow: hidden;
+  margin-top: 140rpx;
+  bottom: 0;
+  width: 100vw;
+  height: 130rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
+  border-radius: 18rpx 18rpx 0px 0px;
+}
+
+.bottom>.button {
+  width: 568rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: rgba(0, 157, 255, 1);
+  border-radius: 210rpx;
+}
+
+.no_data {
+  margin: 104rpx auto;
+  overflow: hidden;
+  width: 380rpx;
+}
+
+.no_data>.img {
+  width: 380rpx;
+  height: 380rpx;
+}
+
+.no_data>.text {
+  width: 234rpx;
+  color: #999;
+  margin: 40rpx auto;
+  line-height: 35rpx;
+}
+
+.list {
+  width: 700rpx;
+  height: 197rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #E3E1E2;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+}
+
+.list>.left{
+  width: 593rpx;
+}
+
+.list>.left>.left-top .name{
+  color: #222;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-right: 22rpx;
+}
+
+.list>.left>.left-top .num{
+  color: #222;
+  font-size: 28rpx;
+}
+
+.list>.left>.left-top .default{
+  width: 74rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  display: block;
+}
+
+.list>.middle {
+  width: 2rpx;
+  height: 61rpx;
+  background-color: #E3E1E2;
+}
+
+.list>.edit{
+  width: 31rpx;
+  height: 31rpx;
+  flex-shrink: 0;
+}
+
+.left-botom{
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 14rpx;
+}
+
+.left-top{
+  height: 42rpx;
+}
+
+.info{
+  height: 100%;
+}
+
+.lower{
+  margin-bottom: 130rpx;
+  height: 50rpx;
+}

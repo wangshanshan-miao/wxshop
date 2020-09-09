@@ -1,0 +1,7 @@
+<!--components/noData/index.wxml-->
+<view class="noData">
+	<image class="img" src="../../img/noData.png"></image>
+	<view class="nothing">
+		暂无内容
+	</view>
+</view>

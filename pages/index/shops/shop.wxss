@@ -1,0 +1,272 @@
+.shops_index {
+    width: 100%;
+}
+
+.index_top {
+    width: 100%;
+    height: 332rpx;
+    /* background: #299EFD; */
+}
+
+.model_shops {
+    height: 414rpx;
+}
+
+.index_topCon {
+    padding: 0 30rpx;
+    position: absolute;
+    top: 48rpx;
+    left: 0;
+    right: 0;
+
+
+}
+
+.index_topCon .top {
+    color: white;
+}
+
+.shops_search_input {
+    padding-left: 50rpx;
+    /* height: 37rpx; */
+}
+
+.shops_search_group {
+    width: 100%;
+    background: rgba(255, 255, 255, 1);
+    margin-left: 20rpx;
+    border-radius: 50rpx;
+    padding: 11rpx 30rpx;
+    height: 65rpx;
+    box-sizing: border-box;
+}
+
+.shops_search_icon {
+    width: 28rpx;
+    height: 30rpx;
+    flex-shrink: 0;
+    /* left: 30rpx;
+    top: 22rpx; */
+}
+
+
+
+.lbIcon {
+    width: 17rpx;
+    height: 16rpx;
+    flex-shrink: 0;
+}
+
+.notice_de {
+    width: calc(100% - 30rpx);
+    margin-left: 15rpx;
+}
+
+.swiper_group {
+    margin-top: 20rpx;
+    height: 307rpx;
+
+}
+
+.swiperImg {
+    width: 100%;
+    height: 307rpx;
+}
+
+.welfare_shops {
+    width: 100%;
+
+}
+
+.flfs {
+    width: 100%;
+    height: 176rpx;
+    margin-top: 17rpx;
+}
+
+
+
+
+
+
+
+.modelCell {
+    /* margin-top: 30rpx; */
+    border-bottom: 1px solid #F8F8F8;
+    padding-bottom: 30rpx;
+}
+
+.radio {
+    width: 12rpx;
+    height: 12rpx;
+    background: rgba(211, 46, 50, 1);
+    opacity: 1;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.more_text {
+    color: #999999;
+}
+
+.good_group {
+    width: 100%;
+    padding-left: 30rpx;
+    /* overflow-x: hidden; */
+    margin-top: 30rpx;
+
+}
+
+.goodCell {
+    width: 236rpx;
+    height: 194rpx;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+
+}
+
+.goodCell_img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+
+.goodeIntro {
+    width: 100%;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    padding: 6rpx 15rpx;
+    color: white;
+    border-radius: 0 0 10rpx 10rpx;
+}
+
+.goodCell_bott {
+    width: 236rpx;
+    height: 275rpx;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.11);
+    border-radius: 10rpx;
+}
+
+.goodCell_bott_opra {
+    padding: 19rpx 12rpx;
+}
+
+.good_groupImg_cell {
+    width: 100%;
+    height: 194rpx;
+}
+
+.money {
+    color: #D32E32
+}
+
+.pt {
+    padding: 4rpx 20rpx;
+    color: white;
+    border-radius: 30rpx;
+    background: #009DFF;
+}
+
+.delPrice {
+    text-decoration: line-through;
+    color: #666666;
+    margin-left: 21rpx;
+    font-size: 16rpx !important;
+}
+
+.goodeIntro_bott {
+    width: 100%;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    padding: 6rpx 15rpx;
+    color: white;
+}
+
+.remaining {
+    width: 99rpx;
+    height: 41rpx;
+    line-height: 41rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 0px 0px 0px 10px;
+    right: 0;
+    top: 0;
+    color: white;
+    text-align: center;
+}
+
+.shop_group {
+    background: #FAF7FA;
+    padding: 30rpx;
+}
+
+.shopCell_top {
+    padding-bottom: 20rpx;
+    border-bottom: 1px solid #F8F8F8;
+
+}
+
+.shopLogo {
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 100%;
+    margin-right: 24rpx;
+    border: 1px solid #EFEFEF;
+    flex-shrink: 0;
+    /* background-color: aquamarine; */
+}
+
+.shopName {
+    margin-bottom: 5rpx;
+}
+
+.shopCell {
+    background: white;
+    padding: 20rpx 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.shopCell_bott {
+    width: 193rpx;
+    /* height: 198rpx; */
+    margin-top: 15rpx;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.11);
+    border-radius: 10rpx;
+}
+
+.shopCell_img {
+    width: 100%;
+    height: 140rpx;
+    /* background-color: coral; */
+    border-radius: 10rpx;
+}
+
+.shopIntro_bott {
+    width: 100%;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    padding: 6rpx 9rpx;
+    color: white;
+}
+
+.shop_groupImg_cell {
+    width: 100%;
+    height: 140rpx;
+}
+
+.shopCell_bott_opra {
+    padding: 10rpx 12rpx;
+
+}
+
+.goShopDe {
+    padding: 6rpx 24rpx;
+    border: 1px solid #009DFF;
+    color: #009DFF;
+    border-radius: 50rpx;
+    flex-shrink: 0;
+}

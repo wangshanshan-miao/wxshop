@@ -1,0 +1,370 @@
+.selfModel {
+    width: 100%;
+    min-height: 100%;
+    background: #F7F6F9;
+    padding: 30rpx;
+}
+
+.userIntro {
+    width: 100%;
+}
+
+.userIntro_con {
+    width: 100%;
+    top: 38rpx;
+    padding: 0 24rpx 0 36rpx;
+}
+
+.userIntro_bg {
+    height: 357rpx;
+    background: rgba(0, 157, 255, 1);
+    box-shadow: 0px 3px 26px rgba(3, 87, 39, 0.06);
+    opacity: 1;
+    border-radius: 20rpx;
+}
+
+.userIntro_head {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    margin-right: 37rpx;
+    background-color: #999;
+}
+
+.userIntro_name {
+    margin-bottom: 29rpx;
+    font-size: 40rpx;
+    width: 360rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.userIntro_phone {
+    color: rgba(255, 255, 255, .8);
+}
+
+.rjtb {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.userIntro_treasure {
+    margin-top: 44rpx;
+    padding-left: 25rpx;
+}
+
+.treasure_list {
+    margin-right: 120rpx;
+    align-items: center;
+    justify-content: center;
+}
+
+.treasure_list:last-of-type {
+    margin-right: 0;
+}
+
+.treasure_list_num {
+    font-size: 48rpx;
+    color: white;
+    margin-bottom: 6rpx;
+}
+
+.userOrder {
+    width: 100%;
+    height: 357rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 3px 26px rgba(3, 87, 39, 0.06);
+    opacity: 1;
+    border-radius: 20rpx;
+    margin: 30rpx 0;
+    padding: 27rpx 0 36rpx 0;
+}
+
+.userOrder_tab {
+    width: 80%;
+    margin: 0 auto;
+    height: 70rpx;
+    line-height: 70rpx;
+    opacity: 1;
+
+}
+
+.userOrder_tabCell {
+    color: #999999;
+    font-size: 28rpx;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(206, 206, 206, 1);
+
+}
+
+.userOrder_tabCell_one {
+    border-top-left-radius: 39rpx;
+    border-bottom-left-radius: 39rpx;
+    border-right: none;
+}
+
+.userOrder_tabCell_two {
+    border-top-right-radius: 39rpx;
+    border-bottom-right-radius: 39rpx;
+    border-left: none;
+}
+
+.choseOrderTab {
+    background: #009DFF;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #009DFF;
+}
+
+.orderTitle {
+    margin-top: 30rpx;
+    padding-right: 20rpx;
+    padding-bottom: 32rpx;
+    border-bottom: 1px solid #F6F6F6;
+}
+
+.orderTitle_left_line {
+    width: 8rpx;
+    height: 38rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 50rpx;
+    margin-right: 19rpx;
+}
+
+.commonOrder {
+    padding: 30rpx;
+}
+
+.orderTitle_right_img {
+    width: 18rpx;
+    height: 18rpx;
+    margin-left: 12rpx;
+}
+
+.commonOrder_cell {
+    text-align: center;
+}
+
+.commonOrder_cell image {
+    width: 56rpx;
+    height: 56rpx;
+    margin-bottom: 11rpx;
+}
+
+.otherModel {
+    padding: 30rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 3px 26px rgba(3, 87, 39, 0.06);
+    opacity: 1;
+    border-radius: 20rpx;
+}
+
+.otherModel_cell {
+    text-align: center;
+}
+
+.otherModel_cell image {
+    width: 102rpx;
+    height: 102rpx;
+}
+
+.outLogin {
+    width: 90%;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    margin: 93rpx auto 40rpx auto;
+    border-radius: 60rpx;
+}
+
+.count{
+    top: -5rpx;
+    right: -5rpx;
+    width: 28rpx;
+    height: 28rpx;
+    border-radius: 50%;
+    background-color: #D32E32;
+    font-size: 18rpx;
+    color: #fff;
+}
+
+/* 蒙板 */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.auth1 {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 682rpx;
+    z-index: 999;
+    height: 423rpx;
+    background: rgba(255, 255, 255, 1);
+    border: 1rpx solid rgba(112, 112, 112, 1);
+    border-radius: 20rpx;
+}
+
+.auth1>.title {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-top: 108rpx;
+}
+
+.auth1 .content {
+    margin-top: 39rpx;
+}
+
+.auth1>.button {
+    background-color: #009DFF;
+    width: 568rpx;
+    font-size: 28rpx !important;
+    margin: 53rpx auto;
+    border-radius: 20rpx;
+}
+
+.close {
+    width: 24rpx;
+    height: 24rpx;
+    top: 36rpx;
+    right: 27rpx;
+}
+
+
+/* 登录 */ 
+.login {
+    width: 100vw;
+    height: 447rpx;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.login .header {
+    margin: 0 auto;
+    height: 179rpx;
+    width: 672rpx;
+    border-bottom: 1rpx solid #707070;
+    box-sizing: border-box;
+}
+
+.login .header .top .left {
+    color: #222;
+    font-size: 28rpx;
+}
+
+.login .header .top .right {
+    margin-left: 25rpx;
+    font-size: 26rpx;
+    color: #666;
+}
+
+.login .header .bottom {
+    margin-top: 30rpx;
+    color: #222;
+    font-size: 32rpx !important;
+}
+
+.login .select {
+    width: 100%;
+    height: 268rpx;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 0 62.5rpx;
+}
+
+.login .select .button {
+    display: block;
+    flex-shrink: 0;
+    width: 243rpx;
+    height: 81rpx;
+    border-radius: 7rpx;
+    font-size: 32rpx !important;
+    font-weight: normal !important;
+}
+
+.login .select .allow {
+    margin-left: 126rpx !important;
+    background-color: #009DFF;
+    color: #fff;
+}
+
+.login .select .reject {
+    background-color: #EDEDED;
+    color: #333;
+    line-height: 81rpx;
+}
+
+/* 礼物 */
+.gift {
+    width: 566rpx;
+    height: 637rpx;
+    position: fixed;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.gift .img {
+    width: 566rpx;
+    height: 637rpx;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.gift .look {
+    z-index: 9999;
+    width: 416rpx;
+    height: 167rpx;
+    /* bottom: 9rpx; */
+    bottom: 0;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.gift .price {
+    font-size: 70rpx;
+    color: #FB5438;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 60rpx;
+}
+
+.gift text {
+    font-size: 30rpx;
+}
+
+.gift .content {
+    width: 300rpx;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 60rpx;
+}
+
+.gift .content .type {
+    font-size: 40rpx;
+}
+
+.gift .close2 {
+    width: 62rpx;
+    height: 62rpx;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: -120rpx;
+}

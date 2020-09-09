@@ -1,0 +1,10 @@
+<!-- 消息详情 -->
+<view class="messageDetail boxs">
+    <view class="messageDetail_top flex_row jb al">
+        <view class="fb c33 f30">{{list.messageType==0?'订单':'系统'}}消息</view>
+        <view class="c66 f26">{{list.time}}</view>
+    </view>
+    <view class="f28 messageDetail_con c33">
+       {{list.messageContent}}
+    </view>
+</view>

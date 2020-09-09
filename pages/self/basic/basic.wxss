@@ -1,0 +1,22 @@
+/* pages/self/basic/basic.wxss */
+.basic_model {
+    padding: 30rpx;
+}
+
+.basic_list {
+    border-bottom: 1px solid #E6E6E6;
+    padding: 40rpx 0;
+}
+
+.user_headImg {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 100%;
+    /* background-color: coral; */
+}
+
+.basic_list_jt {
+    width: 22rpx;
+    height: 22rpx;
+    margin-left: 10rpx;
+}

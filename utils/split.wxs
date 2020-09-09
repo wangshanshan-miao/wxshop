@@ -1,0 +1,11 @@
+// 字符串切割为数组,并且判断是否含有某元素
+var split = function(str,item){
+  var res = str.split(",").indexOf(item.toString())
+  if (res >= 0) {
+    return true
+  }else{
+    return false
+  }
+}
+
+module.exports.split = split

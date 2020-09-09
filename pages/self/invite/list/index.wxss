@@ -1,0 +1,27 @@
+/* pages/self/invite/list/index.wxss */
+.list {
+  width: 700rpx;
+  height: 160rpx;
+  border-bottom: 1px solid #E3E1E2;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 54rpx 0 26rpx;
+}
+
+.list>.img {
+  flex-shrink: 0;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  /* background-color: aqua; */
+}
+
+.list>.right {
+  margin-left: 30rpx;
+  width: 100%;
+}
+
+
+.list>.right>.bottom {
+  margin-top: 15rpx;
+}

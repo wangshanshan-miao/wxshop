@@ -1,0 +1,33 @@
+.editName {
+    padding: 30rpx;
+}
+
+.editName_group {
+    border-bottom: 1px solid #E6E6E6;
+    width: 100%;
+}
+
+.editName_group input {
+    width: 70%;
+    padding: 10rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.closeInput {
+    width: 30rpx;
+    height: 30rpx;
+    top: 10rpx;
+    right: 10rpx;
+}
+
+.saveBtn {
+    width: 80%;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 210px;
+    margin: 0 auto;
+    margin-top: 440rpx;
+}

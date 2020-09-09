@@ -1,0 +1,118 @@
+<wxs src="../../../utils/formatTime.wxs" module="tools" />
+<!-- 测量订单详情 -->
+<view class="ckOrderModel boxs">
+    <!-- 显示订单状态 -->
+    <view class="showCkOrder_state ">
+        <view class="flex_row flex_row jb al" wx:if="{{orderStatus==5}}">
+            <view class='f32 c33'>待测量</view>
+            <image class="order_state_img" src="../../../img/or_dcl.png" />
+        </view>
+        <view class="flex_row flex_row jb al" wx:if="{{orderStatus==9}}">
+            <view class='f32 c33'>测量已取消</view>
+            <image class="order_state_img" src="../../../img/or_yqx.png" />
+        </view>
+        <view class="flex_row flex_row jb al" wx:if="{{orderStatus==6}}">
+            <view class='f32 c33'>测量进行中</view>
+            <image class="order_state_img" src="../../../img/or_dcl.png" />
+        </view>
+        <view class="flex_row flex_row jb al" wx:if="{{orderStatus==8}}">
+            <view class='f32 c33'>测量已完成</view>
+            <image class="order_state_img" src="../../../img/or_ywc.png" />
+        </view>
+        <view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
+            <view class=''>
+                <view class="f32 mb10 c33">等待买家付款</view>
+                <view class="f28 c99">
+                    剩{{tools.diffMinute(nowTime,endTime)}}分{{diffSecond(nowTime,endTime)}}秒 自动关闭
+                </view>
+            </view>
+            <image class="order_state_img" src="../../../img/or_dfk.png" />
+        </view>
+        <view class="line"></view>
+    </view>
+    <view class="shopckOrderList">
+        <view class="goodckOrder boxs">
+            <view class="flex_row jb al goodckOrder_top">
+                <view class="flex_row al">
+                    <image class="shop_icon" src="../../../img/shop_icon.png" />
+                    <view class='f30 c33 fb shopckOrder_name'>{{storeName}}</view>
+                    <image src="../../../img/rjt.png" class="goShopImg" />
+                </view>
+            </view>
+            <view class="goodckOrder_list" wx:for="{{list}}" wx:key="index">
+                <view class="flex_row">
+                    <image class="goodckOrder_list_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" />
+                    <view class="">
+                        <view class='f28 goodName c33'>{{item.commodityName}}</view>
+                        <view class='flex_row goodckOrder_list_num'>
+                            <view class="f32 goodckOrder_list_money fb">
+                                ￥{{item.salePrice}}
+                                <text class='unitMy' wx:if="{{item.unit}}">/{{item.unit}}</text>
+                            </view>
+                            <!-- <view class="f22 c99">/平方米</view> -->
+                        </view>
+                    </view>
+                </view>
+                <view class="goodData boxs" wx:if="{{metricalInformation}}">
+                    <view class="f28 c66 goodS">{{metricalInformation}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="shopckOrderList_foot flex_row jb">
+            <view class="f26 c99">共{{list.length}}件商品</view>
+        </view>
+        <view class="line"></view>
+    </view>
+    <!-- 订单信息 -->
+    <view class="orderIntro boxs">
+        <view class="mt40">
+            <view class="orderIntro_title flex_row al">
+                <view class='longLine'></view>
+                <view class="f30 c33">订单详情</view>
+            </view>
+            <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">订单编号：</view>
+                <view class="orderIntro_list_warn f28 c33">{{orderNumber}}</view>
+            </view>
+            <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">下单时间：</view>
+                <view class="orderIntro_list_warn f28 c33">{{orderTime}}</view>
+            </view>
+            <view class="orderIntro_list flex_row al" wx:if="{{updateTime}}">
+                <view class="orderIntro_list_title f28 c99">付款时间：</view>
+                <view class="orderIntro_list_warn f28 c33">{{updateTime}}</view>
+            </view>
+            <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">付款方式：</view>
+                <view class="orderIntro_list_warn f28 c33">微信支付</view>
+            </view>
+            <!-- 待定 -->
+            <!-- <view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28 c99">成交时间：</view>
+				<view class="orderIntro_list_warn f28 c33">2019-11-03 12:12:12</view>
+			</view> -->
+        </view>
+        <view class="">
+            <view class="orderIntro_title flex_row al">
+                <view class='longLine'></view>
+                <view class="f30 c33">测量详情</view>
+            </view>
+            <view class="orderIntro_list orderIntro_list_address flex_row ">
+                <view class="orderIntro_list_title f28 c99">测量地址：</view>
+                <view class="orderIntro_list_warn ">
+                    <view class="flex_row al">
+                        <view class='f30 buyUserName c33'>{{name}}</view>
+                        <view class='f28 c33'>{{phone}}</view>
+                    </view>
+                    <view class='f28 c99 detailAddress'>{{address}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- <view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">评价</view> -->
+        <view catchtap="cancel" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==5}}">
+            取消测量
+        </view>
+        <!-- <view catchtap="delete" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==9 || orderStatus==10}}">删除订单</view> -->
+        <view catchtap="pay" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">立即付款</view>
+    </view>
+</view>

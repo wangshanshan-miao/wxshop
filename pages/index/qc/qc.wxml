@@ -1,0 +1,41 @@
+<!-- 清仓 -->
+<view class="pt">
+    <swiper class="pt_swiper" indicator-dots="false" indicator-color="rgba(255,255,255,.35)" indicator-active-color='#FFFFFF' autoplay="true" interval="5000" duration="1000">
+        <swiper-item class="pt_swiperItem" wx:for="{{imgArr}}" wx:key="index">
+            <image class="pt_swiperImg" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" />
+        </swiper-item>
+    </swiper>
+    <!-- 商品类型 -->
+    <view class="ptGoods">
+        <view class="type_group">
+            <scroll-view class="typeScroll" scroll-x="{{true}}">
+                <view data-id="{{item.classId}}" bindtap="choseType" data-index="{{index}}" wx:for="{{list}}" wx:key="index" class="type_name c99 f28 {{tabIndex==index?'choseTab':''}}">
+                    {{item.name}}
+                </view>
+            </scroll-view>
+        </view>
+        <!-- 商品 -->
+        <view class="pt_good plr30 boxs jb flex_row">
+            <view wx:for="{{arr}}" data-id="{{item.clearanceSaleId}}" catchtap="detail" wx:key="index" class="goodsCell pr">
+                <image class="goodImg" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" mode="aspectFit|aspectFill|widthFix"></image>
+                <view class="goods_title f26 c33 oh">{{item.commodityName}}</view>
+                <view class="car_group flex_row al jb">
+                    <view class="flex_row al">
+                        <view class="f36 good_money">
+                            ￥{{item.fixedPrice}}
+                            <text class="unitMy" wx:if="{{item.unit}}">/{{item.unit}}</text>
+                            起
+                        </view>
+                        <!-- <view class="c99 f24">/平方米</view> -->
+                    </view>
+                    <!-- <view class='ptBtn f24'>去拼团</view> -->
+                    <!-- <image class="good_buyCar" src="../../../img/car.png" /> -->
+                </view>
+                <view class="xg f24 cff">仅剩{{item.surplusAmount}}件</view>
+            </view>
+            <noData wx:if="{{arr.length<1}}" />
+        </view>
+    </view>
+</view>
+<!-- 回到顶部 -->
+<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>

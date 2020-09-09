@@ -1,0 +1,175 @@
+<wxs src="../../../utils/filter.wxs" module="tools" />
+<!-- 个人中心 -->
+<view class="selfModel boxs">
+    <view class="userIntro pr">
+        <view class='userIntro_bg'></view>
+        <view class="userIntro_con pa boxs">
+            <view class="userIntro_con_top flex_row al jb">
+                <view class="flex_row al">
+                    <image wx:if="{{userInfo.headUrl}}" class="userIntro_head" src="{{imgBaseUrl+userInfo.headUrl+'?x-image-process=image/resize,p_30'}}" />
+                    <image wx:else class="userIntro_head" src="" />
+                    <view>
+                        <view class="f40 fb cff userIntro_name" wx:if="{{userInfo.userName}}">{{userInfo.userName}}</view>
+                        <view catchtap="login1" class="f40 fb cff userIntro_name" wx:else>登录</view>
+                        <view class="f26 cff userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
+                    </view>
+                </view>
+                <image bindtap="goBasic" src="../../../img/rjtb.png" class="rjtb" />
+            </view>
+            <view class="userIntro_treasure boxs flex_row">
+                <view bindtap="goYj" class="treasure_list flex_col">
+                    <view class="treasure_list_num">￥{{userInfo.remainingSumMoney}}</view>
+                    <view class='f24 cff treasure_list_title'>我的佣金</view>
+                </view>
+                <view bindtap="goYhq" class="treasure_list flex_col">
+                    <view class="treasure_list_num">{{userInfo.voucherNum}}</view>
+                    <view class='f24 cff treasure_list_title'>优惠券</view>
+                </view>
+                <view bindtap="goSc" class="treasure_list flex_col">
+                    <view class="treasure_list_num">{{userInfo.collectNum}}</view>
+                    <view class='f24 cff treasure_list_title'>收藏</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 订单操作 -->
+    <view class="userOrder">
+        <view class="userOrder_tab flex_row">
+            <view bindtap="choseTab" data-index="{{0}}" class="userOrder_tabCell userOrder_tabCell_one {{userOrderTab==0?'choseOrderTab':''}}">
+                普通订单
+            </view>
+            <view bindtap="choseTab" data-index="{{1}}" class="userOrder_tabCell userOrder_tabCell_two {{userOrderTab==1?'choseOrderTab':''}}">
+                测量订单
+            </view>
+        </view>
+        <view class="orderTitle boxs flex_row jb al">
+            <view class="orderTitle_left flex_row al">
+                <view class="orderTitle_left_line"></view>
+                <view class="orderTitle_left_name f30 c33 fb">我的订单</view>
+            </view>
+            <view bindtap="goAllOrder" class="orderTitle_right flex_row al">
+                <view class="f28 c99">查看全部订单</view>
+                <image src="../../../img/rjt.png" class="orderTitle_right_img" />
+            </view>
+        </view>
+        <view class="orderState">
+            <!-- 普通订单的数据操作 -->
+            <view wx:if="{{userOrderTab==0}}" class="commonOrder boxs flex_row jb pr">
+                <view class="commonOrder_cell pr" data-index="1" data-status="0" bindtap="normalOrder">
+                    <image src="../../../img/pfk.png" />
+                    <view class="f24 c66">待付款</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="3" data-status="1" bindtap="normalOrder">
+                    <image src="../../../img/pfh.png" />
+                    <view class="f24 c66">待发货</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="4" data-status="4" bindtap="normalOrder">
+                    <image src="../../../img/psh.png" />
+                    <view class="f24 c66">待收货</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="5" data-status="7" bindtap="normalOrder">
+                    <image src="../../../img/ppj.png" />
+                    <view class="f24 c66">评价</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.evaluateNum)}}">{{tools.filter(userInfo.evaluateNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="6" data-status="8" bindtap="normalOrder">
+                    <image src="../../../img/ptk.png" />
+                    <view class="f24 c66">退款/售后</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.refundedNum)}}">{{tools.filter(userInfo.refundedNum)}}</view>
+                </view>
+            </view>
+            <!-- 测量订单的操作 -->
+            <view wx:if="{{userOrderTab==1}}" class="commonOrder boxs flex_row al ja pr">
+                <view class="commonOrder_cell pr" data-index="1" data-status="5" bindtap="measureOrder">
+                    <image src="../../../img/dcl.png" />
+                    <view class="f24 c66">待测量</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.waitNum)}}">{{tools.filter(userInfo.waitNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="2" data-status="6" bindtap="measureOrder">
+                    <image src="../../../img/jxz.png" />
+                    <view class="f24 c66">进行中</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.measurementOfNum)}}">{{tools.filter(userInfo.measurementOfNum)}}</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="3" data-status="8" bindtap="measureOrder">
+                    <image src="../../../img/dfk.png" />
+                    <view class="f24 c66">已完成</view>
+                    <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accomplishNum)}}">{{tools.filter(userInfo.accomplishNum)}}</view>
+                </view>
+                <!-- <view class="commonOrder_cell pr" data-index="1" bindtap="measureOrder">
+                    <image src="../../../img/yqx.png" />
+                    <view class="f24 c66">已取消</view>
+                    <view class="count flex_row al jc pa">99</view>
+                </view>
+                <view class="commonOrder_cell pr" data-index="1" bindtap="measureOrder">
+                    <image src="../../../img/pj.png" />
+                    <view class="f24 c66">评价</view>
+                    <view class="count flex_row al jc pa">99</view>
+                </view> -->
+            </view>
+        </view>
+    </view>
+    <!-- 其他的操作模块 -->
+    <view class="otherModel boxs ">
+        <view class="flex_row jb al">
+            <view class="otherModel_cell" bindtap="join">
+                <image src="../../../img/sqrz.png" />
+                <view class='f24 c33'>商家申请入驻</view>
+            </view>
+            <view class="otherModel_cell" bindtap="cooperation">
+                <image src="../../../img/swhz.png" />
+                <view class='f24 c33'>商务合作申请</view>
+            </view>
+            <view class="otherModel_cell" bindtap="invite">
+                <image src="../../../img/yqhy.png" />
+                <view class='f24 c33'>邀请好友</view>
+            </view>
+            <view class="otherModel_cell" bindtap="address">
+                <image src="../../../img/shdz.png" />
+                <view class='f24 c33'>我的收货地址</view>
+            </view>
+        </view>
+        <view class="outLogin tc f28 cff" bindtap="loginOut" wx:if="{{userInfo.userName}}">退出登录</view>
+    </view>
+</view>
+
+<!-- 授权手机号码 -->
+<view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
+<view class="auth1 pr" wx:if="{{show}}">
+	<image catchtap="closeModal" src="../../../img/cha.png" class="close pa"></image>
+	<view class="title c33 tc">温馨提示</view>
+	<view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
+	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
+	<!-- <button class="cff tc button flex_row al jc" >授权登录</button> -->
+</view>
+
+<!-- 授权登录 -->
+<view class="login" wx:if="{{getuserInfo}}">
+	<view class="header flex_col jc al">
+		<view class="top flex_row al">
+			<view class="left">点吉家装建材商城</view>
+			<view class="right">申请</view>
+		</view>
+		<view class="bottom">获取你的昵称、头像、性别</view>
+	</view>
+	<view class="select flex_row al jc">
+		<view class="reject button tc" catchtap="reject">拒绝</view>
+		<button class="allow button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">允许</button>
+	</view>
+</view>
+
+<!-- 注册红包 -->
+<view class="gift" wx:if="{{gift}}">
+	<image class="img pa" src="../../../img/coupon.png"></image>
+	<view class="price pa">
+		<text>￥</text>{{voucher.voucherPrice}}
+	</view>
+	<view class="content pa tc">
+		<view class="type c33">满减券</view>
+		<view class="condition c99 f30">{{voucher.condition}}</view>
+	</view>
+	<image catchtap="lookCoupon" src="../../../img/look.png" class="look pa"></image>
+	<image catchtap="closeCoupon" class="close2 pa" src="../../../img/close1.png"></image>
+</view>

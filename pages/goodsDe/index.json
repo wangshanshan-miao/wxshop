@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-popup": "../../weapp/dist/popup/index",
+    "share-box": "../../components/shareBox/index"
+  },
+  "navigationBarTitleText": "商品详情"
+}

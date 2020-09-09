@@ -1,0 +1,42 @@
+// 判断订单状态
+var status = function (num) {
+  switch (num) {
+    case 0:
+      return "待付款"
+      break;
+    case 1:
+      return "已付款"
+      break;
+    case 2:
+      return "待退款"
+      break;
+    case 3:
+      return "已退款"
+      break;
+    case 4:
+      return "已发货"
+      break;
+    case 5:
+      return "待测量"
+      break;
+    case 6:
+      return "测量中"
+      break;
+    case 7:
+      return "待评价"
+      break;
+    case 8:
+      return "已完成"
+      break;
+    case 9:
+      return "已取消"
+      break;
+    case 10:
+      return "已完成"
+      break;
+    default:
+      break;
+  }
+}
+
+module.exports.status = status;

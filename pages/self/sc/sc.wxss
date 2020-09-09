@@ -1,0 +1,138 @@
+.photos {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    margin-top: 74rpx;
+    /* border: 1rpx solid red; */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+/* .list {
+    width: 334rpx;
+    flex-shrink: 0;
+} */
+
+.list-item {
+    width: 334rpx;
+    margin-bottom: 20rpx;
+}
+
+.avatar {
+    width: 334rpx;
+    margin-bottom: 20rpx;
+    background-color: chartreuse;
+}
+
+.hasBuy_num {
+    margin: 12rpx 0 7rpx 0;
+    width: 100%;
+}
+
+.ac_price {
+    color: #D32E32;
+    font-size: 36rpx;
+}
+
+.sc_dw {
+    font-size: 24rpx;
+}
+
+.hasScImg {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.scTabs {
+    width: 100%;
+    margin: 30rpx auto;
+    padding: 0 75rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 74rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.scTab_cell {
+    width: 50%;
+    height: 70rpx;
+    line-height: 70rpx;
+    border: 1px solid rgba(206, 206, 206, 1);
+}
+
+.scTabChose {
+    font-weight: bold;
+    color: white;
+    background: #009DFF;
+    border: 1px solid #009DFF;
+}
+
+.scTab_cell_one {
+    border-right: none;
+}
+
+.scTab_cell_two {
+    border-left: none;
+}
+
+.shopSc_list {
+    margin-top: 74rpx;
+    margin-bottom: 40rpx;
+}
+
+.shopSc {
+    padding: 30rpx;
+    margin-top: 74rpx;
+}
+
+.sc_shopLogo {
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 100%;
+    margin-right: 30rpx;
+    /* background-color: tomato; */
+}
+
+.sc_shopName {
+    margin-bottom: 24rpx;
+}
+
+.xsNum {
+    margin-right: 25rpx;
+}
+
+.cancleBtn {
+    width: 149rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+}
+
+.container{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    height: 134rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.content{
+    width: 334rpx;
+}
+
+.item-content{
+    width: 334rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "noData" : "../../../components/noData/index"
+  },
+  "navigationBarTitleText": "全部商家"
+}

@@ -1,0 +1,25 @@
+/* pages/message/message.wxss */
+
+.messageModel{
+    overflow: hidden;
+}
+
+.messsImg {
+    width: 90rpx;
+    height: 90rpx;
+    margin-right: 25rpx;
+    flex-shrink: 0;
+}
+
+.messList {
+    border-bottom: 1px solid #F6F6F6;
+    padding: 40rpx 25rpx 40rpx 37rpx;
+}
+
+.messList_right {
+    width: 100%;
+}
+
+.messList_right_top {
+    margin-bottom: 11rpx;
+}

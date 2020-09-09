@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "noData" :"../../../components/noData/index"
+  },
+  "navigationBarTitleText": "联购活动"
+
+}

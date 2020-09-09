@@ -1,0 +1,57 @@
+var day,hour,minute,second
+var diffTime = function (nowTime,endTime) {
+  var time = endTime.replace(getRegExp('-','g'),'/')
+  
+  var endTime = getDate(getDate(time).getTime())
+  // var nowTime = getDate().getTime()
+  var diff = Math.floor((endTime - nowTime) / 1000) // 时间差秒数 向下取整
+
+  // 倒计时结束
+  if (diff <= 0) {
+    day = 0
+    hour = 00
+    minute = 00
+    second = 00
+  }
+
+  day = Math.floor(diff / (24 * 60 * 60)) // 剩余天数
+  diff = Math.floor(diff % (24 * 60 * 60)) // 余数代表剩余的时分秒
+  hour = Math.floor(diff / (60 * 60)) // 剩余小时
+  diff = Math.floor(diff % (60 * 60)) // 余数代表剩余的分秒
+  minute = Math.floor(diff / 60) // 剩余分钟
+  diff = Math.floor(diff % 60) // 余数代表剩余的秒数
+  second = diff // 剩余秒杀
+
+  hour = hour > 9 ? hour : '0' + hour
+  minute = minute > 9 ? minute : '0' + minute
+  second = second > 9 ? second : '0' + second
+  return '剩余' + day + '天' + hour + '时' + minute + '分' + second + '秒'
+
+}
+
+var diffDay = function (nowTime,endTime) {
+  diffTime(nowTime,endTime)
+  return day
+}
+
+var diffHour = function (nowTime,endTime) {
+  diffTime(nowTime,endTime)
+  return hour
+}
+
+var diffMinute = function (nowTime,endTime) {
+  diffTime(nowTime,endTime)
+  return minute
+}
+
+var diffSecond = function (nowTime,endTime) {
+  diffTime(nowTime,endTime)
+  return second
+}
+
+module.exports = {
+  diffDay: diffDay,
+  diffHour: diffHour,
+  diffMinute: diffMinute,
+  diffSecond: diffSecond
+}

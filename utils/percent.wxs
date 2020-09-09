@@ -1,0 +1,5 @@
+var percent = function (m,n) {
+  return Math.ceil(((n - m)/n*100))
+}
+
+module.exports.percent = percent

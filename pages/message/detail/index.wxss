@@ -1,0 +1,11 @@
+.messageDetail {
+    padding: 30rpx;
+}
+
+.messageDetail_top {
+    margin-bottom: 30rpx;
+}
+
+.messageDetail_con {
+    line-height: 50rpx;
+}

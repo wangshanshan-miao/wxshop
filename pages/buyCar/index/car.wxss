@@ -1,0 +1,161 @@
+.line1{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    height: 2px;
+    background-color: #fafafa;
+    width: 100vw;
+}
+.carModel {
+    width: 100%;
+    margin-bottom: 130rpx;
+    /* height: 100%; */
+    overflow: hidden;
+    margin-top: 60rpx;
+}
+
+.buycarOut {
+    width: 100%;
+    height: calc(100% - 135rpx);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carModel_top {
+    /* padding: 20rpx 30rpx 0 30rpx; */
+    box-sizing: border-box;
+    padding-right: 30rpx;
+    line-height: 60rpx;
+    text-align: right;
+    background-color: #fff;
+    position: fixed;
+    top: 2px;
+    z-index: 99;
+    width: 100%;
+}
+
+.shopModle_list_cell {
+    padding: 30rpx;
+}
+
+.shopModle_list_top_left .shop_icon {
+    width: 26.58rpx;
+    height: 25.05rpx;
+}
+
+.shopModle_list_top_name {
+    margin: 0 15rpx;
+}
+
+.shopModle_list_top_left .goshopIcon {
+    width: 18.38rpx;
+    height: 18.38rpx;
+}
+
+.chose_buyGood {
+    width: 34rpx;
+    height: 34rpx;
+    flex-shrink: 0;
+    margin-top: 60rpx;
+}
+
+.buyGood_coverimg {
+    width: 162rpx;
+    height: 157rpx;
+    border: 20rpx;
+    border-radius: 20rpx;
+    flex-shrink: 0;
+    margin: 0 30rpx 0 24rpx;
+    /* background-color: aquamarine; */
+}
+
+.buyGood_list {
+    margin-top: 25rpx;
+}
+
+.buyGood_list_right {
+    width: 100%;
+}
+
+.buyGood_numOpa {
+    justify-content: flex-end;
+    /* margin: 10rpx 0; */
+}
+
+.buyGood_btn {
+    width: 50rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    text-align: center;
+    background: rgba(220, 220, 220, 1);
+    opacity: 1;
+
+}
+
+.reace_buyNum {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.add_buyNum {
+    border-radius: 0px 4px 4px 0px;
+}
+
+.buyGoodNum {
+    padding: 0 19rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    background: rgba(220, 220, 220, 1);
+    margin: 0 6rpx;
+}
+
+.buygood_price .price {
+    color: #D32E32;
+}
+
+.settlement {
+    width: 100%;
+    height: 130rpx;
+    padding: 0 30rpx;
+    position: fixed;
+    bottom: 0;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
+    border-radius: 18px 18px 0px 0px;
+}
+
+.choseAll_buyGood {
+    margin-left: 24rpx;
+}
+
+.allMoney {
+    margin-left: 32rpx;
+    /* align-items: center; */
+}
+
+.unit {
+    position: relative;
+    top: 10rpx
+}
+
+.allMoney .num {
+    font-size: 46rpx;
+}
+
+.money_num {
+    color: #D32E32;
+}
+
+.settlement_right {
+    width: 300rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 210rpx;
+}
+
+
+.selectAll{
+    margin-top: 0 ;
+}
+

@@ -1,0 +1,128 @@
+.productModel {
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.produce_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 160rpx;
+    background: #009DFF;
+    padding: 40rpx 30rpx 0 30rpx;
+}
+
+.produce_searchInput {
+    width: 100%;
+    height: 65rpx;
+    line-height: 65rpx;
+    padding: 0rpx 74rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 35rpx;
+}
+
+.produce_search_del {
+    width: 25rpx;
+    height: 25rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 22rpx;
+}
+
+.produce_search_icon {
+    width: 22rpx;
+    height: 22rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 22rpx;
+}
+
+.productArea {
+    width: 100%;
+    /* height: calc(100% - 140rpx); */
+    height: auto;
+    border-radius: 30rpx 30rpx 0px 0px;
+    /* position: relative; */
+    /* top: -20rpx; */
+    background: white;
+    padding-top: 35rpx;
+    overflow: auto;
+}
+
+.productArea_left {
+    width: 20%;
+    /* width: 157rpx; */
+    position: fixed;
+    left: 0;
+    top: 200rpx;
+    z-index: 999;
+}
+
+.product_type {
+    box-sizing: border-box;
+    padding: 10rpx 0;
+    /* width: 157rpx; */
+    text-align: center;
+    margin-bottom: 20rpx;
+    z-index: 9999;
+}
+
+.choseType {
+    background: #009DFF;
+    color: white;
+    border-radius: 0 40rpx 40rpx 0;
+}
+
+/* .choseType::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 40rpx;
+    border-top: 25rpx solid transparent;
+    border-bottom: 25rpx solid transparent;
+    border-left: 40rpx solid #009DFF;
+    border-radius: 0 30rpx 0 0;
+    top: -14rpx;
+    left: 0;
+    z-index: 9;
+} */
+
+.productArea_right {
+    margin-top: 175rpx;
+    width: 78%;
+    padding-right: 30rpx;
+    height: auto;
+    margin-left: 170rpx;
+}
+
+.productArea_right_types {
+    flex-wrap: wrap;
+    
+}
+
+.productArea_right_type {
+    padding: 6rpx 24rpx;
+    border: 1px solid rgba(153, 153, 153, 1);
+    margin: 0 35rpx 20rpx 0;
+    border-radius: 30rpx;
+}
+
+.choseChiType {
+    border: 1px solid rgba(0, 157, 255, 1);
+    color: #009DFF;
+}
+
+.product_group {
+    flex-wrap: wrap;
+    /* margin-top: 46rpx; */
+    height: auto;
+}
+
+.product_goodImg {
+    height: 232rpx !important;
+    /* background-color: aquamarine; */
+}

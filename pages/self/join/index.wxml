@@ -1,0 +1,99 @@
+<!--pages/self/join/index.wxml-->
+<view class="header f26 tc">
+	如有疑问可联系区域负责人，联系电话：{{areaPhone}}
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">商户名称</view>
+	<input bindinput="inputName" maxlength="10" class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入商户姓名"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">所在区域</view>
+	<view class="right selectArea">
+		<picker class="f28" mode="region" bindchange="selectArea" value="{{region}}">
+			<view wx:if="{{!codeName}}" class="picker f28">请选择区域</view>
+			<view wx:else class="picker1 f28">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+	</view>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">详细地址</view>
+	<input bindinput="inputAddress" class="f28" placeholder-style="color:#B9B9B9" placeholder="请选择所在区域"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">商家电话</view>
+	<input type="number" maxlength="11" bindinput="inputMerchantTel" class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入商家电话(选填)"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">商户类型</view>
+	<!-- <input class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入商户类型"></input> -->
+	<view class="right selectArea">
+		<picker class="f28" range="{{category}}" bindchange="selectCategory" value="{{region}}">
+			<view wx:if="{{!merchantType}}" class="picker f28">请选择商户类型</view>
+			<view wx:else class="picker1 f28">
+				{{category[merchantType]}}
+			</view>
+		</picker>
+	</view>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">经营者姓名</view>
+	<input bindinput="inputMananger" maxlength="10" class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入姓名"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">联系电话</view>
+	<input bindblur="checkPhone" class="f28" type="number" maxlength="11" placeholder-style="color:#B9B9B9" placeholder="请输入手机号"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="title f30 c33">联系邮箱</view>
+	<input bindblur="checkEmail" maxlength="20" class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入邮箱号(选填)"></input>
+</view>
+
+<view class="title1 f30 c33">
+	商家logo
+</view>
+
+<view class="logo flex_row al jc">
+	<image data-type="0" wx:if="{{!logoUrl}}" bindtap="upload" class="icon" src="../../../img/camera.png"></image>
+	<image bindtap="upload" data-type="0" wx:else src="{{imgBaseUrl + logoUrl+'?x-image-process=image/resize,p_30'}}" class="img"></image>
+</view>
+
+<view class="title1 f30 c33">
+	上传店面内外实景图片（最多上传9张）
+</view>
+
+<view class="photo flex_row al jc" bindtap="uploadPicture">
+	<image wx:if="{{!picture}}"  class="icon icon1" src="../../../img/camera.png"></image>
+
+	<!-- <image wx:else src="{{imgBaseUrl + picture}}" class="img"></image> -->
+
+	<!-- <image wx:for="{{[1,2,3,4,5,6,7,8,9]}}" src="../../../img/toTop.png" wx:key="index" class="imgs"></image> -->
+
+	<image wx:for="{{realisticPicture}}" src="{{imgBaseUrl + item+'?x-image-process=image/resize,p_30'}}" wx:key="index" class="imgs"></image>
+</view>
+
+<view class="title1 f30 c33">
+	上传营业执照图片
+</view>
+
+<view class="photo flex_row al jc">
+	<image data-type="2" wx:if="{{!licenseUrl}}" bindtap="upload" class="icon icon1" src="../../../img/camera.png"></image>
+	<image bindtap="upload" wx:else src="{{imgBaseUrl + licenseUrl+'?x-image-process=image/resize,p_30'}}" class="img"></image>
+</view>
+
+<view class="title1 f30 c33">
+	商家简介
+</view>
+
+<textarea bindinput="inputIntro" placeholder="输入商家简介" placeholder-style="color:#CBCBCB"></textarea>
+
+<view bindtap="applyMerchant" class="button tc cff f28">我要入驻</view>

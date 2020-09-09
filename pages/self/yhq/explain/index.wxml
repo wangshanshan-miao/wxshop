@@ -1,0 +1,9 @@
+<!--pages/self/yhq/explain/index.wxml-->
+<view class="line"></view>
+
+<image class="img"></image>
+
+<view class="main"> 
+	<view class="title f30 c33">一、券类型</view>
+	<view class="f30 c33">这里是优惠券使用说明、这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明这里是优惠券使用说明</view>
+</view>

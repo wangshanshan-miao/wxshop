@@ -1,0 +1,159 @@
+.msModel {
+    width: 100%;
+    height: 100%;
+    background: #FAF7FA;
+}
+
+.msSwiper {
+    width: 100%;
+    height: 407rpx;
+}
+
+.swiper-image {
+    width: 100%;
+    height: 100%;
+}
+
+.ms_cardLeft {
+    color: #D32E32;
+}
+
+.endTime {
+    margin-right: 15rpx;
+}
+
+.ms_cardContent {
+    background: white;
+    padding: 30rpx;
+    border-radius: 20rpx;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.07);
+    position: relative;
+    top: -20rpx;
+}
+
+.ms_good {
+    /* margin-top: 40rpx; */
+    flex-wrap: wrap;
+}
+
+.type_group {
+    padding: 0 0 0 80rpx;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.typeScroll {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.type_name {
+    display: inline-block;
+    margin-right: 39rpx;
+    padding: 24rpx 0 24rpx 0;
+    position: relative;
+}
+
+.choseTab {
+    font-size: 30rpx;
+    color: #009dff;
+}
+
+.choseTab::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 7rpx;
+    background: #009dff;
+    position: absolute;
+    bottom: 2rpx;
+    border-radius: 5rpx;
+}
+
+.goodShow {
+    border-radius: 40rpx 40rpx 0 0;
+    width: 100%;
+    height: calc(100% - 500rpx);
+    background: white;
+}
+
+.ms_good {
+    padding: 40rpx 30rpx;
+}
+
+.ms_goodCell {
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.11);
+    border-radius: 20rpx;
+    margin-bottom: 30rpx;
+    padding: 30rpx;
+}
+
+.ms_goodCellImgShow {
+    flex-shrink: 0;
+}
+
+.ms_goodCellImg {
+    width: 220rpx;
+    height: 200rpx;
+    border-radius: 10rpx;
+    flex-shrink: 0;
+}
+
+.ms_goodCell_left {
+    width: calc(100% - 240rpx);
+}
+
+.ms_goodCell_title {
+    width: 100%;
+}
+
+.progress {
+    margin: 30rpx 0;
+    width: 400rpx;
+    box-sizing: border-box;
+    padding: 0 15rpx;
+}
+
+.hasGoodNum {
+    flex-shrink: 0;
+    margin-left: 13rpx;
+}
+
+.article {
+    width: 250rpx;
+    background: rgba(242, 242, 242, .3);
+    border: 1px solid rgba(153, 153, 153, .4);
+    height: 25rpx;
+    border-radius: 60rpx;
+    padding: 0 5rpx;
+
+}
+
+.article_line {
+    width: 40%;
+    height: 20rpx;
+    background: linear-gradient(180deg, rgba(97, 180, 255, 1) 0%, rgba(0, 128, 243, 1) 100%);
+    border-radius: 10rpx;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    margin-left: 12rpx;
+}
+
+.downBtn{
+    width: auto;
+    padding: 0 4rpx;
+}
+
+
+/* 回到顶部 */
+.toTop {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 8;
+    bottom: 20%;
+    right: 30rpx;
+}

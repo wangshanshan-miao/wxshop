@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "店长推荐",
+  "usingComponents": {
+    "noData": "../../../components/noData/index"
+  }
+}

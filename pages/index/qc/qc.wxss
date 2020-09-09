@@ -1,0 +1,67 @@
+/* pages/index/qc/qc.wxss */
+/* pages/index/pt/pt.wxss */
+.pt_swiper {
+    width: 100%;
+    height: 407rpx;
+    margin-bottom: 30rpx;
+}
+
+.pt_swiperItem {
+    width: 100%;
+    height: 100%;
+}
+
+.pt_swiperImg {
+    width: 100%;
+    height: 100%;
+    /* background-color: coral; */
+}
+
+.type_group {
+    padding: 0 0 0 80rpx;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.typeScroll {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.type_name {
+    display: inline-block;
+    margin-right: 39rpx;
+    padding: 24rpx 0 24rpx 0;
+    position: relative;
+}
+
+.choseTab {
+    font-size: 30rpx;
+    color: #009dff;
+}
+
+.choseTab::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 7rpx;
+    background: #009dff;
+    position: absolute;
+    bottom: 2rpx;
+    border-radius: 5rpx;
+}
+
+.pt_good {
+    margin-top: 40rpx;
+    flex-wrap: wrap;
+}
+
+/* 回到顶部 */
+.toTop {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 8;
+    bottom: 20%;
+    right: 30rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "noData" :"../../../components/noData/index"
+  },
+  "navigationBarTitleText": "测量订单"
+}

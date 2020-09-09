@@ -1,0 +1,40 @@
+<!--pages/self/address/add/index.wxml-->
+<view class="line"></view>
+
+<view class="list flex_row jb al">
+	<view class="left f30 c33">联系人</view>
+	<input bindinput="inputName" placeholder-style="color:#B9B9B9" placeholder="请输入联系人姓名"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="left f30 c33">手机号码</view>
+	<input bindblur="checkPhone" maxlength="11" type="number" placeholder-style="color:#B9B9B9" placeholder="请输入手机号码"></input>
+</view>
+
+<view class="list flex_row jb al">
+	<view class="left f30 c33">所在区域</view>
+	<view class="right selectArea">
+		<picker class="f28" mode="region" bindchange="selectArea" value="{{region}}">
+			<view wx:if="{{!codeName}}" class="picker f28">请选择区域</view>
+			<view wx:else class="picker f28">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+	</view>
+</view>
+
+<view class="list flex_row jb al border-bottom">
+	<view class="left f30 c33">详细地址</view>
+	<input bindinput="inputAddress" placeholder-style="color:#B9B9B9" placeholder="请输入详细地址"></input>
+</view>
+
+<view class="space"></view>
+
+<view class="switch flex_row al jb">
+  <view class="f30 c33">设为默认地址</view>
+  <switch bindchange="change"></switch>
+</view>
+
+<view class="space"></view>
+
+<view bindtap="update" class="button tc cff">保存</view>

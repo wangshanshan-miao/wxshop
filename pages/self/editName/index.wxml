@@ -1,0 +1,7 @@
+<view class="editName">
+    <view class="editName_group pr">
+        <input value="{{value}}" bindinput="inputValue" maxlength="10" placeholder="请输入昵称" />
+        <image catchtap="clear" src="../../../img/close.png" class="closeInput pa" />
+    </view>
+    <view bindtap="update" class="saveBtn tc cff f28">保存</view>
+</view>

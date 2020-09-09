@@ -1,0 +1,792 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"preloadBackgroundData": false,
+		"useCompilerModule": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.12.0",
+	"appid": "wx7698a8613f7854c5",
+	"projectname": "mall",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/index/cg/cg",
+					"pathName": "pages/index/cg/cg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/al/al",
+					"pathName": "pages/index/al/al",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/alxq/alxq",
+					"pathName": "pages/index/alxq/alxq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/pt/pt",
+					"pathName": "pages/index/pt/pt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/ms/ms",
+					"pathName": "pages/index/ms/ms",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/qc/qc",
+					"pathName": "pages/index/qc/qc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/shops/shop",
+					"pathName": "pages/index/shops/shop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/product/product",
+					"pathName": "pages/index/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/store/store",
+					"pathName": "pages/store/store",
+					"query": "id=78",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goodsDe/index",
+					"pathName": "pages/goodsDe/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/alleva/index",
+					"pathName": "pages/alleva/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/craftsman/index/craftsman",
+					"pathName": "pages/craftsman/index/craftsman",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message/index/message",
+					"pathName": "pages/message/index/message",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message/detail/index",
+					"pathName": "pages/message/detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buyCar/index/car",
+					"pathName": "pages/buyCar/index/car",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/index/self",
+					"pathName": "pages/self/index/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/basic/basic",
+					"pathName": "pages/self/basic/basic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/yj/yj",
+					"pathName": "pages/self/yj/yj",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/fx/fx",
+					"pathName": "pages/self/fx/fx",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/index/self",
+					"pathName": "pages/self/index/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/yj/yj",
+					"pathName": "pages/self/yj/yj",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/txjg/index",
+					"pathName": "pages/self/txjg/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/sc/sc",
+					"pathName": "pages/self/sc/sc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/yhq/yhq",
+					"pathName": "pages/self/yhq/yhq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/clorder/index",
+					"pathName": "pages/self/clorder/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/clDetail/index",
+					"pathName": "pages/self/clDetail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/ptorder/index",
+					"pathName": "pages/self/ptorder/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/ptDetail/index",
+					"pathName": "pages/self/ptDetail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/refund/index",
+					"pathName": "pages/self/refund/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "代金券-申请退款",
+					"pathName": "pages/voucher/voucher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/search/index/index",
+					"pathName": "pages/search/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/self/yhq/yhq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "代金券详情",
+					"pathName": "pages/self/yhq/detail/index",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券使用说明",
+					"pathName": "pages/self/yhq/explain/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的佣金",
+					"pathName": "pages/self/yj/yj",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/self/index/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请好友",
+					"pathName": "pages/self/invite/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请好友列表",
+					"pathName": "pages/self/invite/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家合作申请",
+					"pathName": "pages/self/cooperation/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家入住",
+					"pathName": "pages/self/join/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收获地址",
+					"pathName": "pages/self/address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增收获地址",
+					"pathName": "pages/self/address/add/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑收货地址",
+					"pathName": "pages/self/address/edit/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑收货地址",
+					"pathName": "pages/self/address/edit/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 45,
+					"name": "店铺主页",
+					"pathName": "pages/store/store",
+					"query": "id=37",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一站采购",
+					"pathName": "pages/index/cg/cg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一站家装",
+					"pathName": "pages/index/jz/cg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联购活动",
+					"pathName": "pages/index/lghd/lghd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "生活联盟",
+					"pathName": "pages/index/shlm/shlm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/message/index/message",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "全部商家",
+					"pathName": "pages/index/shops/shop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "全部产品",
+					"pathName": "pages/index/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "家装拼团",
+					"pathName": "pages/index/pt/pt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 55,
+					"name": "商品详情",
+					"pathName": "pages/goodsDe/index",
+					"query": "id=80",
+					"scene": null
+				},
+				{
+					"id": 56,
+					"name": "全部评价",
+					"pathName": "pages/alleva/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "工匠",
+					"pathName": "pages/craftsman/index/craftsman",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/buyCar/index/car",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/self/index/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "基本信息",
+					"pathName": "pages/self/basic/basic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "昵称设置",
+					"pathName": "pages/self/editName/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/self/sc/sc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 63,
+					"name": "商家入驻",
+					"pathName": "pages/self/join/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/self/address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的优惠券",
+					"pathName": "pages/self/yhq/yhq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 70,
+					"name": "优惠券/代金券 详情",
+					"pathName": "pages/self/yhq/detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 71,
+					"name": "普通订单",
+					"pathName": "pages/self/ptorder/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测量订单",
+					"pathName": "pages/self/clorder/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 73,
+					"name": "订单详情",
+					"pathName": "pages/self/ptDetail/index",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": 70,
+					"name": "评价订单",
+					"pathName": "pages/self/comment/index.js",
+					"query": "id=282",
+					"scene": null
+				},
+				{
+					"id": 71,
+					"name": "退款",
+					"pathName": "pages/self/refund/index",
+					"query": "id=223",
+					"scene": null
+				},
+				{
+					"id": 72,
+					"name": "支付页面",
+					"pathName": "pages/self/pay/index",
+					"query": "id=102",
+					"scene": null
+				},
+				{
+					"id": 73,
+					"name": "测量订单-详情",
+					"pathName": "pages/self/clDetail/index",
+					"query": "id=18",
+					"scene": null
+				},
+				{
+					"id": 74,
+					"name": "普通订单-详情",
+					"pathName": "pages/self/ptDetail/index",
+					"query": "id=431",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "家装拼团",
+					"pathName": "pages/index/pt/pt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "建材秒杀",
+					"pathName": "pages/index/ms/ms",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 77,
+					"name": "秒杀详情",
+					"pathName": "pages/msDe/index",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "样品清仓",
+					"pathName": "pages/index/qc/qc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 79,
+					"name": "样品清仓-详情",
+					"pathName": "pages/qcDe/index",
+					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一站采购",
+					"pathName": "pages/index/cg/cg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "店长推荐",
+					"pathName": "pages/index/dztj/dztj",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一战家装",
+					"pathName": "pages/index/jz/cg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联购活动--代金券列表",
+					"pathName": "pages/index/lghd/lghd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 84,
+					"name": "拼团详情",
+					"pathName": "pages/ptDe/index",
+					"query": "id=27",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "参与拼团列表",
+					"pathName": "pages/ptDe/bookingList/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商务合作申请",
+					"pathName": "pages/self/cooperation/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请好友",
+					"pathName": "pages/self/invite/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请好友列表",
+					"pathName": "pages/self/invite/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提现明细",
+					"pathName": "pages/self/txlist/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 94,
+					"name": "分销奖励明细",
+					"pathName": "pages/self/fx/fx",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提现详情",
+					"pathName": "pages/self/txjg/index",
+					"query": "index=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "授权",
+					"pathName": "pages/auth/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "案例展示",
+					"pathName": "pages/index/al/al",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "案例详情",
+					"pathName": "pages/index/alxq/alxq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "代金券详情-2",
+					"pathName": "pages/self/yhq/detail2/index",
+					"query": "id=44",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公告",
+					"pathName": "pages/notice/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择地理位置",
+					"pathName": "pages/location/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ptDe/index",
+					"pathName": "pages/ptDe/index=18",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ptDe/index",
+					"pathName": "pages/ptDe/index",
+					"query": "id=18",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/join/index",
+					"pathName": "pages/self/join/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/shops/shop",
+					"pathName": "pages/index/shops/shop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/store/store",
+					"pathName": "pages/store/store",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/store/store",
+					"pathName": "pages/store/store",
+					"scene": null
+				}
+			]
+		}
+	}
+}
