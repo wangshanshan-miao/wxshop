@@ -12,29 +12,29 @@
 }
 
 .bottom>.button {
-  width: 568rpx;
   height: 88rpx;
   line-height: 88rpx;
-  background: rgba(0, 157, 255, 1);
   border-radius: 210rpx;
+  width: 431rpx;
+  background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
 }
 
 .no_data {
-  margin: 104rpx auto;
+  margin: 228rpx auto;
   overflow: hidden;
-  width: 380rpx;
+  width: 303rpx;
 }
 
 .no_data>.img {
-  width: 380rpx;
-  height: 380rpx;
+  width: 303rpx;
+  height: 267rpx;
 }
 
 .no_data>.text {
   width: 234rpx;
-  color: #999;
+  color: #BFBFBF;
   margin: 40rpx auto;
-  line-height: 35rpx;
+  line-height: 37rpx;
 }
 
 .list {
@@ -46,23 +46,23 @@
   padding-right: 10rpx;
 }
 
-.list>.left{
+.list>.left {
   width: 593rpx;
 }
 
-.list>.left>.left-top .name{
+.list>.left>.left-top .name {
   color: #222;
   font-size: 32rpx;
   font-weight: bold;
   margin-right: 22rpx;
 }
 
-.list>.left>.left-top .num{
+.list>.left>.left-top .num {
   color: #222;
   font-size: 28rpx;
 }
 
-.list>.left>.left-top .default{
+.list>.left>.left-top .default {
   width: 74rpx;
   height: 36rpx;
   flex-shrink: 0;
@@ -75,27 +75,27 @@
   background-color: #E3E1E2;
 }
 
-.list>.edit{
-  width: 31rpx;
-  height: 31rpx;
+.list>.edit {
+  width: 42rpx;
+  height: 42rpx;
   flex-shrink: 0;
 }
 
-.left-botom{
+.left-botom {
   color: #999;
   font-size: 28rpx;
   margin-top: 14rpx;
 }
 
-.left-top{
+.left-top {
   height: 42rpx;
 }
 
-.info{
+.info {
   height: 100%;
 }
 
-.lower{
+.lower {
   margin-bottom: 130rpx;
   height: 50rpx;
 }

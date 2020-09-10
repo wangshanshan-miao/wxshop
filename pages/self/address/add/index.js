@@ -94,10 +94,10 @@ Page({
       def: this.data.def
     }).then(res => {
       if (res.status == 200) {
-        /* wx.showToast({
+        wx.showToast({
           title: '操作成功',
           icon: 'none'
-        }) */
+        })
         wx.navigateBack({
           complete: (res) => {},
         })

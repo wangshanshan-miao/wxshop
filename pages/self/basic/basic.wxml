@@ -9,7 +9,7 @@
     <view class="basic_list flex_row al jb">
         <view class="basic_list_title f26 c33">昵称</view>
         <view bindtap="editName" class="flex_row al">
-            <view class='f28 c33 fb'>{{userInfo.userName}}</view>
+            <view class='f28 c33'>{{userInfo.userName}}</view>
             <image class="basic_list_jt" src="../../../img/arrow-left.png" />
         </view>
     </view>

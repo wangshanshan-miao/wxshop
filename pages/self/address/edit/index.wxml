@@ -1,42 +1,49 @@
 <!--pages/self/address/add/index.wxml-->
-<view class="line"></view>
+<view class="bg">
+	<view class="line"></view>
 
-<view class="list flex_row jb al">
-	<view class="left f30 c33">联系人</view>
-	<input value="{{addressName}}" bindinput="inputName" placeholder-style="color:#B9B9B9" placeholder="请输入联系人姓名"></input>
-</view>
-
-<view class="list flex_row jb al">
-	<view class="left f30 c33">手机号码</view>
-	<input value="{{addressPhone}}" bindblur="checkPhone" maxlength="11" type="number" placeholder-style="color:#B9B9B9" placeholder="请输入手机号码"></input>
-</view>
-
-<view class="list flex_row jb al">
-	<view class="left f30 c33">所在区域</view>
-	<view class="right selectArea">
-		<picker class="f28" mode="region" bindchange="selectArea" value="{{region}}">
-			<view wx:if="{{!codeName}}" class="picker f28">请选择区域</view>
-			<view wx:else class="picker f28">
-				{{codeName}}
-			</view>
-		</picker>
+	<view class="list flex_row jb al">
+		<view class="left f30 c33">联系人</view>
+		<input value="{{addressName}}" bindinput="inputName" placeholder-style="color:#B9B9B9" placeholder="请输入联系人姓名"></input>
 	</view>
+
+	<view class="list flex_row jb al">
+		<view class="left f30 c33">手机号码</view>
+		<view class="phone flex_row al">
+			<view class="f28 fnum">+86 - </view>
+			<input class="f28" bindblur="checkPhone" value="{{addressPhone}}" maxlength="11" type="number" placeholder-style="color:#B9B9B9" placeholder="请输入手机号码"></input>
+		</view>
+	</view>
+
+	<view class="list flex_row jb al">
+		<view class="left f30 c33">所在区域</view>
+		<view class="right selectArea">
+			<picker class="f28" mode="region" bindchange="selectArea" value="{{region}}">
+				<view wx:if="{{!codeName}}" class="picker f28">请选择区域<image src="../../../../img/arrow-left.png" class="arrowLeft"></image></view>
+				<view wx:else class="picker f28">
+					{{codeName}}<image src="../../../../img/arrow-left.png" class="arrowLeft"></image>
+				</view>
+			</picker>
+		</view>
+	</view>
+
+	<view class="list flex_row jb al border-bottom">
+		<!-- <view class="left f30 c33">详细地址</view> -->
+			<textarea value="{{receiverAddress}}"  bindinput="inputAddress" class="f28" placeholder-style="color:#B9B9B9" placeholder="请输入您的详细地址"></textarea >
+	</view>
+
+	<view class="space"></view>
+
+	<view class="switch flex_row al jb">
+		<view class="f30 c33">设为默认地址</view>
+		<switch color="#FF7F11" bindchange="change" checked="{{def}}"></switch>
+	</view>
+
+	<view class="space"></view>
+<view bindtap="delete" class="switch delete f30">删除收货地址</view>
+	<view class="space"></view>
+
 </view>
 
-<view class="list flex_row jb al border-bottom">
-	<view class="left f30 c33">详细地址</view>
-	<input value="{{receiverAddress}}" bindinput="inputAddress" placeholder-style="color:#B9B9B9" placeholder="请输入详细地址"></input>
-</view>
 
-<view class="space"></view>
-
-<view class="switch flex_row al jb">
-  <view class="f30 c33">设为默认地址</view>
-  <switch bindchange="change" checked="{{def}}"></switch>
-</view>
-
-<view class="space"></view>
-
-<text bindtap="delete" class="delete f26">删除收货地址</text>
-
-<view bindtap="update" class="button tc cff">保存</view>
+<view bindtap="update" class="button tc cff f28">保存</view>

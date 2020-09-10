@@ -796,6 +796,20 @@
 					"id": -1,
 					"name": "pages/self/editName/index",
 					"pathName": "pages/self/editName/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/address/add/index",
+					"pathName": "pages/self/address/add/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/address/index",
+					"pathName": "pages/self/address/index",
 					"scene": null
 				}
 			]

@@ -9,40 +9,67 @@
 .list {
   margin: 0 auto;
   width: 700rpx;
-  height: 105rpx;
+  min-height: 105rpx;
   box-sizing: border-box;
-  padding-right: 51rpx;
+  /* padding-right: 51rpx; */
   border-bottom: 1rpx solid #E2E2E2;
 }
 
-.list>input {
+.list input {
   text-align: right;
-  color: #B9B9B9;
+  color: #222222;
   font-size: 28rpx !important;
 }
 
 .picker {
-  color: #B9B9B9 !important;
+  color: #222222 !important;
 }
 
 .switch {
   margin: 30rpx auto;
   width: 700rpx;
   box-sizing: border-box;
-  padding-right: 29rpx;
+  /* padding-right: 29rpx; */
 }
 
-.button {
-  margin: 350rpx auto 0;
-  width: 568rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: rgba(0, 157, 255, 1);
-  border-radius: 210rpx;
-}
 
 .delete{
   margin-top: 30rpx;
   margin-left: 26rpx;
-  color: #D32E32;
+  color: #FF4600;
+}
+.button {
+  margin: 116rpx auto 0;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 210rpx;
+  width: 431rpx;
+  background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
+}
+.arrowLeft{
+  width: 10rpx;
+  height: 17rpx;
+  margin-left: 30rpx;
+}
+.phone{
+  color: #BFBFBF;
+}
+.fnum{
+  display: inline-block;
+}
+.phone input{
+  display: inline-block;
+  width: 200rpx;
+  margin-left: 10rpx;
+}
+textarea{
+  padding: 32rpx 0;
+  height: 100rpx;
+  color: #222222;
+}
+page{
+  background: #f6f6f6;
+}
+.bg{
+  background-color: #fff;
 }

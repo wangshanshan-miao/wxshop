@@ -158,7 +158,7 @@
 					<image src="../../../img/arrow-left.png" class="arrowLeft"></image>
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="1" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="1"  bindtap="address">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon6.png" />
 						<text class="f30 c33 fb">收货地址</text>
