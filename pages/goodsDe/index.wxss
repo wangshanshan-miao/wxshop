@@ -49,7 +49,7 @@
 .goodDe_intro {
     width: 100vw;
     box-sizing: border-box;
-    padding: 42rpx 30rpx 31rpx 30rpx;
+    padding: 42rpx 0rpx 31rpx 30rpx;
 }
 
 .user_recom {
@@ -66,19 +66,37 @@
 
 .goodDe_name {
     width: calc(100% -120rpx);
+    color: #333333;
+    line-height: 55rpx;
+    font-size: 32rpx;
+    font-weight: 700;
 }
 
 .goodDe_price {
-    color: #D32E32;
+    color: #FF0000;
+    font-size: 36rpx;
+    font-weight: 700;
 }
 
 /* .dw {} */
-
+.shareDiv {
+  width: 20%;
+  height: 50rpx;
+  background: #eeeeee;
+  border-radius: 23rpx;
+  right: -16rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #989898;
+  display: inline-flex;
+  padding-left: 21rpx;
+  align-items: center;
+  top: -70rpx;
+}
 .sharegood {
-    width: 42rpx;
-    height: 40rpx;
-    top: 0;
-    right: 25rpx;
+    width: 27rpx;
+    height: 26rpx;
+    margin-right: 10rpx;
 }
 
 .shareBtn {
@@ -888,7 +906,6 @@
 
 .line {
     width: 100vw !important;
-    margin-left: -30rpx;
 }
 
 

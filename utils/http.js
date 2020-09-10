@@ -1,5 +1,5 @@
 // const baseURL = 'https://www.deejv.com/unite/';
-const baseURL = 'https://www.deejv.com/dev/';
+const baseURL = 'https://www.ykdzw.com/unite/';
 
 
 const imgBaseUrl ='https://www.deejv.com/obs/'
@@ -11,7 +11,7 @@ class Http {
         method: method,
         url: baseURL + url,
         data: {
-          userId: wx.getStorageSync('userId'),
+          // userId: wx.getStorageSync('userId'),
           ...data,
         },
         dataType: 'json',

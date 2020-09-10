@@ -2,332 +2,348 @@
 <wxs src="../../../utils/formatTime.wxs" module="tools" />
 
 <view class="index pr">
-	<!-- 头部 -->
-	<view class="clearFloat pr model">
-		<view class="index_topCon">
-			<!-- 定位/搜素 -->
-			<view class="top flex_row al">
-				<view class="address_group flex_row">
+  <!-- 头部 -->
+  <view class="clearFloat pr model">
+    <view class="index_topCon">
+      <!-- 定位/搜素 -->
+      <view class="top flex_row al">
+        <view class="address_group flex_row">
           <image src="../../../img/address.png" class="address_jt" />
-					<text>{{location}}</text>
-				</view>
-				<view bindtap="toSearch" class="search_group pr">
+          <text>{{location}}</text>
+        </view>
+        <view bindtap="toSearch" class="search_group pr">
           <image class="search_icon pa" src="../../../img/search.png" />
-					<input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
-				</view>
-			</view>
-			<!-- 轮播图 -->
-			<swiper class="swiper_group" indicator-dots="false" indicator-color="rgba(0,0,0,.3)" indicator-active-color='#FFFFFF' circular autoplay interval="5000" duration="1000" circular>
-				<swiper-item wx:for="{{imgArr}}" wx:key="index">
-					<image class="swiperImg" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
-				</swiper-item>
-			</swiper>
-			<!-- 福利大放送 -->
-			<view class='welfare  boxs'>
-				<image class="flfs" src="../../../img/fl.png" catchtap="benefit" />
-			</view>
-		</view>
-	</view>
-	<!-- tab栏 -->
-	<view class="tab flex_row plr30">
-		<view bindtap="goCg" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_one">
-				<image src="../../../img/yzcg.png" class="tabIcon" />
-			</view>
-			<view class="tabText">一站采购</view>
-		</view>
-		<view bindtap="gojz" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_two">
-				<image src="../../../img/yzjz.png" class="tabIcon" />
-			</view>
-			<view class="tabText">一站家装</view>
-		</view>
-		<view bindtap="goPt" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_three">
-				<image src="../../../img/jzpt.png" class="tabIcon" />
-			</view>
-			<view class="tabText">家装拼团</view>
-		</view>
-		<view bindtap="goMs" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_four">
-				<image src="../../../img/jcms.png" class="tabIcon" />
-			</view>
-			<view class="tabText">建材秒杀</view>
-		</view>
-		<view bindtap="goQc" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_five">
-				<image src="../../../img/ypqc.png" class="tabIcon" />
-			</view>
-			<view class="tabText">样品清仓</view>
-		</view>
-		<view bindtap="goShlm" class="flex_col jc al">
-			<view class="tabCell felx_row tabCell_six">
-				<image src="../../../img/shlm.png" class="tabIcon" />
-			</view>
-			<view class="tabText">生活联盟</view>
-		</view>
-	</view>
-	<!-- 分割线 -->
-	<view class="line"></view>
-	<!-- 一站采购 -->
-	<view class="modelAll">
-		<view class="modelCell" wx:if="{{buildinglList.length>0}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">一站采购</text>
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" bindtap="goCg">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view catchtap="goCg" data-id="{{index}}" class="goodCell pr" wx:for="{{buildinglList}}" wx:key="index">
-						<image class="goodCell_img" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
-						<view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-		<!-- 一站家装 -->
-		<view class="modelCell" wx:if="{{decorationlList.length>0}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">一站家装</text>
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" bindtap="gojz">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view catchtap="gojz" data-id="{{index}}" class="goodCell pr" wx:for="{{decorationlList}}" wx:key="index">
-						<image lazy-load="{{true}}" class="goodCell_img"  src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
-						<view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-		<!-- 生活联盟 -->
-		<view class="modelCell" wx:if="{{lifelList.length}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">生活联盟</text>
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" catchtap="goShlm">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view catchtap="goShlm" data-id="{{index}}" class="goodCell pr" wx:for="{{lifelList}}" wx:key="index">
-						<image class="goodCell_img"  lazy-load="{{true}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
-						<view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-		<!-- 家装拼团 -->
-		<view class="modelCell" wx:if="{{groupBookingList.length}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">家装拼团</text>
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" catchtap="goPt">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view catchtap="booking" data-id="{{item.bookingId}}" class="goodCell_bott" wx:for="{{groupBookingList}}" wx:key="index">
-						<view class="good_groupImg_cell pr">
-							<image class="goodCell_img" lazy-load="{{true}}"  src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
-							<view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
-						</view>
-						<view class="goodCell_bott_opra flex_row jb">
-							<view class="f34 fb money">¥{{item.salePrice}}</view>
-							<view class="pt f24">去拼团</view>
-						</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-		<!-- 建材秒杀 -->
-		<view class="modelCell" wx:if="{{seckillList.length}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">建材秒杀</text>
-					
-					<view class="flex_row al" style="margin-left:20px;margin-top:2px" wx:if="{{endTime}}">
-						<view class="downBtn downBtn1 f26" wx:if="{{tools.diffDay(nowTime,endTime)}}">{{tools.diffDay(nowTime,endTime)}}天</view>
-						<view class="mh" wx:if="{{tools.diffDay(nowTime,endTime)}}">:</view>
-						<view class="downBtn f26">{{tools.diffHour(nowTime,endTime)}}</view>
-						<view class="mh">:</view>
-						<view class="downBtn f26">{{tools.diffMinute(nowTime,endTime)}}</view>
-						<view class="mh">:</view>
-						<view class="downBtn f26">{{tools.diffSecond(nowTime,endTime)}}</view>
-					</view>
+          <input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
+        </view>
+      </view>
+      <!-- 轮播图 -->
+      <swiper class="swiper_group" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" indicator-active-color='#FFFFFF' circular autoplay interval="5000" duration="1000" circular>
+        <swiper-item wx:for="{{imgArr}}" wx:key="index">
+          <image class="swiperImg" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
+        </swiper-item>
+      </swiper>
+      <!-- 公告 -->
+      <view class="notice flex_row al" catchtap="notice">
+        <view class='ceshi_swiper'>
+          <swiper class='read_swiper' indicator-dots='{{swiper.indicatorDots}}' autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" current="{{swiper.current}}">
+            <block wx:for="{{noticeList}}">
+              <swiper-item>
+                <image class="img1" src="../../../img/gonggao.png"></image>
+                <view class="gonggao" data-id="{{item.id}}">{{item.content}}</view>
+              </swiper-item>
+            </block>
+          </swiper>
+          <image class="ceshi_next jiantou" bindtap='prevImg' src="../../../img/arrow-left.png"></image>
+          <!-- <image class='ceshi_prew jiantou' bindtap='prevImg' src="../../../img/arrow-left.png"></image> -->
+        </view>
 
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" catchtap="goMs">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view data-id="{{item.seckillCommodityId}}" catchtap="ms" class=" goodCell_bott " wx:for="{{seckillList}}" wx:key="index">
-						<view class="good_groupImg_cell pr">
-							<image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
-							<view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
-						</view>
-						<view class="goodCell_bott_opra flex_row al">
-							<view class="f34 fb money">¥{{item.subscriptionPrice}}</view>
-							<text class=" f22 delPrice">¥{{item.salePrice}}</text>
-						</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-		<!-- 样品清仓 -->
-		<view class="modelCell" wx:if="{{clearanceSaleList.length}}">
-			<view class="modelCell_top plr30 flex_row jb">
-				<view class="modelCell_topLeft flex_row al">
-					<view class='radio'></view>
-					<text class="f32 fb">样品清仓</text>
-				</view>
-				<view class="modelCell_topRight flex_row al">
-					<text class="more_text f24" catchtap="goQc">发现更多好货</text>
-					<image class="rjt" src="../../../img/rjt.png"></image>
-				</view>
-			</view>
-			<view class="good_group flex_row">
-				<scroll-view class="scroll-view" scroll-x>
-					<view catchtap="clear" data-id="{{item.clearanceSaleId}}" class=" goodCell_bott " wx:for="{{clearanceSaleList}}" wx:key="index">
-						<view class="good_groupImg_cell pr">
-							<image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_7'}}" />
-							<view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
-							<view class="remaining pa f20">仅剩{{item.surplusAmount}}件</view>
-						</view>
-						<view class="goodCell_bott_opra flex_row al">
-							<view class="f34 fb money">¥{{item.fixedPrice}}</view>
-							<text class=" f22 delPrice">¥{{item.salePrice}}</text>
-						</view>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-	</view>
-	<!-- 推荐商家 -->
-	<view class="modelCell" wx:if="{{merchantList.length}}">
-		<view class="modelCell_top pb30 plr30 flex_row jb">
-			<view class="modelCell_topLeft flex_row al">
-				<view class='radio'></view>
-				<text class="f32 fb">推荐商家</text>
-			</view>
-			<view class="modelCell_topRight flex_row al" catchtap="shops">
-				<text class="more_text f24">发现更多好货</text>
-				<image class="rjt" src="../../../img/rjt.png"></image>
-			</view>
-		</view>
-		<view class="shop_group">
-			<scroll-view class="scroll-view" scroll-x>
-				<view class="shopCell" wx:for="{{merchantList}}" wx:key="index">
-					<view class="shopCell_top flex_row al" catchtap="handleTap" data-id="{{item.merchantId}}">
-						<image lazy-load="{{true}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_10'}}" class="shopLogo" />
-						<view class="shopIntro">
-							<view class="f30 c33 shopName flex_row jb al">
-								<view>
-									{{item.merchantName}}
-								</view>
-								<view class="pt f24">进店逛逛</view>
-							</view>
-							<view class="f22 c99" style="white-space:normal">
-									{{item.merchantAddress}}
-							</view>
-						</view>
-					</view>
-					<view class="flex_row">
-						<view class="shopCell_bott" wx:for="{{item.commodityList}}" wx:key="index">
-							<view class="shop_groupImg_cell pr" catchtap="goodDetail" data-id="{{item.commodityId}}" >
-								<image class="shopCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_20' }}" />
-								<view class="shopIntro_bott boxs pa f18 oh">{{item.commodityName}}</view>
-							</view>
-							<view class="shopCell_bott_opra flex_row al">
-								<view class="f23 fb money">¥{{item.salePrice}}</view>
-								<text class=" f13 delPrice">¥{{item.marketPrice}}</text>
-							</view>
-						</view>
-					</view>
-				</view>
-			</scroll-view>
-		</view>
-	</view>
+      </view>
+      <!-- 福利大放送 -->
+      <view class='welfare  boxs'>
+        <image class="flfs" src="../../../img/fl.png" catchtap="benefit" />
+      </view>
+    </view>
+  </view>
+  <!-- tab栏 -->
+  <view class="tab flex_row plr30">
+    <view bindtap="goCg" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_one">
+        <image src="../../../img/yzcg.png" class="tabIcon" />
+      </view>
+      <view class="tabText">一站采购</view>
+    </view>
+    <view bindtap="gojz" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_two">
+        <image src="../../../img/yzjz.png" class="tabIcon" />
+      </view>
+      <view class="tabText">一站家装</view>
+    </view>
+    <view bindtap="goPt" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_three">
+        <image src="../../../img/jzpt.png" class="tabIcon" />
+      </view>
+      <view class="tabText">家装拼团</view>
+    </view>
+    <view bindtap="goMs" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_four">
+        <image src="../../../img/jcms.png" class="tabIcon" />
+      </view>
+      <view class="tabText">建材秒杀</view>
+    </view>
+    <view bindtap="goQc" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_five">
+        <image src="../../../img/ypqc.png" class="tabIcon" />
+      </view>
+      <view class="tabText">样品清仓</view>
+    </view>
+    <view bindtap="goShlm" class="flex_col jc al">
+      <view class="tabCell felx_row tabCell_six">
+        <image src="../../../img/shlm.png" class="tabIcon" />
+      </view>
+      <view class="tabText">生活联盟</view>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="line"></view>
+  <!-- 一站采购 -->
+  <view class="modelAll">
+    <view class="modelCell" wx:if="{{buildinglList.length>0}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">一站采购</text>
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" bindtap="goCg">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view catchtap="goCg" data-id="{{index}}" class="goodCell pr" wx:for="{{buildinglList}}" wx:key="index">
+            <image class="goodCell_img" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
+            <view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 一站家装 -->
+    <view class="modelCell" wx:if="{{decorationlList.length>0}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">一站家装</text>
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" bindtap="gojz">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view catchtap="gojz" data-id="{{index}}" class="goodCell pr" wx:for="{{decorationlList}}" wx:key="index">
+            <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
+            <view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 生活联盟 -->
+    <view class="modelCell" wx:if="{{lifelList.length}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">生活联盟</text>
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" catchtap="goShlm">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view catchtap="goShlm" data-id="{{index}}" class="goodCell pr" wx:for="{{lifelList}}" wx:key="index">
+            <image class="goodCell_img" lazy-load="{{true}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_15'}}" />
+            <view class="goodeIntro boxs pa f24 oh">{{item.merchantName}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 家装拼团 -->
+    <view class="modelCell" wx:if="{{groupBookingList.length}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">家装拼团</text>
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" catchtap="goPt">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view catchtap="booking" data-id="{{item.bookingId}}" class="goodCell_bott" wx:for="{{groupBookingList}}" wx:key="index">
+            <view class="good_groupImg_cell pr">
+              <image class="goodCell_img" lazy-load="{{true}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
+              <view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
+            </view>
+            <view class="goodCell_bott_opra flex_row jb">
+              <view class="f34 fb money">¥{{item.salePrice}}</view>
+              <view class="pt f24">去拼团</view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 建材秒杀 -->
+    <view class="modelCell" wx:if="{{seckillList.length}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">建材秒杀</text>
+
+          <view class="flex_row al" style="margin-left:20px;margin-top:2px" wx:if="{{endTime}}">
+            <view class="downBtn downBtn1 f26" wx:if="{{tools.diffDay(nowTime,endTime)}}">{{tools.diffDay(nowTime,endTime)}}天</view>
+            <view class="mh" wx:if="{{tools.diffDay(nowTime,endTime)}}">:</view>
+            <view class="downBtn f26">{{tools.diffHour(nowTime,endTime)}}</view>
+            <view class="mh">:</view>
+            <view class="downBtn f26">{{tools.diffMinute(nowTime,endTime)}}</view>
+            <view class="mh">:</view>
+            <view class="downBtn f26">{{tools.diffSecond(nowTime,endTime)}}</view>
+          </view>
+
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" catchtap="goMs">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view data-id="{{item.seckillCommodityId}}" catchtap="ms" class=" goodCell_bott " wx:for="{{seckillList}}" wx:key="index">
+            <view class="good_groupImg_cell pr">
+              <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
+              <view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
+            </view>
+            <view class="goodCell_bott_opra flex_row al">
+              <view class="f34 fb money">¥{{item.subscriptionPrice}}</view>
+              <text class=" f22 delPrice">¥{{item.salePrice}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 样品清仓 -->
+    <view class="modelCell" wx:if="{{clearanceSaleList.length}}">
+      <view class="modelCell_top plr30 flex_row jb">
+        <view class="modelCell_topLeft flex_row al">
+          <view class='radio'></view>
+          <text class="f32 fb">样品清仓</text>
+        </view>
+        <view class="modelCell_topRight flex_row al">
+          <text class="more_text f24" catchtap="goQc">发现更多好货</text>
+          <image class="rjt" src="../../../img/rjt.png"></image>
+        </view>
+      </view>
+      <view class="good_group flex_row">
+        <scroll-view class="scroll-view" scroll-x>
+          <view catchtap="clear" data-id="{{item.clearanceSaleId}}" class=" goodCell_bott " wx:for="{{clearanceSaleList}}" wx:key="index">
+            <view class="good_groupImg_cell pr">
+              <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_7'}}" />
+              <view class="goodeIntro_bott boxs pa f24 oh">{{item.commodityName}}</view>
+              <view class="remaining pa f20">仅剩{{item.surplusAmount}}件</view>
+            </view>
+            <view class="goodCell_bott_opra flex_row al">
+              <view class="f34 fb money">¥{{item.fixedPrice}}</view>
+              <text class=" f22 delPrice">¥{{item.salePrice}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <!-- 推荐商家 -->
+  <view class="modelCell" wx:if="{{merchantList.length}}">
+    <view class="modelCell_top pb30 plr30 flex_row jb">
+      <view class="modelCell_topLeft flex_row al">
+        <view class='radio'></view>
+        <text class="f32 fb">推荐商家</text>
+      </view>
+      <view class="modelCell_topRight flex_row al" catchtap="shops">
+        <text class="more_text f24">发现更多好货</text>
+        <image class="rjt" src="../../../img/rjt.png"></image>
+      </view>
+    </view>
+    <view class="shop_group">
+      <scroll-view class="scroll-view" scroll-x>
+        <view class="shopCell" wx:for="{{merchantList}}" wx:key="index">
+          <view class="shopCell_top flex_row al" catchtap="handleTap" data-id="{{item.merchantId}}">
+            <image lazy-load="{{true}}" src="{{imgBaseUrl + item.logoUrl+'?x-image-process=image/resize,p_10'}}" class="shopLogo" />
+            <view class="shopIntro">
+              <view class="f30 c33 shopName flex_row jb al">
+                <view>
+                  {{item.merchantName}}
+                </view>
+                <view class="pt f24">进店逛逛</view>
+              </view>
+              <view class="f22 c99" style="white-space:normal">
+                {{item.merchantAddress}}
+              </view>
+            </view>
+          </view>
+          <view class="flex_row">
+            <view class="shopCell_bott" wx:for="{{item.commodityList}}" wx:key="index">
+              <view class="shop_groupImg_cell pr" catchtap="goodDetail" data-id="{{item.commodityId}}">
+                <image class="shopCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_20' }}" />
+                <view class="shopIntro_bott boxs pa f18 oh">{{item.commodityName}}</view>
+              </view>
+              <view class="shopCell_bott_opra flex_row al">
+                <view class="f23 fb money">¥{{item.salePrice}}</view>
+                <text class=" f13 delPrice">¥{{item.marketPrice}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
 </view>
 
 <!-- 授权手机号码 -->
 <view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
 <view class="auth1 pr" wx:if="{{show}}">
-	<image catchtap="closeModal" src="../../../img/cha.png" class="close pa"></image>
-	<view class="title c33 tc">温馨提示</view>
-	<view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
-	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
-	<!-- <button class="cff tc button flex_row al jc" >授权登录</button> -->
+  <image catchtap="closeModal" src="../../../img/cha.png" class="close pa"></image>
+  <view class="title c33 tc">温馨提示</view>
+  <view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
+  <button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
+  <!-- <button class="cff tc button flex_row al jc" >授权登录</button> -->
 </view>
 
 <!-- 授权登录 -->
 <view class="login" wx:if="{{getuserInfo}}">
-	<view class="header flex_col jc al">
-		<view class="top flex_row al">
-			<view class="left">点吉家装建材商城</view>
-			<view class="right">申请</view>
-		</view>
-		<view class="bottom">获取你的昵称、头像、性别</view>
-	</view>
-	<view class="select flex_row al jc">
-		<view class="reject button tc" catchtap="reject">拒绝</view>
-		<button class="allow button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">允许</button>
-	</view>
+  <view class="header flex_col jc al">
+    <view class="top flex_row al">
+      <view class="left">点吉家装建材商城</view>
+      <view class="right">申请</view>
+    </view>
+    <view class="bottom">获取你的昵称、头像、性别</view>
+  </view>
+  <view class="select flex_row al jc">
+    <view class="reject button tc" catchtap="reject">拒绝</view>
+    <button class="allow button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">允许</button>
+  </view>
 </view>
 
 <!-- 授权位置信息 -->
 <view class="location login" wx:if="{{locationAuth}}">
-	<view class="header flex_col jc">
-		<view class="top flex_row al">
-			<view class="left">点吉家装建材商城</view>
-			<view class="right">申请</view>
-		</view>
-		<view class="bottom">获取你的位置信息</view>
-		<view class="desc f24 c99">你的位置信息将用于小程序位置接口的效果展示</view>
-	</view>
-	<view class="select flex_row al jc">
-		<view class="reject button tc" catchtap="rejectLocation">拒绝</view>
-		<button class="allow button" open-type="openSetting" bindtap="openSetting">允许</button>
-	</view>
+  <view class="header flex_col jc">
+    <view class="top flex_row al">
+      <view class="left">点吉家装建材商城</view>
+      <view class="right">申请</view>
+    </view>
+    <view class="bottom">获取你的位置信息</view>
+    <view class="desc f24 c99">你的位置信息将用于小程序位置接口的效果展示</view>
+  </view>
+  <view class="select flex_row al jc">
+    <view class="reject button tc" catchtap="rejectLocation">拒绝</view>
+    <button class="allow button" open-type="openSetting" bindtap="openSetting">允许</button>
+  </view>
 </view>
 
 <!-- 注册红包 -->
 <view class="gift" wx:if="{{gift}}">
-	<image class="img pa" src="../../../img/coupon.png"></image>
-	<view class="price pa">
-		<text>￥</text>{{voucher.voucherPrice}}
-	</view>
-	<view class="content pa tc">
-		<view class="type c33">优惠券</view>
-		<view class="condition c99 f30" wx:if="{{voucher.condition==0}}">无门槛</view>
-		<view wx:else>满{{voucher.condition}}可用</view>
-	</view>
-	<image catchtap="lookCoupon" src="../../../img/look.png" class="look pa"></image>
-	<image catchtap="closeCoupon" class="close2 pa" src="../../../img/close1.png"></image>
+  <image class="img pa" src="../../../img/coupon.png"></image>
+  <view class="price pa">
+    <text>￥</text>{{voucher.voucherPrice}}
+  </view>
+  <view class="content pa tc">
+    <view class="type c33">优惠券</view>
+    <view class="condition c99 f30" wx:if="{{voucher.condition==0}}">无门槛</view>
+    <view wx:else>满{{voucher.condition}}可用</view>
+  </view>
+  <image catchtap="lookCoupon" src="../../../img/look.png" class="look pa"></image>
+  <image catchtap="closeCoupon" class="close2 pa" src="../../../img/close1.png"></image>
 </view>
 
 
@@ -335,5 +351,5 @@
 <image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
 
 <view class="poster " wx:if="{{poster}}">
-	<image src="{{imgBaseUrl + 'attractInvestment.png'}}"></image>
+  <image src="{{imgBaseUrl + 'attractInvestment.png'}}"></image>
 </view>
