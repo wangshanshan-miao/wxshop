@@ -16,7 +16,7 @@ class Api extends Http {
   }
   // 获取openId
   getOpenid(data) {
-    return this.request('api/WeiXin/GetWXOpenid', data)
+    return this.request('api/WeiXin/GetWXOpenid', data,'GET')
   }
   // 获取用户手机号
   getUserPhone(data) {

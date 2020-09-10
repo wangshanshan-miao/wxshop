@@ -3,6 +3,7 @@ const baseURL = 'https://www.deejv.com/dev/';
 
 
 const imgBaseUrl ='https://www.deejv.com/obs/'
+const appId ='wxa5ecb2822bdfda9e'
 class Http {
   request(url, data = {}, method = 'GET', header) {
     return new Promise((reslove, reject) => {
@@ -48,5 +49,6 @@ class Http {
 export {
   Http,
   baseURL,
-  imgBaseUrl
+  imgBaseUrl,
+  appId
 };

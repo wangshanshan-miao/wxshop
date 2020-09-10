@@ -2,7 +2,8 @@
 import api from "../../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    appId
 } from "../../../utils/http"
 let app = getApp();
 Page({
@@ -159,12 +160,13 @@ Page({
         const self = this
         wx.login({
           success: (res) => {
-              api.getOpenid({
-                  code: res.code
+            api.getOpenid({
+              code: res.code,
+              appId: appId
               }).then(res=>{
-                  console.log(res)
                   if(res.status == 200){
-                    wx.setStorageSync('openid', res.data.openid)
+                    //wx.setStorageSync('openid', 'res.data.openid')
+                    wx.setStorageSync('openid', 'abc123456')
                     self.login()
                   }
               })
