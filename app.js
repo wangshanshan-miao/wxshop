@@ -5,7 +5,7 @@ App({
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
-
+        wx.setStorageSync('appId', this.data.appid)
         // 登录
         wx.login({
             success: res => {
@@ -33,8 +33,11 @@ App({
             }
         })
     },
+    data: {
+      appid: "wxa5ecb2822bdfda9e"
+    },
     globalData: {
-
+      
     },
     checkUser() {
         const userId = wx.getStorageSync('userId')
