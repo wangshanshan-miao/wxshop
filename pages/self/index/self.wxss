@@ -1,7 +1,7 @@
 .selfModel {
     width: 100%;
     min-height: 100%;
-    background: #F7F6F9;
+    background: #ffffff;
     padding: 30rpx;
 }
 
@@ -12,7 +12,17 @@
 .userIntro_con {
     width: 100%;
     top: 38rpx;
-    padding: 0 24rpx 0 36rpx;
+}
+
+.userIntro_con_top .flex_row {
+    width: 100%;
+}
+
+.arrowLeft,
+.commonOrder_cell image.arrowLeft {
+    width: 10rpx;
+    height: 17rpx;
+    margin-right: 0;
 }
 
 .userIntro_bg {
@@ -24,20 +34,23 @@
 }
 
 .userIntro_head {
-    width: 140rpx;
-    height: 140rpx;
+    width: 100rpx;
+    height: 100rpx;
     border-radius: 50%;
-    margin-right: 37rpx;
+    margin-right: 16rpx;
     background-color: #999;
 }
 
 .userIntro_name {
-    margin-bottom: 29rpx;
-    font-size: 40rpx;
+    font-size: 34rpx;
     width: 360rpx;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.tips {
+    font-size: 28rpx;
 }
 
 .userIntro_phone {
@@ -51,7 +64,28 @@
 
 .userIntro_treasure {
     margin-top: 44rpx;
-    padding-left: 25rpx;
+}
+
+.userIntro_treasure>view {
+    width: 220rpx;
+    height: 106rpx;
+    line-height: 106rpx;
+    padding: 0 20rpx;
+    background: #ffffff;
+    border-radius: 30rpx;
+    font-size: 28rpx;
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.08);
+    margin-right: 16rpx;
+}
+
+.userIntro_treasure>view:last-child {
+    margin-right: 0;
+}
+
+.userIntro_treasure>view>image {
+    width: 37rpx;
+    height: 34rpx;
+    margin-left: 24rpx;
 }
 
 .treasure_list {
@@ -72,13 +106,13 @@
 
 .userOrder {
     width: 100%;
-    height: 357rpx;
+    /* height: 357rpx; */
     background: rgba(255, 255, 255, 1);
-    box-shadow: 0px 3px 26px rgba(3, 87, 39, 0.06);
     opacity: 1;
     border-radius: 20rpx;
     margin: 30rpx 0;
-    padding: 27rpx 0 36rpx 0;
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.08);
+    padding: 0 30rpx;
 }
 
 .userOrder_tab {
@@ -88,6 +122,10 @@
     line-height: 70rpx;
     opacity: 1;
 
+}
+
+.orderTitle_left_name {
+    font-size: 34rpx;
 }
 
 .userOrder_tabCell {
@@ -119,10 +157,11 @@
 }
 
 .orderTitle {
-    margin-top: 30rpx;
-    padding-right: 20rpx;
-    padding-bottom: 32rpx;
-    border-bottom: 1px solid #F6F6F6;
+    /* margin-top: 30rpx; */
+    /* padding-right: 20rpx; */
+    line-height: 80rpx;
+    /* padding-bottom: 32rpx; */
+    /* border-bottom: 1px solid #F6F6F6; */
 }
 
 .orderTitle_left_line {
@@ -135,7 +174,7 @@
 }
 
 .commonOrder {
-    padding: 30rpx;
+    /* padding: 30rpx; */
 }
 
 .orderTitle_right_img {
@@ -145,13 +184,20 @@
 }
 
 .commonOrder_cell {
-    text-align: center;
+    /* text-align: center; */
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #f7f7f7;
+}
+
+
+.commonOrder_cell:last-child {
+    border-bottom: 0;
 }
 
 .commonOrder_cell image {
-    width: 56rpx;
-    height: 56rpx;
-    margin-bottom: 11rpx;
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 35rpx;
 }
 
 .otherModel {
@@ -181,7 +227,7 @@
     border-radius: 60rpx;
 }
 
-.count{
+.count {
     top: -5rpx;
     right: -5rpx;
     width: 28rpx;
@@ -244,7 +290,7 @@
 }
 
 
-/* 登录 */ 
+/* 登录 */
 .login {
     width: 100vw;
     height: 447rpx;
