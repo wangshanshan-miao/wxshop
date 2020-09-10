@@ -3,21 +3,21 @@
         <view class="basic_list_title f26 c33">头像</view>
         <view bindtap="cahngeHead" class="flex_row al">
             <image class="user_headImg" src="{{imgBaseUrl + userInfo.headUrl+'?x-image-process=image/resize,p_30'}}" />
-            <image class="basic_list_jt" src="../../../img/rjt.png" />
+            <image class="basic_list_jt" src="../../../img/arrow-left.png" />
         </view>
     </view>
     <view class="basic_list flex_row al jb">
         <view class="basic_list_title f26 c33">昵称</view>
         <view bindtap="editName" class="flex_row al">
             <view class='f28 c33 fb'>{{userInfo.userName}}</view>
-            <image class="basic_list_jt" src="../../../img/rjt.png" />
+            <image class="basic_list_jt" src="../../../img/arrow-left.png" />
         </view>
     </view>
     <view class="basic_list flex_row al jb">
         <view class="basic_list_title f26 c33">手机号</view>
         <view class="flex_row al">
             <view class="f28 c33 fb">{{phone}}</view>
-            <!-- <image class="basic_list_jt" src="../../../img/rjt.png" /> -->
+            <!-- <image class="basic_list_jt" src="../../../img/arrow-left.png" /> -->
         </view>
     </view>
 </view>

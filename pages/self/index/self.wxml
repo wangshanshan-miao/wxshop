@@ -16,9 +16,9 @@
 							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
 						</view>
 					</view>
-					<image src="../../../img/arrow-left.png" class="arrowLeft"></image>
+					<image bindtap="goBasic" src="../../../img/arrow-left.png" class="arrowLeft"></image>
 				</view>
-				<image bindtap="goBasic" src="../../../img/rjtb.png" class="rjtb" />
+				<!-- <image bindtap="goBasic" src="../../../img/rjtb.png" class="rjtb" /> -->
 			</view>
 			<view class="userIntro_treasure boxs flex_row">
 				<view>

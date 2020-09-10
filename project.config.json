@@ -789,6 +789,13 @@
 					"id": -1,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/self/editName/index",
+					"pathName": "pages/self/editName/index",
 					"scene": null
 				}
 			]

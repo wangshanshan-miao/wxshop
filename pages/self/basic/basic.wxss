@@ -5,7 +5,9 @@
 
 .basic_list {
     border-bottom: 1px solid #E6E6E6;
-    padding: 40rpx 0;
+    /* padding: 40rpx 0; */
+    height: 105rpx;
+    line-height: 105rpx;
 }
 
 .user_headImg {
@@ -16,7 +18,7 @@
 }
 
 .basic_list_jt {
-    width: 22rpx;
-    height: 22rpx;
+    width: 10rpx;
+    height: 17rpx;
     margin-left: 10rpx;
 }
