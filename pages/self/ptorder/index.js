@@ -15,11 +15,11 @@ Page({
         tabarr: [
             '全部',
             '待付款',
-            '拼团中',
+            // '拼团中',
             '待发货',
             '待收货',
-            '评价',
-            '退款/售后'
+            '待评价',
+            // '退款/售后'
         ],
         orderTabsIndex: 0,
         list: [],
@@ -140,6 +140,14 @@ Page({
             wx.hideLoading({})
             // console.log(res)
             const data = res.data
+            let list=[...arr, ...data.list]
+            list.forEach(m=>{
+                let sum=0
+                m.orderCommodityDtoList.forEach(n=>{
+                    sum=sum+n.amount*n.realPrice
+                })
+                m.totalPrice=sum
+            })
             this.setData({
                 totalPage: data.totalPage,
                 pageNum: data.pageNum,

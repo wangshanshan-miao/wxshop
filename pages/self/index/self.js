@@ -185,7 +185,7 @@ Page({
                   icon : 'none'
                 })
                 const userId = res.data.userId
-                wx.setStorageSync('userId', userId)
+                wx.setStorageSync('userId', '81')
                 self.userInfo()
             }else if (res.data.status == 0) {
                 wx.showToast({
