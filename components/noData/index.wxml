@@ -1,7 +1,7 @@
 <!--components/noData/index.wxml-->
 <view class="noData">
 	<image class="img" src="../../img/noData.png"></image>
-	<view class="nothing">
-		暂无内容
+	<view class="nothing f28 c99">
+		相关的订单记录
 	</view>
 </view>
