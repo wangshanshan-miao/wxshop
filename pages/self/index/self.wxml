@@ -21,25 +21,25 @@
 				<!-- <image bindtap="goBasic" src="../../../img/rjtb.png" class="rjtb" /> -->
 			</view>
 			<view class="userIntro_treasure boxs flex_row">
-				<view>
+				<view class="flex_row al jb">
 					<text class="c33">我的钱包</text>
-					<image src="../../../img/selfIcon9.png"></image>
+					<image src="../../../img/qb.png"></image>
 				</view>
 				<!-- <view bindtap="goYj" class="treasure_list flex_col">
 					<view class="treasure_list_num">￥{{userInfo.remainingSumMoney}}</view>
 					<view class='f24 cff treasure_list_title'>我的佣金</view>
 				</view> -->
-				<view>
+				<view class="flex_row al jb">
 					<!-- <view class="treasure_list_num">{{userInfo.voucherNum}}</view>
 					<view class='f24 cff treasure_list_title'>优惠券</view> -->
 					<text class="c33">团购券</text>
-					<image src="../../../img/selfIcon1.png"></image>
+					<image src="../../../img/tg.png"></image>
 				</view>
-				<view bindtap="goYhq">
+				<view bindtap="goYhq" class="flex_row al jb">
 					<!-- <view class="treasure_list_num">{{userInfo.collectNum}}</view>
 					<view class='f24 cff treasure_list_title'>收藏</view> -->
 					<text class="c33">优惠券</text>
-					<image src="../../../img/selfIcon2.png"></image>
+					<image src="../../../img/yhq.png"></image>
 				</view>
 			</view>
 		</view>
