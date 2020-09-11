@@ -13,9 +13,26 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+function formatTimes(time) {
+  if (typeof time !== 'number' || time < 0) {
+    return time
+  }
+  var day = parseInt(time / (60*3600 * 1000))
+  time = time % (3600 * 1000 * 60)
+  var hour = parseInt(time / (3600*1000))
+  time = time % (3600*1000)
+  var minute = parseInt(time / (60*1000))
+  time = parseInt(time % (60*1000))
+  var second = time / 1000
 
+  return ([day, hour, minute]).map(function (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  }).join(':')
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatTimes: formatTimes
 }
 
 export {
