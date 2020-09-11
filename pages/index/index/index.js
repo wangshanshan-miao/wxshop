@@ -5,7 +5,9 @@ import {
   baseURL,
   imgBaseUrl
 } from "../../../utils/http.js"
-
+import {
+  formatTimes
+} from "../../../utils/util.js"
 // 引入SDK核心类
 var QQMapWX = require('../../../qqmap-wx-jssdk.js');
 
@@ -46,13 +48,26 @@ Page({
       interval: 5000,
       duration: 1000,
       current: 0
-    }
+    },
+    fuliList: [{
+      url: '../../../img/bg1.png'
+    }, {
+      url: '../../../img/bg2.png'
+    }, {
+      url: '../../../img/bg3.png'
+    }, {
+      url: '../../../img/bg4.png'
+    }],
+    count_down: '',
+    endTime: '',
+    actEndTimeList: []
   },
   prevImg: function () {
+    debugger
     var swiper = this.data.swiper
     var noticeList = this.data.noticeList
     var current = swiper.current
-    swiper.current = current > 0 ? current - 1 : noticeList.length - 1;
+    swiper.current = current >= noticeList.length -1 ? current - 1 : current + 1;
     this.setData({
       swiper: swiper,
     })
@@ -507,6 +522,72 @@ Page({
       },
     })
   },
+  onHide: function () {
+    timer && clearInterval(timer)//清楚定时器 防止内存泄漏
+    timer1 && clearInterval(timer1)//清楚定时器 防止内存泄漏
+  },
+  // 设置时间
+  date_format: function (endTime) {
+    var nowTime = new Date().getTime();//现在时间（时间戳）
+    var endTime = new Date(endTime).getTime();//结束时间（时间戳）
+    var time = (endTime - nowTime) / 1000
+    // 获取天、时、分、秒
+    let day = this.fill_zero_prefix(parseInt(time / (60 * 60 * 24)));
+    let hr = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) / 3600));
+    let min = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) % 3600 / 60));
+    let sec = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) % 3600 % 60));
+
+    this.setData({
+      count_down: day +":" + hr + ":" + min + ":" + sec,
+      count_down1: day + "天" + hr + "时" + min + "分" + sec + "秒"
+    })
+  },
+  countDown() {
+    // 获取当前时间，同时得到活动结束时间数组
+    let newTime = new Date().getTime();
+    let endTimeList = this.data.actEndTimeList;
+    let countDownArr = [];
+
+    // 对结束时间进行处理渲染到页面
+    endTimeList.forEach(o => {
+
+      let endTime = new Date(o.eTime).getTime();
+      let obj = null;
+      // 如果活动未结束，对时间进行处理
+      if (endTime - newTime > 0) {
+        let time = (endTime - newTime) / 1000;
+        // 获取天、时、分、秒
+        let day = parseInt(time / (60 * 60 * 24));
+        let hou = parseInt(time % (60 * 60 * 24) / 3600);
+        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+        obj = {
+          day: this.fill_zero_prefix(day),
+          hou: this.fill_zero_prefix(hou),
+          min: this.fill_zero_prefix(min),
+          sec: this.fill_zero_prefix(sec)
+        }
+      } else { //活动已结束，全部设置为'00'
+        obj = {
+          day: '00',
+          hou: '00',
+          min: '00',
+          sec: '00'
+        }
+      }
+      countDownArr.push(obj);
+    })
+    // 渲染，然后每隔一秒执行一次倒计时函数
+    this.setData({
+      countDownList: countDownArr
+    })
+    setTimeout(this.countDown, 1000);
+  },
+  // 位数不足补零
+  fill_zero_prefix: function (num) {
+    num = num < 0 ? 0 : num;//防止出现负数
+    return num < 10 ? "0" + num : num //补零操作
+  },
   toSearch() {
     wx.navigateTo({
       url: '../../search/index/index',
@@ -519,10 +600,10 @@ Page({
       url: `../../index/cg/cg?index=${index}`
     })
   },
-  gojz(e) {
+  goList(e) {
     const index = app.getValue(e).id || 0
     wx.navigateTo({
-      url: `../../index/jz/cg?index=${index}`
+      url: `../../index/goodsList/cg?index=${index}`
     })
   },
   goPt() {
@@ -644,19 +725,54 @@ Page({
       const data = res.data
       const notice = data.content
       // console.log(data)
-
+      const num = Math.ceil(data.classList.length / 10)
+      const num1 = Math.ceil(data.clearanceSaleList.length / 3)
+      const classList1 = []
+      const classList2 = []
+      for (var i = 0; i < num; i++) {
+        var ar = [];
+        for (var j = 0; j < 10; j++) {
+          ar.push(data.classList[j])
+        }
+        classList1.push(ar)
+      }
+      for (var i = 0; i < num1; i++) {
+        var ar = [];
+        for (var j = 0; j < 3; j++) {
+          if (data.clearanceSaleList[j]) {
+            ar.push(data.clearanceSaleList[j])
+          }
+        }
+        classList2.push(ar)
+      }
+      console.log(classList2)
       this.setData({
-        endTime: data.endTime,
-        buildinglList: data.buildinglList,
-        decorationlList: data.decorationlList,
         lifelList: data.lifelList,
-        carouselList: data.carouselList,
         groupBookingList: data.groupBookingList,
-        seckillList: data.seckillList,
-        clearanceSaleList: data.clearanceSaleList,
-        merchantList: data.merchantList,
-        noticeList: data.noticeList
+        seckillList: data.seckill,
+        newCommodityList: data.newCommodityList,
+        noticeList: data.noticeList,
+        classList: classList1,
+        hotCommodityList: data.hotCommodityList,
+        clearanceSaleList: classList2,
+        merchantDetail: data.merchantDetail,
+        messageStatus: data.messageStatus,
+        endTime: data.seckill.endTime,
       })
+      timer = setInterval(() => {
+        that.date_format(that.data.endTime)
+      }, 1000)
+      const endTimeList = []
+
+      for (var i = 0; i < that.data.groupBookingList.length;i++) {
+        var objs = {};
+        objs.eTime = that.data.groupBookingList[i].endTime
+        endTimeList.push(objs)
+      }
+      this.setData({
+        actEndTimeList: endTimeList
+      });
+      this.countDown();
       that.reduce()
       notice && this.setData({
         notice
@@ -676,6 +792,18 @@ Page({
         console.log(error)
       }
     })
+  },
+  // 时间差比较
+  shijiancha (faultDate, completeTime) {
+
+    var stime = Date.parse(new Date(faultDate));
+
+    var etime = Date.parse(new Date(completeTime));
+
+    var usedTime = etime - stime; //两个时间戳相差的毫秒数
+    var time = formatTimes(usedTime)
+    return time;
+
   },
   // 家装拼团
   booking(e) {

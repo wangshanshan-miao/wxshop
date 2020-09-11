@@ -1,8 +1,8 @@
-const baseURL = 'https://www.deejv.com/unite/';
-// const baseURL = 'https://www.ykdzw.com/unite/';
+// const baseURL = 'https://www.deejv.com/unite/';
+const baseURL = 'https://www.ykdzw.com/unite/';
 
 
-const imgBaseUrl ='https://www.deejv.com/obs/'
+const imgBaseUrl ='https://www.ykdzw.com/oss/data/'
 const appId ='wxa5ecb2822bdfda9e'
 class Http {
   request(url, data = {}, method = 'GET', header) {
