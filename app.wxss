@@ -14,7 +14,7 @@ page {
 }
 
 .flex_col {
-    display: flex;
+    display: inline-flex !important  ;
     flex-direction: column;
 }
 

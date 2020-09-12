@@ -63,7 +63,6 @@ Page({
     actEndTimeList: []
   },
   prevImg: function () {
-    debugger
     var swiper = this.data.swiper
     var noticeList = this.data.noticeList
     var current = swiper.current
@@ -222,7 +221,7 @@ Page({
                   areaCode: result
                 })
 
-                self.gitAllareaCode()
+                // self.gitAllareaCode()
                 wx.setStorageSync('location', self.data.location)
 
                 api.isOnLine().then(res => {
@@ -237,7 +236,7 @@ Page({
                       })
                       wx.setStorageSync('shortAreaCode', data.key)
                       wx.setStorageSync('location', data.text)
-                      self.gitAllareaCode()
+                      // self.gitAllareaCode()
                     })
                   }
                 })
@@ -267,7 +266,7 @@ Page({
           })
           wx.setStorageSync('shortAreaCode', data.key)
           wx.setStorageSync('location', data.text)
-          self.gitAllareaCode()
+          // self.gitAllareaCode()
         })
 
       }
@@ -301,13 +300,13 @@ Page({
       openid: wx.getStorageSync('openid')
     }).then(res => {
       // 登录成功 
-      if (res.data.status == 1) {
+      if (res.status == 1) {
         // console.log('登录成功')
         wx.setStorageSync('userId', res.data.userId)
         console.log('userId', res.data.userId)
-      } else if (res.data.status == 0) {
+      } else if (res.status == 0) {
         wx.showToast({
-          title: res.data.message,
+          title: res.message,
           icon: 'none'
         })
         return
@@ -358,9 +357,9 @@ Page({
           wx.setStorageSync('agencyId', 31)
           wx.setStorageSync('merchantId', 155)
         }
-
         this.getHome()
-        this.getSwiper()
+        this.swiper()
+        this.getList()
       }
     })
   },
@@ -393,13 +392,14 @@ Page({
     api.register({
       areaCode: wx.getStorageSync("areaCode"),
       openid: wx.getStorageSync('openid'),
+      appId: wx.getStorageSync('appId'),
       userName: this.data.userName,
       headUrl: this.data.headUrl,
       // userPhone: this.data.phone,
       inviterId: this.data.inviterId
     }).then(res => {
       console.log(res)
-      if (res.data.status = 1) {
+      if (res.status = 1) {
         const data = res.data
         wx.setStorageSync('userId', data.userId)
         if (data.list.length > 0) {
@@ -409,6 +409,12 @@ Page({
             modal: true
           })
         }
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+        return
       }
     })
   },
@@ -466,7 +472,7 @@ Page({
                           areaCode: result
                         })
 
-                        self.gitAllareaCode()
+                        // self.gitAllareaCode()
                         wx.setStorageSync('location', self.data.location)
                       },
                       fail: function(error) {
@@ -493,7 +499,7 @@ Page({
                   })
                   wx.setStorageSync('shortAreaCode', data.key)
                   wx.setStorageSync('location', data.text)
-                  self.gitAllareaCode()
+                  // self.gitAllareaCode()
                 })
 
               }
@@ -501,10 +507,8 @@ Page({
           }
         }
       })
-    } else {
-      this.getmerchantId()
     }
-
+    this.getmerchantId()
     wx.login({
       success: (res) => {
         let code = res.code
@@ -691,7 +695,7 @@ Page({
       site: 0
     }).then(res => {
       if (res.status == 200) {
-        let arr = res.data.carouselList
+        let arr = res.data
         this.setData({
           imgArr: arr
         })
@@ -712,6 +716,21 @@ Page({
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: `/pages/goodsDe/index?id=${id}`,
+    })
+  },
+  // 一级分类
+  getList(item) {
+    wx.navigateTo({
+      url: `/pages/sort/index?type=${item}`,
+    })
+    api.getAllClass({
+      agencyId: wx.getStorageSync('agencyId')
+    }).then(res => {
+      console.log(res.data)
+      // this.setData({
+      //   list: res.data,
+      //   // classId: res.data[0].classId
+      // })
     })
   },
   // 首页信息

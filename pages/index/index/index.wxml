@@ -17,11 +17,13 @@
         </view>
       </view>
       <!-- 轮播图 -->
-      <swiper class="swiper_group" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" indicator-active-color='#FFFFFF' circular autoplay interval="5000" duration="1000" circular>
+      <view class="tab">
+        <swiper class="swiper_group" indicator-dots="true" autoplay interval="5000" duration="1000" circular="true" next-margin="20rpx" previous-margin="20rpx">
         <swiper-item wx:for="{{imgArr}}" wx:key="index">
           <image class="swiperImg" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
         </swiper-item>
       </swiper>
+      </view>
       <!-- 公告 -->
       <view class="notice box flex_row al">
         <view class='ceshi_swiper'>
@@ -112,16 +114,16 @@
           </view>
         </view>
         <view class="modelCell_topRight flex_row al">
-          <text class="more_text f28" bindtap="goCg">查看更多</text>
+          <text class="more_text f28" bindtap="goList(0)">查看更多</text>
           <image class="rjt" src="../../../img/arrow-left.png"></image>
         </view>
       </view>
       <view class="flex_row">
         <scroll-view class="scroll-view" scroll-x>
-          <view catchtap="gojz" data-id="{{item.outId}}" wx:if="{{index<10}}" class="goodCell pr" wx:for="{{seckillList.seckillList}}" wx:key="index">
+          <view catchtap="gojz" data-id="{{item.outId}}" wx:if="{{index<10}}" class="goodCell pr flex_col" wx:for="{{seckillList.seckillList}}" wx:key="index">
             <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
             <text class="goodeIntro f28 hidden2">{{item.commodityName}}</text>
-            <view class="goodprice flex_row">
+            <view class="goodprice">
               <text class="f24 fb">￥{{item.salePrice}}</text>
             </view>
           </view>
@@ -173,9 +175,9 @@
           <image class="rjt" src="../../../img/arrow-left.png"></image>
         </view>
       </view>
-      <view class="good_group flex_row">
+      <view class="good_group">
         <scroll-view class="scroll-view" scroll-x>
-          <view catchtap="gojz" data-id="{{item.outId}}" class="goodCell pr" wx:for="{{newCommodityList}}" wx:key="index" wx:if="{{index<10}}">
+          <view catchtap="gojz" data-id="{{item.outId}}" class="goodCell pr flex_col" wx:for="{{newCommodityList}}" wx:key="index" wx:if="{{index<10}}">
             <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
             <text class="goodeIntro f28 hidden2">{{item.commodityName}}</text>
             <view class="goodprice flex_row">
@@ -285,7 +287,7 @@
                     <image src="../../../img/addre.png"></image>
                     <view class="address">
                       <text class="f28 hcolor">地址：</text>
-                      <text class="f28">{{merchantDetail.merchantAddress}}</text>
+                      <text class="f28" style="color: #295C8E;">{{merchantDetail.merchantAddress}}</text>
                       <image src="../../../img/arrow-left1.png"></image>
                     </view>
                   </view>

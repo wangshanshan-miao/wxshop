@@ -215,9 +215,11 @@
   margin-top: 10rpx;
   height: 307rpx;
 }
-
+.swiper_group swiper-item {
+  width: 92% !important;
+}
 .swiperImg {
-  width: 100%;
+  width: 90%;
   height: 307rpx;
 }
 
@@ -407,6 +409,7 @@
   color: #333333;
   line-height: 36rpx;
   padding: 5rpx 10rpx;
+  margin-top: 8rpx;
 }
 
 .goodCell1 {

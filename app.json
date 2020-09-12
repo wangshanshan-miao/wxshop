@@ -53,7 +53,8 @@
     "pages/msDe/index",
     "pages/qcDe/index",
     "pages/self/yhq/detail2/index",
-    "pages/notice/index"
+    "pages/notice/index",
+    "pages/sort/index"
   ],
   "plugins": {
     "routePlan": {
@@ -88,7 +89,7 @@
         "selectedIconPath": "./img/home1.png"
       },
       {
-        "pagePath": "pages/buyCar/index/car",
+        "pagePath": "pages/sort/index",
         "text": "分类",
         "iconPath": "./img/types.png",
         "selectedIconPath": "./img/types1.png"

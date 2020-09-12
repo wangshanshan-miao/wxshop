@@ -22,6 +22,10 @@ class Api extends Http {
   getUserPhone(data) {
     return this.request('api/WeiXin/deciphering', data)
   }
+  // 获取用户信息
+  getImageInfo (data) {
+    return this.request('aapi/WeiXin/deciphering', data, 'GET')
+  }
   // 轮播图
   getSwiper(data) {
     return this.request('api/home/selectCarouseList', data, 'POST')

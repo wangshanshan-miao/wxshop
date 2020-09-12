@@ -1,4 +1,3 @@
-// const baseURL = 'https://www.deejv.com/unite/';
 const baseURL = 'https://www.ykdzw.com/unite/';
 
 
