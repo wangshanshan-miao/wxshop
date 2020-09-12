@@ -14,27 +14,8 @@ Page({
     activeIndex: 0,
     itemIndex: '',
     selectItem: [],
-    list: [{
-        coverUrl: '',
-        commodityName: '121212',
-        salePrice: '98'
-      },
-      {
-        coverUrl: '',
-        commodityName: '121212',
-        salePrice: '98'
-      },
-      {
-        coverUrl: '',
-        commodityName: '121212',
-        salePrice: '98'
-      },
-      {
-        coverUrl: '',
-        commodityName: '121212',
-        salePrice: '98'
-      }
-    ]
+    pageNum: 1,
+    list: []
   },
 
   /**
@@ -42,6 +23,11 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      baseURL,
+      imgBaseUrl,
+      nowTime: new Date().getTime()
+    })
     this.getList()
   },
   /**
@@ -83,21 +69,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    // const isRequest = this.data.isRequest
-    // const pageNum = this.data.pageNum
-    // const totalPage = this.data.totalPage
-    // // 当前页数小于总页数
-    // if (pageNum < totalPage) {
-    //     if (!isRequest) {
-    //         this.setData({
-    //             pageNum: pageNum + 1,
-    //             isRequest: true
-    //         })
-    //         this.orderList()
-    //     } else {
-
-    //     }
-    // }
+    const pageNum = this.data.pageNum
+    const totalPage = this.data.totalPage
+    // 当前页数小于总页数
+    if (pageNum < totalPage) {
+      this.setData({
+        pageNum: pageNum + 1
+      })
+      this.getShopList(this.data.nav_list[this.data.activeIndex].classId)
+    }
   },
 
   /**
@@ -111,10 +91,28 @@ Page({
     api.getAllClass({
       agencyId: wx.getStorageSync('agencyId')
     }).then(res => {
-      console.log(res.data)
+      res.data.unshift({
+        className: "全部"
+      })
       this.setData({
         nav_list: res.data,
         // classId: res.data[0].classId
+      })
+      this.getShopList()
+    })
+  },
+  getShopList(classId) {
+    api.searchResult({
+      userId: wx.getStorageSync('userId'),
+      merchantId: wx.getStorageSync('merchantId'),
+      classId: classId,
+      pageNum: this.data.pageNum,
+      pageSize: 24
+    }).then(res => {
+      // console.log(res)
+      this.setData({
+        list: res.data.list,
+        totalPage: res.data.totalPage
       })
     })
   },
@@ -151,11 +149,11 @@ Page({
     })
 
     this.triggerEvent("switchTap", type); //点击了导航,通知父组件重新渲染列表数据
-
+    this.getShopList(this.data.nav_list[e.currentTarget.dataset.index].classId)
   },
   toSearch() {
     wx.navigateTo({
-      url: '../../search/index/index',
+      url: '../search/index/index',
     });
   },
 })

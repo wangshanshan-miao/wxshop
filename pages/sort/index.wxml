@@ -6,7 +6,7 @@
 <!-- 分类 -->
 <view class='index_tab'>
 	<scroll-view class="bottom_scroll boxs" scroll-x="true" scroll-left="{{x}}" scroll-with-animation="{{true}}">
-		<view class='nav boxs {{index == activeIndex?"cur":""}}' wx:for="{{nav_list}}" wx:key="{{item.classId}}" bindtap='switchTap' data-index="{{index}}">
+		<view class='nav boxs {{index == activeIndex?"cur":""}}' wx:for="{{nav_list}}" wx:key="{{index}}" bindtap='switchTap' data-index="{{index}}">
 			<view>{{item.className}}</view>
 		</view>
 
