@@ -1,5 +1,6 @@
+<view class="shadow"></view>
 <view class="allEvaluationModel boxs">
-    <view class="allEvaList">
+    <view class="allEvaList" wx:if="{{list.length}}">
         <view wx:for="{{list}}" wx:key="index" class="allEva_list">
             <view class="allEva_list_top flex_row al jb">
                 <view class="flex_row al">
@@ -14,3 +15,4 @@
         </view>
     </view>
 </view>
+<noData wx:if="{{list.length<1}}" />

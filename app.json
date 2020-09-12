@@ -54,12 +54,13 @@
     "pages/qcDe/index",
     "pages/self/yhq/detail2/index",
     "pages/notice/index",
-    "pages/sort/index"
+    "pages/sort/index",
+    "pages/talk/index"
   ],
   "plugins": {
     "routePlan": {
-    "version": "1.0.5",
-    "provider": "wx50b5593e81dd937a"
+      "version": "1.0.5",
+      "provider": "wx50b5593e81dd937a"
     }
   },
   "permission": {

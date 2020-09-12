@@ -49,7 +49,7 @@
 .goodDe_intro {
     width: 100vw;
     box-sizing: border-box;
-    padding: 42rpx 0rpx 31rpx 30rpx;
+    padding: 10rpx 0rpx 31rpx 30rpx;
 }
 
 .user_recom {
@@ -140,14 +140,24 @@
 }
 
 .txImg {
-    width: 60rpx;
-    height: 60rpx;
+    width: 76rpx;
+    height: 76rpx;
     background-color: chartreuse;
     border-radius: 50%;
 }
 
 .evaUser_name {
-    margin-left: 26rpx;
+    margin: 0 37rpx 11rpx 10rpx;
+}
+.evaUser_name .stars {
+  display: inline-block;
+  margin-left: 37rpx;
+}
+.stars image {
+  display: inline-block;
+  width: 24rpx;
+  height: 23rpx;
+  margin-right: 7rpx;
 }
 
 .goodDe_main {
@@ -175,7 +185,7 @@
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
     opacity: 1;
-    border-radius: 18px 18px 0px 0px;
+    border-radius: 18rpx 18rpx 0px 0px;
     position: fixed;
     bottom: 0;
     padding: 20rpx 30rpx;
@@ -205,7 +215,7 @@
 }
 
 .operationModel_right {
-    width: 421rpx;
+    /* width: 421rpx; */
     height: 88rpx;
     line-height: 88rpx;
     /* background: rgba(126, 198, 243, 1); */
@@ -213,12 +223,14 @@
 }
 
 .addCar {
-    width: 137rpx;
+    width: 237rpx;
     /* background: #009DFF; */
-    background: #7EC6F3;
-    border-top-left-radius: 50rpx;
-    border-bottom-left-radius: 50rpx;
-
+    /* background: #7EC6F3; */
+    height: 84rpx;
+    border: 1rpx solid #ff7f11;
+    border-radius: 42rpx;
+    margin-right: 16rpx;
+    color: #FF7F11;
 }
 
 .ysce {
@@ -231,10 +243,11 @@
 }
 
 .buyNow {
-    width: 137rpx;
-    background: #009DFF;
-    border-top-right-radius: 50rpx;
-    border-bottom-right-radius: 50rpx;
+    width: 237rpx;
+    background: linear-gradient(121deg,#fca153 10%, #ff7f11 89%);
+    border-radius: 42rpx;
+    height: 84rpx;
+    color: #FFFFFF;
 }
 
 .addressFrom {
@@ -274,13 +287,12 @@
 }
 
 .applyCl {
-    width: 80%;
-    height: 78rpx;
-    line-height: 78rpx;
-
-    background: #009DFF;
+    width: 431rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
     border-radius: 210rpx;
-    margin: 110rpx auto 20rpx auto;
+    margin: 110rpx auto 32rpx auto;
 }
 
 .apply_warn {
@@ -323,11 +335,10 @@
 }
 
 .choseGoodSize_Img {
-    width: 252rpx;
-    height: 244rpx;
-    border-radius: 20rpx;
+    width: 238rpx;
+    height: 227rpx;
     flex-shrink: 0;
-    margin-right: 48rpx;
+    margin-right: 26rpx;
 }
 
 .googDefPrice {
@@ -347,7 +358,7 @@
 .skuGroup_list {
     /* padding-bottom: 10rpx; */
     margin-bottom: 20rpx;
-    border-bottom: 1px solid rgba(209, 209, 209, .5);
+    /* border-bottom: 1px solid rgba(209, 209, 209, .5); */
 }
 
 .skuGroup_list_title {
@@ -357,50 +368,54 @@
 .skuGroup_list_cell {
     flex-wrap: wrap;
 }
+.sku {
+  padding: 0 37rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  border-radius: 6rpx;
+  background: #F7F7F7;
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+}
 
 .skuGroupCell {
-    padding: 8rpx 41rpx;
-    border-radius: 10rpx;
-    background: #F7F7F7;
-    margin-right: 30rpx;
-    margin-bottom: 20rpx;
     border: 1px solid #F7F7F7;
 }
 
 .skuHasChose {
-    background: rgba(171, 218, 252, 1);
-    border: 1px solid rgba(0, 157, 255, .2);
-    color: #009DFF;
+    background: #FFF8E8;
+    border: 1px solid #FF7F11;
 }
 
 .buyNum_group {
-    padding: 20rpx 0;
+    padding: 30rpx 0;
     border-bottom: 1px solid rgba(209, 209, 209, .5);
+    margin-bottom: 38rpx;
 
+}
+.number {
+  height: 52rpx;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8rpx;
 }
 
 .reduce_num {
-    width: 50rpx;
-    border-top-left-radius: 5rpx;
-    border-bottom-left-radius: 5rpx;
+    width: 60rpx;
 }
 
 .add_num {
-    width: 50rpx;
-    border-top-right-radius: 5rpx;
-    border-bottom-right-radius: 5rpx;
+    width: 60rpx;
 }
 
 
 .num {
-    margin: 0 5rpx;
-    padding: 0 20rpx;
+    padding: 0 38rpx;
 }
 
 .buyNum_btn {
-    height: 39rpx;
-    line-height: 39rpx;
-    background: #F7F7F7;
+    height: 52rpx;
+    line-height: 52rpx;
 }
 
 .close_goodSizeShow {
@@ -753,7 +768,7 @@
 }
 
 .button {
-    width: 210rpx;
+    /* width: 210rpx; */
 }
 
 
@@ -912,8 +927,4 @@
 
 .appointment {
     background-color: #ABDAFC;
-}
-
-.addCar {
-    background-color: #7ec6f3;
 }

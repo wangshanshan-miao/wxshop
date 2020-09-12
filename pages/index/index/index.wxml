@@ -120,7 +120,7 @@
       </view>
       <view class="flex_row">
         <scroll-view class="scroll-view" scroll-x>
-          <view catchtap="gojz" data-id="{{item.outId}}" wx:if="{{index<10}}" class="goodCell pr flex_col" wx:for="{{seckillList.seckillList}}" wx:key="index">
+          <view catchtap="goodDetail" data-type="0" data-id="{{item.outId}}" wx:if="{{index<10}}" class="goodCell pr flex_col" wx:for="{{seckillList.seckillList}}" wx:key="index">
             <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
             <text class="goodeIntro f28 hidden2">{{item.commodityName}}</text>
             <view class="goodprice">
@@ -144,7 +144,7 @@
         </view>
       </view>
       <view class="good_group">
-        <view catchtap="goCg" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{groupBookingList}}" wx:key="index" wx:if="{{index<3}}">
+        <view catchtap="goodDetail" data-type="1" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{groupBookingList}}" wx:key="index" wx:if="{{index<3}}">
           <image class="goodCell_img1" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
           <view class="goodeIntro1 boxs f24 oh flex_col jb">
             <view class="hidden2 name color3 f30">{{item.commodityName}}</view>
@@ -177,7 +177,7 @@
       </view>
       <view class="good_group">
         <scroll-view class="scroll-view" scroll-x>
-          <view catchtap="gojz" data-id="{{item.outId}}" class="goodCell pr flex_col" wx:for="{{newCommodityList}}" wx:key="index" wx:if="{{index<10}}">
+          <view catchtap="goodDetail" data-id="{{item.outId}}" class="goodCell pr flex_col" wx:for="{{newCommodityList}}" wx:key="index" wx:if="{{index<10}}">
             <image lazy-load="{{true}}" class="goodCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
             <text class="goodeIntro f28 hidden2">{{item.commodityName}}</text>
             <view class="goodprice flex_row">
@@ -203,7 +203,7 @@
         </view>
       </view>
       <view class="good_group box">
-        <view catchtap="goShlm" data-id="{{item.outId}}" class="hotCommodity goodCell pr" wx:for="{{hotCommodityList}}" wx:key="index" wx:if="{{index<4}}">
+        <view catchtap="goodDetail" data-id="{{item.outId}}" class="hotCommodity goodCell pr" wx:for="{{hotCommodityList}}" wx:key="index" wx:if="{{index<4}}">
           <image class="goodCell_img" lazy-load="{{true}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
           <view class="goodeIntro boxs f28 oh hidden2 color3">{{item.commodityName}}</view>
           <view class="goodprice flex_row">
@@ -232,7 +232,7 @@
           <block wx:for="{{clearanceSaleList}}" wx:for-item="items">
             <swiper-item class="swiper-item">
               <view class="clear-list">
-                <view catchtap="booking" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{items}}" wx:key="index" wx:for-item="item">
+                <view catchtap="goodDetail" data-type="2" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{items}}" wx:key="index" wx:for-item="item">
                 <image class="goodCell_img1 img" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
                 <view class="goodeIntro1 boxs f24 oh flex_col jb" style="width: calc(100% - 190rpx);">
                   <view class="hidden2 name color3 f30">{{item.commodityName}}</view>
@@ -296,7 +296,7 @@
             </view>
             <view class="flex_row">
               <view class="shopCell_bott" wx:for="{{item.commodityList}}" wx:key="index">
-                <view class="shop_groupImg_cell pr" catchtap="goodDetail" data-id="{{item.commodityId}}">
+                <view class="shop_groupImg_cell pr" catchtap="" data-id="{{item.commodityId}}">
                   <image class="shopCell_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_20' }}" />
                   <view class="shopIntro_bott boxs pa f18 oh">{{item.commodityName}}</view>
                 </view>

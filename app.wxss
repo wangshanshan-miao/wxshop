@@ -1,6 +1,10 @@
 page {
     width: 100vw;
 }
+.shadow {
+  box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
+  margin-top: 6rpx;
+}
 
 /* // 清除浮动对父元素的影响 */
 .clearFloat::after {
@@ -131,6 +135,9 @@ page {
 .f36 {
     font-size: 36rpx;
 }
+.f41 {
+    font-size: 41rpx;
+}
 
 .c33 {
     color: #333333;
@@ -140,12 +147,19 @@ page {
     color: #999999;
 }
 
+.c98 {
+    color: #989898;
+}
+
 .c66 {
     color: #666666;
 }
 
 .cff {
     color: white;
+}
+.rcolor {
+  color: #FF0000;
 }
 
 /* 店铺头像  start*/

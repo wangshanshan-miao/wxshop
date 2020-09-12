@@ -50,6 +50,10 @@ class Api extends Http {
   searchHistory(data) {
     return this.request('api/home/search', data, 'POST')
   }
+  // 留言
+  addTalk(data) {
+    return this.request('api/feedback/addFeedback', data, 'POST' )
+  }
   // 一站采购或一站家装或生活联盟列表
   buildinglList(data) {
     return this.request('api/buildingl/buildinglList', data, 'POST')
@@ -92,7 +96,19 @@ class Api extends Http {
   }
   // 商品详情
   goodDetail(data) {
-    return this.request('api/commodity/commodityDetail', data, 'POST')
+    return this.request('api/commodity/commodityDetail', data, 'GET')
+  }
+  // 秒杀商品详情
+  seckillDetail(data) {
+    return this.request('api/seckill/seckillDetail', data, 'GET')
+  }
+  // 拼团商品详情
+  groupDetail(data) {
+    return this.request('api/groupBooking/groupBookingDetail', data, 'GET')
+  }
+  // 清仓商品详情
+  clearDetail(data) {
+    return this.request('api/clearanceSale/clearanceSaleDetail', data, 'GET')
   }
   // 全部评价
   comments(data) {
@@ -120,7 +136,7 @@ class Api extends Http {
   }
   // 商品规格
   commoditySpecification(data) {
-    return this.request('api/shoppingTrolley/getCommoditySpecification', data, 'POST')
+    return this.request('api/shoppingTrolley/getCommoditySpecification', data, 'GET')
   }
   // 代金券列表
   getVoucherList(data) {
@@ -274,10 +290,6 @@ class Api extends Http {
   groupBookingList(data) {
     return this.request('api/groupBooking/groupBookingList', data, 'POST')
   }
-  // 拼团活动详情
-  groupBookingDetail(data) {
-    return this.request('api/groupBooking/groupBookingDetail', data, 'POST')
-  }
   // 发起、参加拼团
   addGroupBooking(data) {
     return this.request('api/groupBooking/addGroupBooking', data, 'POST')
@@ -294,17 +306,9 @@ class Api extends Http {
   seckillList(data) {
     return this.request('api/seckill/seckillList', data, 'POST')
   }
-  // 限时秒杀详情
-  seckillDetail(data) {
-    return this.request('api/seckill/seckillDetail', data, 'POST')
-  }
   // 样品清仓商品列表
   clearanceSaleList(data) {
     return this.request('api/clearanceSale/clearanceSaleList', data, 'POST')
-  }
-  // 样品清仓详情
-  clearanceSaleDetail(data) {
-    return this.request('api/clearanceSale/clearanceSaleDetail', data, 'POST')
   }
   // 获取区域代理电话
   getPhone(data) {

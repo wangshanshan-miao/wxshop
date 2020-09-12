@@ -32,9 +32,14 @@ Page({
     },
 
     goBuyCar() {
-        wx.switchTab({
+        wx.navigateTo({
             url: '/pages/buyCar/index/car',
         })
+    },
+    goTalk() {
+      wx.navigateTo({
+        url: '/pages/talk/index',
+      })
     },
     // 分享弹框
     sharegood() {
@@ -202,14 +207,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // console.log(options.id)
         const id = Number.parseInt(options.id) //商品id
+        const goodType = Number.parseInt(options.type) //商品类型
         const merchantId = options.merchantId //商家id
         this.setData({
             baseURL,
             imgBaseUrl,
             id,
-            merchantId
+            merchantId,
+            goodType
         })
     },
     checkUser() {
@@ -231,18 +237,61 @@ Page({
     },
     // 商品详情
     goodDetail() {
-        api.goodDetail({
-            commodityId: this.data.id,
-        }).then(res => {
+        if (this.data.goodType == 0) { // 限时秒杀
+          api.seckillDetail({
+            // outId: this.data.id
+            outId: 38
+          }).then(res => {
             console.log(res)
             this.setData({
-                isCollect: res.data.isCollect,
-                detail: res.data,
-                currentPrice: res.data.salePrice,
-                merchantId: res.data.merchantId,
-                status: res.data.appointmentType //0 不可以预约测量  1 可以预约
+              detail: res.data,
+              currentPrice: res.data.salePrice,
+              merchantId: res.data.merchantId,
+              evaluateLevel: Number(res.data.evaluateLevel)
             })
-        })
+          })
+        } else if (this.data.goodType == 1) { // 拼团
+          api.groupDetail({
+            // outId: this.data.id
+            outId: 70
+          }).then(res => {
+            console.log(res)
+            this.setData({
+              detail: res.data,
+              currentPrice: res.data.salePrice,
+              merchantId: res.data.merchantId,
+              evaluateLevel: Number(res.data.evaluateLevel)
+            })
+          })
+        } else if (this.data.goodType == 2) { // 清仓
+          api.clearDetail({
+            // outId: this.data.id
+            outId: 34
+          }).then(res => {
+            console.log(res)
+            this.setData({
+              detail: res.data,
+              currentPrice: res.data.salePrice,
+              merchantId: res.data.merchantId,
+              evaluateLevel: Number(res.data.evaluateLevel)
+            })
+          })
+        } else {
+          api.goodDetail({
+            // outId: this.data.id
+            outId: 100
+          }).then(res => {
+            console.log(res)
+            this.setData({
+              detail: res.data,
+              currentPrice: res.data.salePrice,
+              merchantId: res.data.merchantId,
+              status: res.data.appointmentType, //0 不可以预约测量  1 可以预约
+              evaluateLevel: Number(res.data.evaluateLevel)
+            })
+          })
+        }
+
     },
     // 收藏商品
     collect() {
@@ -311,7 +360,7 @@ Page({
     // 商品规格
     specification() {
         api.commoditySpecification({
-            commodityId: this.data.id
+          outId: this.data.id
         }).then(res => {
             console.log(res)
             const data = res.data
@@ -338,16 +387,14 @@ Page({
         })
     },
     // 切换规格
-    switch(e) {
-        const index = app.getValue(e).index
-        const specificationId = app.getValue(e).id
-        const price = app.getValue(e).p
-        console.log(e)
-        console.log(price)
+    switch(event) {
+      const index = event.currentTarget.dataset.index
+      const specificationId = event.currentTarget.dataset.commodityspecificationid
+      const price = event.currentTarget.dataset.p
         this.setData({
-            currentPrice: price,
-            skuIndex: index,
-            specificationId //规格id
+          currentPrice: price,
+          skuIndex: index,
+          specificationId: specificationId //规格id
         })
     },
     // 加入购物车
@@ -364,17 +411,26 @@ Page({
             }
         }
         api.addToCart({
-            commodityId: this.data.id,
-            amount: this.data.goodNum,
-            commoditySpecificationId: specificationId
+          commoditySpecificationId: this.data.specificationId,
+          amount: this.data.goodNum,
+          outId: this.data.id,
+          userId: wx.getStorageSync("userId")
         }).then(res => {
-            this.setData({
-                goodSizeShow: false
-            })
+          this.setData({
+            goodSizeShow: false
+          })
+          if (res.status == 200) {
             wx.showToast({
-                title: res.data.message,
-                icon: 'none'
+              title: res.data.message,
+              icon: 'none'
             })
+          } else {
+            wx.showToast({
+              title: res.msg,
+              icon: 'none'
+            })
+            return
+          }
             /* wx.switchTab({
                 url: `/pages/buyCar/index/car`
             }) */

@@ -713,9 +713,11 @@ Page({
   },
   // 商品详情
   goodDetail(e) {
+    console.log(e)
+    const type = e.currentTarget.dataset.type //0：限时秒杀；1：拼团；2：清仓
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `/pages/goodsDe/index?id=${id}`,
+      url: `/pages/goodsDe/index?id=${id}&type=${type}`,
     })
   },
   // 一级分类

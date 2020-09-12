@@ -1,4 +1,4 @@
-<view class="line1"></view>
+<view class="line1 shadow"></view>
 <view class="carModel_top boxs" wx:if="{{arr.length}}">
     <view class="f26 c66 fb" bindtap="mananger">{{status?'管理':'完成'}}</view>
 </view>
