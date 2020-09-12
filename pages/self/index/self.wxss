@@ -70,7 +70,7 @@
     width: 220rpx;
     height: 106rpx;
     line-height: 106rpx;
-    padding: 0 20rpx;
+    padding: 0 14rpx 0 20rpx;
     background: #ffffff;
     border-radius: 30rpx;
     font-size: 28rpx;
@@ -83,9 +83,9 @@
 }
 
 .userIntro_treasure>view>image {
-    width: 37rpx;
-    height: 34rpx;
-    margin-left: 24rpx;
+    width: 66rpx;
+    height: 66rpx;
+    margin-left: 5rpx;
 }
 
 .treasure_list {
