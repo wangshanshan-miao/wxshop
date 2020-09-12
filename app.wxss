@@ -162,6 +162,9 @@ page {
   color: #FF0000;
 }
 
+.cf0{
+    color: #FF0000;
+  }
 /* 店铺头像  start*/
 .comm_shopImg {
     width: 108rpx;

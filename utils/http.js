@@ -2,7 +2,7 @@ const baseURL = 'https://www.ykdzw.com/unite/';
 
 
 const imgBaseUrl ='https://www.ykdzw.com/oss/data/'
-const appId ='wxa5ecb2822bdfda9e'
+const appId =wx.getAccountInfoSync().miniProgram.appId
 class Http {
   request(url, data = {}, method = 'GET', header) {
     return new Promise((reslove, reject) => {
