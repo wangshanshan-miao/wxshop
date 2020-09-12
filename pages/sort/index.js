@@ -13,7 +13,28 @@ Page({
     titleName: [],
     activeIndex: 0,
     itemIndex: '',
-    selectItem: []
+    selectItem: [],
+    list: [{
+        coverUrl: '',
+        commodityName: '121212',
+        salePrice: '98'
+      },
+      {
+        coverUrl: '',
+        commodityName: '121212',
+        salePrice: '98'
+      },
+      {
+        coverUrl: '',
+        commodityName: '121212',
+        salePrice: '98'
+      },
+      {
+        coverUrl: '',
+        commodityName: '121212',
+        salePrice: '98'
+      }
+    ]
   },
 
   /**
@@ -21,6 +42,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.getList()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -60,8 +82,22 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom() {
+    // const isRequest = this.data.isRequest
+    // const pageNum = this.data.pageNum
+    // const totalPage = this.data.totalPage
+    // // 当前页数小于总页数
+    // if (pageNum < totalPage) {
+    //     if (!isRequest) {
+    //         this.setData({
+    //             pageNum: pageNum + 1,
+    //             isRequest: true
+    //         })
+    //         this.orderList()
+    //     } else {
 
+    //     }
+    // }
   },
 
   /**
@@ -69,5 +105,57 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  // 一级分类
+  getList(item) {
+    api.getAllClass({
+      agencyId: wx.getStorageSync('agencyId')
+    }).then(res => {
+      console.log(res.data)
+      this.setData({
+        nav_list: res.data,
+        // classId: res.data[0].classId
+      })
+    })
+  },
+  switchTap(e) { //更换资讯大类
+    console.log(e)
+    this.setData({
+      activeIndex: e.currentTarget.dataset.index
+    })
+    let screenWidth = wx.getSystemInfoSync().windowWidth;
+
+    let itemWidth = screenWidth / 5;
+
+    let {
+      index,
+      type
+    } = e.currentTarget.dataset;
+
+    const {
+      nav_list
+    } = this.data;
+
+    let scrollX = itemWidth * index - itemWidth * 2;
+
+    let maxScrollX = (nav_list.length + 1) * itemWidth;
+
+    if (scrollX < 0) {
+      scrollX = 0;
+    } else if (scrollX >= maxScrollX) {
+      scrollX = maxScrollX;
+    }
+
+    this.setData({
+      x: scrollX
+    })
+
+    this.triggerEvent("switchTap", type); //点击了导航,通知父组件重新渲染列表数据
+
+  },
+  toSearch() {
+    wx.navigateTo({
+      url: '../../search/index/index',
+    });
+  },
 })
