@@ -62,13 +62,13 @@ App({
                 return 0
                 break;
             case 2:
-                return 11
-                break;
-            case 3:
                 return 1
                 break;
-            case 4:
+            case 3:
                 return 4
+                break;
+            case 4:
+                return 7
                 break;
             case 5:
                 return 7

@@ -248,7 +248,7 @@ class Api extends Http {
   }
   // 订单详情
   orderDetail(data) {
-    return this.request('api/order/getCommodityOrder', data, 'POST')
+    return this.request('api/order/getCommodityOrder', data, 'GET')
   }
   // 结算商品订单
   settleCommodityOrder(data) {

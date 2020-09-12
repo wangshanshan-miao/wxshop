@@ -64,35 +64,37 @@ Page({
         api.orderDetail({
             orderId: this.data.id
         }).then(res => {
-            console.log(res)
             const data = res.data
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
-                addressId: data.address.addressId,
+                // addressId: data.address.addressId,
                 expressName: data.order.modeOfDistribution, // 快递方式
                 expressNo: data.order.trackingNumber, // 物流单号
                 expressFee: data.order.expressFee, // 快递费
                 orderType: data.order.orderType,
-                merchantId: data.orderDto.merchantId,
+                merchantId: data.order.merchantId,
                 endTime: data.order.endTime,
                 orderStatus: data.order.orderStatus,
-                storeName: data.orderDto.merchantName,
-                list: data.orderDto.orderCommodityDtoList,
+                storeName: data.order.merchantName,
+                list: data.orderCommodityList,
                 expressFee: data.order.expressFee,
                 total: data.order.totalPrices, // 实际价格 == 总额
                 voucherPrice: data.voucherPrice, // 优惠价格
                 orderNumber: data.order.orderNumber,
                 orderTime: data.order.orderTime,
                 orderPrice: data.order.orderPrice, // 订单总额
-                updateTime: data.order.updateTime // 上一次操作的时间
+                updateTime: data.order.updateTime ,// 上一次操作的时间
+                name: data.order.addressName,
+                phone: data.order.addressPhone,
+                address: data.order.receiverAddress
             })
-            let status = this.data.orderStatus
-            if (status == 1) {
-                this.setData({
-                    show : true
-                })
-            }
-            this.addressDetail()
+            // let status = this.data.orderStatus
+            // if (status == 1) {
+            //     this.setData({
+            //         show : true
+            //     })
+            // }
+            // this.addressDetail()
             // 待付款
             if (data.order.orderStatus == 0) {
                 this.setData({

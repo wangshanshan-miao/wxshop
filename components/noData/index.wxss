@@ -2,7 +2,7 @@
 /* 没有数据 */
 .noData{
   width: 380rpx;
-  margin: 0 auto;
+  margin: 160rpx auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,12 +10,13 @@
 }
 
 .noData>.img{
-  width: 380rpx;
-  height: 380rpx;
+  width: 263rpx;
+  height: 299rpx;
 }
 
 .noData>.nothing{
   text-align: center;
   width: 100%;
   color: #aaa;
+  margin-top: 30rpx;
 }
