@@ -100,17 +100,17 @@
             <text class="f24 more_text">本场还剩</text>
           </view>
           <view>
-            <text class="t1 fb">{{count_down[0] || 0}}</text>
-            <text class="t1 fb">{{count_down[1] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[0] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[1] || 0}}</text>
             <text class="t0">:</text>
-            <text class="t1 fb">{{count_down[3] || 0}}</text>
-            <text class="t1 fb">{{count_down[4] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[3] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[4] || 0}}</text>
             <text class="t0">:</text>
-            <text class="t1 fb">{{count_down[6] || 0}}</text>
-            <text class="t1 fb">{{count_down[7] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[6] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[7] || 0}}</text>
             <text class="t0">:</text>
-            <text class="t1 fb">{{count_down[9] || 0}}</text>
-            <text class="t1 fb">{{count_down[10] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[9] || 0}}</text>
+            <text class="t1 fb f21">{{count_down[10] || 0}}</text>
           </view>
         </view>
         <view class="modelCell_topRight flex_row al">
@@ -235,7 +235,7 @@
                 <view catchtap="goodDetail" data-type="2" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{items}}" wx:key="index" wx:for-item="item">
                 <image class="goodCell_img1 img" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
                 <view class="goodeIntro1 boxs f24 oh flex_col jb" style="width: calc(100% - 190rpx);">
-                  <view class="hidden2 name color3 f30">{{item.commodityName}}</view>
+                  <view class="hidden2 wclear name color3 f30">{{item.commodityName}}</view>
                   <view class="flex_row goodePrice jb">
                     <text class="f24 fb rcolor">￥{{item.salePrice}}</text>
                     <view class="car">

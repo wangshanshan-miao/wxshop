@@ -1,7 +1,7 @@
 <!-- 商品详情 -->
 <!-- <view class="goodDeModel"> -->
 <!-- <view class="goodDeModel_scroll"> -->
-<view class="swiperOut pr shadow">
+<view class="swiperOut pr shadow {{(goodType == 0 || goodType == 1) ? 'hspekill' : 'pheight'}}">
     <swiper circular="{{true}}" indicator-dots="true" indicator-active-color="#FF7F11" indicator-color="#fff" autoplay="true" class="goodDe_swiper" bindchange="swiperChange">
         <block wx:for="{{detail.urlList}}" wx:key="index">
             <swiper-item>
@@ -12,23 +12,79 @@
     </swiper>
     <!-- <view class="cff f28 swiper_index">{{swiperIndex+1}}/{{detail.urlList.length}}</view> -->
 </view>
+<!-- 秒杀 -->
+<view class="skill jb" wx-if="{{goodType == 0}}" style="background: #FF7F11;">
+  <view class="lprice">
+    <text class="f34 cff" style="margin-right: 16rpx;">限时抢购</text>
+    <text class="f35 fb cff">￥{{detail.salePrice}}</text>
+  </view>
+  <view class="timedown">
+    <view class="f26 cf1">抢购倒计时</view>
+    <view>
+      <text class="t1 fb f21">{{count_down[0] || 0}}</text>
+      <text class="t1 fb f21">{{count_down[1] || 0}}</text>
+      <text class="t0">:</text>
+      <text class="t1 fb f21">{{count_down[3] || 0}}</text>
+      <text class="t1 fb f21">{{count_down[4] || 0}}</text>
+      <text class="t0">:</text>
+      <text class="t1 fb f21">{{count_down[6] || 0}}</text>
+      <text class="t1 fb f21">{{count_down[7] || 0}}</text>
+      <text class="t0">:</text>
+      <text class="t1 fb f21">{{count_down[9] || 0}}</text>
+      <text class="t1 fb f21">{{count_down[10] || 0}}</text>
+    </view>
+  </view>
+</view>
+<!-- 拼团 -->
+<view class="pintuan" wx-if="{{goodType == 1}}">
+  <text class="f34 cff" style="margin-right: 16rpx;">{{detail.oneBookingSum}}人团</text>
+  <text class="f35 fb cff">￥{{detail.salePrice}}</text>
+</view>
 <view class="goodDe_intro boxs">
-    <view class="flex_row goodDe_intro_top ">
+    <view class="flex_row goodDe_intro_top jb">
         <view class="f32 fb c33 goodDe_name hidden2">{{detail.commodityName}}</view>
+        <view class="shareDiv">
+          <image catchtap="sharegood" class="sharegood" src="../../img/share.png" />
+          <view>分享</view>
+        </view>
     </view>
     <view class="flex_row jb al pr">
-        <view class="">
+        <view class="" wx-if="{{goodType !== 0 && goodType !== 1}}">
             <view class="flex_row al">
                 <view class="goodDe_price f32">
                     ￥{{detail.salePrice}}
                 </view>
             </view>
         </view>
-        <view class="shareDiv pa">
-          <image catchtap="sharegood" class="sharegood" src="../../img/share.png" />
-          <view>分享</view>
-        </view>
     </view>
+</view>
+<view class="line" wx-if="{{goodType == 1}}"></view>
+<view class="groupList boxs" wx-if="{{goodType == 1}}">
+  <view class="eva_top flex_row al jb">
+      <view class='f28 c33 fb'>小伙伴们在开团，可直接参与</view>
+      <view class="flex_row al" data-="{{commodityId}}" bindtap="">
+          <view class="f24 c98">查看更多</view>
+          <image src="../../img/arrow-left.png" class="jtr" />
+      </view>
+      <view class="groupDetail flex_row jb" wx:for="{{detail.groupUserList}}" wx:key="index" wx:if="{{index<2}}">
+        <view class="gleft flex_row">
+          <image class="txImg" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_40'}}"></image>
+          <text class="f26 c33">{{item.userName}}</text>
+        </view>
+        <view class="gright">
+          <view class="person">
+            <text class="rcolor f28">差{{item.surplus}}人成一团</text>
+            <view class="c33 fb f28">
+              <text class='countDownList'>{{countDownList[index].day}}</text>：
+		          <text class='countDownList'>{{countDownList[index].hou}}</text>：
+		          <text class='countDownList'>{{countDownList[index].min}}</text>：
+		          <text class='countDownList'>{{countDownList[index].sec}}</text>：
+            </view>
+          </view>
+          <button class="cf1 f26 btn">去拼团</button>
+        </view>
+      </view>
+  </view>
 </view>
 <view class="line"></view>
 <!-- 用户评价 -->
@@ -58,8 +114,8 @@
             <view class="f30 c33" style="line-height: 52rpx;">{{detail.evaluateContent}}</view>
         </view>
     </view>
-    <view class="line"></view>
 </view>
+<view class="line"></view>
 <!-- 商品详情 -->
 <view class="goodDe_main boxs">
     <view class="goodDe_main_title f32 c33 fb">商品详情</view>

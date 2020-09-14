@@ -362,22 +362,6 @@
 .more_text {
   color: #989898;
 }
-.modelCell_topLeft .t1 {
-  display: inline-block;
-  width: 23rpx;
-  height: 32rpx;
-  background: #ff7f11;
-  border-radius: 4rpx;
-  font-size: 21rpx;
-  color: #fff;
-  text-align: center;
-  line-height: 32rpx;
-  margin-right: 9rpx;
-  margin-bottom: 14rpx;
-}
-.t0 {
-  margin-right: 9rpx;
-}
 
 .good_group {
   width: 100%;
@@ -405,7 +389,7 @@
   /* background-color: chartreuse; */
 }
 .goodeIntro {
-  width: 222rpx;
+  /* width: 222rpx; */
   color: #333333;
   line-height: 36rpx;
   padding: 5rpx 10rpx;
@@ -431,6 +415,7 @@
 .goodeIntro1 .name {
   margin-bottom: 9rpx;
   line-height: 40rpx;
+  width: 396rpx;
 }
 .goodeIntro1 .price {
   margin-right: 12rpx;
@@ -471,7 +456,10 @@
   color: #FF0000;
   padding: 5rpx 0 0 10rpx;
   line-height: 52rpx;
-  margin-top: 10rpx;
+  /* margin-top: 10rpx; */
+}
+.wclear {
+  width: 373rpx;
 }
 .car {
   width: 81rpx;

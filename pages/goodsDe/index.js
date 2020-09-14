@@ -5,7 +5,7 @@ import {
     imgBaseUrl
 } from "../../utils/http"
 let app = getApp();
-
+let timer
 Page({
     /**
      * 页面的初始数据
@@ -28,9 +28,10 @@ Page({
         goodSizeShow1: false,
         modal: false,
         share: false,
-        poster: false
+        poster: false,
+        count_down: '',
+        endTime: ''
     },
-
     goBuyCar() {
         wx.navigateTo({
             url: '/pages/buyCar/index/car',
@@ -235,60 +236,154 @@ Page({
         this.specification()
         this.address()
     },
+    onHide() {
+      clearInterval(timer)
+    },
+    // 位数不足补零
+    fill_zero_prefix: function (num) {
+      num = num < 0 ? 0 : num;//防止出现负数
+      return num < 10 ? "0" + num : num //补零操作
+    },
+    countDown() {
+      // 获取当前时间，同时得到活动结束时间数组
+      let newTime = new Date().getTime();
+      let endTimeList = this.data.actEndTimeList;
+      let countDownArr = [];
+
+      // 对结束时间进行处理渲染到页面
+      endTimeList.forEach(o => {
+
+        let endTime = new Date(o.eTime).getTime();
+        let obj = null;
+        // 如果活动未结束，对时间进行处理
+        if (endTime - newTime > 0) {
+          let time = (endTime - newTime) / 1000;
+          // 获取天、时、分、秒
+          let day = parseInt(time / (60 * 60 * 24));
+          let hou = parseInt(time % (60 * 60 * 24) / 3600);
+          let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+          let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+          obj = {
+            day: this.fill_zero_prefix(day),
+            hou: this.fill_zero_prefix(hou),
+            min: this.fill_zero_prefix(min),
+            sec: this.fill_zero_prefix(sec)
+          }
+        } else { //活动已结束，全部设置为'00'
+          obj = {
+            day: '00',
+            hou: '00',
+            min: '00',
+            sec: '00'
+          }
+        }
+        countDownArr.push(obj);
+      })
+      // 渲染，然后每隔一秒执行一次倒计时函数
+      this.setData({
+        countDownList: countDownArr
+      })
+      setTimeout(this.countDown, 1000);
+    },
     // 商品详情
     goodDetail() {
         if (this.data.goodType == 0) { // 限时秒杀
           api.seckillDetail({
-            // outId: this.data.id
-            outId: 38
+            outId: this.data.id
+            // outId: 38
           }).then(res => {
-            console.log(res)
-            this.setData({
-              detail: res.data,
-              currentPrice: res.data.salePrice,
-              merchantId: res.data.merchantId,
-              evaluateLevel: Number(res.data.evaluateLevel)
-            })
+            if (res.status == 200) {
+              console.log(res)
+              this.setData({
+                detail: res.data,
+                currentPrice: res.data.salePrice,
+                merchantId: res.data.merchantId,
+                evaluateLevel: Number(res.data.evaluateLevel),
+                endTime: res.data.endTime
+              })
+              timer = setInterval(() => {
+                this.date_format(that.data.endTime)
+              }, 1000)
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: "none"
+              })
+            }
           })
         } else if (this.data.goodType == 1) { // 拼团
           api.groupDetail({
-            // outId: this.data.id
-            outId: 70
+            outId: this.data.id
+            // outId: 70
           }).then(res => {
-            console.log(res)
-            this.setData({
-              detail: res.data,
-              currentPrice: res.data.salePrice,
-              merchantId: res.data.merchantId,
-              evaluateLevel: Number(res.data.evaluateLevel)
-            })
+            if (res.status == 200) {
+              console.log(res)
+              this.setData({
+                detail: res.data,
+                currentPrice: res.data.salePrice,
+                merchantId: res.data.merchantId,
+                evaluateLevel: Number(res.data.evaluateLevel),
+                groupUserList: res.data.groupUserList
+              })
+              const endTimeList = []
+
+              for (var i = 0; i < this.data.groupUserList.length; i++) {
+                var objs = {};
+                objs.eTime = this.data.groupUserList[i].endTime
+                endTimeList.push(objs)
+              }
+              this.setData({
+                actEndTimeList: endTimeList
+              });
+              this.countDown();
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: "none"
+              })
+            }
           })
         } else if (this.data.goodType == 2) { // 清仓
           api.clearDetail({
             // outId: this.data.id
             outId: 34
           }).then(res => {
-            console.log(res)
-            this.setData({
-              detail: res.data,
-              currentPrice: res.data.salePrice,
-              merchantId: res.data.merchantId,
-              evaluateLevel: Number(res.data.evaluateLevel)
-            })
+            if (res.status == 200) {
+              console.log(res)
+              this.setData({
+                detail: res.data,
+                currentPrice: res.data.salePrice,
+                merchantId: res.data.merchantId,
+                evaluateLevel: Number(res.data.evaluateLevel)
+              })
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: "none"
+              })
+            }
+            
           })
         } else {
           api.goodDetail({
             // outId: this.data.id
             outId: 100
           }).then(res => {
-            console.log(res)
-            this.setData({
-              detail: res.data,
-              currentPrice: res.data.salePrice,
-              merchantId: res.data.merchantId,
-              status: res.data.appointmentType, //0 不可以预约测量  1 可以预约
-              evaluateLevel: Number(res.data.evaluateLevel)
-            })
+            if (res.status == 200) {
+              console.log(res)
+              this.setData({
+                detail: res.data,
+                currentPrice: res.data.salePrice,
+                merchantId: res.data.merchantId,
+                status: res.data.appointmentType, //0 不可以预约测量  1 可以预约
+                evaluateLevel: Number(res.data.evaluateLevel)
+              })
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: "none"
+              })
+            }
           })
         }
 

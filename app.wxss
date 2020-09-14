@@ -61,6 +61,17 @@ page {
     word-break: break-all;
 }
 
+.hidden2 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 72rpx;
+}
+
 .tc {
     text-align: center;
 }
@@ -104,6 +115,10 @@ page {
     font-size: 20rpx;
 }
 
+.f21 {
+    font-size: 21rpx;
+}
+
 .f22 {
     font-size: 22rpx;
 }
@@ -132,6 +147,14 @@ page {
     font-size: 32rpx;
 }
 
+.f34 {
+    font-size: 34rpx;
+}
+
+.f35 {
+    font-size: 35rpx;
+}
+
 .f36 {
     font-size: 36rpx;
 }
@@ -155,6 +178,10 @@ page {
     color: #666666;
 }
 
+.cf1 {
+  color: #FF7F11;
+}
+
 .cff {
     color: white;
 }
@@ -165,6 +192,24 @@ page {
 .cf0{
     color: #FF0000;
   }
+
+  /* 倒计时 */
+.t1 {
+  display: inline-block;
+  width: 23rpx;
+  height: 32rpx;
+  background: #ff7f11;
+  border-radius: 4rpx;
+  font-size: 21rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 32rpx;
+  margin-right: 9rpx;
+  margin-bottom: 14rpx;
+}
+.t0 {
+  margin-right: 9rpx;
+}
 /* 店铺头像  start*/
 .comm_shopImg {
     width: 108rpx;

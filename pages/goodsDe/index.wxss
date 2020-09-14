@@ -20,7 +20,34 @@
 
 .swiperOut {
     width: 100%;
-    height: 595rpx;
+}
+.phieght {
+  height: 595rpx;
+}
+.hspekill {
+  height: 388rpx;
+}
+.skill {
+  padding: 10rpx 0 10rpx 30rpx;
+  height: 92rpx;
+}
+.skill .lprice {
+  line-height: 92rpx;
+  display: inline-block;
+}
+.timedown {
+  width: 331rpx;
+  text-align: center;
+  align-items: center;
+  display: inline-block;
+  float: right;
+}
+
+.pintuan {
+  height: 92rpx;
+  line-height: 92rpx;
+  background: #FF7F11;
+  text-align: center;
 }
 
 .goodDe_swiper {
@@ -45,11 +72,33 @@
     left: calc(50% - 58rpx);
     bottom: 18rpx;
 }
-
+/* 拼团列表 */
+.groupList {
+  padding: 30rpx;
+}
+.groupDetail {
+  padding: 26rpx 0; 
+}
+.groupDetail .gleft {
+  align-items: center;
+}
+.gleft text {
+  margin-left: 12rpx;
+}
+.gright .person{
+  margin-right: 41rpx;
+}
+.gright .btn {
+  width: 153rpx;
+  height: 55rpx;
+  background: #fff8e8;
+  border: 1rpx solid #ff7f11;
+  border-radius: 28rpx;
+}
 .goodDe_intro {
     width: 100vw;
     box-sizing: border-box;
-    padding: 10rpx 0rpx 31rpx 30rpx;
+    padding: 22rpx 0rpx 22rpx 30rpx;
 }
 
 .user_recom {
@@ -61,15 +110,18 @@
 }
 
 .goodDe_intro_top {
-    margin-bottom: 30rpx;
+    /* margin-bottom: 30rpx; */
+    align-items: center;
+    height: 109rpx;
 }
 
 .goodDe_name {
-    width: calc(100% -120rpx);
+    width: 593rpx;
     color: #333333;
     line-height: 55rpx;
     font-size: 32rpx;
     font-weight: 700;
+    height: 100%;
 }
 
 .goodDe_price {
@@ -80,18 +132,17 @@
 
 /* .dw {} */
 .shareDiv {
-  width: 20%;
+  width: 121rpx;
   height: 50rpx;
   background: #eeeeee;
-  border-radius: 23rpx;
-  right: -16rpx;
+  border-radius: 23rpx 0 0 23rpx;
   font-size: 26rpx;
   font-weight: 400;
   color: #989898;
   display: inline-flex;
   padding-left: 21rpx;
   align-items: center;
-  top: -70rpx;
+  justify-content: center;
 }
 .sharegood {
     width: 27rpx;
