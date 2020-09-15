@@ -306,6 +306,10 @@ class Api extends Http {
   seckillList(data) {
     return this.request('api/seckill/seckillList', data, 'POST')
   }
+  // 新品、口碑商品列表
+  newList(data) {
+    return this.request('api/home/searchResult', data, 'POST')
+  }
   // 样品清仓商品列表
   clearanceSaleList(data) {
     return this.request('api/clearanceSale/clearanceSaleList', data, 'POST')
@@ -336,7 +340,7 @@ class Api extends Http {
   }
   // 获取所有参团人员信息
   getAllGroupUser(data) {
-    return this.request('api/groupBooking/getAllGroupUser', data)
+    return this.request('api/groupBooking/getAllGroupUser', data, 'GET')
   }
 
   // 是否上线

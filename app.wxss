@@ -387,3 +387,109 @@ page {
     position: relative;
     left: -6rpx;
 }
+
+/* 购物车 */
+.setGoodSize {
+    width: 100%;
+    padding: 40rpx 35rpx;
+}
+
+.choseGoodSize_Img {
+    width: 238rpx;
+    height: 227rpx;
+    flex-shrink: 0;
+    margin-right: 26rpx;
+}
+
+.googDefPrice {
+    margin-bottom: 27rpx;
+    /* align-items: flex-end; */
+}
+
+.googDefPrice .price {
+    color: #FF0000;
+    margin-right: 5rpx;
+}
+
+.skuGroup {
+    margin-top: 54rpx;
+}
+
+.skuGroup_list {
+    /* padding-bottom: 10rpx; */
+    margin-bottom: 20rpx;
+    /* border-bottom: 1px solid rgba(209, 209, 209, .5); */
+}
+
+.skuGroup_list_title {
+    margin-bottom: 20rpx;
+}
+
+.skuGroup_list_cell {
+    flex-wrap: wrap;
+}
+.sku {
+  padding: 0 37rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  border-radius: 6rpx;
+  background: #F7F7F7;
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.skuGroupCell {
+    border: 1px solid #F7F7F7;
+}
+
+.skuHasChose {
+    background: #FFF8E8;
+    border: 1px solid #FF7F11;
+}
+
+.buyNum_group {
+    padding: 30rpx 0;
+    border-bottom: 1px solid rgba(209, 209, 209, .5);
+    margin-bottom: 38rpx;
+
+}
+.number {
+  height: 52rpx;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8rpx;
+}
+
+.reduce_num {
+    width: 60rpx;
+}
+
+.add_num {
+    width: 60rpx;
+}
+
+
+.num {
+    padding: 0 38rpx;
+}
+
+.buyNum_btn {
+    height: 52rpx;
+    line-height: 52rpx;
+}
+
+.applyCl {
+    width: 431rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+    border-radius: 210rpx;
+    margin: 110rpx auto 32rpx auto;
+}
+.close_goodSizeShow {
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 45rpx;
+}

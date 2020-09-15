@@ -22,11 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const goodType = Number.parseInt(options.type)
     console.log(options)
     this.setData({
       baseURL,
       imgBaseUrl,
-      nowTime: new Date().getTime()
+      nowTime: new Date().getTime(),
+      goodType
     })
     this.getList()
   },

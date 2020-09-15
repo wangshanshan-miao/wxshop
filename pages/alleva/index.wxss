@@ -20,3 +20,14 @@
 .allEvaUser_name {
     margin-left: 26rpx;
 }
+
+.stars {
+  display: inline-block;
+  margin-left: 37rpx;
+}
+.stars image {
+  display: inline-block;
+  width: 24rpx;
+  height: 23rpx;
+  margin-right: 7rpx;
+}

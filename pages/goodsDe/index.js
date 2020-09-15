@@ -239,6 +239,22 @@ Page({
     onHide() {
       clearInterval(timer)
     },
+  // 设置时间
+  date_format: function (endTime) {
+    var nowTime = new Date().getTime();//现在时间（时间戳）
+    var endTime = new Date(endTime).getTime();//结束时间（时间戳）
+    var time = (endTime - nowTime) / 1000
+    // 获取天、时、分、秒
+    let day = this.fill_zero_prefix(parseInt(time / (60 * 60 * 24)));
+    let hr = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) / 3600));
+    let min = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) % 3600 / 60));
+    let sec = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) % 3600 % 60));
+
+    this.setData({
+      count_down: day + ":" + hr + ":" + min + ":" + sec,
+      count_down1: day + "天" + hr + "时" + min + "分" + sec + "秒"
+    })
+  },
     // 位数不足补零
     fill_zero_prefix: function (num) {
       num = num < 0 ? 0 : num;//防止出现负数
@@ -302,7 +318,7 @@ Page({
                 endTime: res.data.endTime
               })
               timer = setInterval(() => {
-                this.date_format(that.data.endTime)
+                this.date_format(this.data.endTime)
               }, 1000)
             } else {
               wx.showToast({
@@ -323,13 +339,13 @@ Page({
                 currentPrice: res.data.salePrice,
                 merchantId: res.data.merchantId,
                 evaluateLevel: Number(res.data.evaluateLevel),
-                groupUserList: res.data.groupUserList
+                groupUserDtoList: res.data.groupUserDtoList
               })
               const endTimeList = []
 
-              for (var i = 0; i < this.data.groupUserList.length; i++) {
+              for (var i = 0; i < this.data.groupUserDtoList.length; i++) {
                 var objs = {};
-                objs.eTime = this.data.groupUserList[i].endTime
+                objs.eTime = this.data.groupUserDtoList[i].endTime
                 endTimeList.push(objs)
               }
               this.setData({
@@ -465,6 +481,42 @@ Page({
             })
         })
     },
+    // 去拼团
+    // 去拼团 弹框
+    goBooking(e) {
+      const index = app.getValue(e).index
+
+      let arr = this.data.detail.groupUserDtoList
+      // let userIds = arr[index].userIds
+      const bookingId = arr[index].bookingId
+      const groupUserId = arr[index].groupUserId
+      const groupType = arr[index].groupType
+      const endtimes = this.data.countDownList[index]
+
+      api.getAllGroupUser({
+        groupUserId
+      }).then(res => {
+        console.log(res)
+        this.setData({
+          groupList: res.data,
+          mask: true,
+          modal: true,
+          bookingId,
+          groupUserId,
+          // userIds,
+          groupType,
+          selectIndex: index,
+          endtimes
+        })
+      })
+    },
+    // 关闭弹框
+    closeModal1() {
+      this.setData({
+        mask: false,
+        modal: false
+      })
+    },
     // 去店铺
     goStore() {
         const id = this.data.merchantId
@@ -543,8 +595,8 @@ Page({
             addressId: app.getValue(e).id
         })
     },
-    goAllEva() {
-        const id = this.data.id
+    goAllEva(e) {
+        const id = e.currentTarget.dataset.id
         wx.navigateTo({
             url: `../alleva/index?id=${id}`,
         });
@@ -580,7 +632,8 @@ Page({
     addCar() {
         this.checkUser()
         this.setData({
-            goodSizeShow: true
+            goodSizeShow: true,
+            btnText: '加入购物车'
         })
     },
     // 预约测量按钮
@@ -716,7 +769,8 @@ Page({
     buyNow() {
         this.checkUser()
         this.setData({
-            goodSizeShow1: true
+            goodSizeShow1: true,
+            btnText: '立即购买'
         })
     },
     // 选择商品规格和数量，确认后购买 -> 生成商品订单

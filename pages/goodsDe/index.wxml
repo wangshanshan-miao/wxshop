@@ -13,23 +13,24 @@
     <!-- <view class="cff f28 swiper_index">{{swiperIndex+1}}/{{detail.urlList.length}}</view> -->
 </view>
 <!-- 秒杀 -->
-<view class="skill jb" wx-if="{{goodType == 0}}" style="background: #FF7F11;">
-  <view class="lprice">
+<view class="skill jb pr" wx-if="{{goodType == 0}}">
+  <image class="imgBg pa" src="../../img/skillbg.png"></image>
+  <view class="lprice pa">
     <text class="f34 cff" style="margin-right: 16rpx;">限时抢购</text>
     <text class="f35 fb cff">￥{{detail.salePrice}}</text>
   </view>
-  <view class="timedown">
+  <view class="timedown pa">
     <view class="f26 cf1">抢购倒计时</view>
     <view>
       <text class="t1 fb f21">{{count_down[0] || 0}}</text>
       <text class="t1 fb f21">{{count_down[1] || 0}}</text>
-      <text class="t0">:</text>
+      <text class="t0 fb f22">:</text>
       <text class="t1 fb f21">{{count_down[3] || 0}}</text>
       <text class="t1 fb f21">{{count_down[4] || 0}}</text>
-      <text class="t0">:</text>
+      <text class="t0 fb f22">:</text>
       <text class="t1 fb f21">{{count_down[6] || 0}}</text>
       <text class="t1 fb f21">{{count_down[7] || 0}}</text>
-      <text class="t0">:</text>
+      <text class="t0 fb f22">:</text>
       <text class="t1 fb f21">{{count_down[9] || 0}}</text>
       <text class="t1 fb f21">{{count_down[10] || 0}}</text>
     </view>
@@ -60,38 +61,38 @@
 </view>
 <view class="line" wx-if="{{goodType == 1}}"></view>
 <view class="groupList boxs" wx-if="{{goodType == 1}}">
-  <view class="eva_top flex_row al jb">
+    <view class="eva_top al jb flex_row">
       <view class='f28 c33 fb'>小伙伴们在开团，可直接参与</view>
       <view class="flex_row al" data-="{{commodityId}}" bindtap="">
           <view class="f24 c98">查看更多</view>
           <image src="../../img/arrow-left.png" class="jtr" />
       </view>
-      <view class="groupDetail flex_row jb" wx:for="{{detail.groupUserList}}" wx:key="index" wx:if="{{index<2}}">
-        <view class="gleft flex_row">
-          <image class="txImg" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_40'}}"></image>
-          <text class="f26 c33">{{item.userName}}</text>
-        </view>
-        <view class="gright">
-          <view class="person">
-            <text class="rcolor f28">差{{item.surplus}}人成一团</text>
-            <view class="c33 fb f28">
-              <text class='countDownList'>{{countDownList[index].day}}</text>：
-		          <text class='countDownList'>{{countDownList[index].hou}}</text>：
-		          <text class='countDownList'>{{countDownList[index].min}}</text>：
-		          <text class='countDownList'>{{countDownList[index].sec}}</text>：
-            </view>
-          </view>
-          <button class="cf1 f26 btn">去拼团</button>
-        </view>
+    </view>
+    <view class="groupDetail flex_row jb" wx:for="{{detail.groupUserDtoList}}" wx:key="index" wx:if="{{index<2}}">
+      <view class="gleft flex_row">
+        <image class="txImg" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_40'}}"></image>
+        <text class="f26 c33">{{item.userName}}</text>
       </view>
-  </view>
+      <view class="gright flex_row">
+        <view class="person">
+          <text class="rcolor f28">差{{item.surplus}}人成一团</text>
+          <view class="c33 fb f28">
+            <text class='countDownList'>{{countDownList[index].day}}</text>:
+            <text class='countDownList'>{{countDownList[index].hou}}</text>:
+            <text class='countDownList'>{{countDownList[index].min}}</text>:
+            <text class='countDownList'>{{countDownList[index].sec}}</text>
+          </view>
+        </view>
+        <button class="cf1 f26 btn" data-index="{{index}}" catchtap="goBooking">去拼团</button>
+      </view>
+    </view>
 </view>
 <view class="line"></view>
 <!-- 用户评价 -->
-<view class="evaluationModel boxs">
+<view class="evaluationModel boxs" wx:if="{{detail.evaluateContent}}">
     <view class="eva_top flex_row al jb">
         <view class='f32 c33 fb'>用户评价</view>
-        <view class="flex_row al" data-="{{commodityId}}" bindtap="goAllEva">
+        <view class="flex_row al" data-id="{{detail.commodityId}}" bindtap="goAllEva">
             <view class="f24 c98">查看更多</view>
             <image src="../../img/arrow-left.png" class="jtr" />
         </view>
@@ -148,7 +149,10 @@
             <view class="f24 c66">购物车</view>
         </view>
     </view>
-    <view class="operationModel_right flex_row" wx:if="{{status}}">
+    <view class="operationModel_right orther flex_row" wx:if="{{goodType == 1}}">
+      <view bindtap="goBooking" class="f28 button buyNow goBooking tc cff">去开团</view>
+    </view>
+    <view class="operationModel_right flex_row" wx:elif="{{status}}">
         <view bindtap="addCar" class="f28 addCar tc cff">加入购物车</view>
         <view bindtap="budget" class="appointment f28 ysce tc cff">预约测量</view>
         <view bindtap="buyNow" class="f28 buyNow tc cff">立即购买</view>
@@ -193,11 +197,11 @@
                 <view bindtap="addNum" class="add_num tc f41 c98 buyNum_btn">+</view>
             </view>
         </view>
-        <view class="applyCl f28 cff tc" bindtap="addToCart">确定</view>
+        <view class="applyCl f28 cff tc" bindtap="addToCart">加入购物车</view>
     </view>
 </van-popup>
 <!-- 蒙板 -->
-<view class="modal" wx:if="{{modal}}"></view>
+<!-- <view class="modal" wx:if="{{modal}}"></view> -->
 <!-- 填写收货信息 -->
 <view class="addAddress fadeUp" wx:if="{{addressShow}}">
     <view class="top pr flex_row jc al">
@@ -228,6 +232,33 @@
     <view class="sure flex_row al jc f28 cff" catchtap="save">申请测量</view>
     <view class="tips f26">上述信息将自动保存至我的收货地址</view>
 </view>
+<!-- 蒙板 -->
+<view class="mask" wx:if="{{mask}}" catchtap="closeModal1"></view>
+<!-- 拼团弹框 -->
+<view class="modal fadeUp" wx:if="{{modal}}">
+    <image catchtap="closeModal1" class="close pa" src="../../img/cha.png"></image>
+    <view class="name tc c33 f32">参与 {{groupUserDtoList[selectIndex].userName}} 的拼单</view>
+    <view wx:if="{{groupType==0}}" class="remain tc c33 f26">
+        拼单中，差
+        <text>{{groupUserDtoList[selectIndex].surplus}}</text>
+        人, 还剩{{endtimes.day}}:{{endtimes.hou}}:{{endtimes.min}}:{{endtimes.sec}}
+    </view>
+    <scroll-view class="scroll-y" scroll-y>
+        <view class="middle flex_row al jb" wx:for="{{groupList}}" wx:key="index">
+            <view class="pr avatarList">
+                <image class="avatar" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}"></image>
+                <image class="avatar" src="../../img/hhead.png" wx:for="{{groupUserDtoList[selectIndex].surplus}}"></image>
+                <!-- <view wx:if="{{index == 0}}" class="tag pa flex_row al jc">拼主</view> -->
+            </view>
+            <!-- <view class="tc c33 f32">{{item.userName}}</view>
+            <view class="f30 c33">{{item.userPhone}}</view> -->
+        </view>
+    </scroll-view>
+    <!-- {!tool.split(userIds,userId) && groupType==0 -->
+    <view wx:if="{{!tool.split(userIds,userId) && groupType==0}}" catchtap="booking" class="add cff f28 flex_row al jc">
+        立即拼团
+    </view>
+</view>
 <!-- 选择收货地址 -->
 <view class="selectAddress fadeUp" wx:if="{{toSelectAddress}}">
     <view class="top pr flex_row jc al">
@@ -253,40 +284,41 @@
     <view class="sure cff f28 tc flex_row al jc" catchtap="confirm">申请测量</view>
 </view>
 <!-- 购物选择商品规模 -->
-<van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow1 }}" position="bottom" custom-style="max-height: 90%" round>
+<van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close1" src="../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="../../img/close.png" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">
+            <view class="goodSize_intro_name f32 c22">{{detail.commodityName}}</view>
                 <view class="googDefPrice flex_row al">
-                    <view class="price f36">￥{{currentPrice}}</view>
+                    <view class="price f30 fb">￥{{currentPrice}}</view>
                     <!-- <view class="dw f24 c99">/平方米</view> -->
                 </view>
-                <view class="goodSize_intro_name f32 c33">{{detail.commodityName}}</view>
+                
             </view>
         </view>
         <!-- 商品规格选择 -->
-        <view class="skuGroup" wx:if="{{good.commoditySpecificationList}}">
+        <view class="skuGroup buyNum_group" wx:if="{{good.commoditySpecificationList}}">
             <view class="skuGroup_list">
                 <view class='skuGroup_list_title f28 c66'>规格</view>
                 <view class="flex_row skuGroup_list_cell al">
-                    <view catchtap="switch" data-p="{{item.price}}" data-commoditySpecificationId='{{item.commoditySpecificationId}}' wx:for="{{good.commoditySpecificationList}}" wx:key="index" data-index='{{index}}' class="skuGroupCell c99 f20 {{skuIndex==index?'skuHasChose':''}}">
+                    <view bindtap="switch" data-p="{{item.price}}" data-commoditySpecificationId='{{item.commoditySpecificationId}}' wx:for="{{good.commoditySpecificationList}}" wx:key="index" data-index='{{index}}' class="sku f28 tc {{skuIndex==index?'skuHasChose rcolor':'skuGroupCell c99'}}">
                         {{item.specificationName}}
                     </view>
                 </view>
             </view>
         </view>
         <!-- 购买数量 -->
-        <view class="flex_row buyNum_group jb al ">
-            <view class="buyNum_title f26 c66">购买数量</view>
-            <view class="flex_row al">
-                <view bindtap="reduceNum" class="reduce_num tc buyNum_btn f18 c99">-</view>
-                <view class="num buyNum_btn tc f18 c33">{{goodNum}}</view>
-                <view bindtap="addNum" class="add_num tc f18 c99 buyNum_btn">+</view>
+        <view class="flex_row jb al ">
+            <view class="buyNum_title f30 c66">数量</view>
+            <view class="flex_row al number">
+                <view bindtap="reduceNum" class="reduce_num tc buyNum_btn f41 c98">-</view>
+                <view class="num buyNum_btn tc f26 c33">{{goodNum}}</view>
+                <view bindtap="addNum" class="add_num tc f41 c98 buyNum_btn">+</view>
             </view>
         </view>
-        <view class="applyCl f28 cff tc" bindtap="buy">确定</view>
+        <view class="applyCl f28 cff tc" bindtap="buy">立即购买</view>
     </view>
 </van-popup>
 <!-- 分享弹框 -->

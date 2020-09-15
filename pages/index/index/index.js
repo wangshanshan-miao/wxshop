@@ -49,6 +49,7 @@ Page({
       duration: 1000,
       current: 0
     },
+    goodSizeShow: false,
     fuliList: [{
       url: '../../../img/bg1.png'
     }, {
@@ -605,10 +606,13 @@ Page({
     })
   },
   goList(e) {
-    const index = app.getValue(e).id || 0
+    const type = app.getValue(e).type
     wx.navigateTo({
-      url: `../../index/goodsList/cg?index=${index}`
+      url: `../../index/goodsList/cg?type=${type}`
     })
+    // wx.navigateTo({
+    //   url: '/pages/location/index',
+    // })
   },
   goPt() {
     wx.navigateTo({
@@ -710,6 +714,40 @@ Page({
         url: `/pages/store/store?id=${id}`,
       })
     }
+  },
+  addCar(e) {
+    this.checkUser()
+    this.setData({
+      id: e.currentTarget.dataset.data.outId,
+      detail: e.currentTarget.dataset.data
+    })
+    this.specification()
+    this.setData({
+      goodSizeShow: true
+    })
+  },
+  checkUser() {
+    app.checkUser()
+  },
+
+  close_goodSizeShow() {
+    this.setData({
+      goodSizeShow: false
+    })
+  },
+
+  // 商品规格
+  specification() {
+    api.commoditySpecification({
+      outId: this.data.id
+    }).then(res => {
+      console.log(res)
+      const data = res.data
+      this.setData({
+        good: data,
+        /* specificationId: data.commoditySpecificationList[0].commoditySpecificationId */
+      })
+    })
   },
   // 商品详情
   goodDetail(e) {

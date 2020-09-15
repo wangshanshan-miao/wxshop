@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-popup": "../../weapp/dist/popup/index"
+  },
   "navigationBarTitleText": "品牌渠道商城",
   "enablePullDownRefresh":true
 }

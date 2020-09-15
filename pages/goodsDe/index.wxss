@@ -21,7 +21,7 @@
 .swiperOut {
     width: 100%;
 }
-.phieght {
+.pheight {
   height: 595rpx;
 }
 .hspekill {
@@ -31,11 +31,19 @@
   padding: 10rpx 0 10rpx 30rpx;
   height: 92rpx;
 }
+.skill .imgBg {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  left: 0;
+}
 .skill .lprice {
   line-height: 92rpx;
   display: inline-block;
 }
 .timedown {
+  right: 0rpx;
   width: 331rpx;
   text-align: center;
   align-items: center;
@@ -85,8 +93,12 @@
 .gleft text {
   margin-left: 12rpx;
 }
+.gright {
+  align-items: center;
+}
 .gright .person{
   margin-right: 41rpx;
+  text-align: center
 }
 .gright .btn {
   width: 153rpx;
@@ -94,6 +106,8 @@
   background: #fff8e8;
   border: 1rpx solid #ff7f11;
   border-radius: 28rpx;
+  padding: 0;
+  line-height: 55rpx;
 }
 .goodDe_intro {
     width: 100vw;
@@ -301,6 +315,10 @@
     color: #FFFFFF;
 }
 
+.goBooking {
+  width: 398rpx;
+}
+
 .addressFrom {
     padding: 30rpx;
 }
@@ -380,7 +398,7 @@
     margin-left: 22rpx;
 }
 
-.setGoodSize {
+/* .setGoodSize {
     width: 100%;
     padding: 40rpx 35rpx;
 }
@@ -394,7 +412,7 @@
 
 .googDefPrice {
     margin-bottom: 27rpx;
-    /* align-items: flex-end; */
+    align-items: flex-end;
 }
 
 .googDefPrice .price {
@@ -407,9 +425,9 @@
 }
 
 .skuGroup_list {
-    /* padding-bottom: 10rpx; */
+    /* padding-bottom: 10rpx;
     margin-bottom: 20rpx;
-    /* border-bottom: 1px solid rgba(209, 209, 209, .5); */
+    /* border-bottom: 1px solid rgba(209, 209, 209, .5);
 }
 
 .skuGroup_list_title {
@@ -467,15 +485,7 @@
 .buyNum_btn {
     height: 52rpx;
     line-height: 52rpx;
-}
-
-.close_goodSizeShow {
-    width: 35rpx;
-    height: 35rpx;
-    position: absolute;
-    top: 30rpx;
-    right: 45rpx;
-}
+} */
 
 .spell_group {
     padding: 30rpx;
@@ -979,3 +989,133 @@
 .appointment {
     background-color: #ABDAFC;
 }
+
+/* 去拼团 */
+/* 商品封面 */
+.cover {
+    width: 699rpx;
+    height: 389rpx;
+    /* background-color: fuchsia; */
+    display: block;
+    margin: 0 auto;
+}
+
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    border: 1rpx solid #707070;
+    filter: blur(25rpx);
+    -webkit-filter: blur(25rpx);
+}
+
+.userName {
+    width: 250rpx;
+}
+.modal {
+    position: fixed;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 682rpx;
+    /* height: 1027rpx; */
+    background: rgba(255, 255, 255, 1);
+    border: 1rpx solid rgba(112, 112, 112, 1);
+    opacity: 1;
+    border-radius: 20rpx;
+    overflow: hidden;
+    height: 462rpx;
+}
+
+.modal .name {
+    margin-top: 28rpx;
+    overflow: hidden;
+    width: 100%;
+    height: 45rpx;
+}
+
+.modal .remain {
+    margin-top: 26rpx;
+}
+
+.scroll-y {
+    width: 100%;
+    height: auto;
+    margin-top: 36rpx;
+    margin-bottom: 61rpx;
+}
+
+.modal .middle {
+    /* margin-top: 75rpx; */
+    height: 118rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 0 0 114rpx;
+
+}
+
+.modal .middle .tag {
+    width: 100%;
+    height: 34rpx;
+    background: rgba(51, 51, 51, 1);
+    opacity: 0.6;
+    color: #fff;
+    font-size: 20rpx;
+    left: 0;
+    bottom: 0;
+}
+
+.close {
+    width: 24rpx;
+    height: 24rpx;
+    top: 39rpx;
+    right: 30rpx;
+}
+.avatarList {
+  width: 100%;
+  height: 100%;
+}
+.avatar {
+    width: 118rpx;
+    height: 118rpx;
+    border-radius: 50%;
+    /* border: 3px solid #009DFF; */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin-right: 54rpx;
+}
+.avatar:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.virtual {
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 3px dashed #999;
+    box-sizing: border-box;
+    width: 159rpx;
+    height: 159rpx;
+    color: #C1C1C1;
+    font-size: 80rpx;
+}
+
+.modal .add {
+    width: 431rpx;
+    height: 88rpx;
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+    margin: 0 auto 29rpx;
+    border-radius: 40rpx;
+}
+
+.modal text {
+    color: #D32E32;
+}
+

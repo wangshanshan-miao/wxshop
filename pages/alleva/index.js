@@ -58,8 +58,8 @@ Page({
   onLoad: function (options) {
       this.setData({
         id : options.id,
-          baseURL,
-          imgBaseUrl
+        baseURL,
+        imgBaseUrl
       })
   },
 
