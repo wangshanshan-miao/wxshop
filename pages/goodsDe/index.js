@@ -234,7 +234,7 @@ Page({
     onShow: function () {
         this.goodDetail()
         this.specification()
-        this.address()
+        // this.address()
     },
     onHide() {
       clearInterval(timer)
@@ -427,16 +427,6 @@ Page({
             this.goodDetail()
         })
     },
-    // 收获地址列表
-    address() {
-        api.getAddressList({
-            userId: wx.getStorageSync('userId')
-        }).then(res => {
-            this.setData({
-                addressList: res.data.list
-            })
-        })
-    },
     // 预约测量
     createMetricalOrder() {
         this.checkUser()
@@ -561,7 +551,8 @@ Page({
           commoditySpecificationId: this.data.specificationId,
           amount: this.data.goodNum,
           outId: this.data.id,
-          userId: wx.getStorageSync("userId")
+          userId: '81'
+          // userId: wx.getStorageSync("userId")
         }).then(res => {
           this.setData({
             goodSizeShow: false
@@ -696,43 +687,6 @@ Page({
         this.closeAddress()
         this.createMetricalOrder()
     },
-    // 新增收货地址
-    save() {
-        const codeName = this.data.codeName
-        const addressPhone = this.data.addressPhone
-        const addressName = this.data.addressName
-        const receiverAddress = this.data.receiverAddress
-        if (!(codeName && addressPhone && addressName && receiverAddress)) {
-            wx.showToast({
-                title: '请填写完整信息',
-                icon: 'none'
-            })
-            return false
-        }
-        api.addAddress({
-            userId: wx.getStorageSync('userId'),
-            areaCode: this.data.areaCode,
-            addressName,
-            addressPhone,
-            codeName,
-            receiverAddress,
-            def: 1
-        }).then(res => {
-            if (res.status == 200) {
-                wx.showToast({
-                    title: '操作成功',
-                    icon: 'none'
-                })
-                this.address()
-                // 新增之后去选择收货地址
-                this.setData({
-                    toSelectAddress: true,
-                    addressShow: false,
-                    modal: true
-                })
-            }
-        })
-    },
     inputName(e) {
         this.setData({
             addressName: e.detail.value.trim()
@@ -789,19 +743,22 @@ Page({
             return false
         }
         api.createCommodityOrder({
-            orderType: 0,
             merchantId: this.data.merchantId,
-            commodityIds: [this.data.id],
+            outIds: [this.data.id],
             commoditySpecificationIds: [specificationId],
-            amounts: [this.data.goodNum]
+            amounts: [this.data.goodNum],
+            userId: '81'
         }).then(res => {
             // console.log(res)
             this.setData({
                 goodSizeShow1: false
             })
             let id = res.data.orderId
+            let guige = encodeURIComponent(JSON.stringify(this.data.good.commoditySpecificationList[this.data.skuIndex]))
+            let num = this.data.goodNum
+            let info = encodeURIComponent(JSON.stringify(this.data.detail))
             wx.navigateTo({
-                url: `/pages/self/ptDetail/index?id=${id}`,
+              url: `/pages/order/order?detail=${info}&orderId=${id}&num=${num}&guige=${guige}`,
             })
         })
     },

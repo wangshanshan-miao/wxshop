@@ -2,8 +2,8 @@
 <!-- 订单 -->
 <view class="orderModel boxs">
 	<view class="orderTabs boxs flex_row jb">
-		<view wx:for="{{tabarr}}" bindtap="changeTab" data-status='{{item.index}}' data-index="{{index}}" wx:key="index" class=" pr orderTabs_list f28 {{orderTabsIndex==index?'choseOrderTab':''}}">
-			{{item.name}}
+		<view wx:for="{{tabarr}}" bindtap="changeTab" data-index='{{index}}' wx:key="index" class=" pr orderTabs_list f28 {{orderTabsIndex==index?'choseOrderTab':''}}">
+			{{item}}
 		</view>
 	</view>
 	<view class="shopOrderList" wx:for="{{list}}" wx:key="index" catchtap="goDetail" data-index="{{index}}" data-id="{{item.orderId}}">
@@ -38,19 +38,16 @@
 				</view>
 			</view>
 		</view>
-		<view class="shopOrderList_foot">
+		<view class="shopOrderList_foot flex_row jb">
 			<!-- <view class="f26 c99">共{{item.orderCommodityDtoList.length}}件商品</view> -->
-			<!-- <view class="f24 c99">实付金额:<text class="goodOrder_list_money">￥{{item.totalPrice}}</text></view> -->
+			<view class="f24 c99">实付金额:<text class="goodOrder_list_money">￥{{item.totalPrice}}</text></view>
 
-			<view class="foot_btn_group flex_row al" style="justify-content: flex-end;">
+			<view class="foot_btn_group flex_row al">
 				<!-- <view wx:if="{{item.orderStatus==8}}" class="hollow_btn tc chOrder_btn f24">查看二维码</view> -->
 				<!-- <view wx:if="{{item.orderStatus==4}}" class="sure_btn tc chOrder_btn f26 cff">
 					查看物流
 				</view> -->
-        <!-- 拼团详情 -->
-        <view catchtap="goDetail" class="f26 cff debtn tc">拼团详情</view>
 				<!-- 已发货 确认收货 -->
-        
 				<view catchtap="confirm" data-id="{{item.orderId}}" wx:if="{{item.orderStatus==4}}" class="sure_btn tc chOrder_btn f26 cff">
 					确认收货
 				</view>

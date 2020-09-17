@@ -98,8 +98,11 @@ Page({
           title: '操作成功',
           icon: 'none'
         })
-        wx.navigateBack({
-          complete: (res) => {},
+        // wx.navigateBack({
+        //   complete: (res) => {},
+        // })
+        wx.navigateTo({
+          url: '../index?from=${this.data.from}',
         })
       }
     })
@@ -108,7 +111,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.from) {
+      this.setData({
+        form: options.from
+      })
+    } else {
+      this.setData({
+        form: ''
+      })
+    }
   },
 
   /**

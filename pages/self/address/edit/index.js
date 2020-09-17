@@ -98,6 +98,9 @@ Page({
           icon: 'none'
         })
       }
+      wx.navigateBack({
+        delta: 1
+      })
     })
   },
   // 删除收获地址

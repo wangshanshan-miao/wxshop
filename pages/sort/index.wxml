@@ -1,4 +1,4 @@
-<!-- 搜索框 -->
+搜索框
 <view bindtap="toSearch" class="search_group boxs">
 	<image class="search_icon" src="../../img/search.png" />
 	<input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />

@@ -32,11 +32,13 @@
     "pages/self/yhq/yhq",
     "pages/self/address/index",
     "pages/self/ptorder/index",
+    "pages/self/allorder/index",
     "pages/self/clorder/index",
     "pages/self/editName/index",
     "pages/voucher/voucher",
     "pages/self/clDetail/index",
     "pages/self/ptDetail/index",
+    "pages/self/allDetail/index",
     "pages/self/refund/index",
     "pages/self/yhq/detail/index",
     "pages/self/yhq/explain/index",
@@ -55,7 +57,10 @@
     "pages/self/yhq/detail2/index",
     "pages/notice/index",
     "pages/sort/index",
-    "pages/talk/index"
+    "pages/talk/index",
+    "pages/order/order",
+    "pages/address/editAdd/index",
+    "pages/address/list/index"
   ],
   "plugins": {
     "routePlan": {

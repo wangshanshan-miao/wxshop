@@ -45,6 +45,9 @@ page {
 .pa {
     position: absolute;
 }
+.pf {
+  position: fixed;
+}
 
 .plr30 {
     padding: 0 30rpx;
@@ -69,7 +72,7 @@ page {
   white-space: normal !important;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  height: 72rpx;
+  max-height: 72rpx;
 }
 
 .tc {

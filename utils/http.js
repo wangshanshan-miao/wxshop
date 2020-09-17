@@ -2,7 +2,8 @@ const baseURL = 'https://www.ykdzw.com/unite/';
 
 
 const imgBaseUrl ='https://www.ykdzw.com/oss/data/'
-const appId =wx.getAccountInfoSync().miniProgram.appId
+const appId = wx.getStorageSync('appId')
+wx.setStorageSync('userId', '81');
 class Http {
   request(url, data = {}, method = 'GET', header) {
     return new Promise((reslove, reject) => {

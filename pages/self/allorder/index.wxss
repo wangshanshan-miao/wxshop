@@ -1,5 +1,4 @@
 /* pages/self/ptorder/index.wxss */
-/* pages/self/ptorder/index.wxss */
 /* pages/self/clorder/index.wxss */
 .orderModel {
     width: 100%;
@@ -73,16 +72,16 @@
 }
 
 .status0,
-.status5 {
+.status3 {
     color: #FF0000;
 }
 
 .status1,
-.status6 {
+.status4 {
     color: #FF7F11;
 }
 
-.status11 {
+.status8 {
     color: #07B94F;
 }
 
@@ -123,7 +122,6 @@
 .shopOrderList_foot {
     border-top: 1px solid #F6F6F6;
     padding: 30rpx;
-    text-align: right; 
 }
 
 .cancle_btn {
@@ -163,11 +161,4 @@
     border-radius: 25px;
     background: #fff;
     color: #a4aeb9;
-}
-.debtn {
-  width: 142rpx;
-  height: 49rpx;
-  line-height: 49rpx;
-  background: linear-gradient(132deg,#fca153 11%, #fb8a29 80%);
-  border-radius: 25rpx;
 }

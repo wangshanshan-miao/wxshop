@@ -269,12 +269,8 @@ Page({
     // 普通订单详情
     normalOrder(e) {
         if (app.checkUser()) {
-            
-            const index = app.getValue(e).index
-            const status = app.getValue(e).status
-            console.log(index)
             wx.navigateTo({
-                url: `/pages/self/ptorder/index?index=${index}&status=${status}`,
+                url: `/pages/self/ptorder/index`,
             })
         }
     },
@@ -331,7 +327,7 @@ Page({
             
             if (this.data.userOrderTab == 0) {
                 wx.navigateTo({
-                    url: '../ptorder/index'
+                    url: '../allorder/index'
                 });
             } else {
                 wx.navigateTo({

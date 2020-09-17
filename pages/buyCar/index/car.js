@@ -34,7 +34,8 @@ Page({
             title: '加载中...',
         })
         api.myCart({
-            "userId": wx.getStorageSync('userId'),
+            // "userId": wx.getStorageSync('userId'),
+            "userId": "81",
             "pageNum": this.data.pageNum,
             "pageSize": 10
         }).then(res => {
@@ -42,22 +43,22 @@ Page({
             wx.hideLoading({})
             const data = res.data
             let newArr = [...arr, ...data.list]
-            let result = newArr.map(item => {
-                item.commodityDtoList.map(item => {
-                    item.select = false
-                    return item
-                })
-                return item
-            })
+            // let result = newArr.map(item => {
+            //     item.commodityDtoList.map(item => {
+            //         item.select = false
+            //         return item
+            //     })
+            //     return item
+            // })
             // console.log(result)
             this.setData({
                 totalPage: data.totalPage,
                 pageNum: data.pageNum,
                 // list: [...arr, ...data.list],
                 isRequest: false,
-                arr: result
+                arr: newArr
             })
-            this.checkSelectAll()
+            // this.checkSelectAll()
         })
     },
     // 总计

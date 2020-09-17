@@ -45,9 +45,12 @@
   box-sizing: border-box;
   padding-right: 10rpx;
 }
+.list:nth-last-of-type(1) {
+  border-bottom: none;
+}
 
 .list>.left {
-  width: 593rpx;
+  width: 592rpx;
 }
 
 .list>.left>.left-top .name {
@@ -72,7 +75,7 @@
 .list>.middle {
   width: 2rpx;
   height: 61rpx;
-  background-color: #E3E1E2;
+  background-color: #c2c2c2;
 }
 
 .list>.edit {

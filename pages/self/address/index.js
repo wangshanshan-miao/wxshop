@@ -12,7 +12,8 @@ Page({
     flag : false,
     list: [],
     isRequest: false,
-    pageNum: 1
+    pageNum: 1,
+    isClick: false
   },
   // 新增收货地址
   add() {
@@ -20,18 +21,21 @@ Page({
       url: '/pages/self/address/add/index',
     })
   },
+  noclick () {
+
+  },
+  // 选择收货地址
   select(e){
-    if (this.data.flag) {
-      const id = app.getValue(e).id
-      // console.log(id)
-      app.globalData.addressId = id
-
-      wx.navigateBack({
-        complete: (res) => {},
-      })
-
-      return
-    }
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - 2]
+    const index = app.getValue(e).index
+    // console.log(id)
+    prevPage.setData({
+      address: this.data.list[index]
+    })
+    wx.navigateBack({
+      delta: 1
+    })
   },
   // 编辑
   edit(e) {
@@ -68,6 +72,15 @@ Page({
     if (options.flag) {
       this.setData({
         flag : true
+      })
+    }
+    if (options.from !== '') {
+      this.setData({
+        isClick: true
+      })
+    } else {
+      this.setData({
+        isClick: false
       })
     }
   },

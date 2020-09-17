@@ -259,34 +259,10 @@
         立即拼团
     </view>
 </view>
-<!-- 选择收货地址 -->
-<view class="selectAddress fadeUp" wx:if="{{toSelectAddress}}">
-    <view class="top pr flex_row jc al">
-        <view class="title c33 f28 tc">选择收货地址</view>
-        <image class="close pa" catchtap="closeAddress" src="../../img/cha.png"></image>
-    </view>
-    <scroll-view class="scroll-y" scroll-y>
-        <view class="list flex_row al" catchtap="selectAddress" data-id="{{item.addressId}}" data-index="{{index}}" wx:for="{{addressList}}" wx:key="addressId">
-            <image src="../../img/dxh.png" wx:if="{{selectIndex == index}}"></image>
-            <image wx:else src="../../img/dxn.png"></image>
-            <view class="right">
-                <view class="right-top flex_row al jb">
-                    <view class="left flex_row al ">
-                        <view class="name f32 c22">{{item.addressName}}</view>
-                        <image wx:if="{{item.default}}" class="default" src="../../img/mr.png"></image>
-                    </view>
-                    <view class="tel f28 c22">{{item.addressPhone}}</view>
-                </view>
-                <view class="right-bottom c99 f28">{{item.receiverAddress}}</view>
-            </view>
-        </view>
-    </scroll-view>
-    <view class="sure cff f28 tc flex_row al jc" catchtap="confirm">申请测量</view>
-</view>
 <!-- 购物选择商品规模 -->
-<van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow }}" position="bottom" custom-style="max-height: 90%" round>
+<van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow1 }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close1" src="../../img/close.png" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">

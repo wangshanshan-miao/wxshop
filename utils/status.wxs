@@ -17,10 +17,10 @@ var status = function (num) {
       return "已发货"
       break;
     case 5:
-      return "待测量"
+      return "拼团失败"
       break;
     case 6:
-      return "测量中"
+      return "拼团成功"
       break;
     case 7:
       return "待评价"
@@ -33,6 +33,9 @@ var status = function (num) {
       break;
     case 10:
       return "已完成"
+      break;
+    case 11:
+      return "拼团中"
       break;
     default:
       break;
