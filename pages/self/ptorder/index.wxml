@@ -43,7 +43,7 @@
 					查看物流
 				</view> -->
         <!-- 拼团详情 -->
-        <view catchtap="goDetail" class="f26 cff debtn tc">拼团详情</view>
+        <view catchtap="goDetail" class="f26 cff debtn tc" data-id="{{item.orderId}}">拼团详情</view>
 				<!-- 已发货 确认收货 -->
         
 				<view catchtap="confirm" data-id="{{item.orderId}}" wx:if="{{item.orderStatus==4}}" class="sure_btn tc chOrder_btn f26 cff">

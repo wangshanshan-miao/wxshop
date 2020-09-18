@@ -70,7 +70,13 @@ page {
 }
 
 .goodName {
-    /* margin-bottom: 30rpx; */
+    margin-bottom: 52rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    min-height: 80rpx;
 }
 
 .goodckOrder_list_num {
@@ -522,4 +528,32 @@ page {
     bottom: 0;
     box-shadow: 0px -6px 14px 0px rgba(0, 0, 0, 0.06);
     height: 130rpx;
+}
+
+.userInfo {
+    margin-right: 58rpx;
+    display: inline-block;
+}
+
+.avatar {
+    width: 118rpx;
+    height: 118rpx;
+    border-radius: 50%;
+}
+
+.userTag {
+    width: 94rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
+    border-radius: 21rpx;
+    text-align: center;
+}
+
+.userList {
+    justify-content: center;
+    margin: 30rpx 0;
+}
+.listRight{
+    width: 100%;
 }

@@ -20,31 +20,34 @@ Page({
         couponList: [],
         isRequest: false,
         pageNum: 1,
-        voucherId: null
+        voucherId: null,
+        userList: [],
+        oneBookingSum: 0,
+        bookingSum: 0
     },
     // 确认收货
-    confirm(){
+    confirm() {
         const self = this
         wx.showModal({
             title: '您确定已经收到该商品？',
             content: '点击确定继续',
-            success (res) {
-              if (res.confirm) {
-                api.delCommodityOrder({
-                    orderId : self.data.id,
-                    orderStatus : 7
-                }).then(res => {
-                    console.log(res)
-                    if (res.status == 200) {
-                        self.orderDetail()
-                    }
-                })
+            success(res) {
+                if (res.confirm) {
+                    api.delCommodityOrder({
+                        orderId: self.data.id,
+                        orderStatus: 7
+                    }).then(res => {
+                        console.log(res)
+                        if (res.status == 200) {
+                            self.orderDetail()
+                        }
+                    })
 
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
             }
-          })
+        })
 
     },
     goStore(e) {
@@ -53,10 +56,10 @@ Page({
             url: `/pages/store/store?id=${id}`,
         })
     },
-    comment(){
+    comment() {
         const id = this.data.id
         wx.navigateTo({
-          url: `/pages/self/comment/index.js?id=${id}`,
+            url: `/pages/self/comment/index.js?id=${id}`,
         })
     },
     // 订单详情
@@ -65,6 +68,13 @@ Page({
             orderId: this.data.id
         }).then(res => {
             const data = res.data
+            for (let i = 0; i < data.oneBookingSum; i++) {
+                if (!data.userList[i]) {
+                    data.userList.push({
+                        headUrl: ''
+                    })
+                }
+            }
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
                 // addressId: data.address.addressId,
@@ -83,10 +93,14 @@ Page({
                 orderNumber: data.order.orderNumber,
                 orderTime: data.order.orderTime,
                 orderPrice: data.order.orderPrice, // 订单总额
-                updateTime: data.order.updateTime ,// 上一次操作的时间
+                updateTime: data.order.updateTime, // 上一次操作的时间
                 name: data.order.addressName,
                 phone: data.order.addressPhone,
-                address: data.order.receiverAddress
+                address: data.order.receiverAddress,
+                userList: data.userList,
+                oneBookingSum: data.oneBookingSum,
+                bookingSum: data.bookingSum
+
             })
             // let status = this.data.orderStatus
             // if (status == 1) {
@@ -103,8 +117,10 @@ Page({
             }
         })
     },
-    onClose(){
-        this.setData({ show: false });
+    onClose() {
+        this.setData({
+            show: false
+        });
     },
     // 选中优惠券
     select(e) {
@@ -116,7 +132,7 @@ Page({
             modal: false,
             mask: false,
             voucherPrice: price, //优惠金额
-            total: ((this.data.orderPrice*100 - price*100)/100).toFixed(2) // 实际金额 = 订单总额 - 优惠价格
+            total: ((this.data.orderPrice * 100 - price * 100) / 100).toFixed(2) // 实际金额 = 订单总额 - 优惠价格
         })
     },
     // 取消
@@ -164,10 +180,10 @@ Page({
     // 付款页面
     pay() {
         const addressId = app.globalData.globalData || this.data.addressId
-        if(!addressId){
+        if (!addressId) {
             wx.showToast({
-              title: '请添加收货地址',
-              icon :"none"
+                title: '请添加收货地址',
+                icon: "none"
             })
             return
         }
