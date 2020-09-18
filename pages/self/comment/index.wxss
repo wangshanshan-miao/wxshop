@@ -22,7 +22,9 @@
 .title {
   line-height: 37rpx;
 }
-
+.guige {
+  margin: 13rpx 0 10rpx;
+}
 .price {
   color: #D32E32;
   font-size: 32rpx;
@@ -71,4 +73,26 @@ textarea {
   border-radius: 210rpx;
   margin: 228rpx auto;
   color: #fff;
+}
+
+.evaluate {
+  margin: 30rpx auto 36rpx;
+  align-items: center;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.evaluate_box {
+  position: relative;
+  width: 149rpx;
+}
+.evaluate_box .star-image {
+ width: 24rpx;
+ height: 23rpx;
+ position: absolute;
+}
+.star-image .item {
+ position: absolute;
+ top: 0rpx;
+ width: 24rpx;
+ height: 23rpx;
 }

@@ -11,9 +11,9 @@
 			<view class='f32 cff'>已取消</view>
 			<image class="order_state_img" src="../../../img/or_yqx.png" />
 		</view>
-		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8}}">
+		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8 || orderStatus==7}}">
 			<view class='f32 cff'>交易成功</view>
-			<image class="order_state_img" src="../../../img/or_ywc.png" />
+			<image class="order_state_img" src="../../../img/or-wait.png" />
 		</view>
 		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==4}}">
 			<view class='f32 cff'>卖家已发货</view>
@@ -166,7 +166,7 @@
 			<view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==7}}">
 				立即评价
 			</view>
-            <view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
+            <view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
 				查看评价
 			</view>
 		</view>

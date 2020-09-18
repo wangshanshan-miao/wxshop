@@ -56,8 +56,14 @@ Page({
     comment(){
         const id = this.data.id
         wx.navigateTo({
-          url: `/pages/self/comment/index.js?id=${id}`,
+          url: `/pages/self/comment/index?id=${id}`,
         })
+    },
+    evaluate(){
+      const id = this.data.id
+      wx.navigateTo({
+        url: `/pages/self/evaluate/evaluate?id=${id}`,
+      })
     },
     // 订单详情
     orderDetail() {

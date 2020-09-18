@@ -1,0 +1,23 @@
+<!--pages/self/msg/msg.wxml-->
+<view class="shadow">
+  <view class="flex_row">
+    <view wx:for="{{tabs}}" data-index="{{index}}" catchtap="clickTab" class="{{active == index ? 'f30 c22 active' : 'f28 c66'}} tc tab flex_col">
+      <view style="height: calc(100% - 6rpx)">
+        <text>{{item}}(</text>
+        <text>{{tabs.length}})</text>
+      </view>
+      <view class="border"></view>
+    </view>
+  </view>
+  <view class="msgList">
+    <view class="list" data-id="{{item.feedbackId}}" wx:for="{{list}}">
+      <view class="c33 f30 hidden2">{{item.content}}</view>
+      <view class="flex_row jb f26 c99">
+        <text>{{item.createTime}}</text>
+        <text wx:if="{{item.feedbackType == 0}}" class="cf1 btn tc btn1">未回复</text>
+        <text wx:elif="{{item.feedbackType == 1}}" class="btn tc btn2">已回复</text>
+      </view>
+    </view>
+  </view>
+</view>
+

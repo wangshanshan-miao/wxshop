@@ -75,7 +75,7 @@
 					<image src="../../../img/arrow-left.png" class="arrowLeft"></image>
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="1" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="2" data-status="1" bindtap="normalOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon2.png" />
 						<text class="f30 c33 fb">待发货</text>
@@ -85,7 +85,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="4" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="4" bindtap="normalOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon3.png" />
 						<text class="f30 c33 fb">待收货</text>
@@ -95,7 +95,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="normalOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon4.png" />
 						<text class="f30 c33 fb">待评价</text>

@@ -266,11 +266,13 @@ Page({
         }
         
     },
-    // 普通订单详情
+    // 拼团订单详情
     normalOrder(e) {
         if (app.checkUser()) {
+          const index = app.getValue(e).index
+          const status = app.getValue(e).status
             wx.navigateTo({
-                url: `/pages/self/ptorder/index`,
+              url: `/pages/self/ptorder/index?index=${index}&status=${status}`,
             })
         }
     },
@@ -324,7 +326,6 @@ Page({
     },
     goAllOrder() {
         if (app.checkUser()) {
-            
             if (this.data.userOrderTab == 0) {
                 wx.navigateTo({
                     url: '../allorder/index'

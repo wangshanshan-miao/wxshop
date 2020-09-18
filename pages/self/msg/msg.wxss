@@ -1,0 +1,35 @@
+/* pages/self/msg/msg.wxss */
+/* pages/self/evaluate/evaluate.wxss */
+.tab {
+  width: 50%;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  height: 104rpx;
+  line-height: 104rpx;
+  align-items: center
+}
+.tab text {
+  margin-bottom: 32rpx;
+}
+.active .border {
+  background: #FB9467;
+  width: 50rpx;
+  height: 6rpx;
+}
+.list {
+  width: 94%;
+  margin: 0 auto;
+  padding: 46rpx 0 27rpx;
+  border-bottom: 1rpx solid rgba(0,0,0,0.12);
+}
+.btn {
+  border-radius: 25rpx;
+  width: 142rpx;
+  height: 49rpx;
+  line-height: 49rpx;
+}
+.btn2 {
+  border: 1rpx solid #999;
+}
+.btn2 {
+  border: 1rpx solid #ff7f11;
+}

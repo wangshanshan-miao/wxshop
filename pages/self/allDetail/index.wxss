@@ -28,6 +28,7 @@ page {
 .order_state_img {
     width: 124rpx;
     height: 124rpx;
+    margin-top: 15rpx;
 }
 
 .shopOrderList {
@@ -156,19 +157,6 @@ page {
 
 .orderIntro_list_title {
     flex-shrink: 0;
-}
-
-.ckOrder_eva {
-    /* width: 47%; */
-    /* width: 220rpx; */
-    height: 88rpx;
-    line-height: 88rpx;
-    margin: 20rpx auto;
-    /* background: #009DFF; */
-    border-radius: 200rpx;
-    width: 431rpx;
-    background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
-
 }
 
 .ckOrder_ewm {
@@ -506,20 +494,11 @@ page {
 .showCkOrder_state {
     width: 750rpx;
     height: 191rpx;
+    line-height: 144rpx;
     padding: 0 66rpx;
     background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
 }
 
 .cf0 {
     color: #FF0000;
-}
-
-.orderGroup {
-    position: fixed;
-    background: #fff;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: 0px -6px 14px 0px rgba(0, 0, 0, 0.06);
-    height: 130rpx;
 }

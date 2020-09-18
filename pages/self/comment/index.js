@@ -11,7 +11,12 @@ Page({
    */
   data: {
     evaluateUrl: '',
-    list: []
+    list: [],
+    stars: [0, 1, 2, 3, 4],
+    normalSrc: '../../../img/star1.png',
+    selectedSrc: '../../../img/star.png',
+    score: [],
+    number: 5
   },
   // 订单详情
   orderDetail() {
@@ -20,15 +25,32 @@ Page({
     }).then(res => {
       // console.log(res)
       const data = res.data
+      const outIds = []
+      for(var i in data.orderCommodityList) {
+        outIds[i]= data.orderCommodityList[i].outId
+      }
       this.setData({
-        list: data.orderDto.orderCommodityDtoList
+        list: data.orderCommodityList,
+        outId: outIds
       })
     })
   },
   // 输入
   inputValue(e) {
+    const evaluateContents = []
+    const index = app.getValue(e).index
+    evaluateContents[index] = e.detail.value.trim()
     this.setData({
-      evaluateContent: e.detail.value.trim()
+      evaluateContents
+    })
+  },
+  //点击星星
+  selectRight: function (e) {
+    const score = []
+    const index = app.getValue(e).index
+    score[index] = e.currentTarget.dataset.score
+    this.setData({
+      score: score
     })
   },
   // 上传图片
@@ -56,28 +78,35 @@ Page({
   },
   // 提交
   submit() {
-    const evaluateContent = this.data.evaluateContent
-    if (!evaluateContent) {
+    const evaluateContent = this.data.evaluateContents
+    if (!evaluateContent.length) {
       wx.showToast({
         title: '请输入评价内容',
         icon: 'none'
       })
       return false
     }
+    const id = this.data.id
     api.addEvaluate({
       userId: wx.getStorageSync('userId'),
       orderId: this.data.id,
-      evaluateContent,
-      evaluateUrl: this.data.evaluateUrl
+      evaluateContents: this.data.evaluateContents,
+      evaluateLevels: this.data.score,
+      outIds: this.data.outId
     }).then(res => {
       // console.log(res)
-      if (res.status == 200) {
+      if (res.status == 200 && res.data == 1) {
         wx.showToast({
           title: '评价成功',
           icon: "none"
         })
-        wx.navigateBack({
-          complete: (res) => {},
+        wx.navigateTo({
+          url: `/pages/self/evaluate/evaluate?id=${id}`,
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: "none"
         })
       }
     })
@@ -89,7 +118,7 @@ Page({
     this.setData({
         baseURL,
         imgBaseUrl,
-      id: options.id
+        id: options.id
     })
   },
   // 

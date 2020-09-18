@@ -106,6 +106,7 @@
                     <text class="c33 f26">{{detail.userName}}</text>
                     <view class="stars">
                       <image wx:for="{{evaluateLevel}}" wx:key="index" src="../../img/star.png"></image>
+                      <image wx:for="{{5 - evaluateLevel}}" wx:key="index" src="../../img/star1.png"></image>
                     </view>
                   </view>
                   <text class="f24 c98">{{detail.date}}</text>

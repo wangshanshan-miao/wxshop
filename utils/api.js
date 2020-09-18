@@ -270,6 +270,10 @@ class Api extends Http {
   orderDetail(data) {
     return this.request('api/order/getCommodityOrder', data, 'GET')
   }
+  // 评价列表
+  evaList(data){
+    return this.request('api/evaluate/getOrderCommodity', data, 'GET')
+  }
   // 结算商品订单
   settleCommodityOrder(data) {
     return this.request('api/order/settleCommodityOrder', data, 'POST')
@@ -354,6 +358,10 @@ class Api extends Http {
   // 查询联盟轮播图 
   selectAllianceCarouseList(data) {
     return this.request('api/home/selectAllianceCarouseList', data)
+  }
+  // 留言板
+  feedbackList () {
+    return this.request('api/feedback/feedbackList', data, 'POST')
   }
 }
 

@@ -48,7 +48,7 @@
     "pages/self/join/index",
     "pages/self/address/add/index",
     "pages/self/address/edit/index",
-    "pages/self/comment/index.js",
+    "pages/self/comment/index",
     "pages/self/pay/index",
     "pages/ptDe/index",
     "pages/ptDe/bookingList/index",
@@ -60,7 +60,9 @@
     "pages/talk/index",
     "pages/order/order",
     "pages/address/editAdd/index",
-    "pages/address/list/index"
+    "pages/address/list/index",
+    "pages/self/evaluate/evaluate",
+    "pages/self/msg/msg"
   ],
   "plugins": {
     "routePlan": {
