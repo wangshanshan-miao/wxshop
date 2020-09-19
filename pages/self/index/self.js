@@ -11,12 +11,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userOrderTab: 0,
-        userInfo: {},
-        modal: false,
-        getuserInfo: false,
-        show: false,
-        gift: false,
+      userOrderTab: 0,
+      userInfo: {},
+      modal: false,
+      getuserInfo: false,
+      show: false,
+      gift: false,
+      showPhone: false
     },
     // 关闭红包
     closeCoupon() {
@@ -100,6 +101,19 @@ Page({
         }
         this.closeModal()
     },
+    // 留言板
+    comment () {
+      wx.navigateTo({
+        url: '../msg/msg',
+      })
+    },
+
+    // 购物车
+    car () {
+      wx.navigateTo({
+        url: '../../buyCar/index/car',
+      })
+    },
     // 获取用户信息
     bindGetUserInfo(e) {
         const self = this
@@ -139,7 +153,8 @@ Page({
     closeModal() {
         this.setData({
             show: false,
-            modal: false
+            modal: false,
+            showPhone: false
         })
     },
     // 用户信息
@@ -232,6 +247,17 @@ Page({
     onShow: function () {
         this.userInfo()
     },
+    // 联系我们
+    contact () {
+      this.setData({
+        showPhone: true
+      })
+    },
+    call () {
+      wx.makePhoneCall({
+        phoneNumber: '400-888-8090',
+      })
+    },
     // 我的收获地址
     address() {
         if (app.checkUser()) {
@@ -275,6 +301,16 @@ Page({
               url: `/pages/self/ptorder/index?index=${index}&status=${status}`,
             })
         }
+    },
+    // 普通订单详情
+    allOrder(e) {
+      if (app.checkUser()) {
+        const index = app.getValue(e).index
+        const status = app.getValue(e).status
+        wx.navigateTo({
+          url: `/pages/self/allorder/index?index=${index}&status=${status}`,
+        })
+      }
     },
     // 测量订单详情
     measureOrder(e) {

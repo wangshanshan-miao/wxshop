@@ -414,3 +414,43 @@
     left: 50%;
     bottom: -120rpx;
 }
+.contact {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.contact::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background: rgba(0,0,0,0.5);
+    filter: blur(30rpx);
+    -webkit-filter: blur(3px);
+}
+.contact .boxs {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #707070;
+  border-radius: 12rpx;
+  margin: 406rpx 4% 0;
+  width: 92%;
+  padding: 115rpx 0 30rpx;
+
+}
+.contact .img {
+  width: 21rpx;
+  height: 21rpx;
+  top: 28rpx;
+  right: 28rpx;
+}
+.contact .mobile {
+  width: 431rpx;
+  background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 210rpx;
+}

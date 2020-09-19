@@ -62,7 +62,9 @@
     "pages/address/editAdd/index",
     "pages/address/list/index",
     "pages/self/evaluate/evaluate",
-    "pages/self/msg/msg"
+    "pages/self/msg/msg",
+    "pages/self/msgDetail/index",
+    "pages/self/news/news"
   ],
   "plugins": {
     "routePlan": {

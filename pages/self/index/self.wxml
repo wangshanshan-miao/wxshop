@@ -67,7 +67,7 @@
 		<view class="orderState">
 			<!-- 普通订单的数据操作 -->
 			<view wx:if="{{userOrderTab==0}}" class="commonOrder boxs">
-				<view class="commonOrder_cell flex_row jb al" data-index="1" data-status="0" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="1" data-status="0" bindtap="allOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon1.png" />
 						<text class="f30 c33 fb">待付款</text>
@@ -75,7 +75,7 @@
 					<image src="../../../img/arrow-left.png" class="arrowLeft"></image>
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="2" data-status="1" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="2" data-status="1" bindtap="allOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon2.png" />
 						<text class="f30 c33 fb">待发货</text>
@@ -85,7 +85,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="4" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="4" bindtap="allOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon3.png" />
 						<text class="f30 c33 fb">待收货</text>
@@ -95,7 +95,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="allOrder">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon4.png" />
 						<text class="f30 c33 fb">待评价</text>
@@ -168,7 +168,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="4" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="4" bindtap="contact">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon7.png" />
 						<text class="f30 c33 fb">联系我们</text>
@@ -178,7 +178,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="normalOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="comment">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon8.png" />
 						<text class="f30 c33 fb">留言板</text>
@@ -188,7 +188,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.evaluateNum)}}">{{tools.filter(userInfo.evaluateNum)}}</view> -->
 				</view>
-                <view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="normalOrder">
+                <view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="car">
 					<view class="flex_row al">
 						<image src="../../../img/selfIcon9.png" />
 						<text class="f30 c33 fb">购物车</text>
@@ -201,6 +201,7 @@
 			</view>
 		</view>
 	</view>
+
 	<!-- 其他的操作模块 -->
 	<!-- <view class="otherModel boxs ">
 		<view class="flex_row jb al">
@@ -234,7 +235,14 @@
 	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
 	<!-- <button class="cff tc button flex_row al jc" >授权登录</button> -->
 </view>
-
+<!-- 联系方式遮罩 -->
+<view class="pa contact" wx:if="{{showPhone}}">
+  <view class="boxs pr flex_col">
+    <image class="pa img" catchtap="closeModal" src="../../../img/cha.png"></image>
+    <view class="f30 fb c33" style="margin-bottom: 61rpx;">平台热线：400-888-8090</view>
+    <view class="mobile f28 cff tc" catchtap="call">立即呼叫</view>
+  </view>
+</view>
 <!-- 授权登录 -->
 <view class="login" wx:if="{{getuserInfo}}">
 	<view class="header flex_col jc al">

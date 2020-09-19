@@ -1,0 +1,28 @@
+/* pages/self/msgDetail/index.wxss */
+.msg {
+  width: 94%;
+  margin: 0 3%;
+  padding: 37rpx 0 26rpx;
+}
+.btn {
+  border-radius: 25rpx;
+  width: 142rpx;
+  height: 49rpx;
+  line-height: 49rpx;
+}
+.btn2 {
+  border: 1rpx solid #999;
+}
+.btn1 {
+  border: 1rpx solid #ff7f11;
+}
+.return {
+  background: #F6F6F6;
+  border-radius: 10rpx;
+  margin-top: 44rpx;
+  padding: 26rpx 0 26rpx;
+}
+.return view {
+  width: 96%;
+  margin: 0 auto;
+}

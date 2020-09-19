@@ -324,7 +324,7 @@ class Api extends Http {
   }
   // 消息详情
   messageDetail(data) {
-    return this.request('api/message/getMessageDetail', data, 'POST')
+    return this.request('api/message/getMessageDetail', data, 'GET')
   }
   // 获取微信token
   getWXToken(data) {
@@ -360,8 +360,12 @@ class Api extends Http {
     return this.request('api/home/selectAllianceCarouseList', data)
   }
   // 留言板
-  feedbackList () {
+  msgList (data) {
     return this.request('api/feedback/feedbackList', data, 'POST')
+  }
+  // 留言详情
+  msgDetail(data) {
+    return this.request('api/feedback/feedbackDetail', data, 'GET')
   }
 }
 

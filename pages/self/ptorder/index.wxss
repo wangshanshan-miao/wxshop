@@ -71,6 +71,10 @@
 .orderState {
     color: #009DFF;
 }
+.bookingSum {
+  left: 45rpx;
+  bottom: 0;
+}
 
 .status0,
 .status5 {

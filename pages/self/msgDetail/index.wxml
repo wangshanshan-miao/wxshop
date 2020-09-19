@@ -1,0 +1,19 @@
+<!--pages/self/msgDetail/index.wxml-->
+<view class="shadow">
+  <view class="msg flex_col">
+    <text class="c33 f30" style="margin-bottom: 27rpx;">{{msg.content}}</text>
+    <view class="f26 c99 flex_row jb">
+      <text class="f26 c99">{{msg.createTime}}</text>
+      <text wx:if="{{msg.feedbackType == 0}}" class="cf1 btn tc btn1">未回复</text>
+      <text wx:elif="{{msg.feedbackType == 1}}" class="btn tc btn2 c99">已回复</text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="msg return" wx:if="{{msg.feedbackType == 1}}">
+    <view class="flex_row jb" style="margin-bottom:18rpx">
+      <text class="c33 f30 fb">回复</text>
+      <text class="f26 c99">{{msg.createTime}}</text>
+    </view>
+    <view class="f30 c33">{{msg.feedbackContent}}</view>
+  </view>
+</view>

@@ -34,8 +34,8 @@ Page({
             title: '加载中...',
         })
         api.myCart({
-            // "userId": wx.getStorageSync('userId'),
-            "userId": "81",
+            "userId": wx.getStorageSync('userId'),
+            // "userId": "81",
             "pageNum": this.data.pageNum,
             "pageSize": 10
         }).then(res => {
@@ -66,12 +66,9 @@ Page({
         let newArr = this.data.arr
         let sum = 0
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                if (element[j].select) {
-                    sum += element[j].salePrice * element[j].amount
-                }
-            }
+          if (newArr[i].select) {
+            sum += newArr[i].salePrice * newArr[i].amount
+          }
         }
         this.setData({
             total: sum
@@ -82,13 +79,10 @@ Page({
         let arr = []
         let newArr = this.data.arr;
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                if (element[j].select) {
-                    arr.push(element[j].merchantId)
-                    break
-                }
-            }
+          if (newArr[i].select) {
+              arr.push(newArr[i].merchantId)
+              break
+          }
         }
         this.setData({
             mids: arr
@@ -100,13 +94,10 @@ Page({
         // 默认全选
         let flag = true
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                if (!element[j].select) {
-                    flag = false
-                    break
-                }
-            }
+          if (!newArr[i].select) {
+              flag = false
+              break
+          }
         }
         this.setData({
             isSelectAll: flag
@@ -124,20 +115,14 @@ Page({
         // 全选加入
         if (isSelectAll) {
             for (let i = 0; i < newArr.length; i++) {
-                let element = newArr[i].commodityDtoList
-                for (let j = 0; j < element.length; j++) {
-                    element[j].select = true
-                    goodsArr.push(element[j].commodityId)
-                    carids.push(element[j].shoppingTrolleyId)
-                }
+              newArr[i].select = true
+              goodsArr.push(newArr[i].outId)
+              carids.push(newArr[i].shoppingTrolleyId)
             }
             // 全不选
         } else {
             for (let i = 0; i < newArr.length; i++) {
-                let element = newArr[i].commodityDtoList
-                for (let j = 0; j < element.length; j++) {
-                    element[j].select = false
-                }
+              newArr[i].select = false
             }
         }
         this.setData({
@@ -156,27 +141,24 @@ Page({
         let newArr = this.data.arr;
         // console.log(newArr)
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                // 操作当前商品
-                if (element[j].commodityId == id) {
-                    element[j].select = !element[j].select
-                    // 添加
-                    if (element[j].select) {
-                        arr.push(element[j].commodityId)
-                        arr1.push(element[j].shoppingTrolleyId)
-                    } else {
-                        // 删除
-                        arr = arr.filter(item => {
-                            return item != id
-                        })
-                        arr1 = arr1.filter(item => {
-                            return item != element[j].shoppingTrolleyId
-                        })
-                    }
-                    this.checkSelectAll()
-                }
+          // 操作当前商品
+          if (newArr[i].outId == id) {
+            newArr[i].select = !newArr[i].select
+            // 添加
+            if (newArr[i].select) {
+              arr.push(newArr[i].outId)
+              arr1.push(newArr[i].shoppingTrolleyId)
+            } else {
+              // 删除
+              arr = arr.filter(item => {
+                  return item != id
+              })
+              arr1 = arr1.filter(item => {
+                return item != newArr[i].shoppingTrolleyId
+              })
             }
+            this.checkSelectAll()
+          }
         }
         this.setData({
             arr: newArr,
@@ -242,13 +224,13 @@ Page({
     // 结算
     settlement() {
         let mids = this.data.mids
-        if (mids.length > 1) {
-            wx.showToast({
-                title: '不能跨店结算',
-                icon: 'none'
-            })
-            return
-        }
+        // if (mids.length > 1) {
+        //     wx.showToast({
+        //         title: '不能跨店结算',
+        //         icon: 'none'
+        //     })
+        //     return
+        // }
         if (mids.length == 0) {
             wx.showToast({
                 title: '请选择商品',
@@ -262,29 +244,25 @@ Page({
         let newArr = this.data.arr;
         for (let k = 0; k < goods.length; k++) {
             for (let i = 0; i < newArr.length; i++) {
-                let element = newArr[i].commodityDtoList
-                for (let j = 0; j < element.length; j++) {
-                    if (element[j].commodityId == goods[k]) {
-                        amounts.push(element[j].amount)
+              if (newArr[i].outId == goods[k]) {
+                amounts.push(newArr[i].amount)
                         // 没有商品规格id 加入-1
-                        if (element[j].commoditySpecificationId) {
-                            commoditySpecificationIds.push(element[j].commoditySpecificationId)
-                        } else {
-                            commoditySpecificationIds.push(-1)
-                        }
-                    }
+                if (newArr[i].commoditySpecificationId) {
+                  commoditySpecificationIds.push(newArr[i].commoditySpecificationId)
+                } else {
+                    commoditySpecificationIds.push(-1)
                 }
+              }
             }
         }
 
         // 生成商品订单 
         api.createCommodityOrder({
-            orderType: 0,
             merchantId: mids[0],
-            commodityIds: goods,
+          outIds: goods,
+            commoditySpecificationIds,
             amounts,
-            shoppingTrolleyIds: this.data.carids,
-            commoditySpecificationIds
+            userId: wx.getStorageSync('userId')
         }).then(res => {
             console.log(res)
             // 创建成功 跳转到订单详情页
@@ -292,7 +270,7 @@ Page({
                 const id = res.data.orderId
                 // console.log(id)
                 wx.navigateTo({
-                    url: `/pages/self/ptDetail/index?id=${id}`,
+                    url: `/pages/self/allDetail/index?id=${id}`,
                 })
             } else {
                 wx.showToast({
@@ -316,21 +294,18 @@ Page({
 
         let newArr = this.data.arr;
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                if (element[j].commodityId == id) {
-                    if (element[j].amount > 1) {
-                        element[j].amount -= 1
-                        count = element[j].amount
-                    } else {
-                        wx.showToast({
-                            title: '商品数量最少一件！',
-                            icon: 'none'
-                        })
-                        return false
-                    }
-                }
+          if (newArr[i].outId == id) {
+            if (newArr[i].amount > 1) {
+              newArr[i].amount -= 1
+              count = newArr[i].amount
+            } else {
+                wx.showToast({
+                    title: '商品数量最少一件！',
+                    icon: 'none'
+                })
+                return false
             }
+          }
         }
         this.setData({
             arr: newArr
@@ -356,21 +331,18 @@ Page({
         let sid = app.getValue(e).sid
         let newArr = this.data.arr;
         for (let i = 0; i < newArr.length; i++) {
-            let element = newArr[i].commodityDtoList
-            for (let j = 0; j < element.length; j++) {
-                if (element[j].commodityId == id) {
-                    if (element[j].amount < 99) {
-                        element[j].amount += 1
-                        count = element[j].amount
-                    } else {
-                        wx.showToast({
-                            title: '最多只能买99件哦！',
-                            icon: 'none'
-                        })
-                        return false
-                    }
-                }
+          if (newArr[i].outId == id) {
+            if (newArr[i].amount < 99) {
+              newArr[i].amount += 1
+              count = newArr[i].amount
+            } else {
+                wx.showToast({
+                    title: '最多只能买99件哦！',
+                    icon: 'none'
+                })
+                return false
             }
+          }
         }
         this.setData({
             arr: newArr

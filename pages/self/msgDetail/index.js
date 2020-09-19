@@ -1,4 +1,4 @@
-// pages/self/evaluate/evaluate.js
+// pages/self/msgDetail/index.js
 import api from "../../../utils/api"
 import {
   baseURL,
@@ -12,57 +12,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [{
-      name: '全部',
-      status: ''
-    }, {
-      name: '未回复',
-      status: 0
-    }, {
-      name: '已回复',
-      status: 1
-    }],
-    active: 0
+
   },
-  // 评价列表
-  msgList() {
-    const feedbackType = this.data.feedbackType
-    api.msgList({
-      userId: wx.getStorageSync('userId'),
-      feedbackType
+
+  msgDetail () {
+    api.msgDetail({
+      feedbackId: this.data.feedbackId
     }).then(res => {
-      // console.log(res)
-      const data = res.data
-      this.setData({
-        list: data.list
-      })
+      if (res.status == 200) {
+        this.setData({
+          msg: res.data
+        })
+      }
     })
-  },
-  // 留言详情
-  toDetail (e) {
-    const feedbackId = app.getValue(e).id
-    wx:wx.navigateTo({
-      url: '../msgDetail/index?feedbackId=' + feedbackId,
-    })
-  },
-  // 切换tab
-  clickTab(e) {
-    const index = app.getValue(e).index
-    const status = app.getValue(e).status
-    this.setData({
-      active: index,
-      feedbackType: status
-    })
-    this.msgList()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       baseURL,
       imgBaseUrl,
-      orderId: options.id
+      feedbackId: options.feedbackId
     })
   },
 
@@ -77,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.msgList()
+    this.msgDetail()
   },
 
   /**

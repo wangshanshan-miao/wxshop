@@ -3,7 +3,7 @@
 }
 
 .messageDetail_top {
-    margin-bottom: 30rpx;
+    margin-bottom: 14rpx;
 }
 
 .messageDetail_con {

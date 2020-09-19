@@ -747,7 +747,7 @@ Page({
             outIds: [this.data.id],
             commoditySpecificationIds: [specificationId],
             amounts: [this.data.goodNum],
-            userId: '81'
+            userId: wx.getStorageSync('userId')
         }).then(res => {
             // console.log(res)
             this.setData({
