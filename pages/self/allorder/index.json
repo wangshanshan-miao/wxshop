@@ -2,5 +2,5 @@
   "usingComponents": {
     "noData" : "../../../components/noData/index"
   },
-  "navigationBarTitleText": "普通订单"
+  "navigationBarTitleText": "我的订单"
 }

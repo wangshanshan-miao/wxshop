@@ -83,10 +83,6 @@ page {
     margin: 10rpx 0;
 }
 
-.goodckOrder_list_money {
-    color: #D32E32;
-}
-
 .goodckOrder_list {
     /* margin-bottom: 25rpx; */
     background: #ffffff;
@@ -245,43 +241,31 @@ page {
 .orderFoot_opra {
     width: 100%;
     height: 130rpx;
-    line-height: 130rpx;
     position: fixed;
     z-index: 99;
     bottom: 0;
     background: rgba(255, 255, 255, 1);
-    box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
-    border-radius: 18px 18px 0px 0px;
+    box-shadow: 0px -6rpx 14rpx rgba(0, 0, 0, 0.06);
+    border-radius: 18rpx 18rpx 0px 0px;
     padding: 0 40rpx 0 26rpx;
 }
 
-.orderFoot_opra_dw {
-    color: #D32E32;
-}
-
-.orderFoot_opra_num {
-    color: #D32E32;
-    font-size: 46rpx;
-}
-
 .cancleOrder_btn {
-    width: 210rpx;
-    height: 88rpx;
-    line-height: 88rpx;
-    background: rgba(126, 198, 243, 1);
+    width: 224rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    border: 1px solid #d5d5d5;
+    border-radius: 42rpx;
     opacity: 1;
-    border-top-left-radius: 50rpx;
-    border-bottom-left-radius: 50rpx;
+    margin-right: 16rpx; 
 }
 
 .sureOrder_btn {
-    width: 210rpx;
-    height: 88rpx;
-    line-height: 88rpx;
-    background: rgba(0, 157, 255, 1);
-    opacity: 1;
-    border-top-right-radius: 50rpx;
-    border-bottom-right-radius: 50rpx;
+    width: 224rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+    border-radius: 42rpx;
 }
 
 .orderFoot_opra_left {
@@ -494,7 +478,7 @@ page {
 .showCkOrder_state {
     width: 750rpx;
     height: 191rpx;
-    line-height: 144rpx;
+    /* line-height: 144rpx; */
     padding: 0 66rpx;
     background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
 }

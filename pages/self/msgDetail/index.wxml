@@ -12,7 +12,7 @@
   <view class="msg return" wx:if="{{msg.feedbackType == 1}}">
     <view class="flex_row jb" style="margin-bottom:18rpx">
       <text class="c33 f30 fb">回复</text>
-      <text class="f26 c99">{{msg.createTime}}</text>
+      <text class="f26 c99">{{msg.updateTime}}</text>
     </view>
     <view class="f30 c33">{{msg.feedbackContent}}</view>
   </view>

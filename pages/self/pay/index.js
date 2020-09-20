@@ -106,6 +106,7 @@ Page({
           signType: 'MD5',
           paySign: data.paySign,
           success(res) {
+            debugger
             wx.navigateBack({
               complete: (res) => {},
             })

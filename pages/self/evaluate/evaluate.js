@@ -12,13 +12,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ['待评价', '已评价'],
+    tabs: [{
+      name: '待评价',
+      status: 7
+    }, {
+      name: '已评价',
+      status: 8
+    }],
     active: 0
   },
   // 评价列表
   evaDetail () {
+    const orderStatus = this.data.orderStatus
+    const outIds = []
     api.evaList({
-      orderId: this.data.orderId
+      orderId: this.data.orderId,
+      orderStatus
     }).then(res => {
       // console.log(res)
       const data = res.data
@@ -33,8 +42,10 @@ Page({
   },
   clickTab (e) {
     const index = app.getValue(e).index
+    const status = app.getValue(e).status
     this.setData({
-      active: index
+      active: index,
+      orderStatus: status
     })
   },
   /**
@@ -45,7 +56,8 @@ Page({
       baseURL,
       imgBaseUrl,
       orderId: options.id,
-      active: 1
+      active: 1,
+      orderStatus: 8
     })
   },
 

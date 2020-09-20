@@ -16,7 +16,20 @@
   <image src="../../img/arrow-left.png"></image>
 </view>
 <!-- 商品详情 -->
-<view class="flex_row addbox goods">
+<view wx:if="{{car}}">
+  <view class="flex_row addbox goods aaa" wx:for="{{detail}}" wx:for-item="value">
+    <image class="img" src="{{ imgBaseUrl + value.coverUrl+'?x-image-process=image/resize,p_30'}}" ></image>
+    <view class="dright flex_col jc">
+      <view class="hidden2 f28 c22">{{value.commodityName}}</view>
+      <view class="f24 c99 flex_row middle">
+        <text>{{value.commoditySpecificationName}}</text>
+        <text>x{{value.amount}}</text>
+      </view>
+      <text class="rcolor f36 fb">￥{{value.salePrice}}</text>
+    </view>
+  </view>
+</view>
+<view class="flex_row addbox goods" wx:else>
   <image class="img" src="{{ detail.coverUrl ? imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30' : ''}}" ></image>
   <view class="dright flex_col jc">
     <view class="hidden2 f28 c22">{{detail.commodityName}}</view>
@@ -29,7 +42,8 @@
 </view>
 <view class="row total flex_row jb">
   <text class="f28 c33">商品合计：</text>
-  <text class="f28 rcolor">￥{{num * detail.salePrice}}</text>
+  <text class="f28 rcolor" wx:if="{{car}}">￥{{total}}</text>
+  <text class="f28 rcolor" wx:else>￥{{num * detail.salePrice}}</text>
 </view>
 <view class="row total flex_row jb">
   <text class="f28 c33">运费（快递）</text>
@@ -38,7 +52,8 @@
 <view class="pf btm flex_row jb">
   <view>
     <text class="c33 f24" style="margin-right: 26rpx;">应付总额(含运费):</text>
-    <text class="fb f32 rcolor">￥{{num * detail.salePrice}}</text>
+    <text class="fb f32 rcolor" wx:if="{{!car}}">￥{{num * detail.salePrice}}</text>
+    <text class="fb f32 rcolor" wx:else>￥{{total}}</text>
   </view>
   <view class="f28 cff btn tc" bindtap="submit">提交订单</view>
 </view>

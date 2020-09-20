@@ -71,6 +71,12 @@ Page({
             orderId: this.data.id
         }).then(res => {
             const data = res.data
+            const buyAddress = []
+            const addressId = ''
+            if (data.address) {
+              buyAddress = data.address
+              addressId = data.address.addressId
+            }
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
                 // addressId: data.address.addressId,
@@ -89,10 +95,12 @@ Page({
                 orderNumber: data.order.orderNumber,
                 orderTime: data.order.orderTime,
                 orderPrice: data.order.orderPrice, // 订单总额
-                updateTime: data.order.updateTime ,// 上一次操作的时间
+                updateTime: data.order.updateTime ,// 付款时间
                 name: data.order.addressName,
                 phone: data.order.addressPhone,
-                address: data.order.receiverAddress
+                address: data.order.receiverAddress,
+                buyAddress: buyAddress,
+                addressId: addressId
             })
             // let status = this.data.orderStatus
             // if (status == 1) {

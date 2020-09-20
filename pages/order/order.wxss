@@ -1,6 +1,6 @@
 /* pages/order/order.wxss */
 .addbox {
-  width: 93%;
+  width: 92%;
   margin: 0 auto;
   border-radius: 20rpx;
   box-shadow: 0px 3rpx 16rpx 0px rgba(0,0,0,0.06); 
@@ -22,13 +22,13 @@
 .hasadd {
   margin-bottom: 30rpx;
   align-items: center;
-  padding: 37rpx 0 32rpx 30rpx;
+  padding: 37rpx 0 32rpx 0;
 }
 .hasadd image:nth-of-type(1) {
   display: inline-block;
   width: 38rpx;
   height: 46rpx;
-  margin-right: 30rpx;
+  margin: 0 30rpx;
 }
 .hasadd image:nth-last-of-type(1) {
   display: inline-block;

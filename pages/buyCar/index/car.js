@@ -17,6 +17,7 @@ Page({
         isRequest: false,
         pageNum: 1,
         arr: [],
+        shops: [],
         carids: [], //购物车id数组
         commoditySpecificationIds: [], // 商品规格数组
         amounts: [], // 商品数量数组
@@ -142,7 +143,7 @@ Page({
         // console.log(newArr)
         for (let i = 0; i < newArr.length; i++) {
           // 操作当前商品
-          if (newArr[i].outId == id) {
+          if (newArr[i].shoppingTrolleyId == id) {
             newArr[i].select = !newArr[i].select
             // 添加
             if (newArr[i].select) {
@@ -239,12 +240,14 @@ Page({
             return
         }
         let goods = this.data.goods // 商品id数组
+        let carids = this.data.carids
+        let shops = this.data.shops // 商品数组
         let amounts = []
         let commoditySpecificationIds = []
         let newArr = this.data.arr;
-        for (let k = 0; k < goods.length; k++) {
+      for (let k = 0; k < carids.length; k++) {
             for (let i = 0; i < newArr.length; i++) {
-              if (newArr[i].outId == goods[k]) {
+              if (newArr[i].shoppingTrolleyId == carids[k]) {
                 amounts.push(newArr[i].amount)
                         // 没有商品规格id 加入-1
                 if (newArr[i].commoditySpecificationId) {
@@ -255,11 +258,16 @@ Page({
               }
             }
         }
+        for(var i in newArr) {
+          if(newArr[i].select) {
+            shops.push(newArr[i])
+          }
+        }
 
         // 生成商品订单 
         api.createCommodityOrder({
             merchantId: mids[0],
-          outIds: goods,
+            outIds: goods,
             commoditySpecificationIds,
             amounts,
             userId: wx.getStorageSync('userId')
@@ -268,9 +276,11 @@ Page({
             // 创建成功 跳转到订单详情页
             if (res.data.status == 1) {
                 const id = res.data.orderId
+              const info = encodeURIComponent(JSON.stringify(shops))
+              const form = true
                 // console.log(id)
                 wx.navigateTo({
-                    url: `/pages/self/allDetail/index?id=${id}`,
+                  url: `/pages/order/order?detail=${info}&orderId=${id}&form=${form}&total=${this.data.total}`,
                 })
             } else {
                 wx.showToast({
@@ -294,7 +304,7 @@ Page({
 
         let newArr = this.data.arr;
         for (let i = 0; i < newArr.length; i++) {
-          if (newArr[i].outId == id) {
+          if (newArr[i].shoppingTrolleyId == id) {
             if (newArr[i].amount > 1) {
               newArr[i].amount -= 1
               count = newArr[i].amount
@@ -313,7 +323,7 @@ Page({
         this.totalNum()
         api.changeNum({
             amount: count,
-            shoppingTrolleyId: sid
+            shoppingTrolleyId: id
         }).then(res => {
             // console.log(res)
             /* if (res.status == 200) {
@@ -331,7 +341,7 @@ Page({
         let sid = app.getValue(e).sid
         let newArr = this.data.arr;
         for (let i = 0; i < newArr.length; i++) {
-          if (newArr[i].outId == id) {
+          if (newArr[i].shoppingTrolleyId == id) {
             if (newArr[i].amount < 99) {
               newArr[i].amount += 1
               count = newArr[i].amount
@@ -350,7 +360,7 @@ Page({
         this.totalNum()
         api.changeNum({
             amount: count,
-            shoppingTrolleyId: sid
+            shoppingTrolleyId: id
         }).then(res => {
             // console.log(res)
             /* if (res.status == 200) {

@@ -24,10 +24,11 @@
 			<image class="order_state_img" src="../../../img/dfh.png" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
-			<view class=''>
-				<view class="f32 mb10 c33">等待付款</view>
-				<view class="f28 c99">
-					剩{{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭
+			<view class='flex_col' style="margin-top: 14rpx;">
+				<view class="f32 mb10 cff">等待买家付款</view>
+				<view class="f28 cff">
+          {{tools.diffMinute(nowTime,endTime)}}分钟后自动取消
+					<!-- {{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭 -->
 				</view>
 			</view>
 			<image class="order_state_img" src="../../../img/ddfk.png" />
@@ -37,16 +38,22 @@
 	<view class="shopckOrderList">
 		<view class="goodckOrder boxs">
 			<!-- 收获地址 -->
-			<view class="orderAddress flex_row jb al" catchtap="selectAddress">
+			<view class="orderAddress flex_row jb al">
 				<view class="flex_row al">
 					<image src="../../../img/address.png" class="address_img" />
-					<view class="">
-						<view class='flex_row' wx:if="{{name}}">
+					<view class="flex_col" wx:if="{{name}}">
+						<view class='flex_row' style="margin-bottom: 7rpx;">
 							<view class="f28 buyUser_name c33">{{name}}</view>
 							<view class="f24 c99">{{phone}}</view>
 						</view>
-						<view wx:else>点击添加收货地址</view>
-						<view class='f24 buyUser_address c99'>{{address}}</view>
+            <view class="f24 c99">{{address}}</view>
+					</view>
+          <view class="flex_col" wx:if="{{buyAddress}}">
+						<view class='flex_row' style="margin-bottom: 7rpx;">
+							<view class="f28 buyUser_name c33">{{buyAddress.addressName}}</view>
+							<view class="f24 c99">{{buyAddress.addressPhone}}</view>
+						</view>
+            <view class="f24 c99">{{buyAddress.receiverAddress}}</view>
 					</view>
 				</view>
 				<image src="../../../img/rjt.png" class="rjtImg" />
@@ -70,7 +77,7 @@
                         </view>
 						<view class='flex_row goodckOrder_list_num pr'>
 							
-							<view class="f32 goodckOrder_list_money fb">
+							<view class="f32 goodckOrder_list_money fb cf0">
 								￥{{item.realPrice}}
 								<text class="unitMy" wx:if="{{item.unit}}">/{{item.unit}}</text>
 							</view>
@@ -102,24 +109,24 @@
 		</view> -->
 		<view class="flex_row amountModel_list">
 			<view class='f28 amountModel_list_title c33'>商品合计: </view>
-			<view class="f28 cf0">¥{{orderPrice}}元</view>
+			<view class="f28 cf0">¥{{orderPrice}}</view>
 		</view>
 		<view class="flex_row amountModel_list">
 			<view class='f28 amountModel_list_title c33'>运费(快递)：</view>
-			<view class="f28 c99">¥{{expressFee}}元</view>
+			<view class="f28 c99">¥{{expressFee}}</view>
 		</view>
 		<view class="flex_row amountModel_list al jb" catchtap="showModal">
 			<!-- <view class="flex_row"> -->
 			<view class='f28 amountModel_list_title c33'>优惠券：</view>
 			<view class="f28 c99">
-				-¥{{voucherPrice}}元
+				-¥{{voucherPrice}}
 				<image src="../../../img/rjt.png" class="rjtImg" wx:if="{{orderStatus == 0}}" />
 			</view>
 			<!-- </view> -->
 		</view>
 		<view class="flex_row amountModel_list">
 			<view class='f28 amountModel_list_title c33'>实付款：</view>
-			<view class="f28 cf0">¥{{total}}元</view>
+			<view class="f28 cf0">¥{{total}}</view>
 		</view>
 	</view>
 	<!-- <view class="line"></view> -->
@@ -130,21 +137,21 @@
 				<view class='longLine'></view>
 				<view class="f30 c33">订单详情</view>
 			</view> -->
-			<view class="orderIntro_list flex_row al" wx:if="{{!(orderStatus==0 || orderStatus==11)}}">
+			<view class="orderIntro_list flex_row al">
 				<view class="orderIntro_list_title f28">订单编号：</view>
 				<view class="orderIntro_list_warn f28">{{orderNumber}}</view>
 			</view>
 			<view class="orderIntro_list flex_row al">
-				<view class="orderIntro_list_title f28">下单时间：</view>
+				<view class="orderIntro_list_title f28">提交时间：</view>
 				<view class="orderIntro_list_warn f28">{{orderTime}}</view>
 			</view>
-			<view class="orderIntro_list flex_row al" wx:if="{{updateTime}}">
+      <view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+				<view class="orderIntro_list_title f28">支付方式：</view>
+				<view class="orderIntro_list_warn f28">微信支付</view>
+			</view>
+			<view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
 				<view class="orderIntro_list_title f28">付款时间：</view>
 				<view class="orderIntro_list_warn f28">{{updateTime}}</view>
-			</view>
-			<view class="orderIntro_list flex_row al">
-				<view class="orderIntro_list_title f28">付款方式：</view>
-				<view class="orderIntro_list_warn f28">微信支付</view>
 			</view>
 			<!-- 暂定 -->
 			<!-- <view class="orderIntro_list flex_row al">
@@ -174,15 +181,15 @@
 	<!-- 待付款底部操作区域 -->
 	<view class="orderFoot_opra al jb boxs  flex_row" wx:if="{{orderStatus==0}}">
 		<view class="flex_col pr orderFoot_opra_left">
-			<view class="flex_row al">
-				<view class="f22 orderFoot_opra_dw fb">￥</view>
-				<view class="orderFoot_opra_num fb">{{total}}</view>
+      <view class='f24 c33'>应付金额(含运费)：</view>
+			<view class="al cf0 f32 fb">
+				<text class="orderFoot_opra_dw">￥</text>
+				<text class="orderFoot_opra_num">{{total}}</text>
 			</view>
-			<view class='f26 freight  pa c66'>应付金额(含运费)：</view>
 		</view>
 		<view class="flex_row">
-			<view catchtap="cancel" class="cancleOrder_btn tc f26 cff">取消订单</view>
-			<view bindtap="pay" class="sureOrder_btn tc f26 cff">付款</view>
+			<view catchtap="cancel" class="cancleOrder_btn tc f26 c98">取消订单</view>
+			<view bindtap="pay" class="sureOrder_btn tc f28 cff">付款</view>
 		</view>
 	</view>
 </view>

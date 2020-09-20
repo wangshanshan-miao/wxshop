@@ -1,17 +1,20 @@
 <!--pages/self/evaluate/evaluate.wxml-->
 <view class="shadow">
   <view class="flex_row">
-    <view wx:for="{{tabs}}" data-index="{{index}}" catchtap="clickTab" class="{{active == index ? 'f30 c22 active' : 'f28 c66'}} tc tab flex_col">
+    <view wx:for="{{tabs}}" data-index="{{index}}" data-status="{{item.status}}" catchtap="clickTab" class="{{active == index ? 'f30 c22 active' : 'f28 c66'}} tc tab flex_col">
       <view style="height: calc(100% - 6rpx)">
-        <text>{{item}}(</text>
-        <text>{{tabs.length}})</text>
+        <text>{{item.name}}</text>
+        <text style="display: none;">({{list.length}})</text>
       </view>
       <view class="border"></view>
     </view>
   </view>
   <view class="evaList">
-    <view wx:for="{{list}}">
-      <image src="imgBaseUrl + item.url+'?x-image-process=image/resize,p_40'"></image>
+    <view wx:for="{{list}}" data-id="{{item.commodityId}}" class="flex_row ">
+      <image src="imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_40'"></image>
+      <view>
+        <view class="f30 c33 fb">{{item.voucherName}}</view>
+      </view>
     </view>
   </view>
 </view>

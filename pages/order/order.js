@@ -15,24 +15,24 @@ Page({
     detail: '',
     orderId: '',
     hasAddress: false,
-    addressShow: false
+    addressShow: false,
+    car: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.address)
     this.setData({
       detail: JSON.parse(decodeURIComponent(options.detail)),
       orderId: options.orderId,
       num: options.num,
-      guige: JSON.parse(decodeURIComponent(options.guige)),
+      guige: options.guige ? JSON.parse(decodeURIComponent(options.guige)) : [],
       baseURL,
-      imgBaseUrl
+      imgBaseUrl,
+      car: options.form,
+      total: options.total
     })
-    console.log(this.data.detail.coverUrl)
-    this.getAddress()
   },
 
   /**
@@ -46,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getAddress()
   },
   // 获取收货地址
   getAddress () {
@@ -108,6 +108,9 @@ Page({
         wx.showToast({
           title: res.data,
           icon: 'none'
+        })
+        wx.navigateTo({
+          url: `/pages/self/allDetail/index?id=${this.data.orderId}`,
         })
         // wx.requestPayment({
         //   timeStamp: data.timeStamp,
