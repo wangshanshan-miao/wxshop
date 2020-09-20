@@ -1,63 +1,28 @@
-<!-- 一站采购 -->
-<view class="cg">
-    <view class="swiper boxs" wx:if="{{topArr.length>0}}">
-        <scroll-view class="scrollView" scroll-x scroll-into-view="{{toView}}">
-            <view id="s{{index}}" catchtap="switch" data-index="{{index}}" data-id="{{item.allianceId}}" class="scrollCell pr {{tabIndex==index?'active':''}}" wx:for="{{topArr}}" wx:key="index">
-                <image class="scrollGood_img" src="{{imgBaseUrl + item.allianceUrl+'?x-image-process=image/resize,p_30'}}" />
-                <view class="boxs scrollIntro f22 cff pa oh">{{item.allianceName}}</view>
-            </view>
-        </scroll-view>
-    </view>
-    <!-- 福利大放送 -->
-    <image catchtap="fl" class="flfs" src="../../../img/fl.png" />
-    <!-- tab导航 -->
-    <view class="cg_tabs plr30 boxs">
-        <view class="cg_tab boxs flex_row jb">
-            <view bindtap="goDztj" class="flex_col jc al">
-                <view class="tabCell felx_row cg_tabcell_one">
-                    <image src="../../../img/dztj.png" class="tabIcon" />
-                </view>
-                <view class="tabText">店长推荐</view>
-            </view>
-            <view bindtap="goShops" class="flex_col jc al">
-                <view class="tabCell felx_row cg_tabcell_two">
-                    <image src="../../../img/qbsj.png" class="tabIcon" />
-                </view>
-                <view class="tabText">全部商家</view>
-            </view>
-            <view bindtap="goLghd" class="flex_col jc al">
-                <view class="tabCell felx_row cg_tabcell_three">
-                    <image src="../../../img/lghd.png" class="tabIcon" />
-                </view>
-                <view class="tabText">联购活动</view>
-            </view>
-            <view bindtap="goAl" class="flex_col jc al">
-                <view class="tabCell felx_row cg_tabcell_four">
-                    <image src="../../../img/alzs.png" class="tabIcon" />
-                </view>
-                <view class="tabText">案例展示</view>
-            </view>
-        </view>
-    </view>
-    <!-- 商品 -->
-    <view class="goods plr30 boxs jb flex_row">
-        <view data-id="{{item.commodityId}}" wx:for="{{arr}}" wx:key="index" class="goodsCell" catchtap="detail" data-id="{{item.commodityId}}">
-            <image class="goodImg" lazy-load="{{true}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}"></image>
-            <view class="goods_title f26 c33 oh">{{item.commodityName}}</view>
-            <view class="car_group flex_row al jb">
-                <view class="flex_row al">
-                    <view class="f36 good_money">
-                        ￥{{item.salePrice}}
-                        <text class='unitMy' wx:if="{{item.unit}}">/{{item.unit}}</text>
-                        起
-                    </view>
-                    <!-- <view class="c99 f24">/平方米</view> -->
-                </view>
-                <image class="good_buyCar" src="../../../img/car.png" />
-            </view>
-        </view>
-    </view>
-    <noData wx:if="{{arr.length<1}}" />
+<!-- 搜索框 -->
+<view bindtap="toSearch" class="search_group boxs">
+	<image class="search_icon" src="../../img/search.png" />
+	<input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
 </view>
-<!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<!-- 分类 -->
+<view class='index_tab'>
+	<scroll-view class="bottom_scroll boxs" scroll-x="true" scroll-left="{{x}}" scroll-with-animation="{{true}}">
+		<view class='nav boxs {{index == activeIndex?"cur":""}}' wx:for="{{nav_list}}" wx:key="{{index}}" bindtap='switchTap' data-index="{{index}}">
+			<view>{{item.className}}</view>
+		</view>
+
+	</scroll-view>
+</view>
+<!-- 商品列表 -->
+<view class="shopBox">
+	<view wx:for="{{list}}" wx:key="index" class="shopList boxs">
+		<image class="cover" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}"></image>
+		<view class="f28 c33 commodityName">{{item.commodityName}}</view>
+		<view class="flex_row jb fb al">
+			<text class="cf0 f24 p10">¥{{item.salePrice}}</text>
+			<view class="car">
+				<image src="../../../img/car.png"></image>
+			</view>
+		</view>
+	</view>
+  <noData wx:if="{{list.length<1}}" style="margin-top:300rpx" />
+</view>

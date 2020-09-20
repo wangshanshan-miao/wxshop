@@ -51,7 +51,7 @@
     <swiper class='read_swiper' circular='true' indicator-dots='true' autoplay="true" duration="1000">
       <block wx:for="{{classList}}" wx:for-item="items">
         <swiper-item>
-          <view bindtap="goCg" class="{{((index+1) % 5 == 0 && index != 0) ? 'speItem tab-item jc al' : 'tab-item jc al'}}" data-agencyId="{{item.agencyId}}" wx:for="{{items}}" data-pId="{{item.pId}}" data-classId="{{item.classId}}">
+          <view bindtap="goCg" class="{{((index+1) % 5 == 0 && index != 0) ? 'speItem tab-item jc al' : 'tab-item jc al'}}" data-agencyId="{{item.agencyId}}" data-index="{{index}}" wx:for="{{items}}" data-pId="{{item.pId}}" data-classId="{{item.classId}}">
             <view class="tabCell felx_row tabCell_one">
               <image src="{{imgBaseUrl + item.classUrl+'?x-image-process=image/resize,p_15'}}" class="tabIcon" />
             </view>

@@ -599,10 +599,10 @@ Page({
     });
   },
   goCg(e) {
-    const index = app.getValue(e).id || 0
-    console.log(index)
+    const id = app.getValue(e).id || 0
+    const index = app.getValue(e).index
     wx.navigateTo({
-      url: `../../index/cg/cg?index=${index}`
+      url: `/pages/index/cg/cg?classId=${id}&index=${index}`
     })
   },
   goList(e) {

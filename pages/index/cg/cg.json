@@ -1,6 +1,9 @@
 {
-    "usingComponents": {
-        "noData":"../../../components/noData/index"
-    },
-    "navigationBarTitleText": "一站采购"
+  "usingComponents": {
+    "van-overlay": "../../../weapp/dist/overlay/index",
+    "van-popup": "../../../weapp/dist/popup/index",
+    "noData": "../../../components/noData/index",
+    "share-box": "../../../components/shareBox/index"
+  },
+  "navigationBarTitleText": "分类"
 }

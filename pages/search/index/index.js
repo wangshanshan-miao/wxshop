@@ -31,9 +31,9 @@ Page({
   handleTap(e) {
     const content = e.currentTarget.dataset.content
     api.searchResult({
+      merchantId: wx.getStorageSync('merchantId'),
       userId: wx.getStorageSync('userId'),
-      history: content,
-      areaCode: wx.getStorageSync('areaCode')
+      history: content
     }).then(res => {
       // console.log(res)
       this.setData({
@@ -49,7 +49,7 @@ Page({
       api.searchResult({
         userId: wx.getStorageSync('userId'),
         history: value,
-        areaCode: wx.getStorageSync('areaCode')
+        merchantId: wx.getStorageSync('merchantId')
       }).then(res => {
         // console.log(res)
         if (res.status == 200) {

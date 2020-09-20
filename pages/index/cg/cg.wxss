@@ -1,122 +1,107 @@
-/* pages/index/cg/cg.wxss */
-/* .goodImg{
-    background-color: aqua;
-}
- */
-.cg {
-    padding-top: 50rpx;
-}
-
-.scrollView {
-    width: 100%;
-    height: 239rpx;
-    white-space: nowrap;
+.index_tab .bottom_scroll {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 50rpx;
+  margin: 28rpx 0;
 }
 
-.swiper {
-    padding-left: 30rpx;
+.index_tab .bottom_scroll .nav {
+  min-width: 117rpx;
+  display: inline-block;
+  white-space: normal;
+  text-align: center;
+  font-size: 28rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  background: #fafafa;
+  color: #989898;
+  margin-right: 16rpx;
+  padding: 0 16rpx;
 }
 
-.scrollCell {
-    width: 327rpx;
-    height: 239rpx;
-    display: inline-block;
-    margin-right: 18rpx;
+.index_tab .bottom_scroll .nav:last-child {
+  margin-right: 30rpx;
 }
 
-.scrollGood_img {
-    width: 100%;
-    height: 100%;
-    /* background-color: aquamarine; */
+.index_tab .bottom_scroll .nav:first-child {
+  margin-left: 30rpx;
 }
 
-.scrollIntro {
-    width: 100%;
-    bottom: 0;
-    padding: 9rpx;
-    background: rgba(0, 0, 0, .6);
+
+.index_tab .bottom_scroll .nav.cur {
+  background: #ff7f11;
+  color: #fff;
 }
 
-.cg_tabs {
-    margin: 40rpx 0 50rpx 0;
+.search_group {
+  margin: 0 30rpx;
+  padding: 5rpx 30rpx;
+  display: inline-flex;
+  align-items: center;
+  width: 690rpx;
+  height: 66rpx;
+  background: #f6f6f6;
+  border-radius: 33rpx;
 }
 
-.cg_tab {
-    width: 100%;
-    height: 230rpx;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
-    border-radius: 0 0 20rpx 20rpx;
-    padding: 0 44rpx;
+.search_icon {
+  width: 28rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
 }
 
-.tabCell {
-    text-align: center;
-    line-height: 93rpx;
-    border-radius: 100%;
-    margin-bottom: 17rpx;
-    width: 101rpx;
-    height: 101rpx;
-    line-height: 116rpx;
+.shopBox {
+  padding: 30rpx;
 }
 
-.tabIcon {
-    width: 41rpx;
-    height: 41rpx;
+.shopList {
+  width: 219rpx;
+  height: 354rpx;
+  background: #ffffff;
+  border-radius: 14rpx;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.06);
+  display: inline-block;
+  margin-right: 16rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
 }
 
-.tabText {
-    font-size: 22rpx;
-    color: #3F3F3F;
+.shopList:nth-child(3n) {
+  margin-right: 0;
 }
 
-.cg_tabcell_one {
-    background: linear-gradient(315deg, rgba(0, 144, 255, 1) 0%, rgba(78, 178, 255, 1) 100%);
-    box-shadow: 4px 6px 16px rgba(21, 153, 255, 0.42);
+.shopList .cover {
+  width: 219rpx;
+  height: 180rpx;
 }
 
-.cg_tabcell_two {
-    background: linear-gradient(315deg, rgba(255, 149, 78, 1) 0%, rgba(255, 232, 78, 1) 100%);
-    box-shadow: 4px 6px 16px rgba(254, 119, 46, 0.42);
+.commodityName {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 79rpx;
+  padding: 0 10rpx;
 }
-
-.cg_tabcell_three {
-    background: linear-gradient(315deg, rgba(22, 184, 182, 1) 0%, rgba(20, 220, 218, 1) 100%);
-    box-shadow: 4px 6px 16px rgba(21, 192, 189, 0.42);
+.car {
+  width: 81rpx;
+  background: #fff8e8;
+  border: 1rpx solid #ff7f11;
+  border-radius: 26rpx 0px 0px 26rpx;
+  height: 52rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.cg_tabcell_four {
-    background: linear-gradient(315deg, rgba(253, 107, 28, 1) 0%, rgba(255, 172, 128, 1) 100%);
-    box-shadow: 4px 6px 16px rgba(254, 119, 46, 0.42);
+.car image {
+  display: inline-block;
+  width: 33rpx;
+  height: 33rpx;
 }
-
-.goods {
-    width: 100%;
-    margin-top: 50rpx;
-    flex-wrap: wrap;
-}
-
-/* 当前选择的联盟 */
-.active{
-    border: 4px solid #1499ff;
-}
-
-/* 福利 */
-.flfs {
-    display: block;
-    margin: 17rpx auto 0;
-    width: calc(100% - 60rpx);
-    height: 177rpx;
-    margin-top: 17rpx;
-}
-
-/* 回到顶部 */
-.toTop {
-    width: 90rpx;
-    height: 90rpx;
-    border-radius: 50%;
-    position: fixed;
-    z-index: 8;
-    bottom: 20%;
-    right: 30rpx;
+.p10{
+  padding-left: 10rpx;
 }
