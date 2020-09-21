@@ -8,7 +8,7 @@ page {
 
 .ckOrderModel {
     width: 100%;
-    height: calc(100% - 150rpx);
+    height: 100vh;
     padding-top: 25rpx;
     background: #F9F9F9;
     overflow: auto;
@@ -511,8 +511,8 @@ page {
 
 .showCkOrder_state {
     width: 750rpx;
-    height: 191rpx;
-    padding: 0 66rpx;
+    height: 225rpx;
+    padding: 10rpx 66rpx;
     background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
 }
 
@@ -548,6 +548,11 @@ page {
     background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
     border-radius: 21rpx;
     text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10rpx;
+    margin:0 auto;
 }
 
 .userList {
@@ -556,4 +561,51 @@ page {
 }
 .listRight{
     width: 100%;
+}
+.m10{
+margin-top: 10rpx;
+}
+.invition{
+    width: 431rpx;
+height: 88rpx;
+text-align: center;
+line-height: 88rpx;
+background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+border-radius: 40rpx;
+margin: 30rpx auto;
+
+}
+.roundList{
+    width: 395rpx;
+    margin: 0 auto;
+}
+.round{
+    width: 25rpx;
+    height: 25rpx;
+    border-radius: 50%;
+    background: #ffdfc4;
+}
+.round.failure{
+    background: #fff;
+}
+.line{
+    border-bottom: 2px dashed #ffdfc4;
+    background: transparent;
+    height: 0;
+    width: 160rpx;
+}
+.roundListTips{
+    width: 420rpx;
+    margin: 0 auto;
+}
+.roundListTips>view{
+    margin-top: 24rpx;
+    width: 114rpx;
+    text-align: center;
+}
+.roundListTips>view:first-child{
+    text-align: left;
+}
+.roundListTips>view:last-child{
+    text-align: right;
 }

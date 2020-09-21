@@ -84,6 +84,7 @@ Page({
                 orderType: data.order.orderType,
                 merchantId: data.order.merchantId,
                 endTime: data.order.endTime,
+                createTime:data.order.createTime,
                 orderStatus: data.order.orderStatus,
                 storeName: data.order.merchantName,
                 list: data.orderCommodityList,
