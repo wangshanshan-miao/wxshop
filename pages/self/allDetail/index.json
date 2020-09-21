@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-popup": "/weapp/dist/popup/index"
-  },
-  "navigationBarTitleText": "订单详情"
-}

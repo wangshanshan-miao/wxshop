@@ -1,8 +1,0 @@
-<view class="editName">
-    <view class="editName_group pr boxs">
-        <input value="{{value}}" bindinput="inputValue" maxlength="10" placeholder="请输入昵称" />
-        <image catchtap="clear" src="../../../img/close2.png" class="closeInput pa" />
-    </view>
-    <view class="tips">昵称要求2-10个字符以内</view>
-    <view bindtap="update" class="saveBtn tc cff f28">保存</view>
-</view>

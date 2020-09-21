@@ -1,5 +1,0 @@
-<!--pages/notice/index.wxml-->
-<view class="line"></view>
-<view class="content">
-  <rich-text nodes="{{content}}"></rich-text>
-</view>

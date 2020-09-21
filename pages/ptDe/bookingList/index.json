@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "noData":"../../../components/noData/index"
-  },
-  "navigationBarTitleText": "拼团列表"
-}
