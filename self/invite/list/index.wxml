@@ -1,0 +1,12 @@
+<!--pages/self/invite/list/index.wxml-->
+<view class="line"></view>
+<view class="list al flex_row" wx:for="{{list}}" wx:key="index">
+  <image src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}" class="img"></image>
+  <view class="right">
+    <view class="top al jb flex_row">
+      <view class="top-left">{{item.userName}}</view>
+      <view class="top-right">{{item.userPhone}}</view>
+    </view>
+    <view class="bottom">{{item.registrationTime}}</view>
+  </view>
+</view>

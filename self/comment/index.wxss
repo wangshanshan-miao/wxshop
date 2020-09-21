@@ -1,0 +1,98 @@
+/* pages/self/comment/index.js.wxss */
+.list {
+  width: 698rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 30rpx auto 40rpx;
+}
+
+.good {
+  width: 162rpx;
+  height: 157rpx;
+  /* background-color: cyan; */
+  flex-shrink: 0;
+}
+
+.content {
+  width: 493rpx;
+  height: 157rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  line-height: 37rpx;
+}
+.guige {
+  margin: 13rpx 0 10rpx;
+}
+.price {
+  color: #D32E32;
+  font-size: 32rpx;
+}
+
+text {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.upload {
+  margin-left: 26rpx;
+  margin-top: 30rpx;
+  width: 204rpx;
+  height: 200rpx;
+  background-color: #F4F1F4;
+}
+
+.camera {
+  width: 52rpx;
+  height: 45rpx;
+  flex-shrink: 0;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+}
+
+textarea {
+  padding: 19rpx;
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 698rpx;
+  height: 335rpx;
+  border: 1px solid rgba(240, 240, 240, 1);
+  color: #B9B9B9;
+  font-size: 28rpx;
+}
+
+.submit {
+  width: 568rpx;
+  height: 88rpx;
+  background: rgba(0, 157, 255, 1);
+  border-radius: 210rpx;
+  margin: 228rpx auto;
+  color: #fff;
+}
+
+.evaluate {
+  margin: 30rpx auto 36rpx;
+  align-items: center;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.evaluate_box {
+  position: relative;
+  width: 149rpx;
+}
+.evaluate_box .star-image {
+ width: 24rpx;
+ height: 23rpx;
+ position: absolute;
+}
+.star-image .item {
+ position: absolute;
+ top: 0rpx;
+ width: 24rpx;
+ height: 23rpx;
+}

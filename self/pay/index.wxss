@@ -1,0 +1,92 @@
+/* pages/self/pay/index.wxss */
+.main {
+  width: 708rpx;
+  height: 592rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.method {
+  margin-top: 30rpx;
+  height: 110rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 45rpx;
+}
+
+.left{
+  height: 110rpx;
+}
+
+.pay {
+  width: 270rpx;
+  height: 270rpx;
+  top: 44rpx;
+  z-index: 1;
+  transform: translate(-50%);
+  left: 50%;
+}
+
+.time {
+  width: 100%;
+  top: 322rpx;
+  text-align: center;
+}
+
+.notice {
+  width: 100%;
+  top: 383rpx;
+  text-align: center;
+}
+
+.wxpay {
+  width: 81rpx;
+  height: 74rpx;
+  flex-shrink: 0;
+  margin-right: 38rpx;
+}
+
+.select {
+  flex-shrink: 0;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.payNow {
+  width: 568rpx;
+  height: 88rpx;
+  background: rgba(0, 157, 255, 1);
+  border-radius: 210rpx;
+  margin: 200rpx auto;
+}
+
+
+.bottom{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 86rpx;
+  bottom: 30rpx;
+  left: 0;
+  height: 110rpx;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+}

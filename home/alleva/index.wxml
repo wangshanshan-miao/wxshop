@@ -1,0 +1,21 @@
+<view class="shadow"></view>
+<view class="allEvaluationModel boxs">
+    <view class="allEvaList" wx:if="{{list.length}}">
+        <view wx:for="{{list}}" wx:key="index" class="allEva_list">
+            <view class="allEva_list_top flex_row al jb">
+                <view class="flex_row al">
+                    <image class="txImg" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}" />
+                    <view class='c99 f26 allEvaUser_name'>{{item.userName}}</view>
+                    <view class="stars">
+                      <image wx:for="{{item.evaluateLevel | int}}" wx:key="index" src="../../img/star.png"></image>
+                    </view>
+                </view>
+                <view class="evaTime f26 c99">{{item.createTime}}</view>
+            </view>
+            <view class="f26 c33">
+                <rich-text nodes="{{item.evaluateContent}}"></rich-text>
+            </view>
+        </view>
+    </view>
+</view>
+<noData wx:if="{{list.length<1}}" />

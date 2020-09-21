@@ -1,0 +1,8 @@
+/* pages/notice/index.wxss */
+.line {
+  height: 2rpx;
+}
+.content{
+  width: 690rpx;
+  margin: 30rpx;
+}

@@ -1,0 +1,45 @@
+.editName {
+    padding: 30rpx;
+}
+
+.editName_group {
+    /* border-bottom: 1px solid #E6E6E6; */
+    width: 690rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 30rpx;
+    background: #f6f6f6;
+    border-radius: 10rpx;
+}
+
+.editName_group input {
+    width: 70%;
+    /* padding: 10rpx; */
+    font-size: 28rpx;
+    color: #333333;
+    height: 80rpx;
+}
+
+.closeInput {
+    width: 30rpx;
+    height: 30rpx;
+    top: 22rpx;
+    right: 30rpx;
+}
+
+.tips {
+    color: #C2C4CC;
+    font-size: 26rpx;
+    margin: 26rpx;
+}
+
+.saveBtn {
+    height: 88rpx;
+    line-height: 88rpx;
+    opacity: 1;
+    border-radius: 210px;
+    margin: 0 auto;
+    margin-top: 220rpx;
+    width: 431rpx;
+    background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
+}

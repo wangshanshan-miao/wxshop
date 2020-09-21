@@ -1,0 +1,35 @@
+<view class="txDetailModel">
+    <view class="txDetailBg pr">
+        <image src="../../../img/txxqbg.png" />
+        <view class="txDetail_con tc">
+            <image wx:if="{{item.status==1}}" src="../../../img/txsb.png" class="txResult" /> 
+            <image wx:if="{{item.status==2}}" src="../../../img/txcg.png" class="txResult" />
+             <image wx:if="{{item.status==0}}"  src="../../../img/waitPay.png" class="txResult" />
+            <view wx:if="{{item.status==1}}" class="f30 c33 txStatu">提现失败</view>
+            <view wx:if="{{item.status==2}}" class="f30 c33 txStatu">提现成功</view>
+            <view wx:if="{{item.status==0}}" class="f30 c33 txStatu">待审核</view>
+
+            <view class='f24 c99'>{{item.createTime}}</view>
+            <view class="txIntro">
+                <view class="flex_row txIntroCell jb">
+                    <view class='f26 c33'></view>
+                    <view class='f26 c99'></view>
+                </view>
+                <view class="flex_row  jb">
+                    <view class='f26 c33'>提现金额</view>
+                    <view class='f26 c99'>{{item.money}}元</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tx_followUp" wx:if="{{item.voucherUrl}}">
+        <view class="tx_followUp_title f26 c99">转账凭证</view>
+        <image src="{{imgBaseUrl+item.voucherUrl+'?x-image-process=image/resize,p_30'}}" class="zp" />
+    </view>
+    <view class="tx_followUp" wx:if="{{item.status==1}}">
+        <view class="tx_followUp_title f26 c99">提现失败原因</view>
+        <view class='f26 c33 reason'>
+            {{item.reason}}
+        </view>
+    </view>
+</view>

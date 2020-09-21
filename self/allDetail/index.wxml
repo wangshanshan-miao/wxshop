@@ -1,0 +1,250 @@
+<wxs src="../../utils/formatTime.wxs" module="tools" />
+<!-- 普通订单详情 -->
+<view class="ckOrderModel boxs">
+	<!-- 显示订单状态 -->
+	<view class="showCkOrder_state boxs">
+		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==11}}">
+			<view class='f32 cff'>拼团中</view>
+			<image class="order_state_img" src="../../img/ddfk.png" />
+		</view>
+		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==9}}">
+			<view class='f32 cff'>已取消</view>
+			<image class="order_state_img" src="../../img/or_yqx.png" />
+		</view>
+		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8 || orderStatus==7}}">
+			<view class='f32 cff'>交易成功</view>
+			<image class="order_state_img" src="../../img/or-wait.png" />
+		</view>
+		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==4}}">
+			<view class='f32 cff'>卖家已发货</view>
+			<image class="order_state_img" src="../../img/ddsh.png" />
+		</view>
+		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==1}}">
+			<view class='f32 cff'>等待卖家发货</view>
+			<image class="order_state_img" src="../../img/dfh.png" />
+		</view>
+		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
+			<view class='flex_col' style="margin-top: 14rpx;">
+				<view class="f32 mb10 cff">等待买家付款</view>
+				<view class="f28 cff">
+          {{tools.diffMinute(nowTime,endTime)}}分钟后自动取消
+					<!-- {{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭 -->
+				</view>
+			</view>
+			<image class="order_state_img" src="../../img/ddfk.png" />
+		</view>
+	</view>
+	<!-- <view class="line"></view> -->
+	<view class="shopckOrderList">
+		<view class="goodckOrder boxs">
+			<!-- 收获地址 -->
+			<view class="orderAddress flex_row jb al">
+				<view class="flex_row al">
+					<image src="../../img/address.png" class="address_img" />
+					<view class="flex_col" wx:if="{{name}}">
+						<view class='flex_row' style="margin-bottom: 7rpx;">
+							<view class="f28 buyUser_name c33">{{name}}</view>
+							<view class="f24 c99">{{phone}}</view>
+						</view>
+            <view class="f24 c99">{{address}}</view>
+					</view>
+          <view class="flex_col" wx:if="{{buyAddress}}">
+						<view class='flex_row' style="margin-bottom: 7rpx;">
+							<view class="f28 buyUser_name c33">{{buyAddress.addressName}}</view>
+							<view class="f24 c99">{{buyAddress.addressPhone}}</view>
+						</view>
+            <view class="f24 c99">{{buyAddress.receiverAddress}}</view>
+					</view>
+				</view>
+				<image src="../../img/rjt.png" class="rjtImg" />
+			</view>
+			<!-- 订单内容 -->
+			<!-- <view class="flex_row jb al goodckOrder_top">
+                <view class="flex_row al" catchtap="goStore">
+                    <image class="shop_icon" src="../../img/shop_icon.png" />
+                    <view class='f30 c33 fb shopckOrder_name'>{{storeName}}</view>
+                    <image src="../../img/rjt.png" class="goShopImg" />
+                </view>
+            </view> -->
+			<view class="goodckOrder_list" wx:for="{{list}}" wx:key="index">
+				<view class="flex_row">
+					<image class="goodckOrder_list_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" />
+					<view class="">
+						<view class='f28 goodName c33'>{{item.commodityName}}</view>
+                        <view class="amount flex_row">
+                            <view class="f26 c99" wx:if="{{item.specificationName}}">{{item.specificationName}}</view>
+                            <view class="f26 c99">x{{item.amount}}</view>
+                        </view>
+						<view class='flex_row goodckOrder_list_num pr'>
+							
+							<view class="f32 goodckOrder_list_money fb cf0">
+								￥{{item.realPrice}}
+								<text class="unitMy" wx:if="{{item.unit}}">/{{item.unit}}</text>
+							</view>
+
+							<!-- <view class="f22 c99">/平方米</view> -->
+						</view>
+					</view>
+				</view>
+				<!-- 测量信息 -->
+				<view class="goodData boxs" wx:if="{{metricalInformation}}">
+					<view class="f28 c66 goodS">{{metricalInformation}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- <view class="shopckOrderList_foot flex_row jb"> -->
+			<!-- <view class="f26 c99">共{{list.length}}件商品</view> -->
+			<!-- <view class="foot_btn_group flex_row">
+				<view wx:if="{{index==0}}" class="cancle_btn tc f26 c99">取消测量</view>
+				<view wx:if="{{index==1}}" class="sure_btn tc f26 cff">确认测量</view>
+			</view> -->
+		<!-- </view> -->
+		<view class="line"></view>
+	</view>
+	<!-- 订单金额数据 -->
+	<view class="amountModel boxs">
+		<!-- <view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c99'>订单总数：</view>
+			<view class="f28 c33 fb">x{{list.length}}</view>
+		</view> -->
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>商品合计: </view>
+			<view class="f28 cf0">¥{{orderPrice}}</view>
+		</view>
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>运费(快递)：</view>
+			<view class="f28 c99">¥{{expressFee}}</view>
+		</view>
+		<view class="flex_row amountModel_list al jb" catchtap="showModal">
+			<!-- <view class="flex_row"> -->
+			<view class='f28 amountModel_list_title c33'>优惠券：</view>
+			<view class="f28 c99">
+				-¥{{voucherPrice}}
+				<image src="../../img/rjt.png" class="rjtImg" wx:if="{{orderStatus == 0}}" />
+			</view>
+			<!-- </view> -->
+		</view>
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>实付款：</view>
+			<view class="f28 cf0">¥{{total}}</view>
+		</view>
+	</view>
+	<!-- <view class="line"></view> -->
+	<!-- 订单信息 -->
+	<view class="orderIntro boxs">
+		<view class="mt40">
+			<!-- <view class="orderIntro_title flex_row al">
+				<view class='longLine'></view>
+				<view class="f30 c33">订单详情</view>
+			</view> -->
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">订单编号：</view>
+				<view class="orderIntro_list_warn f28">{{orderNumber}}</view>
+			</view>
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">提交时间：</view>
+				<view class="orderIntro_list_warn f28">{{orderTime}}</view>
+			</view>
+      <view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+				<view class="orderIntro_list_title f28">支付方式：</view>
+				<view class="orderIntro_list_warn f28">微信支付</view>
+			</view>
+			<view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+				<view class="orderIntro_list_title f28">付款时间：</view>
+				<view class="orderIntro_list_warn f28">{{updateTime}}</view>
+			</view>
+			<!-- 暂定 -->
+			<!-- <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">成交时间：</view>
+                <view class="orderIntro_list_warn f28 c33">2019-11-03 12:12:12</view>
+            </view> -->
+		</view>
+		<view class="orderGroup flex_row jb" wx:if="{{orderStatus==4|| orderStatus==8 || orderStatus==7}}">
+			<!-- <view class="ckOrder_ewm f28 cff tc">查看二维码</view> -->
+			<!-- <view bindtap="refundBtn" data-id="{{orderId}}" class="ckOrder_ewm f28 cff tc" wx:if="{{orderStatus==1 || orderStatus==8 || orderStatus==7}}">
+				退款
+			</view> -->
+			<!-- <view catchtap="lookLogistics" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				查看物流
+			</view> -->
+			<view catchtap="confirm" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				确认收货
+			</view>
+			<view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==7}}">
+				立即评价
+			</view>
+            <view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
+				查看评价
+			</view>
+		</view>
+	</view>
+	<!-- 待付款底部操作区域 -->
+	<view class="orderFoot_opra al jb boxs  flex_row" wx:if="{{orderStatus==0}}">
+		<view class="flex_col pr orderFoot_opra_left">
+      <view class='f24 c33'>应付金额(含运费)：</view>
+			<view class="al cf0 f32 fb">
+				<text class="orderFoot_opra_dw">￥</text>
+				<text class="orderFoot_opra_num">{{total}}</text>
+			</view>
+		</view>
+		<view class="flex_row">
+			<view catchtap="cancel" class="cancleOrder_btn tc f26 c98">取消订单</view>
+			<view bindtap="pay" class="sureOrder_btn tc f28 cff">付款</view>
+		</view>
+	</view>
+</view>
+<!-- 删除已取消订单 -->
+<view catchtap="delete" wx:if="{{orderStatus==9}}" class="delete flex_row al jc cff f28">删除订单</view>
+<!-- 已发货 确认收货 -->
+<!-- <view catchtap="confirm" wx:if="{{orderStatus==4}}" class="delete flex_row al jc cff f28">确认收货</view> -->
+<!-- 蒙板 -->
+<view class="mask" wx:if="{{mask}}"></view>
+<!-- 选择可用优惠券 -->
+<view class="coupons sliderUp pr" wx:if="{{modal}}">
+	<view class="title f28 c22 flex_row al jc">选择可用优惠券</view>
+	<image src="../../img/cha.png" class="close pa" catchtap="closeModal"></image>
+	<scroll-view bindscrolltolower="toBottom" scroll-y class="scroll-y">
+		<view bindtap="select" data-price="{{item.voucherPrice}}" data-id="{{item.userVoucherId}}" class="coupon flex_row al" wx:for="{{couponList}}" wx:key="index">
+			<image class="bg" src="../../img/yhqbg1.png"></image>
+			<view class="left">
+				<text>￥</text>
+				{{item.voucherPrice}}
+			</view>
+			<view class="right">
+				<view class="top flex_row al">
+					<!-- <view class="top-left cff flex_row al jc">抵扣券</view> -->
+					<!-- <view class="top-right f22">已售1248</view> -->
+				</view>
+				<view class="middle f30">{{item.voucherName}}</view>
+				<view class="bottom c99 f20 flex_row al jb">
+					<view wx:if="{{item.condition}}">满{{item.condition}}元可用</view>
+					<view wx:else>无门槛</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</view>
+<!-- 物流 -->
+<view class="logistics fadeUp sliderUp" wx:if="{{express}}">
+	<image catchtap="closeExpress" src="../../img/cha.png" class="pa close"></image>
+	<!-- <view class="title f28 c33 flex_row al jc">查看物流</view> -->
+	<view class="list flex_row al jb">
+		<view class="name f26 c22">配送方式 :</view>
+		<view class="text f26 c99">{{expressName}}</view>
+	</view>
+	<view class="list flex_row al jb">
+		<view class="name f26 c22">物流单号 :</view>
+		<view class="text f26 c99">{{expressNo}}</view>
+	</view>
+	<view class="list flex_row al jb">
+		<view class="name f26 c22">快递费 :</view>
+		<view class="text f26 c99">{{expressFee}}</view>
+	</view>
+</view>
+<!-- 核销提示 -->
+<!-- <van-popup show="{{ show }}" round="true" closeable bind:close="onClose">
+    <view class="tankuang">
+        <view class="orderIntro_list_warn f28 c33">{{orderNumber}}</view>
+        <view class="orderIntro_list_warn f28 c33">凭此单号到店核销</view>
+    </view>
+</van-popup> -->

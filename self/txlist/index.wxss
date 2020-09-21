@@ -1,0 +1,17 @@
+/* pages/self/txlist/index.wxss */
+.txListModel {
+    padding: 0 30rpx;
+}
+
+.txListModel_cell {
+    padding: 29rpx 0 22rpx 0;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.txListModel_cell_num {
+    color: #D32E32;
+}
+
+.txListModel_cell_time {
+    margin-top: 5rpx;
+}

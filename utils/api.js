@@ -140,7 +140,7 @@ class Api extends Http {
   }
   // 代金券列表
   getVoucherList(data) {
-    return this.request('api/common/getVoucherList', data, 'POST')
+    return this.request('api/userVoucher/selectVoucherList', data, 'POST')
   }
   // 购买代金券
   bugVoucher(data) {

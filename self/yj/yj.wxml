@@ -1,0 +1,90 @@
+<!-- 佣金明细 -->
+<view class="yjModel boxs">
+	<view class="balance pr">
+		<image class="yjbj pa" src="../../../img/yjbj.png" />
+		<view class="balance_con boxs pa">
+			<view class="balance_con_top flex_row jb">
+				<view class="f28 cff">余额</view>
+				<view bindtap="goTxList" class="f28 cff fb">提现明细</view>
+			</view>
+			<view class="flex_row yeNum">
+				<view class="yeDw cff">￥</view>
+				<view class="yeNum_count cff">{{remainingSumMoney}}</view>
+			</view>
+			<view bindtap="withdrawal" class="txBtn f26 tc cff">立即提现</view>
+		</view>
+	</view>
+	<!-- tab -->
+	<view class="part flex_row jb al">
+		<view class="partList flex_col">
+			<view class="partList_top flex_row al">
+				<image src="../../../img/yjze.png" />
+				<view class="f28 c33">佣金总额</view>
+			</view>
+			<view class="moneyNum flex_row">
+				<view class="moner_dw f30 c33">￥</view>
+				<view class='hasMoney'>{{sumMoney}}</view>
+			</view>
+		</view>
+		<view class="partList flex_col">
+			<view class="partList_top flex_row al">
+				<image src="../../../img/ytx.png" />
+				<view class="f28 c33">已提现</view>
+			</view>
+			<view class="moneyNum flex_row">
+				<view class="moner_dw f30 c33">￥</view>
+				<view class='hasMoney'>{{withdrawMoney}}</view>
+			</view>
+		</view>
+	</view>
+	<!-- 收支列表 -->
+	<view class="listModel boxs">
+		<view class="listModel_tab flex_row al">
+			<view bindtap="changeListModelTab" data-index="{{0}}" class="{{listModelTabIndex==0?'choseListModelTab':''}} listModel_tab_left listModel_tab_cell f28">
+				收入
+			</view>
+			<view bindtap="changeListModelTab" data-index="{{1}}" class="{{listModelTabIndex==1?'choseListModelTab':''}} listModel_tab_right listModel_tab_cell f28">
+				支出
+			</view>
+		</view>
+		<!-- 列表区域 -->
+		<view class="user_list boxs" wx:for="{{list}}" wx:key="index">
+			<!-- 收入 -->
+			<view bindtap="fx" data-id="{{item.commissionId}}" wx:if="{{listModelTabIndex==0}}" class="flex_row jb al">
+				<view class="f28 c33 fb">分销奖励</view>
+				<view bindtap="goFx" class="f28 addMoney fb">+￥{{item.money}}</view>
+			</view>
+			<!-- 支出 -->
+			<view bindtap="tx" data-id="{{item.commissionId}}" wx:if="{{listModelTabIndex==1}}" class="flex_row jb al">
+				<view class="f28 c33 fb">提现</view>
+				<view class="f28 addMoney fb">-￥{{item.money}}</view>
+			</view>
+			<view class="operaTime f24 c99">{{item.createTime}}</view>
+		</view>
+	</view>
+	<!-- 提现弹窗 -->
+	<van-popup show="{{ txShow }}" round custom-style="width:80%">
+		<view class="warnModel tc">
+			<image src="../../../img/warnimg.png" class="warnimg" />
+			<view class='f32 c33 warn_text'>温馨提示</view>
+			<view class="f26 c99">暂不能提现，满{{depositMoney}}才可提现</view>
+			<view bindtap="closeWithdrawal" class="known tc f28 cff">我知道了</view>
+		</view>
+	</van-popup>
+</view>
+
+
+<!-- 蒙板 -->
+<view class="mask" wx:if="{{mask}}"></view>
+
+<!-- 提现弹框 -->
+<view class="widthDraw fadeUp" wx:if="{{show}}">
+	<image class="close pa" catchtap="closeModal" src="../../../img/cha.png"></image>
+	<view class="title c33">提现金额</view>
+	<view class="price flex_row al jb">
+		<view class="text c33">￥</view>
+		<input type="number" bindblur="inputMoney" value="{{money}}" maxlength="8" placeholder="请输入提现金额"></input>
+		<view class="f28 all" catchtap="takeAll">全部提现</view>
+	</view>
+    <view catchtap="confirm" class="confirm cff f30 flex_row al jc">确定</view>
+</view>

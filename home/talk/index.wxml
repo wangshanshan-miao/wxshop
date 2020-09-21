@@ -1,0 +1,13 @@
+<!--pages/talk/index.wxml-->
+ <view class="container shadow" style="" >
+  <editor 
+    id="editor" 
+    class="ql-container f28" 
+    placeholder="请清晰描述你的疑问…"
+    value="{{articleContent}}"
+    bindinput="getEditorValue"
+    bindstatuschange="onStatusChange" 
+    bindready="onEditorReady">
+  </editor>
+</view>
+<button class="sendBtn f28" bindtap="sendTalk">发送</button>

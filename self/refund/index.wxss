@@ -1,0 +1,80 @@
+.refundModel {
+    padding: 30rpx;
+}
+
+.refundModel_cell {
+    padding: 40rpx 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.refundModel_cell_title {
+    font-size: 30rpx;
+    color: #999999;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+.refundModel_cell_value {
+    font-size: 28rpx;
+    color: #333333;
+    font-weight: bold;
+    text-align: right;
+    border: none;
+    width: 100%;
+}
+
+.upload {
+    margin: 40rpx 0;
+}
+
+.upload_groupImg {
+    margin-top: 30rpx;
+    display: flex;
+}
+
+.upload_img {
+    width: 204rpx;
+    height: 204rpx;
+    border-radius: 10rpx;
+}
+
+.camera {
+    width: 52rpx;
+    height: 45rpx;
+    flex-shrink: 0;
+}
+
+.upload_bg {
+    background-color: #F2F2F4;
+}
+
+.button {
+    width: 568rpx;
+    height: 88rpx;
+    background: rgba(0, 157, 255, 1);
+    border-radius: 210rpx;
+    margin: 39rpx auto;
+    color: #fff;
+    font-size: 28rpx;
+}
+
+
+
+
+
+.img-box{
+    width: 204rpx;
+    height: 204rpx;
+    box-sizing: border-box;
+    margin-right: 30rpx;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+.delete1{
+    top: -18rpx;
+    right: -18rpx;
+    width: 36rpx;
+    height: 36rpx;
+}

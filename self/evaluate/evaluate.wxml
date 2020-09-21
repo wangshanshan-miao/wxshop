@@ -1,0 +1,34 @@
+<!--pages/self/evaluate/evaluate.wxml-->
+<view class="shadow">
+  <view class="flex_row">
+    <view wx:for="{{tabs}}" data-index="{{index}}" data-status="{{item.status}}" catchtap="clickTab" class="{{active == index ? 'f30 c22 active' : 'f28 c66'}} tc tab flex_col">
+      <view style="height: calc(100% - 6rpx)">
+        <text>{{item.name}}</text>
+        <text style="display: none;">({{list.length}})</text>
+      </view>
+      <view class="border"></view>
+    </view>
+  </view>
+  <!-- 已评价 -->
+  <view class="evaList">
+    <view wx:for="{{list}}" data-id="{{item.commodityId}}" class="flex_row ">
+      <view class="flex_row">
+        <image src="imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_40'"></image>
+        <view class="flex_row jb evaUser_name">
+          <view class="flex_col">
+            <text class="f30 c33 fb" style="margin-bottom: 4rpx;">我是小可爱啊</text>
+            <view class="stars">
+              <image wx:for="{{item.evaluateLevel}}" wx:key="index" src="{{index <= item.evaluateLevel ? '../../img/star.png' : '../../img/star1.png'}}"></image>
+            </view>
+          </view>
+          <text class="f26 c99">2019-07-16 12:02</text>
+        </view>
+        
+      </view>
+      <image src="imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_40'"></image>
+      <view>
+        <view class="f30 c33 fb">{{item.voucherName}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<wxs src="../../utils/formatTime.wxs" module="tools" />
+<!--pages/self/pay/index.wxml-->
+<view class="main pr">
+  <image class="bg pa" src="../../img/pay-bg.png"></image>
+  <image class="pay pa" src="../../img/waitPay.png"></image>
+  <view class="time c22 f30 pa tc">{{tools.diffMinute(nowTime,endTime)}}:{{tools.diffSecond(nowTime,endTime)}}</view>
+  <view class="notice c99 f24 pa tc">支付剩余时间</view>
+  <view class="bottom pa flex_row al jb">
+    <view class="total c22 f26">总价</view>
+    <view class="price c99 f26">￥{{total}}</view>
+  </view>
+</view>
+
+<view class="line"></view>
+
+<view class="method flex_row al jb">
+  <view class="flex_row al left">
+    <image class="wxpay" src="../../img/wxpay.png"></image>
+    <view class="c33 f28">微信支付</view>
+  </view>
+  <image class="select" src="../../img/dxh.png"></image>
+</view>
+
+<view bindtap="checkPhone" class="payNow flex_row al jc cff f28">立即支付</view>
+
+
+<!-- 授权手机号码 -->
+<view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
+<view class="auth1 pr" wx:if="{{phone}}">
+	<image catchtap="closePhone" src="../../img/cha.png" class="close1 pa"></image>
+	<view class="title c33 tc">温馨提示</view>
+	<view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
+	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
+	<!-- <button class="cff tc button flex_row al jc" >授权登录</button> -->
+</view>

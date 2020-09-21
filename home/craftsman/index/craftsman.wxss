@@ -1,0 +1,187 @@
+.carftsmanModel {
+    /* width: 100%;
+    height: 100%; */
+    /* overflow: hidden; */
+}
+
+.carftsman_top {
+    /* position: fixed;
+    top: 0;
+    z-index: 999; */
+    width: 100%;
+    height: 680rpx;
+    background: #fff;
+    /* padding: 40rpx 30rpx 0 30rpx; */
+}
+
+.carftsman_top_swiper,
+.carftsman_swiper_image {
+    width: 100%;
+    height: 100%;
+}
+
+.carftsman_searchInput {
+    width: 100%;
+    height: 65rpx;
+    line-height: 65rpx;
+    padding: 0rpx 74rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 35rpx;
+
+}
+
+.carftsman_search_del {
+    width: 25rpx;
+    height: 25rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 22rpx;
+}
+
+.carftsman_search_icon {
+    width: 22rpx;
+    height: 22rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 22rpx;
+}
+
+.carftsmanArea {
+    width: 100%;
+    height: calc(100% - 380rpx);
+    border-radius: 30rpx 30rpx 0px 0px;
+    position: fixed;
+    top: 350rpx;
+    background: white;
+    padding-top: 35rpx;
+    overflow: auto;
+}
+
+.carftsmanArea_left {
+    width: 20%;
+   /*  position: fixed;
+    left: 0;
+    top: 400rpx;
+    z-index: 99; */
+}
+
+.carftsman_type {
+    padding: 10rpx 30rpx;
+    text-align: center;
+    margin-bottom: 20rpx;
+    z-index: 9999;
+}
+
+.choseType {
+    background: #009DFF;
+    color: white;
+    border-radius: 0 40rpx 40rpx 0;
+}
+
+/* .choseType::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 40rpx;
+    border-top: 25rpx solid transparent;
+    border-bottom: 25rpx solid transparent;
+    border-left: 40rpx solid #009DFF;
+    border-radius: 0 30rpx 0 0;
+    top: -14rpx;
+    left: 0;
+    z-index: 9;
+} */
+
+.carftsmanArea_right {
+    top: -540rpx;
+    width: 78%;
+    padding-right: 30rpx;
+    margin-left: 188rpx;
+}
+
+.carftsmanArea_right_types {
+    background-color: #fff;
+    flex-wrap: wrap;
+    /* position: fixed;
+    top: 380rpx;
+    left: 188rpx;
+    z-index: 99; */
+    height: 79rpx;
+    padding-top: 20rpx;
+    width: 72%;
+}
+
+.carftsmanArea_right_type {
+    padding: 6rpx 24rpx;
+    border: 1px solid rgba(153, 153, 153, 1);
+    margin: 0 35rpx 20rpx 0;
+    border-radius: 30rpx;
+}
+
+.choseChiType {
+    border: 1px solid rgba(0, 157, 255, 1);
+    color: #009DFF;
+}
+
+.carftsman_group {
+    top: -530rpx;
+    margin-left: 188rpx;
+    width: 72%;
+    height: auto;
+    flex-wrap: wrap;
+    overflow: hidden;
+    /* margin-top: 80rpx; */
+    /* margin-top: 480rpx; */
+}
+
+.carftsmanCell {
+    width: 100%;
+    padding: 44rpx 40rpx;
+    box-shadow: 0px 3rpx 6rpx rgba(0, 0, 0, 0.07);
+    opacity: 1;
+    border-radius: 20rpx;
+    margin-bottom: 30rpx;
+    border-top: 1px solid rgba(249, 249, 249, 1);
+}
+
+.carftsman_goodImg {
+    width: 101rpx;
+    height: 101rpx;
+    margin-right: 40rpx;
+    /* background-color: aquamarine; */
+    border-radius: 50%;
+}
+
+.carftsman_name {
+    margin-bottom: 10rpx;
+}
+
+.callPhone {
+    width: 91rpx;
+    height: 67rpx;
+    line-height: 67rpx;
+    position: absolute;
+    top: 63rpx;
+    right: 0;
+    background: rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 34px 0px 0px 34px;
+}
+
+.callPhone_img {
+    width: 36.5rpx;
+    height: 36.5rpx;
+}
+
+.orther{
+    border-radius:30rpx 30rpx 0px 0px;
+    width: 100vw;
+    height: 32rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    top: -30rpx;
+    /* position: fixed;
+    top: 360rpx;
+    z-index: 9999; */
+}

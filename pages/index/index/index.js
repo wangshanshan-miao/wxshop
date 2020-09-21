@@ -61,7 +61,8 @@ Page({
     }],
     count_down: '',
     endTime: '',
-    actEndTimeList: []
+    actEndTimeList: [],
+    goodNum: 1
   },
   prevImg: function () {
     var swiper = this.data.swiper
@@ -72,7 +73,75 @@ Page({
       swiper: swiper,
     })
   },
-
+  reduceNum() {
+    if (this.data.goodNum <= 1) {
+      wx.showToast({
+        title: '商品数量不可以小于1件',
+        icon: 'none',
+        duration: 1500,
+      });
+      return false
+    }
+    this.setData({
+      goodNum: this.data.goodNum - 1
+    })
+  },
+  // 切换规格
+  switch(event) {
+    const index = event.currentTarget.dataset.index
+    const specificationId = event.currentTarget.dataset.commodityspecificationid
+    const price = event.currentTarget.dataset.p
+    this.setData({
+      currentPrice: price,
+      skuIndex: index,
+      specificationId: specificationId //规格id
+    })
+  },
+  addNum() {
+    this.setData({
+      goodNum: this.data.goodNum + 1
+    })
+  },
+  // 加入购物车
+  addToCart() {
+    this.checkUser()
+    let specificationId = this.data.specificationId
+    if (this.data.good.commoditySpecificationList.length > 0) {
+      if (!specificationId) {
+        wx.showToast({
+          title: '请选择商品规格',
+          icon: 'none'
+        })
+        return false
+      }
+    }
+    api.addToCart({
+      commoditySpecificationId: this.data.specificationId,
+      amount: this.data.goodNum,
+      outId: this.data.id,
+      userId: '81'
+      // userId: wx.getStorageSync("userId")
+    }).then(res => {
+      this.setData({
+        goodSizeShow: false
+      })
+      if (res.status == 200) {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+        return
+      }
+      /* wx.switchTab({
+          url: `/pages/buyCar/index/car`
+      }) */
+    })
+  },
   nextImg: function () {
     console.log(2);
     var swiper = this.data.swiper;
@@ -157,13 +226,13 @@ Page({
   // 公告
   notice() {
     wx.navigateTo({
-      url: '/pages/notice/index',
+      url: '/home/notice/index',
     })
   },
   // 查看我的优惠券
   lookCoupon() {
     wx.navigateTo({
-      url: '/pages/self/yhq/yhq'
+      url: '/self/yhq/yhq'
     })
   },
   benefit() {
@@ -183,7 +252,7 @@ Page({
   },
   selectLocation() {
     wx.navigateTo({
-      url: '/pages/location/index',
+      url: '/home/location/index',
     })
   },
   onShow() {
@@ -595,11 +664,11 @@ Page({
   },
   toSearch() {
     wx.navigateTo({
-      url: '../../search/index/index',
+      url: '/home/search/index/index',
     });
   },
   goCg(e) {
-    const id = app.getValue(e).id || 0
+    const id = e.currentTarget.dataset.classid || 0
     const index = app.getValue(e).index
     wx.navigateTo({
       url: `/pages/index/cg/cg?classId=${id}&index=${index}`
@@ -608,7 +677,7 @@ Page({
   goList(e) {
     const type = app.getValue(e).type
     wx.navigateTo({
-      url: `../../index/goodsList/cg?type=${type}`
+      url: `/pages/index/goodsList/cg?type=${type}`
     })
     // wx.navigateTo({
     //   url: '/pages/location/index',
@@ -616,23 +685,23 @@ Page({
   },
   goPt() {
     wx.navigateTo({
-      url: '../../index/pt/pt'
+      url: '/pages/index/pt/pt'
     })
   },
   goMs() {
     wx.navigateTo({
-      url: '../../index/ms/ms'
+      url: '/pages/index/ms/ms'
     })
   },
   goQc() {
     wx.navigateTo({
-      url: '../../index/qc/qc'
+      url: '/pages/index/qc/qc'
     })
   },
   goShlm(e) {
     const index = app.getValue(e).id || 0
     wx.navigateTo({
-      url: `../../index/shlm/shlm?index=${index}`
+      url: `/pages/index/shlm/shlm?index=${index}`
     })
   },
   // 获取手机
@@ -711,7 +780,7 @@ Page({
     const id = e.currentTarget.dataset.id
     if (id) {
       wx.navigateTo({
-        url: `/pages/store/store?id=${id}`,
+        url: `/home/store/store?id=${id}`,
       })
     }
   },
@@ -755,7 +824,7 @@ Page({
     const type = e.currentTarget.dataset.type //0：限时秒杀；1：拼团；2：清仓
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `/pages/goodsDe/index?id=${id}&type=${type}`,
+      url: `/home/goodsDe/index?id=${id}&type=${type}`,
     })
   },
   // 一级分类
@@ -869,7 +938,7 @@ Page({
     const id = e.currentTarget.dataset.id
     // console.log("拼团id", id)
     wx.navigateTo({
-      url: `/pages/ptDe/index?id=${id}`,
+      url: `/home/ptDe/index?id=${id}`,
     })
   },
   // 全部商家
@@ -883,7 +952,7 @@ Page({
     const id = e.currentTarget.dataset.id
     // console.log("秒杀id", id)
     wx.navigateTo({
-      url: `/pages/msDe/index?id=${id}`,
+      url: `/home/msDe/index?id=${id}`,
     })
   },
   // 清仓
@@ -891,7 +960,7 @@ Page({
     const id = e.currentTarget.dataset.id
     // console.log("清仓id", id)
     wx.navigateTo({
-      url: `/pages/qcDe/index?id=${id}`,
+      url: `/home/qcDe/index?id=${id}`,
     })
   },
   // 回到顶部

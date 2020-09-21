@@ -1,0 +1,164 @@
+/* pages/self/ptorder/index.wxss */
+/* pages/self/clorder/index.wxss */
+.orderModel {
+    width: 100%;
+    height: 100%;
+    padding-top: 25rpx;
+    background: #F9F9F9;
+}
+
+.orderTabs {
+    padding: 0 20rpx;
+    background: white;
+    border-radius: 30rpx 30rpx 0px 0px;
+    margin-bottom: 15rpx;
+}
+
+.orderTabs_list {
+    padding: 36rpx 0 30rpx 0;
+    color: #666;
+}
+
+.choseOrderTab {
+    color: #222222;
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+.choseOrderTab::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 50rpx;
+    height: 6rpx;
+    bottom: -1rpx;
+    left: calc(50% - 18rpx);
+    background: #FB9467;
+    opacity: 1;
+    border-radius: 50rpx
+}
+
+.orderNumber {}
+
+.shopOrderList {
+    background: white;
+}
+
+.goodOrder {
+    padding: 30rpx 30rpx 0;
+
+}
+
+.goodOrder_top {
+    margin-bottom: 32rpx;
+}
+
+.shopOrder_name {
+    margin: 0 15rpx;
+}
+
+.shop_icon {
+    width: 25.58rpx;
+    height: 25.06rpx;
+}
+
+.goShopImg {
+    width: 18rpx;
+    height: 18rpx;
+}
+
+.orderState {
+    color: #009DFF;
+}
+
+.status0,
+.status3 {
+    color: #FF0000;
+}
+
+.status1,
+.status4 {
+    color: #FF7F11;
+}
+
+.status8 {
+    color: #07B94F;
+}
+
+.goodOrder_list_img {
+    width: 162rpx;
+    height: 157rpx;
+    flex-shrink: 0;
+    margin-right: 22rpx;
+    /* background-color: chartreuse; */
+}
+
+.goodName {
+    /* margin-bottom: 30rpx; */
+}
+
+.goodOrder_list_num {
+    align-items: center;
+}
+
+.amount {
+    margin: 10rpx 0;
+}
+
+.amount>view:first-child {
+    margin-right: 10rpx;
+}
+
+.goodOrder_list_money {
+    color: #FF0000;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.goodOrder_list {
+    margin-bottom: 12rpx;
+}
+
+.shopOrderList_foot {
+    border-top: 1px solid #F6F6F6;
+    padding: 30rpx;
+}
+
+.cancle_btn {
+    width: 142rpx;
+    height: 49rpx;
+    line-height: 49rpx;
+    background: rgba(221, 221, 221, 1);
+    opacity: 1;
+    border-radius: 60rpx;
+}
+
+.sure_btn {
+    width: 142rpx;
+    height: 49rpx;
+    line-height: 49rpx;
+    background: linear-gradient(132deg, #fca153 11%, #fb8a29 80%);
+    border-radius: 25rpx;
+    opacity: 1;
+}
+
+.hollow_btn {
+    width: 142rpx;
+    height: 49rpx;
+    line-height: 49rpx;
+    border: 1px solid rgba(0, 157, 255, 1);
+    opacity: 1;
+    border-radius: 60rpx;
+    color: #009DFF;
+}
+
+.chOrder_btn {
+    margin-left: 24rpx;
+}
+
+.deleteBtn {
+    border: 1px solid #a4aeb9;
+    border-radius: 25px;
+    background: #fff;
+    color: #a4aeb9;
+}

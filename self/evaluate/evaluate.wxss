@@ -1,0 +1,30 @@
+/* pages/self/evaluate/evaluate.wxss */
+.tab {
+  width: 50%;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  height: 104rpx;
+  line-height: 104rpx;
+  align-items: center
+}
+.tab text {
+  margin-bottom: 32rpx;
+}
+.active .border {
+  background: #FB9467;
+  width: 50rpx;
+  height: 6rpx;
+}
+
+.evaUser_name {
+    margin: 0 37rpx 11rpx 10rpx;
+}
+.evaUser_name .stars {
+  display: inline-block;
+  margin-left: 37rpx;
+}
+.stars image {
+  display: inline-block;
+  width: 24rpx;
+  height: 23rpx;
+  margin-right: 7rpx;
+}

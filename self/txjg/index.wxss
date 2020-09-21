@@ -1,0 +1,57 @@
+/* pages/self/txjg/index.wxss */
+.txDetailModel {
+    width: 100%;
+    min-height: 100%;
+    background: #F6F6F6;
+}
+
+.txDetailBg image {
+    width: 100%;
+    height: 636rpx;
+
+}
+
+.txDetail_con {
+    position: absolute;
+    top: 40rpx;
+    width: 100%;
+}
+
+.txResult {
+    width: 270rpx !important;
+    height: 270rpx !important;
+}
+
+.txStatu {
+    margin: 16rpx 0 21rpx 0;
+}
+
+.txIntro {
+    width: 82%;
+    margin: 0 auto;
+    margin-top: 45rpx;
+}
+
+.txIntroCell {
+    margin-bottom: 20rpx;
+}
+
+.tx_followUp {
+    width: 82%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.tx_followUp_title {
+    margin-bottom: 20rpx;
+}
+
+.zp {
+    width: 100%;
+    height: 500rpx;
+    /* margin: 0 auto; */
+}
+
+.reason{
+    margin-bottom: 20rpx;
+}

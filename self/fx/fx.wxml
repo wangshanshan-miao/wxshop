@@ -1,0 +1,35 @@
+<!-- 分销详情 -->
+<view class="fxModel">
+    <view class="fxModel_con">
+        <image src="../../../img/fxbg.png" class="fxBgImg" />
+        <view class="fxModel_conModel pa">
+            <view class="fxModel_conModel_top boxs">
+                <view class="flex_row al jb">
+                    <view class="f28 c33 fb">分销奖励</view>
+                    <view class="f28 fxModel_conModel_money fb">{{money}}</view>
+                </view>
+                <view class="fxModel_conModel_time f24 c99">{{createTime}}</view>
+            </view>
+            <view class="fx_title f28 boxs c33">订单详情</view>
+            <view class="fx_userIntro tc">
+                <image src="{{imgBaseUrl + headUrl+'?x-image-process=image/resize,p_30'}}" class="fx_userIntro_head" />
+                <view class='tc f30 c33 fx_userIntro_name'>{{userName}}</view>
+                <view class="f24 c99">{{userPhone}}</view>
+            </view>
+            <view class="fx_orderIntro boxs">
+                <view class="flex_row fx_orderIntro_list al jb">
+                    <view class="f26 c22">消费总件数</view>
+                    <view class="f26 c99">{{count}}</view>
+                </view>
+                <view class="flex_row fx_orderIntro_list al jb">
+                    <view class="f26 c22">消费总额</view>
+                    <view class="f26 c99">{{totalPrices}}元</view>
+                </view>
+                <view class="flex_row fx_orderIntro_list al jb">
+                    <view class="f26 c22">完成时间</view>
+                    <view class="f26 c99">{{updateTime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

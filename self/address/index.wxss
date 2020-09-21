@@ -1,0 +1,104 @@
+/* pages/self/address/index.wxss */
+.bottom {
+  position: fixed;
+  overflow: hidden;
+  margin-top: 140rpx;
+  bottom: 0;
+  width: 100vw;
+  height: 130rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px -6px 14px rgba(0, 0, 0, 0.06);
+  border-radius: 18rpx 18rpx 0px 0px;
+}
+
+.bottom>.button {
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 210rpx;
+  width: 431rpx;
+  background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
+}
+
+.no_data {
+  margin: 228rpx auto;
+  overflow: hidden;
+  width: 303rpx;
+}
+
+.no_data>.img {
+  width: 303rpx;
+  height: 267rpx;
+}
+
+.no_data>.text {
+  width: 234rpx;
+  color: #BFBFBF;
+  margin: 40rpx auto;
+  line-height: 37rpx;
+}
+
+.list {
+  width: 700rpx;
+  height: 197rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #E3E1E2;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+}
+.list:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.list>.left {
+  width: 592rpx;
+}
+
+.list>.left>.left-top .name {
+  color: #222;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-right: 22rpx;
+}
+
+.list>.left>.left-top .num {
+  color: #222;
+  font-size: 28rpx;
+}
+
+.list>.left>.left-top .default {
+  width: 74rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  display: block;
+}
+
+.list>.middle {
+  width: 2rpx;
+  height: 61rpx;
+  background-color: #c2c2c2;
+}
+
+.list>.edit {
+  width: 42rpx;
+  height: 42rpx;
+  flex-shrink: 0;
+}
+
+.left-botom {
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 14rpx;
+}
+
+.left-top {
+  height: 42rpx;
+}
+
+.info {
+  height: 100%;
+}
+
+.lower {
+  margin-bottom: 130rpx;
+  height: 50rpx;
+}
