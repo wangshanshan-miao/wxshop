@@ -75,7 +75,7 @@ Page({
       useType: 0,
       merchantId:wx.getStorageSync('merchantId'),
       pageNum: this.data.pageNum,
-      pageSize: 10
+      pageSize: 3
   }).then(res => {
       // console.log(res)
       const data = res.data
