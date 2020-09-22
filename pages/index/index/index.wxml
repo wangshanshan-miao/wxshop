@@ -42,7 +42,7 @@
       </view>
       <!-- 福利大放送 -->
       <view class="fuli">
-        <image wx:for="{{fuliList}}" src="{{item.url}}"></image>
+        <image wx:for="{{fuliList}}" src="{{item.url}}" bindtap="goPage" data-index="{{index}}"></image>
       </view>
     </view>
   </view>
