@@ -62,6 +62,11 @@ Page({
             url: `/self/comment/index.js?id=${id}`,
         })
     },
+  morePt(){
+    wx.navigateTo({
+      url: '/pages/index/goodsList/cg?type=1'
+    })
+  },
     // 订单详情
     orderDetail() {
         api.orderDetail({
