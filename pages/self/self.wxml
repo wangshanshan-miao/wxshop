@@ -29,13 +29,13 @@
 					<view class="treasure_list_num">￥{{userInfo.remainingSumMoney}}</view>
 					<view class='f24 cff treasure_list_title'>我的佣金</view>
 				</view> -->
-				<view class="flex_row al jb">
+				<view class="flex_row al jb" bindtap="goDjq" data-type="1">
 					<!-- <view class="treasure_list_num">{{userInfo.voucherNum}}</view>
 					<view class='f24 cff treasure_list_title'>优惠券</view> -->
 					<text class="c33">团购券</text>
 					<image src="../../img/tg.png"></image>
 				</view>
-				<view bindtap="goYhq" class="flex_row al jb">
+				<view bindtap="goYhq" class="flex_row al jb" data-type="0">
 					<!-- <view class="treasure_list_num">{{userInfo.collectNum}}</view>
 					<view class='f24 cff treasure_list_title'>收藏</view> -->
 					<text class="c33">优惠券</text>

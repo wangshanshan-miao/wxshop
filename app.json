@@ -50,7 +50,9 @@
         "evaluate/evaluate",
         "msg/msg",
         "msgDetail/index",
-        "news/news"
+        "news/news",
+        "djq/djq",
+        "pj/pj"
       ]
     },
     {

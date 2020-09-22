@@ -1,7 +1,7 @@
 <!--pages/self/yhq/detail/index.wxml-->
 <!-- 已拥有的代金券或优惠券详情 -->
 <view class="coupon flex_row al">
-	<image src="../../../../img/yhqbg1.png"></image>
+	<image src="../../../img/yhqbg1.png"></image>
 	<view class="left">
 		<text>￥</text>{{voucherPrice}}
 	</view>

@@ -60,36 +60,6 @@
         </swiper-item>
       </block>
     </swiper>
-    <!-- <view bindtap="gojz" class="flex_col jc al">
-      <view class="tabCell felx_row tabCell_two">
-        <image src="../../../img/yzjz.png" class="tabIcon" />
-      </view>
-      <view class="tabText">一站家装</view>
-    </view>
-    <view bindtap="goPt" class="flex_col jc al">
-      <view class="tabCell felx_row tabCell_three">
-        <image src="../../../img/jzpt.png" class="tabIcon" />
-      </view>
-      <view class="tabText">家装拼团</view>
-    </view>
-    <view bindtap="goMs" class="flex_col jc al">
-      <view class="tabCell felx_row tabCell_four">
-        <image src="../../../img/jcms.png" class="tabIcon" />
-      </view>
-      <view class="tabText">建材秒杀</view>
-    </view>
-    <view bindtap="goQc" class="flex_col jc al">
-      <view class="tabCell felx_row tabCell_five">
-        <image src="../../../img/ypqc.png" class="tabIcon" />
-      </view>
-      <view class="tabText">样品清仓</view>
-    </view>
-    <view bindtap="goShlm" class="flex_col jc al">
-      <view class="tabCell felx_row tabCell_six">
-        <image src="../../../img/shlm.png" class="tabIcon" />
-      </view>
-      <view class="tabText">生活联盟</view>
-    </view> -->
   </view>
   <!-- 限时秒杀 -->
   <view class="box seckill" data-id="{{seckillList.seckillId}}" wx:if="{{seckillList.type == 1}}">

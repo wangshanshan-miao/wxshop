@@ -1,5 +1,5 @@
 // pages/self/yhq/detail/index.js
-import api from "../../../../utils/api"
+import api from "../../../utils/api"
 Page({
   /**
    * 页面的初始数据
@@ -96,7 +96,7 @@ Page({
           // console.log(res)
           if (res.status == 200) {
             wx.navigateTo({
-              url: `/pages/self/yhq/yhq`,
+              url: `/self/yhq/yhq`,
             })
           }
         })
