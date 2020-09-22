@@ -11,8 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageNum:0,
-    couponList:[]
+    pageNum: 0,
+    couponList: []
   },
 
   /**
@@ -70,22 +70,39 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList(){
+  getList() {
     api.getVoucherList1({
       useType: 0,
-      merchantId:wx.getStorageSync('merchantId'),
+      merchantId: wx.getStorageSync('merchantId'),
       pageNum: this.data.pageNum,
       pageSize: 3
-  }).then(res => {
+    }).then(res => {
       // console.log(res)
       const data = res.data
       this.setData({
-          totalPage: data.totalPage,
-          pageNum: data.pageNum,
-          couponList: [...this.data.couponList, ...data.list],
-          isRequest: false
+        totalPage: data.totalPage,
+        pageNum: data.pageNum,
+        couponList: [...this.data.couponList, ...data.list],
+        isRequest: false
       })
       wx.hideLoading({})
-  })
+    })
+  },
+  receive() {
+    api.getVoucherToUser({
+      // areaCode: wx.getStorageSync('shortAreaCode'),
+      areaCode:'420117',
+      userId: '81'
+    }).then(res => {
+      if (res.data.status === 1) {
+        wx.showToast({
+          title: '领取成功！',
+          icon: "success",
+          duration: 2000,
+          complete: () => {}
+        })
+      }
+
+    })
   }
 })

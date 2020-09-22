@@ -12,12 +12,12 @@
       <view>
         <view class="couponTitle f28 fb">{{item.voucherName}}</view>
         <view class="couponCondition f22">满{{item.condition}}元可使用</view>
-        <view class="couponValidity f22">有效期至2020-06-01</view>
+        <!-- <view class="couponValidity f22">有效期至2020-06-01</view> -->
       </view>
       <view class="couponBtn f28 cff">去用券</view>
     </view>
   </view>
 </view>
 <view class="receiveBtn flex_row al">
-	<view class="btn cff f28">立即领取</view>
+	<view class="btn cff f28" bindtap="receive">立即领取</view>
 </view>
