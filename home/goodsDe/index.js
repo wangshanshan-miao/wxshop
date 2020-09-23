@@ -361,8 +361,8 @@ Page({
           })
         } else if (this.data.goodType == 2) { // 清仓
           api.clearDetail({
-            // outId: this.data.id
-            outId: 34
+            outId: this.data.id
+            // outId: 34
           }).then(res => {
             if (res.status == 200) {
               console.log(res)
@@ -382,8 +382,8 @@ Page({
           })
         } else {
           api.goodDetail({
-            // outId: this.data.id
-            outId: 100
+            outId: this.data.id
+            // outId: 100
           }).then(res => {
             if (res.status == 200) {
               console.log(res)
@@ -468,6 +468,10 @@ Page({
           endtimes
         })
       })
+    },
+    // 开团
+    startBooking () {
+      
     },
     // 关闭弹框
     closeModal1() {

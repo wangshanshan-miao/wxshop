@@ -68,7 +68,7 @@ Page({
     var swiper = this.data.swiper
     var noticeList = this.data.noticeList
     var current = swiper.current
-    swiper.current = current >= noticeList.length -1 ? current - 1 : current + 1;
+    swiper.current = current >= noticeList.length - 1 ? current - 1 : current + 1;
     this.setData({
       swiper: swiper,
     })
@@ -86,8 +86,16 @@ Page({
       goodNum: this.data.goodNum - 1
     })
   },
+  goPage(e) {
+    console.log(e.currentTarget.dataset.index)
+    if (e.currentTarget.dataset.index == 0) {
+      wx.navigateTo({
+        url: '/pages/index/Newcomer/index',
+      })
+    }
+  },
   // 切换规格
-  switch(event) {
+  switch (event) {
     const index = event.currentTarget.dataset.index
     const specificationId = event.currentTarget.dataset.commodityspecificationid
     const price = event.currentTarget.dataset.p
@@ -151,13 +159,13 @@ Page({
       swiper: swiper,
     })
   },
-  scrolltxt: function() {
+  scrolltxt: function () {
     clearInterval(timer)
     var that = this;
     var length = that.data.length; //滚动文字的宽度
     var windowWidth = that.data.windowWidth; //屏幕宽度
     if (length > windowWidth) {
-      timer = setInterval(function() {
+      timer = setInterval(function () {
         var maxscrollwidth = length + that.data.marquee_margin + windowWidth; //滚动的最大宽度，文字宽度+间距，如果需要一行文字滚完后再显示第二行可以修改marquee_margin值等于windowWidth即可
         var crentleft = that.data.marqueeDistance;
         // console.log(crentleft)
@@ -278,7 +286,7 @@ Page({
                 latitude,
                 longitude
               },
-              success: function(res) {
+              success: function (res) {
                 console.log(res)
                 const result = res.result.ad_info.adcode
                 wx.setStorageSync('shortAreaCode', result)
@@ -311,11 +319,11 @@ Page({
                   }
                 })
               },
-              fail: function(error) {
+              fail: function (error) {
                 // console.error(error);
 
               },
-              complete: function(res) {
+              complete: function (res) {
                 // console.log(res);
               }
             })
@@ -488,7 +496,7 @@ Page({
       }
     })
   },
-  onLoad: function(query) {
+  onLoad: function (query) {
     if (query) {
       // 生成二维码时传入的scene
       const scene = decodeURIComponent(query.scene)
@@ -529,7 +537,7 @@ Page({
                         latitude,
                         longitude
                       },
-                      success: function(res) {
+                      success: function (res) {
                         // console.log(res)
                         const result = res.result.ad_info.adcode
                         wx.setStorageSync('shortAreaCode', result)
@@ -545,10 +553,10 @@ Page({
                         // self.gitAllareaCode()
                         wx.setStorageSync('location', self.data.location)
                       },
-                      fail: function(error) {
+                      fail: function (error) {
                         // console.error(error);
                       },
-                      complete: function(res) {
+                      complete: function (res) {
                         // console.log(res);
                       }
                     })
@@ -597,13 +605,13 @@ Page({
     })
   },
   onHide: function () {
-    timer && clearInterval(timer)//清楚定时器 防止内存泄漏
-    timer1 && clearInterval(timer1)//清楚定时器 防止内存泄漏
+    timer && clearInterval(timer) //清楚定时器 防止内存泄漏
+    timer1 && clearInterval(timer1) //清楚定时器 防止内存泄漏
   },
   // 设置时间
   date_format: function (endTime) {
-    var nowTime = new Date().getTime();//现在时间（时间戳）
-    var endTime = new Date(endTime).getTime();//结束时间（时间戳）
+    var nowTime = new Date().getTime(); //现在时间（时间戳）
+    var endTime = new Date(endTime).getTime(); //结束时间（时间戳）
     var time = (endTime - nowTime) / 1000
     // 获取天、时、分、秒
     let day = this.fill_zero_prefix(parseInt(time / (60 * 60 * 24)));
@@ -612,7 +620,7 @@ Page({
     let sec = this.fill_zero_prefix(parseInt(time % (60 * 60 * 24) % 3600 % 60));
 
     this.setData({
-      count_down: day +":" + hr + ":" + min + ":" + sec,
+      count_down: day + ":" + hr + ":" + min + ":" + sec,
       count_down1: day + "天" + hr + "时" + min + "分" + sec + "秒"
     })
   },
@@ -659,7 +667,7 @@ Page({
   },
   // 位数不足补零
   fill_zero_prefix: function (num) {
-    num = num < 0 ? 0 : num;//防止出现负数
+    num = num < 0 ? 0 : num; //防止出现负数
     return num < 10 ? "0" + num : num //补零操作
   },
   toSearch() {
@@ -892,7 +900,7 @@ Page({
       }, 1000)
       const endTimeList = []
 
-      for (var i = 0; i < that.data.groupBookingList.length;i++) {
+      for (var i = 0; i < that.data.groupBookingList.length; i++) {
         var objs = {};
         objs.eTime = that.data.groupBookingList[i].endTime
         endTimeList.push(objs)
@@ -922,7 +930,7 @@ Page({
     })
   },
   // 时间差比较
-  shijiancha (faultDate, completeTime) {
+  shijiancha(faultDate, completeTime) {
 
     var stime = Date.parse(new Date(faultDate));
 

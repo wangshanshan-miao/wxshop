@@ -53,7 +53,7 @@
         <view class="" wx-if="{{goodType !== 0 && goodType !== 1}}">
             <view class="flex_row al">
                 <view class="goodDe_price f32">
-                    ￥{{detail.salePrice}}
+                    ￥{{detail.salePrice || detail.fixedPrice}}
                 </view>
             </view>
         </view>
@@ -151,7 +151,7 @@
         </view>
     </view>
     <view class="operationModel_right orther flex_row" wx:if="{{goodType == 1}}">
-      <view bindtap="goBooking" class="f28 button buyNow goBooking tc cff">去开团</view>
+      <view bindtap="startBooking" class="f28 button buyNow goBooking tc cff">去开团</view>
     </view>
     <view class="operationModel_right flex_row" wx:elif="{{status}}">
         <view bindtap="addCar" class="f28 addCar tc cff">加入购物车</view>

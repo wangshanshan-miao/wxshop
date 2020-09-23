@@ -344,12 +344,20 @@ Page({
         }
     },
     goYhq() {
-        if (app.checkUser()) {
-            wx.navigateTo({
-              url: '/self/yhq/yhq',
-                
-            });
-        }
+      if (app.checkUser()) {
+        wx.navigateTo({
+          url: `/self/yhq/yhq`,
+            
+        });
+      }
+    },
+    goDjq(e) {
+      if (app.checkUser()) {
+        wx.navigateTo({
+          url: `/self/djq/djq`,
+
+        });
+      }
     },
     goSc() {
         if (app.checkUser()) {

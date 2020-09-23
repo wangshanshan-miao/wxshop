@@ -185,6 +185,10 @@ page {
   color: #FF7F11;
 }
 
+.c07 {
+  color: #07B94F;
+}
+
 .cff {
     color: white;
 }

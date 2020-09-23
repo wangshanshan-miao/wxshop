@@ -26,11 +26,16 @@ Page({
   },
   // 评价列表
   msgList() {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    debugger
     const feedbackType = this.data.feedbackType
     api.msgList({
       userId: wx.getStorageSync('userId'),
       feedbackType
     }).then(res => {
+      wx.hideLoading({})
       // console.log(res)
       const data = res.data
       this.setData({

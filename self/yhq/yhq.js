@@ -8,7 +8,7 @@ Page({
      */
     data: {
         yhqTabIndex: 0, // 优惠券类型 
-        tabArr: [
+        tabArr: [// 优惠券tab
           '待使用',
           '已过期'
         ],
@@ -191,7 +191,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      
     },
 
     /**

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index/index",
     "pages/index/cg/cg",
+    "pages/index/Newcomer/index",
     "pages/index/goodsList/cg",
     "pages/index/al/al",
     "pages/index/alxq/alxq",
@@ -50,7 +51,9 @@
         "evaluate/evaluate",
         "msg/msg",
         "msgDetail/index",
-        "news/news"
+        "news/news",
+        "djq/djq",
+        "pj/pj"
       ]
     },
     {

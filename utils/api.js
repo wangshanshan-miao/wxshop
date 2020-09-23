@@ -142,6 +142,14 @@ class Api extends Http {
   getVoucherList(data) {
     return this.request('api/userVoucher/selectVoucherList', data, 'POST')
   }
+  // 领取优惠券
+  getVoucherToUser(data) {
+    return this.request('api/user/getVoucherToUser', data, 'GET')
+  }
+  // 券列表
+  getVoucherList1(data) {
+    return this.request('api/common/getVoucherList', data, 'POST')
+  }
   // 购买代金券
   bugVoucher(data) {
     return this.request('api/userVoucher/bugVoucher', data, 'POST')
