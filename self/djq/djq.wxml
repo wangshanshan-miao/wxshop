@@ -6,8 +6,8 @@
 </view>
 <view class="container1">
 	<view class="con pa">
-		<image wx:if="{{mananger}}" bindtap="manange" class="img" src="../../img/mananger.png"></image>
-		<image wx:else class="img" bindtap="complete" src="../../img/complete.png"></image>
+		<image wx:if="{{mananger}}" bindtap="manange" class="img" src="{{imgUrl+'mananger.png'}}"></image>
+		<image wx:else class="img" bindtap="complete" src="{{imgUrl+'complete.png'}}"></image>
 	</view>
 </view>
 
@@ -28,7 +28,7 @@
 </view>
 
 <!-- 列表 -->
-<view class="yhqList" wx:if="{{yhqTabIndex==0}}">
+<view class="yhqList">
 	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell flex_col pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
 		<view class="flex_row jb" style="margin-bottom: 22rpx;">
       <view class="f36 c22 fb">
@@ -53,5 +53,6 @@
     </view>
 	</view>
 </view>
+
 
 <noData wx:if="{{list.length<1}}" />

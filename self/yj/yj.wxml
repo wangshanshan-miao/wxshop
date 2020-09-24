@@ -1,7 +1,7 @@
 <!-- 佣金明细 -->
 <view class="yjModel boxs">
 	<view class="balance pr">
-		<image class="yjbj pa" src="../../../img/yjbj.png" />
+		<image class="yjbj pa" src="{{imgUrl+'yjbj.png'}}" />
 		<view class="balance_con boxs pa">
 			<view class="balance_con_top flex_row jb">
 				<view class="f28 cff">余额</view>
@@ -18,7 +18,7 @@
 	<view class="part flex_row jb al">
 		<view class="partList flex_col">
 			<view class="partList_top flex_row al">
-				<image src="../../../img/yjze.png" />
+				<image src="{{imgUrl+'yjze.png'}}" />
 				<view class="f28 c33">佣金总额</view>
 			</view>
 			<view class="moneyNum flex_row">
@@ -28,7 +28,7 @@
 		</view>
 		<view class="partList flex_col">
 			<view class="partList_top flex_row al">
-				<image src="../../../img/ytx.png" />
+				<image src="{{imgUrl+'ytx.png'}}" />
 				<view class="f28 c33">已提现</view>
 			</view>
 			<view class="moneyNum flex_row">
@@ -65,7 +65,7 @@
 	<!-- 提现弹窗 -->
 	<van-popup show="{{ txShow }}" round custom-style="width:80%">
 		<view class="warnModel tc">
-			<image src="../../../img/warnimg.png" class="warnimg" />
+			<image src="{{imgUrl+'warnimg.png'}}" class="warnimg" />
 			<view class='f32 c33 warn_text'>温馨提示</view>
 			<view class="f26 c99">暂不能提现，满{{depositMoney}}才可提现</view>
 			<view bindtap="closeWithdrawal" class="known tc f28 cff">我知道了</view>
@@ -79,7 +79,7 @@
 
 <!-- 提现弹框 -->
 <view class="widthDraw fadeUp" wx:if="{{show}}">
-	<image class="close pa" catchtap="closeModal" src="../../../img/cha.png"></image>
+	<image class="close pa" catchtap="closeModal" src="{{imgUrl+'cha.png'}}"></image>
 	<view class="title c33">提现金额</view>
 	<view class="price flex_row al jb">
 		<view class="text c33">￥</view>

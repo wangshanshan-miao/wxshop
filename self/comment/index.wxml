@@ -25,7 +25,7 @@
         </image>
       </block>
       <image wx:if="{{item.evaluateLevel}}" class="star-image" wx:for="{{number}}" wx:key="index"
-        src="{{item.evaluateLevel >= index ? '../../img/star.png' : '../../img/star1.png'}}"></image>
+        src="{{item.evaluateLevel >= index ? imgUrl+'star.png' : imgUrl+'star1.png'}}"></image>
     </view>
   </view>
   <textarea wx:if="{{item.evaluateContent == null}}" data-index="{{index}}" bindinput="inputValue" placeholder="宝贝满足你的期待吗？说说它的优点和美中不足的地方吧！" placeholder-style="color:#B9B9B9;fontSize:28rpx">
@@ -34,7 +34,7 @@
 
   <!-- <view class="upload flex_row al jc">
     <image catchtap="upload" wx:if="{{evaluateUrl}}" src="{{imgBaseUrl + evaluateUrl+'?x-image-process=image/resize,p_30'}}" class="picture"></image>
-    <image wx:else catchtap="upload" class="camera" src="../../../img/camera.png"></image>
+    <image wx:else catchtap="upload" class="camera" src="{{imgUrl+'camera.png'}}"></image>
   </view> -->
 </view>
 

@@ -30,7 +30,7 @@
 <view class="mask" wx:if="{{mask}}" catchtap="closeModal"></view>
 <!-- 弹框 -->
 <view class="modal fadeUp" wx:if="{{modal}}">
-	<image catchtap="closeModal" class="close pa" src="../../../img/cha.png"></image>
+	<image catchtap="closeModal" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
 	<view class="name tc c33 f32">参与 {{list[selectIndex].userName}} 的拼单</view>
 	<view class="remain tc c33 f26" wx:if="{{groupType==0}}">仅剩<text>{{list[selectIndex].surplus}}</text>个名额, {{tools.diffDay(nowTime,list[selectIndex].endTime)}}天{{tools.diffHour(nowTime,list[selectIndex].endTime)}}:{{tools.diffMinute(nowTime,list[selectIndex].endTime)}}:{{tools.diffSecond(nowTime,list[selectIndex].endTime)}}后结束</view>
 	<!-- <view wx:else class="remain tc c33 f26">已完成</view> -->

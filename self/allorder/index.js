@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 
 let app = getApp();
@@ -204,7 +205,8 @@ Page({
     onLoad: function (options) {
         this.setData({
             baseURL,
-            imgBaseUrl
+            imgBaseUrl,
+            imgUrl
         })
         if (options.index) {
             const i = options.index

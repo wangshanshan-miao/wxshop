@@ -2,9 +2,9 @@
 <view class="productModel">
     <view class="produce_top boxs">
         <view class="produce_search pr">
-            <image catchtap="search" class="produce_search_icon" src="../../../img/seai.png" />
+            <image catchtap="search" class="produce_search_icon" src="{{imgUrl+'seai.png'}}" />
             <input bindinput="inputValue" value="{{value}}" class="f26 boxs c99 produce_searchInput" placeholder="搜索商品" placeholder-style="color:#999999" />
-            <image catchtap="clear" class="produce_search_del" src="../../../img/deli.png" />
+            <image catchtap="clear" class="produce_search_del" src="{{imgUrl+'deli.png'}}" />
         </view>
     </view>
     <!-- 商品区域 -->
@@ -31,7 +31,7 @@
                             </view>
                             <!-- <view wx:if="{{false}}" class="c99 f24">/平方米</view> -->
                         </view>
-                        <image class="good_buyCar" src="../../../img/car.png" />
+                        <image class="good_buyCar" src="{{imgUrl+'car.png'}}" />
                     </view>
                 </view>
             </view>

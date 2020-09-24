@@ -19,9 +19,9 @@
 		<view class="left f30 c33">所在区域</view>
 		<view class="right selectArea">
 			<picker class="f28" mode="region" bindchange="selectArea" value="{{region}}">
-				<view wx:if="{{!codeName}}" class="picker f28">请选择区域<image src="../../../img/arrow-left.png" class="arrowLeft"></image></view>
+				<view wx:if="{{!codeName}}" class="picker f28">请选择区域<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image></view>
 				<view wx:else class="picker f28">
-					{{codeName}}<image src="../../../img/arrow-left.png" class="arrowLeft"></image>
+					{{codeName}}<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 				</view>
 			</picker>
 		</view>

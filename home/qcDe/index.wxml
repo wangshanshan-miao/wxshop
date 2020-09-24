@@ -14,7 +14,7 @@
 </view>
 <view class="goodDe_intro boxs">
     <view class="flex_row goodDe_intro_top">
-        <image class="user_recom" src='../../img/ypqc1.png' />
+        <image class="user_recom" src="{{imgUrl+'ypqc1.png'}}" />
         <view class="f32 c22 goodDe_name">{{commodityName}}</view>
     </view>
     <view class="flex_row jb al pr">
@@ -30,10 +30,10 @@
             <view class="f26 c99 msPrice">仅剩{{surplusAmount}}件</view>
         </view>
         <!-- <view class="sharegoods pr">
-			<image class="sharegood pa" src="../../img/sharegood.png" />
+			<image class="sharegood pa" src="{{imgUrl+'sharegood.png'}}" />
 			<button class="shareBtn pa" open-type="share"></button>
 		</view> -->
-        <image catchtap="sharegood" class="sharegood pa" src="../../img/sharegood.png" />
+        <image catchtap="sharegood" class="sharegood pa" src="{{imgUrl+'sharegood.png'}}" />
     </view>
 </view>
 <view class="line"></view>
@@ -43,7 +43,7 @@
         <view class='f32 c33 fb'>用户评价（{{evaluateSum}}）</view>
         <view class="flex_row al" data-="{{commodityId}}" bindtap="goAllEva">
             <view class="f28 c33">查看全部</view>
-            <image src="../../img/rjt.png" class="jtr" />
+            <image src="{{imgUrl+'rjt.png'}}" class="jtr" />
         </view>
     </view>
     <view class="evaList">
@@ -71,7 +71,7 @@
 <view class="operationModel boxs flex_row al jb">
     <view class="operationModel_left flex_row al">
         <view class="dpBtn tc" bindtap="goStore">
-            <image src="../../img/dp.png" class="operationModel_left_img" />
+            <image src="{{imgUrl+'dp.png'}}" class="operationModel_left_img" />
             <view class="f24 c66">店铺</view>
         </view>
     </view>
@@ -85,10 +85,10 @@
 <view class="nothing scaleUp" wx:if="{{hasAddress}}">
     <view class="top pr flex_row jc al">
         <view class="title c33 f28">选择收货地址</view>
-        <image class="close pa" catchtap="closeAddress" src="../../img/cha.png"></image>
+        <image class="close pa" catchtap="closeAddress" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="main">
-        <image class="" src="../../img/nothing.png"></image>
+        <image class="" src="{{imgUrl+'nothing.png'}}"></image>
     </view>
     <view class="tips c99 f26 tc">暂无相关收货地址，点击下方按钮添加</view>
     <view catchtap="addAddress" class="add cff f28 flex_row al jc">添加</view>
@@ -97,7 +97,7 @@
 <view class="addAddress fadeUp" wx:if="{{addressShow}}">
     <view class="top pr flex_row jc al">
         <view class="title c33 f28">填写收货地址</view>
-        <image class="close pa" catchtap="closeAddress" src="../../img/cha.png"></image>
+        <image class="close pa" catchtap="closeAddress" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="list flex_row al jb">
         <view class="title f30 c33">联系人</view>
@@ -127,17 +127,17 @@
 <view class="selectAddress fadeUp" wx:if="{{toSelectAddress}}">
     <view class="top pr flex_row jc al">
         <view class="title c33 f28 tc">选择收货地址</view>
-        <image class="close pa" catchtap="closeAddress" src="../../img/cha.png"></image>
+        <image class="close pa" catchtap="closeAddress" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <scroll-view class="scroll-y" scroll-y>
         <view class="list flex_row al" catchtap="selectAddress" data-id="{{item.addressId}}" data-index="{{index}}" wx:for="{{addressList}}" wx:key="addressId">
-            <image src="../../img/dxh.png" wx:if="{{selectIndex == index}}"></image>
-            <image wx:else src="../../img/dxn.png"></image>
+            <image src="{{imgUrl+'dxh.png'}}" wx:if="{{selectIndex == index}}"></image>
+            <image wx:else src="{{imgUrl+'dxn.png'}}"></image>
             <view class="right">
                 <view class="right-top flex_row al jb">
                     <view class="left flex_row al ">
                         <view class="name f32 c22">马云易</view>
-                        <image wx:if="{{item.default}}" class="default" src="../../img/mr.png"></image>
+                        <image wx:if="{{item.default}}" class="default" src="{{imgUrl+'mr.png'}}"></image>
                     </view>
                     <view class="tel f28 c22">19087653421</view>
                 </view>
@@ -152,19 +152,19 @@
 <view class="share pr fadeUp sliderUp" wx:if="{{share}}">
     <view class="top flex_row al pr jc">
         <view class="title c33 f28">分享到</view>
-        <image catchtap="closeShare" class="close pa" src="../../img/cha.png"></image>
+        <image catchtap="closeShare" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="bottom flex_row al jb pa">
         <view class="container pr">
             <view class="share_area">
-                <image class="share_icon pa" src="../../img/wxchat.png"></image>
+                <image class="share_icon pa" src="{{imgUrl+'wxchat.png'}}"></image>
                 <button open-type="share" class="share_btn pa"></button>
             </view>
             <view class="f28 c33 tx text">微信好友</view>
         </view>
         <view class="right_site al jc">
             <view class="share_bg flex_row al jc" catchtap="hiddlePoster">
-                <image class="share_icon1" src="../../img/poster.png"></image>
+                <image class="share_icon1" src="{{imgUrl+'poster.png'}}"></image>
             </view>
             <view class="f28 c33 tx text">生成商品海报</view>
         </view>
@@ -172,7 +172,7 @@
 </view>
 <!-- 海报 -->
 <!-- <view class="poster fadeUp pr" wx:if="{{poster}}">
-	<image src="../../img/close.png" class="closePoster pa" catchtap="closePoster"></image>
+	<image src="{{imgUrl+'close.png'}}" class="closePoster pa" catchtap="closePoster"></image>
 	<view class="main pr">
 		<canvas type="2d" id="myCanvas" class="myCanvas pa"></canvas>
 	</view>

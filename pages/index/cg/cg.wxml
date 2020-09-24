@@ -1,6 +1,6 @@
 <!-- 搜索框 -->
 <view bindtap="toSearch" class="search_group boxs">
-	<image class="search_icon" src="../../img/search.png" />
+	<image class="search_icon" src="{{imgUrl+'search.png'}}" />
 	<input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
 </view>
 <!-- 分类 -->
@@ -20,7 +20,7 @@
 		<view class="flex_row jb fb al">
 			<text class="cf0 f24 p10">¥{{item.salePrice}}</text>
 			<view class="car">
-				<image src="../../../img/car.png"></image>
+				<image src="{{imgUrl+'car.png'}}"></image>
 			</view>
 		</view>
 	</view>

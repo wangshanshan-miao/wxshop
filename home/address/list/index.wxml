@@ -3,13 +3,13 @@
 <view class="selectAddress shadow">
     <scroll-view class="scroll-y" scroll-y>
         <view class="list flex_row al" catchtap="selectAddress" data-id="{{item.addressId}}" data-index="{{index}}" wx:for="{{addressList}}" wx:key="addressId">
-            <image src="../../img/dxh.png" wx:if="{{selectIndex == index}}"></image>
-            <image wx:else src="../../img/dxn.png"></image>
+            <image src="{{imgUrl+'dxh.png'}}" wx:if="{{selectIndex == index}}"></image>
+            <image wx:else src="{{imgUrl + 'dxn.png'}}"></image>
             <view class="right">
                 <view class="right-top flex_row al jb left">
                     <view class="left flex_row al ">
                         <view class="name f32 fb c22">{{item.addressName}}</view>
-                        <image wx:if="{{item.default}}" class="default" src="../../img/mr.png"></image>
+                        <image wx:if="{{item.default}}" class="default" src="{{imgUrl+'mr.png'}}"></image>
                     </view>
                     <view class="tel f28 c22">{{item.addressPhone}}</view>
                 </view>

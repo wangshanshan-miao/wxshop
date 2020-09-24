@@ -2,7 +2,7 @@
 <view class="line"></view>
 
 <view class="no_data" wx:if="{{list.length<1}}">
-	<image class="img" src="../../img/address1.png"></image>
+	<image class="img" src="{{imgUrl+'address1.png'}}"></image>
 	<view class="text f26 tc">您还没有收货地址
 		请点击下方按钮添加</view>
 </view>
@@ -12,14 +12,14 @@
       <view class="left-top flex_row al jb">
         <view class="flex_row al info">
           <view class="name flex_row al">{{item.addressName}}</view>
-          <image wx:if="{{item.def == 1}}" class="default" src="../../img/default.png"></image>
+          <image wx:if="{{item.def == 1}}" class="default" src="{{imgUrl+'default.png'}}"></image>
         </view>
         <view class="num">{{item.addressPhone}}</view>
       </view>
       <view class="left-botom">{{item.receiverAddress}}</view>
     </view>
     <view class="middle"></view>
-    <image catchtap="edit" data-id="{{item.addressId}}" class="edit" src="../../img/edit.png"></image>
+    <image catchtap="edit" data-id="{{item.addressId}}" class="edit" src="{{imgUrl+'edit.png'}}"></image>
   </view>
 </view>
 

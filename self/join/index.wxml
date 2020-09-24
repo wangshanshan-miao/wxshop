@@ -63,7 +63,7 @@
 </view>
 
 <view class="logo flex_row al jc">
-	<image data-type="0" wx:if="{{!logoUrl}}" bindtap="upload" class="icon" src="../../../img/camera.png"></image>
+	<image data-type="0" wx:if="{{!logoUrl}}" bindtap="upload" class="icon" src="{{imgUrl+'camera.png'}}"></image>
 	<image bindtap="upload" data-type="0" wx:else src="{{imgBaseUrl + logoUrl+'?x-image-process=image/resize,p_30'}}" class="img"></image>
 </view>
 
@@ -72,11 +72,11 @@
 </view>
 
 <view class="photo flex_row al jc" bindtap="uploadPicture">
-	<image wx:if="{{!picture}}"  class="icon icon1" src="../../../img/camera.png"></image>
+	<image wx:if="{{!picture}}"  class="icon icon1" src="{{imgUrl+'camera.png'}}"></image>
 
 	<!-- <image wx:else src="{{imgBaseUrl + picture}}" class="img"></image> -->
 
-	<!-- <image wx:for="{{[1,2,3,4,5,6,7,8,9]}}" src="../../../img/toTop.png" wx:key="index" class="imgs"></image> -->
+	<!-- <image wx:for="{{[1,2,3,4,5,6,7,8,9]}}" src="{{imgUrl+'toTop.png'}}" wx:key="index" class="imgs"></image> -->
 
 	<image wx:for="{{realisticPicture}}" src="{{imgBaseUrl + item+'?x-image-process=image/resize,p_30'}}" wx:key="index" class="imgs"></image>
 </view>
@@ -86,7 +86,7 @@
 </view>
 
 <view class="photo flex_row al jc">
-	<image data-type="2" wx:if="{{!licenseUrl}}" bindtap="upload" class="icon icon1" src="../../../img/camera.png"></image>
+	<image data-type="2" wx:if="{{!licenseUrl}}" bindtap="upload" class="icon icon1" src="{{imgUrl+'camera.png'}}"></image>
 	<image bindtap="upload" wx:else src="{{imgBaseUrl + licenseUrl+'?x-image-process=image/resize,p_30'}}" class="img"></image>
 </view>
 

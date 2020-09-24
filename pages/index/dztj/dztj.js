@@ -2,7 +2,8 @@
 import api from "../../../utils/api"
 import {
   baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../../utils/http"
 const app = getApp()
 Page({
@@ -72,7 +73,8 @@ Page({
       type,
       id : options.id,
         baseURL,
-        imgBaseUrl
+        imgBaseUrl,
+        imgUrl
     })
   },
 

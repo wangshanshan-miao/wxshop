@@ -1,6 +1,6 @@
 <view class="line"></view>
 <view class="coupon flex_row al">
-  <image src="../../img/yhqbg.png"></image>
+  <image src="{{imgUrl+'yhqbg.png'}}"></image>
   <view class="left">
     <text>￥</text>{{voucherPrice}}
   </view>
@@ -13,7 +13,7 @@
 
 <view class="main">
   <view class="title f28 c33">核销码</view>
-  <image class="img" src="../../img/code.png"></image>
+  <image class="img" src="{{imgUrl+'code.png'}}"></image>
   <view class="destroy flex_row">
     <input bindinput="inputCode" class="input f28" placeholder-style="color:#CBCBCB" placeholder="待商家输入核销码"></input>
     <view catchtap="use" class="cancel flex_row al jc f28 cff">核销</view>

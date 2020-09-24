@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 let timer
 const app = getApp()
@@ -355,7 +356,8 @@ Page({
             id: options.id,
             baseURL,
             imgBaseUrl,
-            nowTime: new Date().getTime()
+            nowTime: new Date().getTime(),
+            imgUrl
         })
         this.reduce()
     },

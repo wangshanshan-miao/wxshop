@@ -10,9 +10,9 @@
 		<view class="goodOrder boxs">
 			<view class="flex_row jb al goodOrder_top">
 				<!-- <view class="flex_row al" catchtap="goStore" data-id="{{item.merchantId}}">
-                    <image class="shop_icon" src="../../../img/shop_icon.png" />
+                    <image class="shop_icon" src="{{imgUrl+'shop_icon.png'}}" />
                     <view class='f30 c33 fb shopOrder_name'>{{item.merchantName}}</view>
-                    <image src="../../../img/rjt.png" class="goShopImg" />
+                    <image src="{{imgUrl+'rjt.png'}}" class="goShopImg" />
                 </view> -->
 				<view class="orderNumber c33 f28 fb">订单编号:{{item.orderNumber}}</view>
 				<view class='orderState f28 status{{item.orderStatus}}'>{{tools.status(item.orderStatus)}}</view>

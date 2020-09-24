@@ -1,18 +1,18 @@
 <!--pages/self/invite/index.wxml-->
 <view class="content pr">
-	<image class="pa img" src="../../../img/invitebg.png"></image>
+	<image class="pa img" src="{{imgUrl+'invitebg.png'}}"></image>
 	<view class="code pr">
-		<image class="pa bg" src="../../../img/invte-code.png"></image>
+		<image class="pa bg" src="{{imgUrl+'invte-code.png'}}"></image>
 		<view class="title c33 tc">我的邀请码</view>
 		<image class="img" src="{{imgBaseUrl + url+'?x-image-process=image/resize,p_30'}}"></image>
-		<!-- <image class="img" src="../../../img/invite-code.jpg"></image> -->
+		<!-- <image class="img" src="{{imgUrl+'invite-code.jpg"></image> -->
 		<view catchtap="copy" class="copy cff f30 tc">
 			复制推荐码
 		</view>
 	</view>
 
 	<view class="tips pr">
-		<image class="img pa" src="../../../img/invite-bg1.png"></image>
+		<image class="img pa" src="{{imgUrl+'invite-bg1.png'}}"></image>
 		<view class="notice pa f26 c33">
 			<text>您的二维码只属于您个人，请牢记! </text>
 			<view>好友扫一扫您的二维码，成功注册登录小程序，并购买任意商品，您可获得相应的佣金。</view>
@@ -20,7 +20,7 @@
 	</view>
 
 	<view class="success pr" bindtap="goList">
-		<image class="pa img" src="../../../img/invite-bg2.png"></image>
+		<image class="pa img" src="{{imgUrl+'invite-bg2.png'}}"></image>
 
 		<swiper wx:if="{{list.length>7}}" class="container pa" vertical="true" display-multiple-items='7' autoplay="true"  interval="2000" duration="500" circular="true">
 			<swiper-item class="swiper_item" wx:for="{{list}}" wx:key="index">

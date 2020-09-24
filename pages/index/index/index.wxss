@@ -435,7 +435,7 @@
 
 /* 口碑爆款 */
 .hotCommodity {
-  width: calc(50% - 10rpx);
+  width: calc(50% - 20rpx);
   margin-right: 20rpx;
 }
 .hotCommodity:nth-of-type(even) {

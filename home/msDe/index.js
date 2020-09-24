@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 
 let app = getApp();
@@ -219,7 +220,8 @@ Page({
             baseURL,
             imgBaseUrl,
             id,
-            nowTime: new Date().getTime()
+            nowTime: new Date().getTime(),
+            imgUrl
         })
         this.reduce()
     },

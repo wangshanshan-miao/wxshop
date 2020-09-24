@@ -18,7 +18,7 @@
           <view class="flex_col">
             <text class="f30 c33 fb" style="margin-bottom: 4rpx;">我是小可爱啊</text>
             <view class="stars">
-              <image wx:for="{{item.evaluateLevel}}" wx:key="index" src="{{index <= item.evaluateLevel ? '../../img/star.png' : '../../img/star1.png'}}"></image>
+              <image wx:for="{{item.evaluateLevel}}" wx:key="index" src="{{index <= item.evaluateLevel ? imgUrl+'star.png' : imgUrl+'star1.png'}}"></image>
             </view>
           </view>
           <text class="f26 c99">2019-07-16 12:02</text>

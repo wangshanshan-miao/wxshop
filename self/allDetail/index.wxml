@@ -5,23 +5,23 @@
 	<view class="showCkOrder_state boxs">
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==11}}">
 			<view class='f32 cff'>拼团中</view>
-			<image class="order_state_img" src="../../img/ddfk.png" />
+			<image class="order_state_img" src="{{imgUrl+'ddfk.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==9}}">
 			<view class='f32 cff'>已取消</view>
-			<image class="order_state_img" src="../../img/or_yqx.png" />
+			<image class="order_state_img" src="{{imgUrl+'or_yqx.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8 || orderStatus==7}}">
 			<view class='f32 cff'>交易成功</view>
-			<image class="order_state_img" src="../../img/or-wait.png" />
+			<image class="order_state_img" src="{{imgUrl+'or-wait.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==4}}">
 			<view class='f32 cff'>卖家已发货</view>
-			<image class="order_state_img" src="../../img/ddsh.png" />
+			<image class="order_state_img" src="{{imgUrl+'ddsh.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==1}}">
 			<view class='f32 cff'>等待卖家发货</view>
-			<image class="order_state_img" src="../../img/dfh.png" />
+			<image class="order_state_img" src="{{imgUrl+'dfh.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
 			<view class='flex_col' style="margin-top: 14rpx;">
@@ -31,7 +31,7 @@
 					<!-- {{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭 -->
 				</view>
 			</view>
-			<image class="order_state_img" src="../../img/ddfk.png" />
+			<image class="order_state_img" src="{{imgUrl+'ddfk.png'}}" />
 		</view>
 	</view>
 	<!-- <view class="line"></view> -->
@@ -40,7 +40,7 @@
 			<!-- 收获地址 -->
 			<view class="orderAddress flex_row jb al">
 				<view class="flex_row al">
-					<image src="../../img/address.png" class="address_img" />
+					<image src="{{imgUrl+'address.png'}}" class="address_img" />
 					<view class="flex_col" wx:if="{{name}}">
 						<view class='flex_row' style="margin-bottom: 7rpx;">
 							<view class="f28 buyUser_name c33">{{name}}</view>
@@ -56,14 +56,14 @@
             <view class="f24 c99">{{buyAddress.receiverAddress}}</view>
 					</view>
 				</view>
-				<image src="../../img/rjt.png" class="rjtImg" />
+				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" />
 			</view>
 			<!-- 订单内容 -->
 			<!-- <view class="flex_row jb al goodckOrder_top">
                 <view class="flex_row al" catchtap="goStore">
-                    <image class="shop_icon" src="../../img/shop_icon.png" />
+                    <image class="shop_icon" src="{{imgUrl+'shop_icon.png'}}" />
                     <view class='f30 c33 fb shopckOrder_name'>{{storeName}}</view>
-                    <image src="../../img/rjt.png" class="goShopImg" />
+                    <image src="{{imgUrl+'rjt.png'}}" class="goShopImg" />
                 </view>
             </view> -->
 			<view class="goodckOrder_list" wx:for="{{list}}" wx:key="index">
@@ -120,7 +120,7 @@
 			<view class='f28 amountModel_list_title c33'>优惠券：</view>
 			<view class="f28 c99">
 				-¥{{voucherPrice}}
-				<image src="../../img/rjt.png" class="rjtImg" wx:if="{{orderStatus == 0}}" />
+				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" wx:if="{{orderStatus == 0}}" />
 			</view>
 			<!-- </view> -->
 		</view>
@@ -202,10 +202,10 @@
 <!-- 选择可用优惠券 -->
 <view class="coupons sliderUp pr" wx:if="{{modal}}">
 	<view class="title f28 c22 flex_row al jc">选择可用优惠券</view>
-	<image src="../../img/cha.png" class="close pa" catchtap="closeModal"></image>
+	<image src="{{imgUrl+'cha.png'}}" class="close pa" catchtap="closeModal"></image>
 	<scroll-view bindscrolltolower="toBottom" scroll-y class="scroll-y">
 		<view bindtap="select" data-price="{{item.voucherPrice}}" data-id="{{item.userVoucherId}}" class="coupon flex_row al" wx:for="{{couponList}}" wx:key="index">
-			<image class="bg" src="../../img/yhqbg1.png"></image>
+			<image class="bg" src="{{imgUrl+'yhqbg1.png'}}"></image>
 			<view class="left">
 				<text>￥</text>
 				{{item.voucherPrice}}
@@ -226,7 +226,7 @@
 </view>
 <!-- 物流 -->
 <view class="logistics fadeUp sliderUp" wx:if="{{express}}">
-	<image catchtap="closeExpress" src="../../img/cha.png" class="pa close"></image>
+	<image catchtap="closeExpress" src="{{imgUrl+'cha.png'}}" class="pa close"></image>
 	<!-- <view class="title f28 c33 flex_row al jc">查看物流</view> -->
 	<view class="list flex_row al jb">
 		<view class="name f26 c22">配送方式 :</view>

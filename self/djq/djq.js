@@ -22,7 +22,7 @@ Page({
     useType: 1 // 0:优惠券，1：代金券
   },
   // 优惠券列表 0 - 待使用 1 - 已过期 2 - 退款
-  voucherList() {
+  voucherList(index) {
     const arr = this.data.list
     wx.showLoading({
       title: '加载中...',
@@ -38,7 +38,7 @@ Page({
     } else {
       params = {
         userId: wx.getStorageSync('userId'),
-        voucherStatus: this.data.yhqTabIndex,
+        voucherStatus: this.data.yhqTabIndex -1,
         pageNum: this.data.pageNum,
         pageSize: 10,
         useType: this.data.useType

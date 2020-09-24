@@ -16,7 +16,7 @@
 </view>
 <view class="goodDe_intro boxs">
     <view class="flex_row goodDe_intro_top">
-        <!-- <image class="user_recom" src='../../img/yhtj.png' /> -->
+        <!-- <image class="user_recom" src='{{imgUrl+'yhtj.png' /> -->
         <view class="user_recom flex_row al jc">{{oneBookingSum}}人团</view>
         <view class="f32 c22 goodDe_name">{{commodityName}}</view>
     </view>
@@ -30,10 +30,10 @@
             <view class="f26 c33 msPrice">拼团价:￥{{salePrice}}</view>
         </view>
         <!-- <view class="sharegoods pr">
-			<image class="sharegood pa" src="../../img/sharegood.png" />
+			<image class="sharegood pa" src="{{imgUrl+'sharegood.png'}}" />
 			<button class="shareBtn pa" open-type="share"></button>
 		</view> -->
-        <image catchtap="sharegood" class="sharegood pa" src="../../img/sharegood.png" />
+        <image catchtap="sharegood" class="sharegood pa" src="{{imgUrl+'sharegood.png'}}" />
     </view>
 </view>
 <view class="line"></view>
@@ -43,7 +43,7 @@
         <view class='f32 c33 fb'>小伙伴们在开团，可直接参与</view>
         <view class="flex_row al" catchtap="bookingList">
             <view class="f28 c33">查看全部</view>
-            <image src="../../img/rjt.png" class="jtr" />
+            <image src="{{imgUrl+'rjt.png'}}" class="jtr" />
         </view>
     </view>
     <view class="spell_group_list">
@@ -83,7 +83,7 @@
         <view class='f32 c33 fb'>用户评价（{{evaluateSum}}）</view>
         <view class="flex_row al" bindtap="goAllEva" data-id="{{commodityId}}">
             <view class="f28 c33">查看全部</view>
-            <image src="../../img/rjt.png" class="jtr" />
+            <image src="{{imgUrl+'rjt.png'}}" class="jtr" />
         </view>
     </view>
     <view class="evaList">
@@ -111,7 +111,7 @@
 <view class="operationModel boxs flex_row al jb">
     <view class="operationModel_left flex_row al">
         <view class="dpBtn tc" bindtap="goStore" data-id="{{merchantId}}">
-            <image src="../../img/dp.png" class="operationModel_left_img" />
+            <image src="{{imgUrl+'dp.png'}}" class="operationModel_left_img" />
             <view class="f24 c66">店铺</view>
         </view>
     </view>
@@ -125,8 +125,8 @@
 <view class="mask" wx:if="{{mask}}" catchtap="closeModal"></view>
 <!-- 弹框 -->
 <view class="modal fadeUp" wx:if="{{modal}}">
-    <image catchtap="closeModal" class="close pa" src="../../img/cha.png"></image>
-    <view class="name tc c33 f32">参与 {{groupUserDtoList[selectIndex].userName}} 的拼单</view>
+    <image catchtap="closeModal" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
+    <view class="name tc c33 f32">参与 {{groupUserDtoList[selectIndex].userName}} 的拼单222</view>
     <view wx:if="{{groupType==0}}" class="remain tc c33 f26">
         仅剩
         <text>{{groupUserDtoList[selectIndex].surplus}}</text>
@@ -151,19 +151,19 @@
 <view class="share pr fadeUp sliderUp" wx:if="{{share}}">
     <view class="top flex_row al pr jc">
         <view class="title c33 f28">分享到</view>
-        <image catchtap="closeShare" class="close pa" src="../../img/cha.png"></image>
+        <image catchtap="closeShare" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="bottom flex_row al jb pa">
         <view class="container pr">
             <view class="share_area">
-                <image class="share_icon pa" src="../../img/wxchat.png"></image>
+                <image class="share_icon pa" src="{{imgUrl+'wxchat.png'}}"></image>
                 <button open-type="share" class="share_btn pa"></button>
             </view>
             <view class="f28 c33 tx text">微信好友</view>
         </view>
         <view class="right_site al jc">
             <view class="share_bg flex_row al jc" catchtap="makePoster">
-                <image class="share_icon1" src="../../img/poster.png"></image>
+                <image class="share_icon1" src="{{imgUrl+'poster.png'}}"></image>
             </view>
             <view class="f28 c33 tx text">生成商品海报</view>
         </view>
@@ -173,7 +173,7 @@
 <share-box isCanDraw="{{poster}}" bind:initData="hiddlePoster" />
 
 <!-- <view class="poster fadeUp pr" wx:if="{{poster}}">
-    <image src="../../img/close.png" class="closePoster pa" catchtap="closePoster"></image>
+    <image src="{{imgUrl+'close.png'}}" class="closePoster pa" catchtap="closePoster"></image>
     <view class="main pr">
         <canvas type="2d" id="myCanvas" class="myCanvas pa"></canvas>
     </view>

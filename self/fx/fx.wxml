@@ -1,7 +1,7 @@
 <!-- 分销详情 -->
 <view class="fxModel">
     <view class="fxModel_con">
-        <image src="../../../img/fxbg.png" class="fxBgImg" />
+        <image src="{{imgUrl+'fxbg.png'}}" class="fxBgImg" />
         <view class="fxModel_conModel pa">
             <view class="fxModel_conModel_top boxs">
                 <view class="flex_row al jb">

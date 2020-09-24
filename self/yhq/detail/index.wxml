@@ -1,6 +1,6 @@
 <!--pages/self/yhq/detail/index.wxml-->
 <view class="coupon flex_row al">
-	<image src="../../../img/yhqbg1.png"></image>
+	<image src="{{imgUrl+'yhqbg1.png'}}"></image>
 	<view class="left">
 		<text>￥</text>{{voucherPrice}}
 	</view>
@@ -38,7 +38,7 @@
 <!-- 授权手机号码 -->
 <view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
 <view class="auth1 pr" wx:if="{{phone}}">
-	<image catchtap="closePhone" src="../../../img/cha.png" class="close1 pa"></image>
+	<image catchtap="closePhone" src="{{imgUrl+'cha.png'}}" class="close1 pa"></image>
 	<view class="title c33 tc">温馨提示</view>
 	<view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
 	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>

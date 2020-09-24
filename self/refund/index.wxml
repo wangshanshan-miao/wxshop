@@ -40,11 +40,11 @@
 		<view class="f30 c99">上传凭证</view>
 		<view class="upload_groupImg">
 			<view wx:for="{{arr}}" wx:key="index" class="pr img-box">
-                <image data-i="{{index}}" src="../../img/delete1.png" class="delete1 pa" catchtap="deleteImg" ></image>
+                <image data-i="{{index}}" src="{{imgUrl+'delete1.png'}}" class="delete1 pa" catchtap="deleteImg" ></image>
 				<image  class="upload_img" src="{{item}}" />
 			</view>
 			<view wx:if="{{arr.length<3}}" class="upload_img upload_bg flex_row al jc">
-				<image catchtap="upload" class="camera" src="../../img/camera.png"></image>
+				<image catchtap="upload" class="camera" src="{{imgUrl+'camera.png'}}"></image>
 			</view>
 		</view>
 	</view>

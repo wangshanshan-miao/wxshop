@@ -1,7 +1,7 @@
 <!--pages/self/yhq/detail/index.wxml-->
 <!-- 已拥有的代金券或优惠券详情 -->
 <view class="coupon flex_row al">
-	<image src="../../../img/yhqbg1.png"></image>
+	<image src="{{imgUrl+'yhqbg1.png'}}"></image>
 	<view class="left">
 		<text>￥</text>{{voucherPrice}}
 	</view>
@@ -49,7 +49,7 @@
 <view class="modal fadeUp" wx:if="{{show}}">
   <view class="top f28 pr flex_row al jc">
     退款理由
-    <image bindtap="closeModal" class="img" src="../../../../img/cha.png"></image>
+    <image bindtap="closeModal" class="img" src="../../{{imgUrl+'cha.png'}}"></image>
   </view>
   <textarea bindinput="inputReason" placeholder-style="color:#CBCBCB" placeholder="输入您的取消原因……">
   </textarea>

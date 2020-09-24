@@ -5,7 +5,7 @@
     <view class="title cf1 f30 newAdd tc" bindtap="newAdd">+新增收货地址</view>
 </view>
 <view class="flex_row addbox hasadd" wx:else catchtap="toList">
-  <image src="../../img/address.png"></image>
+  <image src="{{imgUrl+'address.png'}}"></image>
   <view class="flex_col addinfo">
     <view class="order-info">
       <text class="f28 c33">{{address.addressName}}</text>
@@ -13,7 +13,7 @@
     </view>
     <view class="f24 c99 hidden2">{{address.receiverAddress}}</view>
   </view>
-  <image src="../../img/arrow-left.png"></image>
+  <image src="{{imgUrl+'arrow-left.png'}}"></image>
 </view>
 <!-- 商品详情 -->
 <view wx:if="{{car}}">

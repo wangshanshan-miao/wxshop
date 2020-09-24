@@ -29,7 +29,7 @@
                         <!-- <view class="c99 f24">/平方米</view> -->
                     </view>
                     <!-- <view class='ptBtn f24'>去拼团</view> -->
-                    <!-- <image class="good_buyCar" src="../../../img/car.png" /> -->
+                    <!-- <image class="good_buyCar" src="{{imgUrl+'car.png'}}" /> -->
                 </view>
                 <view class="xg f24 cff">仅剩{{item.surplusAmount}}件</view>
             </view>
@@ -38,4 +38,4 @@
     </view>
 </view>
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>

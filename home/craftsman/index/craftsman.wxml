@@ -43,7 +43,7 @@
             <view class="f26 c99 ">{{item.workExperience}}年工作经验</view>
         </view>
         <view class="callPhone pa tc" catchtap="call" data-tel="{{item.phone}}">
-            <image class="callPhone_img" src="../../../img/phone.png" />
+            <image class="callPhone_img" src="{{imgUrl+'phone.png'}}" />
         </view>
     </view>
     <noData wx:if="{{list.length<1}}" />

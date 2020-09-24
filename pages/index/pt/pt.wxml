@@ -42,4 +42,4 @@
     </view>
 </view>
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>

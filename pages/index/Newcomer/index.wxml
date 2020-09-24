@@ -1,5 +1,5 @@
 <!--pages/index/Newcomer/index.wxml-->
-<image class="bg" src="../../../img/newcomer_bg.png"></image>
+<image class="bg" src="{{imgUrl+'newcomer_bg.png'}}"></image>
 <view class="couponList">
   <scroll-view scroll-y="true" style="height: 616rpx;" bindscrolltolower="lower">
     <view class="coupon flex_row jb al" wx:for="{{couponList}}">

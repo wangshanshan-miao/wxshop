@@ -1,7 +1,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 // pages/alleva/index.js
 Page({
@@ -59,7 +60,8 @@ Page({
       this.setData({
         id : options.id,
         baseURL,
-        imgBaseUrl
+        imgBaseUrl,
+        imgUrl
       })
   },
 

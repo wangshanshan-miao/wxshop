@@ -16,14 +16,14 @@
 							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
 						</view>
 					</view>
-					<image bindtap="goBasic" src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image bindtap="goBasic" src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 				</view>
-				<!-- <image bindtap="goBasic" src="../../../img/rjtb.png" class="rjtb" /> -->
+				<!-- <image bindtap="goBasic" src="{{imgUrl+'rjtb.png'}}" class="rjtb" /> -->
 			</view>
 			<view class="userIntro_treasure boxs flex_row">
 				<view class="flex_row al jb">
 					<text class="c33">我的钱包</text>
-					<image src="../../img/qb.png"></image>
+					<image src="{{imgUrl+'qb.png'}}"></image>
 				</view>
 				<!-- <view bindtap="goYj" class="treasure_list flex_col">
 					<view class="treasure_list_num">￥{{userInfo.remainingSumMoney}}</view>
@@ -33,13 +33,13 @@
 					<!-- <view class="treasure_list_num">{{userInfo.voucherNum}}</view>
 					<view class='f24 cff treasure_list_title'>优惠券</view> -->
 					<text class="c33">团购券</text>
-					<image src="../../img/tg.png"></image>
+					<image src="{{imgUrl+'tg.png'}}"></image>
 				</view>
 				<view bindtap="goYhq" class="flex_row al jb" data-type="0">
 					<!-- <view class="treasure_list_num">{{userInfo.collectNum}}</view>
 					<view class='f24 cff treasure_list_title'>收藏</view> -->
 					<text class="c33">优惠券</text>
-					<image src="../../img/yhq.png"></image>
+					<image src="{{imgUrl+'yhq.png'}}"></image>
 				</view>
 			</view>
 		</view>
@@ -61,7 +61,7 @@
 			</view>
 			<view bindtap="goAllOrder" class="orderTitle_right flex_row al">
 				<view class="f28 c99">查看全部订单</view>
-				<image src="../../img/rjt.png" class="orderTitle_right_img" />
+				<image src="{{imgUrl+'rjt.png'}}" class="orderTitle_right_img" />
 			</view>
 		</view>
 		<view class="orderState">
@@ -69,44 +69,44 @@
 			<view wx:if="{{userOrderTab==0}}" class="commonOrder boxs">
 				<view class="commonOrder_cell flex_row jb al" data-index="1" data-status="0" bindtap="allOrder">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon1.png" />
+						<image src="{{imgUrl+'selfIcon1.png'}}" />
 						<text class="f30 c33 fb">待付款</text>
 					</view>
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="2" data-status="1" bindtap="allOrder">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon2.png" />
+						<image src="{{imgUrl+'selfIcon2.png'}}" />
 						<text class="f30 c33 fb">待发货</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="4" bindtap="allOrder">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon3.png" />
+						<image src="{{imgUrl+'selfIcon3.png'}}" />
 						<text class="f30 c33 fb">待收货</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="allOrder">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon4.png" />
+						<image src="{{imgUrl+'selfIcon4.png'}}" />
 						<text class="f30 c33 fb">待评价</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.evaluateNum)}}">{{tools.filter(userInfo.evaluateNum)}}</view> -->
 				</view>
 				<!-- <view class="commonOrder_cell pr" data-index="6" data-status="8" bindtap="normalOrder">
-					<image src="../../../img/ptk.png" />
+					<image src="{{imgUrl+'ptk.png'}}" />
 					<view class="f24 c66">退款/售后</view>
 					<view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.refundedNum)}}">{{tools.filter(userInfo.refundedNum)}}</view>
 				</view> -->
@@ -114,27 +114,27 @@
 			<!-- 测量订单的操作 -->
 			<!-- <view wx:if="{{userOrderTab==1}}" class="commonOrder boxs flex_row al ja pr">
 				<view class="commonOrder_cell pr" data-index="1" data-status="5" bindtap="measureOrder">
-					<image src="../../../img/dcl.png" />
+					<image src="{{imgUrl+'dcl.png'}}" />
 					<view class="f24 c66">待测量</view>
 					<view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.waitNum)}}">{{tools.filter(userInfo.waitNum)}}</view>
 				</view>
 				<view class="commonOrder_cell pr" data-index="2" data-status="6" bindtap="measureOrder">
-					<image src="../../../img/jxz.png" />
+					<image src="{{imgUrl+'jxz.png'}}" />
 					<view class="f24 c66">进行中</view>
 					<view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.measurementOfNum)}}">{{tools.filter(userInfo.measurementOfNum)}}</view>
 				</view>
 				<view class="commonOrder_cell pr" data-index="3" data-status="8" bindtap="measureOrder">
-					<image src="../../../img/dfk.png" />
+					<image src="{{imgUrl+'dfk.png'}}" />
 					<view class="f24 c66">已完成</view>
 					<view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accomplishNum)}}">{{tools.filter(userInfo.accomplishNum)}}</view>
 				</view>
 				<view class="commonOrder_cell pr" data-index="1" bindtap="measureOrder">
-                    <image src="../../../img/yqx.png" />
+                    <image src="{{imgUrl+'yqx.png'}}" />
                     <view class="f24 c66">已取消</view>
                     <view class="count flex_row al jc pa">99</view>
                 </view>
                 <view class="commonOrder_cell pr" data-index="1" bindtap="measureOrder">
-                    <image src="../../../img/pj.png" />
+                    <image src="{{imgUrl+'pj.png'}}" />
                     <view class="f24 c66">评价</view>
                     <view class="count flex_row al jc pa">99</view>
                 </view>
@@ -152,49 +152,49 @@
 			<view class="commonOrder boxs">
 				<view class="commonOrder_cell flex_row jb al" data-index="1" data-status="0" bindtap="normalOrder">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon5.png" />
+						<image src="{{imgUrl+'selfIcon5.png'}}" />
 						<text class="f30 c33 fb">我的拼团</text>
 					</view>
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.obligationNum)}}">{{tools.filter(userInfo.obligationNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="3" data-status="1"  bindtap="address">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon6.png" />
+						<image src="{{imgUrl+'selfIcon6.png'}}" />
 						<text class="f30 c33 fb">收货地址</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.accountPaidNum)}}">{{tools.filter(userInfo.accountPaidNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="4" bindtap="contact">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon7.png" />
+						<image src="{{imgUrl+'selfIcon7.png'}}" />
 						<text class="f30 c33 fb">联系我们</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
 				<view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="comment">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon8.png" />
+						<image src="{{imgUrl+'selfIcon8.png'}}" />
 						<text class="f30 c33 fb">留言板</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.evaluateNum)}}">{{tools.filter(userInfo.evaluateNum)}}</view> -->
 				</view>
                 <view class="commonOrder_cell flex_row jb al" data-index="5" data-status="7" bindtap="car">
 					<view class="flex_row al">
-						<image src="../../img/selfIcon9.png" />
+						<image src="{{imgUrl+'selfIcon9.png'}}" />
 						<text class="f30 c33 fb">购物车</text>
 					</view>
 
-					<image src="../../img/arrow-left.png" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.evaluateNum)}}">{{tools.filter(userInfo.evaluateNum)}}</view> -->
 				</view>
@@ -206,19 +206,19 @@
 	<!-- <view class="otherModel boxs ">
 		<view class="flex_row jb al">
 			<view class="otherModel_cell" bindtap="join">
-				<image src="../../../img/sqrz.png" />
+				<image src="{{imgUrl+'sqrz.png'}}" />
 				<view class='f24 c33'>商家申请入驻</view>
 			</view>
 			<view class="otherModel_cell" bindtap="cooperation">
-				<image src="../../../img/swhz.png" />
+				<image src="{{imgUrl+'swhz.png'}}" />
 				<view class='f24 c33'>商务合作申请</view>
 			</view>
 			<view class="otherModel_cell" bindtap="invite">
-				<image src="../../../img/yqhy.png" />
+				<image src="{{imgUrl+'yqhy.png'}}" />
 				<view class='f24 c33'>邀请好友</view>
 			</view>
 			<view class="otherModel_cell" bindtap="address">
-				<image src="../../../img/shdz.png" />
+				<image src="{{imgUrl+'shdz.png'}}" />
 				<view class='f24 c33'>我的收货地址</view>
 			</view>
 		</view>
@@ -229,7 +229,7 @@
 <!-- 授权手机号码 -->
 <view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
 <view class="auth1 pr" wx:if="{{show}}">
-	<image catchtap="closeModal" src="../../img/cha.png" class="close pa"></image>
+	<image catchtap="closeModal" src="{{imgUrl+'cha.png'}}" class="close pa"></image>
 	<view class="title c33 tc">温馨提示</view>
 	<view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
 	<button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
@@ -238,7 +238,7 @@
 <!-- 联系方式遮罩 -->
 <view class="pa contact" wx:if="{{showPhone}}">
   <view class="boxs pr flex_col">
-    <image class="pa img" catchtap="closeModal" src="../../img/cha.png"></image>
+    <image class="pa img" catchtap="closeModal" src="{{imgUrl+'cha.png'}}"></image>
     <view class="f30 fb c33" style="margin-bottom: 61rpx;">平台热线：400-888-8090</view>
     <view class="mobile f28 cff tc" catchtap="call">立即呼叫</view>
   </view>
@@ -260,7 +260,7 @@
 
 <!-- 注册红包 -->
 <view class="gift" wx:if="{{gift}}">
-	<image class="img pa" src="../../img/coupon.png"></image>
+	<image class="img pa" src="{{imgUrl+'coupon.png'}}"></image>
 	<view class="price pa">
 		<text>￥</text>{{voucher.voucherPrice}}
 	</view>
@@ -268,6 +268,6 @@
 		<view class="type c33">满减券</view>
 		<view class="condition c99 f30">{{voucher.condition}}</view>
 	</view>
-	<image catchtap="lookCoupon" src="../../img/look.png" class="look pa"></image>
-	<image catchtap="closeCoupon" class="close2 pa" src="../../img/close1.png"></image>
+	<image catchtap="lookCoupon" src="{{imgUrl+'look.png'}}" class="look pa"></image>
+	<image catchtap="closeCoupon" class="close2 pa" src="{{imgUrl+'close1.png'}}"></image>
 </view>

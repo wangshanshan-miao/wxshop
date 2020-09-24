@@ -2,7 +2,8 @@
 import api from "../../utils/api.js"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http.js"
 
 const app = getApp()
@@ -238,7 +239,8 @@ Page({
   onLoad: function (options) {
     this.setData({
         baseURL,
-        imgBaseUrl
+        imgBaseUrl,
+        imgUrl
     })
     
     this.Phone()
