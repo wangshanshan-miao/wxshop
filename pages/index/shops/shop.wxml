@@ -3,13 +3,13 @@
 <view class="shops_index">
     <!-- 头部 -->
     <view class="clearFloat pr model_shops">
-        <image class="index_top" src="../../../img/sybg.png" />
+        <image class="index_top" src="{{imgUrl+'sybg.png'}}" />
         <view class="index_topCon">
             <!-- 定位/搜素 -->
             <view class="top flex_row al">
                 <view bindtap="toSearch" class="shops_search_group pr flex_row al">
                     <input disabled="{{true}}" placeholder-style="color:#AEAEAE" class="shops_search_input f26" placeholder="搜索店铺" />
-                    <image class="shops_search_icon pa" src="../../../img/seai.png" />
+                    <image class="shops_search_icon pa" src="{{imgUrl+'seai.png'}}" />
                 </view>
             </view>
             <!-- 轮播图 -->
@@ -22,7 +22,7 @@
     </view>
     <!-- 福利大放送 -->
     <view class='welfare_shops plr30 boxs' bindtap="fl">
-        <image class="flfs" src="../../../img/fl.png" />
+        <image class="flfs" src="{{imgUrl+'fl.png'}}" />
     </view>
     <!-- 商家 -->
     <view class="modelCell" wx:if="{{list.length>0}}">

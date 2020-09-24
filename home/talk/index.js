@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
   baseURL,
-  imgBaseUrl
+  imgBaseUrl,
+  imgUrl
 } from "../../utils/http"
 let app = getApp();
 Page({
@@ -24,7 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      imgUrl
+    })
   },
   onEditorReady() {
     const that = this

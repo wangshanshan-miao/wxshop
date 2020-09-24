@@ -13,25 +13,25 @@
         <view class="cg_tab boxs flex_row jb">
             <view bindtap="goDztj" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_one">
-                    <image src="../../../img/dztj.png" class="tabIcon" />
+                    <image src="{{imgUrl+'dztj.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">店长推荐</view>
             </view>
             <view bindtap="goProduct" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_three">
-                    <image src="../../../img/qbcp.png" class="tabIcon" />
+                    <image src="{{imgUrl+'qbcp.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">全部产品</view>
             </view>
             <view bindtap="goMs" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_four">
-                    <image src="../../../img/xsqg.png" class="tabIcon" />
+                    <image src="{{imgUrl+'xsqg.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">限时抢购</view>
             </view>
             <view bindtap="goShops" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_two">
-                    <image src="../../../img/qbsj.png" class="tabIcon" />
+                    <image src="{{imgUrl+'qbsj.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">全部商家</view>
             </view>
@@ -51,11 +51,11 @@
                     </view>
                     <!-- <view class="c99 f24">/平方米</view> -->
                 </view>
-                <image class="good_buyCar" src="../../../img/car.png" />
+                <image class="good_buyCar" src="{{imgUrl+'car.png'}}" />
             </view>
         </view>
     </view>
     <noData wx:if="{{arr.length<1}}" />
 </view>
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>

@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 const app = getApp()
 Page({
@@ -106,7 +107,8 @@ Page({
     onLoad: function (options) {
         this.setData({
             baseURL,
-            imgBaseUrl
+            imgBaseUrl,
+            imgUrl
         })
     },
 

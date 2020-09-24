@@ -3,13 +3,13 @@
     <!-- 搜索 -->
     <view class="store_search boxs flex_row al pa">
         <view class="store_searchLeft pr flex_row  al ">
-            <image catchtap="search" src="../../img/seai.png" class="store_searchIcon" />
+            <image catchtap="search" src="{{imgUrl+'seai.png'}}" class="store_searchIcon" />
             <input bindconfirm="search" bindinput="inputValue" value="{{value}}" class="f24 boxs c66" placeholder="请搜索商品名称" />
-            <image catchtap="clear" class="deli pa" src="../../img/deli.png"></image>
+            <image catchtap="clear" class="deli pa" src="{{imgUrl+'deli.png'}}"></image>
         </view>
         <view class='store_searchRight flex_row al jc'>
-            <image wx:if="{{isCollect == 0}}" class="scIcon" catchtap="collet" src="../../img/scn.png" />
-            <image wx:else class="scIcon" catchtap="collet" src="../../img/ysc.png" />
+            <image wx:if="{{isCollect == 0}}" class="scIcon" catchtap="collet" src="{{imgUrl+'scn.png'}}" />
+            <image wx:else class="scIcon" catchtap="collet" src="{{imgUrl+'ysc.png'}}" />
         </view>
     </view>
     <!-- 轮播 -->
@@ -27,8 +27,8 @@
                 <view class="f30 c33 name">{{detail.merchantName}}</view>
             </view>
             <view class="store_cardRight flex_row al boxs">
-                <image bindtap="showShare" src="../../img/share.png" class="store_shareImg" />
-                <image bindtap="showModel" src="../../img/spread.png" class="store_ewmImg" />
+                <image bindtap="showShare" src="{{imgUrl+'share.png'}}" class="store_shareImg" />
+                <image bindtap="showModel" src="{{imgUrl+'spread.png'}}" class="store_ewmImg" />
             </view>
         </view>
     </view>
@@ -76,10 +76,10 @@
                                         </view>
                                         <!-- <view class="c99 f20">/平方米</view> -->
                                     </view>
-                                    <image class="good_buyCar" src="../../img/car.png" />
+                                    <image class="good_buyCar" src="{{imgUrl+'car.png'}}" />
                                 </view>
                                 <!-- <view class="car_group flex_row al jb">
-                                    <image class="good_buyCar" src="../../img/car.png" />
+                                    <image class="good_buyCar" src="{{imgUrl+'car.png'}}" />
                                 </view> -->
                             </view>
                             <noData wx:if="{{arr.length<1}}" />
@@ -90,7 +90,7 @@
             <!-- 优惠 -->
             <view wx:if="{{tabIndex==1}}" class="coupons">
                 <view bindtap="couponDetail" data-id="{{item.voucherId}}" class="coupon flex_row al" wx:for="{{couponList}}" wx:key="index">
-                    <image src="../../img/yhqbg1.png"></image>
+                    <image src="{{imgUrl+'yhqbg1.png'}}"></image>
                     <view class="left">
                         <text>￥</text>
                         {{item.voucherPrice}}
@@ -160,7 +160,7 @@
                 <view class='c99 f26 warn_text'>点击图片保存二维码，添加商家微信</view>
             </view>
             <view class="close_mode">
-                <image bindtap="closeModel" src="../../img/close.png" class="closeImg" />
+                <image bindtap="closeModel" src="{{imgUrl+'close.png'}}" class="closeImg" />
             </view>
         </view>
     </van-overlay>
@@ -170,19 +170,19 @@
     <view class="share pr fadeUp sliderUp" wx:if="{{showShare}}">
         <view class="top flex_row al pr jc">
             <view class="title c33 f28">分享到</view>
-            <image catchtap="closeShare" class="close pa" src="../../img/cha.png"></image>
+            <image catchtap="closeShare" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
         </view>
         <view class="bottom flex_row al jb pa">
             <view class="container pr">
                 <view class="share_area">
-                    <image class="share_icon pa" src="../../img/wxchat.png"></image>
+                    <image class="share_icon pa" src="{{imgUrl+'wxchat.png'}}"></image>
                     <button open-type="share" class="share_btn pa"></button>
                 </view>
                 <view class="f28 c33 tx text">微信好友</view>
             </view>
             <view class="right_site al jc">
                 <view class="share_bg flex_row al jc" catchtap="makePoster">
-                    <image class="share_icon1" src="../../img/poster.png"></image>
+                    <image class="share_icon1" src="{{imgUrl+'poster.png'}}"></image>
                 </view>
                 <view class="f28 c33 tx text">生成商品海报</view>
             </view>

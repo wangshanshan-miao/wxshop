@@ -1,6 +1,7 @@
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 import api from "../../utils/api"
 Page({
@@ -26,7 +27,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      imgUrl
     })
   },
 

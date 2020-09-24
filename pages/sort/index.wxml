@@ -1,6 +1,6 @@
 <!-- 搜索框 -->
 <view bindtap="toSearch" class="search_group boxs">
-	<image class="search_icon" src="../../img/search.png" />
+	<image class="search_icon" src="{{imgUrl+'search.png'}}" />
 	<input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
 </view>
 <!-- 分类 -->
@@ -20,7 +20,7 @@
 		<view class="flex_row jb fb al">
 			<text class="cf0 f24 p10">¥{{item.salePrice}}</text>
 			<view class="car" data-data="{{item}}" catchtap="addCar">
-				<image src="../../img/car.png"></image>
+				<image src="{{imgUrl+'car.png'}}"></image>
 			</view>
 		</view>
 	</view>
@@ -29,7 +29,7 @@
 <!-- 购物选择商品规模 -->
 <van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="{{imgUrl+'close.png'}}" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">

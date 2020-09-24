@@ -1,7 +1,8 @@
 import api from "../../../utils/api"
 import {
   baseURL,
-  imgBaseUrl
+  imgBaseUrl,
+  imgUrl
 } from "../../../utils/http"
 
 Page({
@@ -29,7 +30,8 @@ Page({
       imgBaseUrl,
       nowTime: new Date().getTime(),
       goodType,
-      activeIndex: Number(options.index) + 1
+      activeIndex: Number(options.index) + 1,
+      imgUrl
     })
     this.getList()
   },

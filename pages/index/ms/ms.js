@@ -2,7 +2,8 @@
 import api from "../../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../../utils/http"
 let app = getApp();
 let timer
@@ -157,7 +158,8 @@ Page({
             baseURL,
             imgBaseUrl,
             id : options.id,
-          hideType: options.type ? options.type==1?true:false:false
+          hideType: options.type ? options.type==1?true:false:false,
+          imgUrl
         })
         this.reduce()
     },

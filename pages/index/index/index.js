@@ -3,7 +3,8 @@
 import api from "../../../utils/api.js"
 import {
   baseURL,
-  imgBaseUrl
+  imgBaseUrl,
+  imgUrl
 } from "../../../utils/http.js"
 import {
   formatTimes
@@ -51,13 +52,13 @@ Page({
     },
     goodSizeShow: false,
     fuliList: [{
-      url: '../../../img/bg1.png'
+      url: imgUrl + 'bg1.png'
     }, {
-      url: '../../../img/bg2.png'
+      url: imgUrl+'bg2.png'
     }, {
-      url: '../../../img/bg3.png'
+      url: imgUrl+'bg3.png'
     }, {
-      url: '../../../img/bg4.png'
+      url: imgUrl+'bg4.png'
     }],
     count_down: '',
     endTime: '',
@@ -278,6 +279,7 @@ Page({
         wx.getLocation({
           type: 'wgs84',
           success(res) {
+            debugger
             // console.log(res)
             const latitude = res.latitude
             const longitude = res.longitude
@@ -421,8 +423,8 @@ Page({
   // 获取区域id
   getmerchantId() {
     api.getAgencyId({
-      // areaCode: getStorageSync('shortAreaCode'),
-      areaCode: '420117',
+      areaCode: wx.getStorageSync('shortAreaCode'),
+      // areaCode: '420117',
       appId: wx.getStorageSync('appId')
     }).then(res => {
       if (res.status == 200) {
@@ -510,6 +512,7 @@ Page({
     this.setData({
       baseURL,
       imgBaseUrl,
+      imgUrl,
       nowTime: new Date().getTime()
     })
     const self = this

@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 let app = getApp();
 let timer
@@ -216,7 +217,8 @@ Page({
             imgBaseUrl,
             id,
             merchantId,
-            goodType
+            goodType,
+            imgUrl
         })
     },
     checkUser() {
@@ -469,9 +471,49 @@ Page({
         })
       })
     },
+    // 立即拼团
+    booking () {
+      let outIds = []
+      outIds.push(this.data.id)
+      api.createCommodityOrder({
+        userId: wx.getStorageSync('userId'),
+        merchantId: wx.getStorageSync('merchantId'),
+        outIds: outIds,
+        amounts: [1],
+        commoditySpecificationIds: ["-1"],
+        groupUserId: this.data.groupUserId
+      }).then(res => {
+        if (res.status == 200 && res.data.status == 1) {
+          let id = res.data.orderId
+          wx.navigateTo({
+            url: `/self/ptDetail/index?id=${id}`,
+          })
+        }
+      })
+    },
+    // 更多拼团
+    morePt () {
+
+    },
     // 开团
     startBooking () {
-      
+      this.checkUser()
+      api.createCommodityOrder({
+        merchantId: wx.getStorageSync('merchantId'),
+        outIds: [this.data.id],
+        commoditySpecificationIds: ["-1"],
+        amounts: [this.data.goodNum],
+        userId: wx.getStorageSync('userId')
+      }).then(res => {
+        // console.log(res)
+        this.setData({
+          goodSizeShow1: false
+        })
+        let id = res.data.orderId
+        wx.navigateTo({
+          url: `/self/ptDetail/index?id=${id}`,
+        })
+      })
     },
     // 关闭弹框
     closeModal1() {
@@ -716,11 +758,11 @@ Page({
             return false
         }
         api.createCommodityOrder({
-            merchantId: this.data.merchantId,
-            outIds: [this.data.id],
-            commoditySpecificationIds: [specificationId],
-            amounts: [this.data.goodNum],
-            userId: wx.getStorageSync('userId')
+          merchantId: wx.getStorageSync('merchantId'),
+          outIds: [this.data.id],
+          commoditySpecificationIds: [specificationId],
+          amounts: [this.data.goodNum],
+          userId: wx.getStorageSync('userId')
         }).then(res => {
             // console.log(res)
             this.setData({

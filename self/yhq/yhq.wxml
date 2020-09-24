@@ -6,8 +6,8 @@
 </view>
 <view class="container1">
 	<view class="con pa">
-		<image wx:if="{{mananger}}" bindtap="manange" class="img" src="../../img/mananger.png"></image>
-		<image wx:else class="img" bindtap="complete" src="../../img/complete.png"></image>
+		<image wx:if="{{mananger}}" bindtap="manange" class="img" src="{{imgUrl+'mananger.png'}}"></image>
+		<image wx:else class="img" bindtap="complete" src="{{imgUrl+'complete.png'}}"></image>
 	</view>
 </view>
 
@@ -20,8 +20,8 @@
 <view class="modal flex_row al jb" wx:if="{{!mananger && list.length}}">
 	<view class="flex_row al jb">
 		<!-- <view class="all" > -->
-		<image bindtap="selectAll" class="img all" wx:if="{{!isSelectAll}}" src="../../img/dxn.png"></image>
-		<image bindtap="selectAll" class="img all" wx:else src="../../img/dxh.png"></image>
+		<image bindtap="selectAll" class="img all" wx:if="{{!isSelectAll}}" src="{{imgUrl+'dxn.png'}}"></image>
+		<image bindtap="selectAll" class="img all" wx:else src="{{imgUrl+'dxh.png'}}"></image>
 		<!-- </view> -->
 		<view class="text c33 f30" bindtap="selectAll">全选</view>
 	</view>
@@ -31,9 +31,9 @@
 <!-- 待使用 -->
 <view class="yhqList" wx:if="{{yhqTabIndex==0}}">
 	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="../../img/dxh.png"></image>
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="../../img/dxn.png"></image>
-		<image class="yhqImgBg" src="../../img/yhqbg.png" />
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="{{imgUrl+'dxh.png'}}"></image>
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="{{imgUrl+'dxn.png'}}"></image>
+		<image class="yhqImgBg" src="{{imgUrl+'yhqbg.png'}}" />
 		<view class="yhqList_cell_con boxs flex_row jb al pa">
 			<view class="flex_row">
 				<view class="yhqList_cell_con_left">
@@ -64,9 +64,9 @@
 <!-- 已过期 -->
 <view class="yhqList" wx:if="{{yhqTabIndex==1}}">
 	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="../../img/dxh.png"></image>
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="../../img/dxn.png"></image>
-		<image class="yhqImgBg" src="../../img/yhqbggq.png" />
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="{{imgUrl+'dxh.png'}}"></image>
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="{{imgUrl+'dxn.png'}}"></image>
+		<image class="yhqImgBg" src="{{imgUrl+'yhqbggq.png'}}" />
 		<view class="yhqList_cell_con boxs flex_row jb al pa">
 			<view class="flex_row">
 				<view class="yhqList_cell_con_left">
@@ -97,9 +97,9 @@
 <!-- 退款 -->
 <view class="yhqList" wx:if="{{yhqTabIndex==2}}">
 	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="../../img/dxh.png"></image>
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="../../img/dxn.png"></image>
-		<image class="yhqImgBg" src="../../img/yhqbggq.png" />
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="{{imgUrl+'dxh.png'}}"></image>
+		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="{{imgUrl+'dxn.png'}}"></image>
+		<image class="yhqImgBg" src="{{imgUrl+'yhqbggq.png'}}" />
 		<view class="yhqList_cell_con boxs flex_row jb al pa">
 			<view class="flex_row">
 				<view class="yhqList_cell_con_left">

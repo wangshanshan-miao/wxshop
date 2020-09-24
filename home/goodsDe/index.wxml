@@ -14,7 +14,7 @@
 </view>
 <!-- 秒杀 -->
 <view class="skill jb pr" wx-if="{{goodType == 0}}">
-  <image class="imgBg pa" src="../../img/skillbg.png"></image>
+  <image class="imgBg pa" src="{{imgUrl+'skillbg.png'}}"></image>
   <view class="lprice pa">
     <text class="f34 cff" style="margin-right: 16rpx;">限时抢购</text>
     <text class="f35 fb cff">￥{{detail.salePrice}}</text>
@@ -45,7 +45,7 @@
     <view class="flex_row goodDe_intro_top jb">
         <view class="f32 fb c33 goodDe_name hidden2">{{detail.commodityName}}</view>
         <view class="shareDiv">
-          <image catchtap="sharegood" class="sharegood" src="../../img/share.png" />
+          <image catchtap="sharegood" class="sharegood" src="{{imgUrl+'share.png'}}" />
           <view>分享</view>
         </view>
     </view>
@@ -63,9 +63,9 @@
 <view class="groupList boxs" wx-if="{{goodType == 1}}">
     <view class="eva_top al jb flex_row">
       <view class='f28 c33 fb'>小伙伴们在开团，可直接参与</view>
-      <view class="flex_row al" data-="{{commodityId}}" bindtap="">
+      <view class="flex_row al" data-="{{commodityId}}" bindtap="morePt">
           <view class="f24 c98">查看更多</view>
-          <image src="../../img/arrow-left.png" class="jtr" />
+          <image src="{{imgUrl+'arrow-left.png'}}" class="jtr" />
       </view>
     </view>
     <view class="groupDetail flex_row jb" wx:for="{{detail.groupUserDtoList}}" wx:key="index" wx:if="{{index<2}}">
@@ -94,7 +94,7 @@
         <view class='f32 c33 fb'>用户评价</view>
         <view class="flex_row al" data-id="{{detail.commodityId}}" bindtap="goAllEva">
             <view class="f24 c98">查看更多</view>
-            <image src="../../img/arrow-left.png" class="jtr" />
+            <image src="{{imgUrl+'arrow-left.png'}}" class="jtr" />
         </view>
     </view>
     <view class="evaList">
@@ -105,8 +105,8 @@
                   <view class='evaUser_name'>
                     <text class="c33 f26">{{detail.userName}}</text>
                     <view class="stars">
-                      <image wx:for="{{evaluateLevel}}" wx:key="index" src="../../img/star.png"></image>
-                      <image wx:for="{{5 - evaluateLevel}}" wx:key="index" src="../../img/star1.png"></image>
+                      <image wx:for="{{evaluateLevel}}" wx:key="index" src="{{imgUrl+'star.png'}}"></image>
+                      <image wx:for="{{5 - evaluateLevel}}" wx:key="index" src="{{imgUrl+'star1.png'}}"></image>
                     </view>
                   </view>
                   <text class="f24 c98">{{detail.date}}</text>
@@ -133,16 +133,16 @@
 <view class="operationModel boxs flex_row al jb">
     <view class="operationModel_left flex_row al">
         <!-- <view class="dpBtn tc" bindtap="goStore">
-            <image src="../../img/dp.png" class="operationModel_left_img" />
+            <image src="{{imgUrl+'dp.png'}}" class="operationModel_left_img" />
             <view class="f24 c66">店铺</view>
         </view> -->
         <view class="scBtn tc" bindtap="goTalk">
-            <image src="../../img/talk.png" class="operationModel_left_img" />
+            <image src="{{imgUrl+'talk.png'}}" class="operationModel_left_img" />
             <view class="f24 c66">留言</view>
         </view>
         <view class="gwcBtn tc" bindtap="goBuyCar">
             <view class="pr">
-                <image src="../../img/gwc.png" class="operationModel_left_img" />
+                <image src="{{imgUrl+'gwc.png'}}" class="operationModel_left_img" />
                 <view class="pa tc carNumRadio cff f20 flex_row al jc" wx:if="{{detail.shoppingTrolleyNum>0}}">
                     {{detail.shoppingTrolleyNum}}
                 </view>
@@ -166,7 +166,7 @@
 <!-- 购物选择商品规模 -->
 <van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="{{imgUrl+'close.png'}}" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">
@@ -207,7 +207,7 @@
 <view class="addAddress fadeUp" wx:if="{{addressShow}}">
     <view class="top pr flex_row jc al">
         <view class="title c33 f28">填写测量信息</view>
-        <image class="close pa" catchtap="closeAddress" src="../../img/cha.png"></image>
+        <image class="close pa" catchtap="closeAddress" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="list flex_row al jb">
         <view class="title f30 c33">联系人</view>
@@ -237,7 +237,7 @@
 <view class="mask" wx:if="{{mask}}" catchtap="closeModal1"></view>
 <!-- 拼团弹框 -->
 <view class="modal fadeUp" wx:if="{{modal}}">
-    <image catchtap="closeModal1" class="close pa" src="../../img/cha.png"></image>
+    <image catchtap="closeModal1" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
     <view class="name tc c33 f32">参与 {{groupUserDtoList[selectIndex].userName}} 的拼单</view>
     <view wx:if="{{groupType==0}}" class="remain tc c33 f26">
         拼单中，差
@@ -248,7 +248,7 @@
         <view class="middle flex_row al jb" wx:for="{{groupList}}" wx:key="index">
             <view class="pr avatarList">
                 <image class="avatar" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}"></image>
-                <image class="avatar" src="../../img/hhead.png" wx:for="{{groupUserDtoList[selectIndex].surplus}}"></image>
+                <image class="avatar" src="{{imgUrl+'hhead.png'}}" wx:for="{{groupUserDtoList[selectIndex].surplus}}"></image>
                 <!-- <view wx:if="{{index == 0}}" class="tag pa flex_row al jc">拼主</view> -->
             </view>
             <!-- <view class="tc c33 f32">{{item.userName}}</view>
@@ -263,7 +263,7 @@
 <!-- 购物选择商品规模 -->
 <van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow1 }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close1" src="../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close1" src="{{imgUrl+'close.png'}}" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">
@@ -302,19 +302,19 @@
 <view class="share pr fadeUp sliderUp" wx:if="{{share}}">
     <view class="top flex_row al pr jc">
         <view class="title c33 f28">分享到</view>
-        <image catchtap="closeShare" class="close pa" src="../../img/cha.png"></image>
+        <image catchtap="closeShare" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
     </view>
     <view class="bottom flex_row al jb pa">
         <view class="container pr">
             <view class="share_area">
-                <image class="share_icon pa" src="../../img/wxchat.png"></image>
+                <image class="share_icon pa" src="{{imgUrl+'wxchat.png'}}"></image>
                 <button open-type="share" class="share_btn pa"></button>
             </view>
             <view class="f28 c33 tx text">微信好友</view>
         </view>
         <view class="right_site al jc">
             <view class="share_bg flex_row al jc" catchtap="makePoster">
-                <image class="share_icon1" src="../../img/poster.png"></image>
+                <image class="share_icon1" src="{{imgUrl+'poster.png'}}"></image>
             </view>
             <view class="f28 c33 tx text">生成商品海报</view>
         </view>
@@ -323,7 +323,7 @@
 <!-- 海报 -->
 <share-box isCanDraw="{{poster}}" bind:initData="hiddlePoster" />
 <!-- <view class="poster fadeUp pr" wx:if="{{poster}}">
-    <image src="../../img/close.png" class="closePoster pa" catchtap="closePoster"></image>
+    <image src="{{imgUrl+'close.png'}}" class="closePoster pa" catchtap="closePoster"></image>
     <view class="main pr">
         <canvas type="2d" id="myCanvas" class="myCanvas pa"></canvas>
     </view>

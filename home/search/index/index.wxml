@@ -2,16 +2,16 @@
 <view class="searchIndex">
     <view class="search_top flex_row al">
         <view class="pr search_topInput">
-            <image class="seai pa" src="../../../img/seai.png"></image>
+            <image class="seai pa" src="{{imgUrl+'seai.png'}}"></image>
             <input value="{{value}}" bindinput="input" class="searchInput f26 c33 boxs" placeholder="请输入搜索内容" />
-            <image bindtap="clearAll" class="deli pa" src="../../../img/deli.png" />
+            <image bindtap="clearAll" class="deli pa" src="{{imgUrl+'deli.png'}}" />
         </view>
         <view class="cancle f30" bindtap="searchResult">搜索</view>
     </view>
     <view class="history">
         <view class="flex_row history_top al jb">
             <view class='f30 c33'>历史搜索</view>
-            <image catchtap="clearHistory" class="del_icon" src="../../../img/delete.png" />
+            <image catchtap="clearHistory" class="del_icon" src="{{imgUrl+'delete.png'}}" />
         </view>
         <view class="history_group flex_row">
             <view catchtap="handleTap" data-content="{{item}}" class="historyCell c99 f24" wx:for='{{historyArr}}' wx:key="index">
@@ -33,7 +33,7 @@
                     </view>
                     <!-- <view class="c99 f24">/平方米</view> -->
                 </view>
-                <image catchtap="addToCart" data-id="{{item.commodityId}}" class="good_buyCar" src="../../../img/car.png" />
+                <image catchtap="addToCart" data-id="{{item.commodityId}}" class="good_buyCar" src="{{imgUrl+'car.png'}}" />
             </view>
         </view>
     </view>

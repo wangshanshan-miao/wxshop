@@ -2,7 +2,7 @@
 <view class="line"></view>
 
 <view class="list pr flex_row al" wx:for="{{list}}" wx:key="index" bindtap="detail" data-id="{{item.voucherId}}">
-	<image class="bg pa" src="../../../img/yhqbg1.png"></image>
+	<image class="bg pa" src="{{imgUrl+'yhqbg1.png'}}"></image>
 	<view class="left cff "><text class="f26">￥</text>{{item.sellingPrice}}</view>
 	<view class="right">
 		<view class="top cff flex_row al jc">代金券</view>
@@ -26,7 +26,7 @@
 <view class="modal pr scaleUp" wx:if="{{show}}">
 	<view class="header">
 		<view class="title">抵扣券使用说明</view>
-		<image catchtap="closeModal" class="close pa" src="../../../img/cha.png"></image>
+		<image catchtap="closeModal" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
 	</view>
 	<view class="content f28">
 		Praesent accumsan ligula eget elit porta, sed efficitur est varius. Sed quam tellus, iaculis vel ante nec, tincidunt tempus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia, enim a posuere molestie, ante est cursus nunc, quis fringilla tortor sapien sed nisl. Donec viverra, tortor quis commodo tincidunt, turpis sapien ornare nisi, sed maximus ipsum ligula eu diam. Praesent a lectus quis massa elementum mollis fermentum at purus. Nullam commodo nunc sit

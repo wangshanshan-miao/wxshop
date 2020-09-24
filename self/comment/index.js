@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
     baseURL,
-    imgBaseUrl
+    imgBaseUrl,
+    imgUrl
 } from "../../utils/http"
 const app = getApp()
 Page({
@@ -13,8 +14,8 @@ Page({
     evaluateUrl: '',
     list: [],
     stars: [0, 1, 2, 3, 4],
-    normalSrc: '../../img/star1.png',
-    selectedSrc: '../../img/star.png',
+    normalSrc: imgUrl+'star1.png',
+    selectedSrc: imgUrl+'star.png',
     score: [],
     number: 5
   },
@@ -118,7 +119,8 @@ Page({
     this.setData({
         baseURL,
         imgBaseUrl,
-        id: options.id
+        id: options.id,
+        imgUrl
     })
   },
   // 

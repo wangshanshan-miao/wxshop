@@ -9,31 +9,31 @@
         </scroll-view>
     </view>
     <!-- 福利大放送 -->
-    <image catchtap="fl" class="flfs" src="../../../img/fl.png" />
+    <image catchtap="fl" class="flfs" src="{{imgUrl+'fl.png'}}" />
     <!-- tab导航 -->
     <view class="cg_tabs plr30 boxs">
         <view class="cg_tab boxs flex_row jb">
             <view bindtap="goDztj" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_one">
-                    <image src="../../../img/dztj.png" class="tabIcon" />
+                    <image src="{{imgUrl+'dztj.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">店长推荐</view>
             </view>
             <view bindtap="goShops" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_two">
-                    <image src="../../../img/qbsj.png" class="tabIcon" />
+                    <image src="{{imgUrl+'qbsj.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">全部商家</view>
             </view>
             <view bindtap="goLghd" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_three">
-                    <image src="../../../img/lghd.png" class="tabIcon" />
+                    <image src="{{imgUrl+'lghd.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">联购活动</view>
             </view>
             <view bindtap="goAl" class="flex_col jc al">
                 <view class="tabCell felx_row cg_tabcell_four">
-                    <image src="../../../img/alzs.png" class="tabIcon" />
+                    <image src="{{imgUrl+'alzs.png'}}" class="tabIcon" />
                 </view>
                 <view class="tabText">案例展示</view>
             </view>
@@ -53,11 +53,11 @@
                     </view>
                     <!-- <view class="c99 f24">/平方米</view> -->
                 </view>
-                <image class="good_buyCar" src="../../../img/car.png" />
+                <image class="good_buyCar" src="{{imgUrl+'car.png'}}" />
             </view>
         </view>
     </view>
     <noData wx:if="{{arr.length<1}}" />
 </view>
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>

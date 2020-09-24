@@ -2,7 +2,8 @@
 import api from "../../utils/api"
 import {
   baseURL,
-  imgBaseUrl
+  imgBaseUrl,
+  imgUrl
 } from "../../utils/http"
 let app = getApp();
 
@@ -31,7 +32,8 @@ Page({
       baseURL,
       imgBaseUrl,
       car: options.form,
-      total: options.total
+      total: options.total,
+      imgUrl
     })
   },
 
@@ -109,8 +111,9 @@ Page({
           title: res.data,
           icon: 'none'
         })
+        let id = this.data.orderId
         wx.navigateTo({
-          url: `/self/allDetail/index?id=${this.data.orderId}`,
+          url: `/self/allDetail/index?id=${id}`,
         })
         // wx.requestPayment({
         //   timeStamp: data.timeStamp,

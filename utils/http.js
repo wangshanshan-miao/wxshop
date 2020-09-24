@@ -2,6 +2,7 @@ const baseURL = 'https://www.ykdzw.com/unite/';
 
 
 const imgBaseUrl ='https://www.ykdzw.com/oss/data/'
+const imgUrl = 'https://www.ykdzw.com/oss/img/'
 const appId = wx.getStorageSync('appId')
 wx.setStorageSync('userId', '81');
 class Http {
@@ -50,5 +51,6 @@ export {
   Http,
   baseURL,
   imgBaseUrl,
-  appId
+  appId,
+  imgUrl
 };

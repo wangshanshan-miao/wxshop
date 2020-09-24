@@ -9,7 +9,7 @@
 				<view class="cff f28 m10">{{createTime}}已开始</view>
 				<view class="cff f28 m10">少侠，快去呼唤你的好友吧</view>
 			</view>
-			<image class="order_state_img" src="../../img/ptz.png" />
+			<image class="order_state_img" src="{{imgUrl+'ptz.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==5}}">
 			<view>
@@ -17,7 +17,7 @@
 				<view class="cff f28 m10">{{endTime}}已结束</view>
 				<view class="cff f28 m10">少侠，你忘记呼唤好友啦</view>
 			</view>
-			<image class="order_state_img" src="../../img/ptsb.png" />
+			<image class="order_state_img" src="{{imgUrl+'ptsb.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==6}}">
 			<view>
@@ -25,23 +25,23 @@
 				<view class="cff f28 m10">{{endTime}}已结束</view>
 				<view class="cff f28 m10">少侠，你已成功拼团</view>
 			</view>
-			<image class="order_state_img" src="../../img/ptcg.png" />
+			<image class="order_state_img" src="{{imgUrl+'ptcg.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==9}}">
 			<view class='f32 cff'>已取消</view>
-			<image class="order_state_img" src="../../img/or_yqx.png" />
+			<image class="order_state_img" src="{{imgUrl+'or_yqx.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8}}">
 			<view class='f32 cff'>交易成功</view>
-			<image class="order_state_img" src="../../img/or_ywc.png" />
+			<image class="order_state_img" src="{{imgUrl+'or_ywc.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==4}}">
 			<view class='f32 cff'>卖家已发货</view>
-			<image class="order_state_img" src="../../img/ddsh.png" />
+			<image class="order_state_img" src="{{imgUrl+'ddsh.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al orderStatus1" wx:if="{{orderStatus==1}}">
 			<view class='f32 cff'>等待卖家发货</view>
-			<image class="order_state_img" src="../../img/dfh.png" />
+			<image class="order_state_img" src="{{imgUrl+'dfh.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
 			<view class=''>
@@ -50,7 +50,7 @@
 					剩{{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭
 				</view>
 			</view>
-			<image class="order_state_img" src="../../img/ddfk.png" />
+			<image class="order_state_img" src="{{imgUrl+'ddfk.png'}}" />
 		</view>
 	</view>
 	<!-- <view class="line"></view> -->
@@ -59,7 +59,7 @@
 			<!-- 收获地址 -->
 			<view class="orderAddress" catchtap="selectAddress">
 				<!-- <view class="flex_row al">
-					<image src="../../img/address.png" class="address_img" />
+					<image src="{{imgUrl+'address.png'}}" class="address_img" />
 					<view class="">
 						<view class='flex_row' wx:if="{{name}}">
 							<view class="f28 buyUser_name c33">{{name}}</view>
@@ -69,7 +69,7 @@
 						<view class='f24 buyUser_address c99'>{{address}}</view>
 					</view>
 				</view>
-				<image src="../../img/rjt.png" class="rjtImg" /> -->
+				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" /> -->
 				<view class="roundList flex_row jb al">
 					<view class="round"></view>
 					<view class="line"></view>
@@ -88,15 +88,15 @@
 			<!-- 订单内容 -->
 			<!-- <view class="flex_row jb al goodckOrder_top">
                 <view class="flex_row al" catchtap="goStore">
-                    <image class="shop_icon" src="../../img/shop_icon.png" />
+                    <image class="shop_icon" src="{{imgUrl+'shop_icon.png'}}" />
                     <view class='f30 c33 fb shopckOrder_name'>{{storeName}}</view>
-                    <image src="../../img/rjt.png" class="goShopImg" />
+                    <image src="{{imgUrl+'rjt.png'}}" class="goShopImg" />
                 </view>
             </view> -->
 			<view class="flex_row userList">
 				<view wx:for="{{userList}}" wx:key="index" class="userInfo pr">
 					<image class="avatar" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}" wx:if="{{item.headUrl!=''}}"></image>
-					<image class="avatar" src="../../img/hhead.png" wx:else></image>
+					<image class="avatar" src="{{imgUrl+'hhead.png'}}" wx:else></image>
 					<view class="userTag cff f24" wx:if="{{index===0}}">团长</view>
 				</view>
 			</view>
@@ -163,10 +163,10 @@
 <!-- 选择可用优惠券 -->
 <view class="coupons sliderUp pr" wx:if="{{modal}}">
 	<view class="title f28 c22 flex_row al jc">选择可用优惠券</view>
-	<image src="../../img/cha.png" class="close pa" catchtap="closeModal"></image>
+	<image src="{{imgUrl+'cha.png'}}" class="close pa" catchtap="closeModal"></image>
 	<scroll-view bindscrolltolower="toBottom" scroll-y class="scroll-y">
 		<view bindtap="select" data-price="{{item.voucherPrice}}" data-id="{{item.userVoucherId}}" class="coupon flex_row al" wx:for="{{couponList}}" wx:key="index">
-			<image class="bg" src="../../img/yhqbg1.png"></image>
+			<image class="bg" src="{{imgUrl+'yhqbg1.png'}}"></image>
 			<view class="left">
 				<text>￥</text>
 				{{item.voucherPrice}}
@@ -187,7 +187,7 @@
 </view>
 <!-- 物流 -->
 <view class="logistics fadeUp sliderUp" wx:if="{{express}}">
-	<image catchtap="closeExpress" src="../../img/cha.png" class="pa close"></image>
+	<image catchtap="closeExpress" src="{{imgUrl+'cha.png'}}" class="pa close"></image>
 	<!-- <view class="title f28 c33 flex_row al jc">查看物流</view> -->
 	<view class="list flex_row al jb">
 		<view class="name f26 c22">配送方式 :</view>

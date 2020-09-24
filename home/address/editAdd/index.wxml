@@ -25,7 +25,7 @@
     <view class="list flex_row al jb">
         <view class="title f30 c33">设为默认地址</view>
         <view class="right image">
-            <image bindtap="setAdd" src="{{ isMo ? '../../../img/open1.png' : '../../../img/open.png'}}"></image>
+            <image bindtap="setAdd" src="{{ isMo ? imgUrl+'open1.png' : imgUrl+'open.png'}}"></image>
         </view>
     </view>
     <view class="sure flex_row al jc f28 cff" catchtap="save">保存</view>

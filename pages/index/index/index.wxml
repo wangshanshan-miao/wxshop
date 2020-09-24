@@ -8,11 +8,11 @@
       <!-- 定位/搜素 -->
       <view class="top flex_row al">
         <view class="address_group flex_row">
-          <image src="../../../img/address.png" class="address_jt" />
+          <image src="{{imgUrl+'address.png'}}" class="address_jt" />
           <text>{{location}}</text>
         </view>
         <view bindtap="toSearch" class="search_group pr">
-          <image class="search_icon pa" src="../../../img/search.png" />
+          <image class="search_icon pa" src="{{imgUrl+'search.png'}}" />
           <input disabled="{{true}}" placeholder-style="color:#aeaeae;font-size: 26rpx" class="search_input" placeholder="请搜索商品名称" />
         </view>
       </view>
@@ -27,7 +27,7 @@
       <!-- 公告 -->
       <view class="notice box flex_row al">
         <view class='ceshi_swiper'>
-          <image class="img1" src="../../../img/gonggao.png"></image>
+          <image class="img1" src="{{imgUrl+'gonggao.png'}}"></image>
           <swiper class='read_swiper' indicator-dots='{{swiper.indicatorDots}}' autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" current="{{swiper.current}}">
             <block wx:for="{{noticeList}}">
               <swiper-item>
@@ -35,8 +35,8 @@
               </swiper-item>
             </block>
           </swiper>
-          <image class="ceshi_next jiantou" bindtap='prevImg' src="../../../img/arrow-left.png"></image>
-          <!-- <image class='ceshi_prew jiantou' bindtap='prevImg' src="../../../img/arrow-left.png"></image> -->
+          <image class="ceshi_next jiantou" bindtap='prevImg' src="{{imgUrl+'arrow-left.png'}}"></image>
+          <!-- <image class='ceshi_prew jiantou' bindtap='prevImg' src="{{imgUrl+'arrow-left.png'}}"></image> -->
         </view>
 
       </view>
@@ -85,7 +85,7 @@
         </view>
         <view class="modelCell_topRight flex_row al">
           <text class="more_text f28" data-type="0" bindtap="goList">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
       <view class="flex_row">
@@ -110,7 +110,7 @@
         </view>
         <view class="modelCell_topRight flex_row al">
           <text class="more_text f28" data-type="1" catchtap="goList">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
       <view class="good_group">
@@ -142,7 +142,7 @@
         </view>
         <view class="modelCell_topRight flex_row al">
           <text class="more_text f28" data-type="2" bindtap="goList">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
       <view class="good_group">
@@ -153,7 +153,7 @@
             <view class="goodprice flex_row">
               <text class="f24 fb">￥{{item.salePrice}}</text>
               <view class="car" data-data="{{item}}" catchtap="addCar">
-                <image src="../../../img/car.png"></image>
+                <image src="{{imgUrl+'car.png'}}"></image>
               </view>
             </view>
           </view>
@@ -169,7 +169,7 @@
         </view>
         <view class="modelCell_topRight flex_row al">
           <text class="more_text f28" data-type="3" catchtap="goList">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
       <view class="good_group box">
@@ -179,7 +179,7 @@
           <view class="goodprice flex_row">
               <text class="f24 fb">￥{{item.salePrice}}</text>
               <view class="car" data-data="{{item}}" catchtap="addCar">
-                <image src="../../../img/car.png"></image>
+                <image src="{{imgUrl+'car.png'}}"></image>
               </view>
             </view>
         </view>
@@ -194,7 +194,7 @@
         </view>
         <view class="modelCell_topRight flex_row al">
           <text class="more_text f28" data-type="4" catchtap="goList">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
       <view class="good_group clearanceSale flex_row">
@@ -209,7 +209,7 @@
                   <view class="flex_row goodePrice jb">
                     <text class="f24 fb rcolor">￥{{item.salePrice}}</text>
                     <view class="car" data-data="{{item}}" catchtap="addCar">
-                      <image src="../../../img/car.png"></image>
+                      <image src="{{imgUrl+'car.png'}}"></image>
                     </view>
                   </view>
                 </view>
@@ -229,7 +229,7 @@
         </view>
         <!-- <view class="modelCell_topRight flex_row al" catchtap="shops">
           <text class="more_text f28">查看更多</text>
-          <image class="rjt" src="../../../img/arrow-left.png"></image>
+          <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view> -->
       </view>
       <view class="good_group box">
@@ -246,19 +246,19 @@
                 </view>
                 <view class="f22 c99 store-info" style="white-space:normal">
                   <view class="">
-                    <image src="../../../img/time.png"></image>
+                    <image src="{{imgUrl+'time.png'}}"></image>
                     <text class="f28 hcolor">营业时间：{{merchantDetail.merchantTime}}</text>
                   </view>
                   <view>
-                    <image src="../../../img/mobile.png"></image>
+                    <image src="{{imgUrl+'mobile.png'}}"></image>
                     <text class="f28 hcolor">联系电话：{{merchantDetail.merchantTel}}</text>
                   </view>
                   <view class="flex_row">
-                    <image src="../../../img/addre.png"></image>
+                    <image src="{{imgUrl+'addre.png'}}"></image>
                     <view class="address">
                       <text class="f28 hcolor">地址：</text>
                       <text class="f28" style="color: #295C8E;">{{merchantDetail.merchantAddress}}</text>
-                      <image src="../../../img/arrow-left1.png"></image>
+                      <image src="{{imgUrl+'arrow-left1.png'}}"></image>
                     </view>
                   </view>
                 </view>
@@ -285,7 +285,7 @@
 <!-- 购物选择商品规模 -->
 <van-popup close-on-click-overlay="{{true}}" show="{{ goodSizeShow }}" position="bottom" custom-style="max-height: 90%" round>
     <view class="setGoodSize boxs pr">
-        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="../../../img/close.png" />
+        <image class="close_goodSizeShow" bindtap="close_goodSizeShow" src="{{imgUrl+'close.png'}}" />
         <view class="flex_row al">
             <image class="choseGoodSize_Img" src="{{imgBaseUrl + detail.coverUrl+'?x-image-process=image/resize,p_30'}}" />
             <view class="goodSize_intro">
@@ -324,7 +324,7 @@
 <!-- 授权手机号码 -->
 <view class="modal" wx:if="{{modal}}" catchtap="closeModal"></view>
 <view class="auth1 pr" wx:if="{{show}}">
-  <image catchtap="closeModal" src="../../../img/cha.png" class="close pa"></image>
+  <image catchtap="closeModal" src="{{imgUrl+'cha.png'}}" class="close pa"></image>
   <view class="title c33 tc">温馨提示</view>
   <view class="content c33 f26 tc">为了保障您的资金和账户安全，请验证您的手机号</view>
   <button class="cff tc button flex_row al jc" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确认</button>
@@ -364,7 +364,7 @@
 
 <!-- 注册红包 -->
 <view class="gift" wx:if="{{gift}}">
-  <image class="img pa" src="../../../img/coupon.png"></image>
+  <image class="img pa" src="{{imgUrl+'coupon.png'}}"></image>
   <view class="price pa">
     <text>￥</text>{{voucher.voucherPrice}}
   </view>
@@ -373,13 +373,13 @@
     <view class="condition c99 f30" wx:if="{{voucher.condition==0}}">无门槛</view>
     <view wx:else>满{{voucher.condition}}可用</view>
   </view>
-  <image catchtap="lookCoupon" src="../../../img/look.png" class="look pa"></image>
-  <image catchtap="closeCoupon" class="close2 pa" src="../../../img/close1.png"></image>
+  <image catchtap="lookCoupon" src="{{imgUrl+'look.png'}}" class="look pa"></image>
+  <image catchtap="closeCoupon" class="close2 pa" src="{{imgUrl+'close1.png'}}"></image>
 </view>
 
 
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="../../../img/toTop.png"></image>
+<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>
 
 <view class="poster " wx:if="{{poster}}">
   <image src="{{imgBaseUrl + 'attractInvestment.png'}}"></image>

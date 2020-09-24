@@ -4,11 +4,11 @@
 <view class="messageModel">
 	<view data-id="{{item.messageId}}" bindtap="goMessage" class='messList boxs flex_row al' wx:for="{{list}}" wx:key="messageId">
 		<!-- 订单消息 -->
-		<image wx:if="{{item.messageType==0}}" class="messsImg" src="../../../img/ordermes.png" />
+		<image wx:if="{{item.messageType==0}}" class="messsImg" src="{{imgUrl+'ordermes.png'}}" />
 		<!-- 系统消息 -->
-		<image wx:elif="{{item.messageType==1}}" class="messsImg" src="../../../img/sysmes.png" />
+		<image wx:elif="{{item.messageType==1}}" class="messsImg" src="{{imgUrl+'sysmes.png'}}" />
     <!-- 分销消息 -->
-		<image wx:else class="messsImg" src="../../../img/fen.png" />
+		<image wx:else class="messsImg" src="{{imgUrl+'fen.png'}}" />
 		<view class="messList_right">
 			<view class="flex_row al jb messList_right_top">
 				<view class="f30 c33">{{item.messageType==0 ? '订单':((item.messageType==1)? '系统':'分销')}}消息</view>

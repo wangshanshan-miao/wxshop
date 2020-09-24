@@ -1,5 +1,8 @@
 // pages/message/message.js
 import api from "../../../utils/api"
+import {
+  imgUrl
+} from "../../../utils/http"
 const app = getApp()
 Page({
     /**
@@ -15,7 +18,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      this.setData({
+        imgUrl
+      })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
