@@ -103,6 +103,7 @@ Page({
                 buyAddress: buyAddress,
                 addressId: addressId
             })
+            debugger
             // let status = this.data.orderStatus
             // if (status == 1) {
             //     this.setData({

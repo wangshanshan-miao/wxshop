@@ -41,19 +41,19 @@
 			<view class="orderAddress flex_row jb al">
 				<view class="flex_row al">
 					<image src="{{imgUrl+'address.png'}}" class="address_img" />
-					<view class="flex_col" wx:if="{{name}}">
-						<view class='flex_row' style="margin-bottom: 7rpx;">
-							<view class="f28 buyUser_name c33">{{name}}</view>
-							<view class="f24 c99">{{phone}}</view>
-						</view>
-            <view class="f24 c99">{{address}}</view>
-					</view>
-          <view class="flex_col" wx:if="{{buyAddress}}">
+          <view class="flex_col" wx:if="{{orderStatus==0}}">
 						<view class='flex_row' style="margin-bottom: 7rpx;">
 							<view class="f28 buyUser_name c33">{{buyAddress.addressName}}</view>
 							<view class="f24 c99">{{buyAddress.addressPhone}}</view>
 						</view>
             <view class="f24 c99">{{buyAddress.receiverAddress}}</view>
+					</view>
+					<view class="flex_col" wx:else>
+						<view class='flex_row' style="margin-bottom: 7rpx;">
+							<view class="f28 buyUser_name c33">{{name}}</view>
+							<view class="f24 c99">{{phone}}</view>
+						</view>
+            <view class="f24 c99">{{address}}</view>
 					</view>
 				</view>
 				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" />
