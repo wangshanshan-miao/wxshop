@@ -279,7 +279,6 @@ Page({
         wx.getLocation({
           type: 'wgs84',
           success(res) {
-            debugger
             // console.log(res)
             const latitude = res.latitude
             const longitude = res.longitude
@@ -375,7 +374,6 @@ Page({
   },
   // 登录
   login() {
-    debugger
     const self = this
     api.login({
       openid: wx.getStorageSync('openid'),
@@ -397,11 +395,12 @@ Page({
         })
         return
       } else {
-        // wx.showToast({
-        //   title: "用户未注册",
-        //   icon: 'none'
-        // })
-        // const userId = wx.getStorageSync('userId')
+        wx.showToast({
+          title: "用户未注册",
+          icon: 'none'
+        })
+        
+        const userId = wx.getStorageSync('userId')
         console.log('获取缓存用户id', userId)
         if (!userId) {
           // 注册流程 微信登录 -> 获取openid -> 获取用户信息 -> 获取手机号 -> 注册
@@ -412,6 +411,8 @@ Page({
           //     self.getOpenid(res.code)
           //   },
           // })
+        console.log('用户未注册')
+
           this.register()
           this.setData({
             getuserInfo: true,
@@ -481,8 +482,9 @@ Page({
   },
   // 注册
   register() {
+    console.log(1212122)
     api.register({
-      areaCode: wx.getStorageSync("areaCode"),
+      areaCode: wx.getStorageSync("shortAreaCode"),
       openid: wx.getStorageSync('openid'),
       appId: wx.getStorageSync('appId'),
       userName: this.data.userName,

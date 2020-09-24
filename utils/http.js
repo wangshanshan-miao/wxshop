@@ -4,7 +4,7 @@ const baseURL = 'https://www.ykdzw.com/unite/';
 const imgBaseUrl ='https://www.ykdzw.com/oss/data/'
 const imgUrl = 'https://www.ykdzw.com/oss/img/'
 const appId = wx.getStorageSync('appId')
-wx.setStorageSync('userId', '81');
+// wx.setStorageSync('userId', '81');
 class Http {
   request(url, data = {}, method = 'GET', header) {
     return new Promise((reslove, reject) => {
