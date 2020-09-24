@@ -9,6 +9,7 @@ App({
         // 登录
         wx.login({
             success: res => {
+              // wx.setStorageSync('code', res.code)
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId
             }
         })
@@ -34,7 +35,7 @@ App({
         })
     },
     data: {
-      appid: "wxa5ecb2822bdfda9e"
+      appid: "wx270b910c890ce4ed"
     },
     globalData: {
       

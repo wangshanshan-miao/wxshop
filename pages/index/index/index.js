@@ -375,44 +375,56 @@ Page({
   },
   // 登录
   login() {
+    debugger
     const self = this
     api.login({
-      openid: wx.getStorageSync('openid')
+      openid: wx.getStorageSync('openid'),
+      appId: wx.getStorageSync('appId'),
+      areaCode: wx.getStorageSync('shortAreaCode')
     }).then(res => {
       // 登录成功 
-      if (res.status == 1) {
+      if (res.data.status == 1) {
         // console.log('登录成功')
         wx.setStorageSync('userId', res.data.userId)
+        wx.setStorageSync('userName', res.data.userName)
+        wx.setStorageSync('headUrl', res.data.headUrl)
+        wx.setStorageSync('agencyId', res.data.agencyId)
         console.log('userId', res.data.userId)
-      } else if (res.status == 0) {
+      } else if (res.data.status == 0) {
         wx.showToast({
-          title: res.message,
+          title: res.data.message,
           icon: 'none'
         })
         return
       } else {
-        const userId = wx.getStorageSync('userId')
+        // wx.showToast({
+        //   title: "用户未注册",
+        //   icon: 'none'
+        // })
+        // const userId = wx.getStorageSync('userId')
         console.log('获取缓存用户id', userId)
         if (!userId) {
           // 注册流程 微信登录 -> 获取openid -> 获取用户信息 -> 获取手机号 -> 注册
-          wx.login({
-            success: (res) => {
-              // console.log(res.code)
-              self.getOpenid(res.code)
-            },
-          })
+          // wx.login({
+          //   success: (res) => {
+          //     debugger
+          //     // console.log(res.code)
+          //     self.getOpenid(res.code)
+          //   },
+          // })
+          this.register()
           this.setData({
             getuserInfo: true,
             modal: true
           })
         }
 
-        wx.login({
-          success: (res) => {
-            // console.log(res.code)
-            self.getOpenid(res.code)
-          },
-        })
+        // wx.login({
+        //   success: (res) => {
+        //     // console.log(res.code)
+        //     self.getOpenid(res.code)
+        //   },
+        // })
         this.setData({
           getuserInfo: true,
           modal: true
@@ -541,6 +553,7 @@ Page({
                         longitude
                       },
                       success: function (res) {
+                        debugger
                         // console.log(res)
                         const result = res.result.ad_info.adcode
                         wx.setStorageSync('shortAreaCode', result)
@@ -595,12 +608,34 @@ Page({
         let code = res.code
         api.getOpenid({
           code,
+          appId: wx.getStorageSync('appId')
         }).then(res => {
           if (res.status == 200) {
             const data = res.data
+            if (data.errcode == -1){
+              wx.showToast({
+                title: '系统繁忙,请稍后再试',
+                icon: 'none'
+              })
+              return false
+            } else if (data.errcode == 40029) {
+              wx.showToast({
+                title: 'code 无效',
+                icon: 'none'
+              })
+              return false
+            } else if (data.errcode == 45011) {
+              wx.showToast({
+                title: '操作太频繁了，请稍后再试',
+                icon: 'none'
+              })
+              return false
+            } else {
+              wx.setStorageSync('session_key', data.session_key)
+              wx.setStorageSync('openid', data.openid)
+            }
             // console.log('openid', data.openid)
-            wx.setStorageSync('session_key', data.session_key)
-            wx.setStorageSync('openid', data.openid)
+            
           }
           self.login()
         })
