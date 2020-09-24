@@ -74,6 +74,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  lower() {
+    if (this.data.totalPage != this.data.pageNum) {
+      this.getList()
+    }
+  },
   getList() {
     api.getVoucherList1({
       useType: 0,
@@ -90,12 +95,13 @@ Page({
         isRequest: false
       })
       wx.hideLoading({})
+
     })
   },
   receive() {
     api.getVoucherToUser({
       // areaCode: wx.getStorageSync('shortAreaCode'),
-      areaCode:'420117',
+      areaCode: '420117',
       userId: '81'
     }).then(res => {
       if (res.data.status === 1) {
@@ -103,7 +109,7 @@ Page({
           title: '领取成功！',
           icon: "success",
           duration: 2000,
-          complete: () => {}
+          complete: () => { }
         })
       }
 
