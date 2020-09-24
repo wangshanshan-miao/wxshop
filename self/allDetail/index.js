@@ -177,21 +177,42 @@ Page({
     },
     // 付款页面
     pay() {
-        const addressId = app.globalData.globalData || this.data.addressId
-        if(!addressId){
-            wx.showToast({
-              title: '请添加收货地址',
-              icon :"none"
-            })
-            return
+      const addressId = app.globalData.globalData || this.data.addressId
+      if(!addressId){
+          wx.showToast({
+            title: '请添加收货地址',
+            icon :"none"
+          })
+          return
+      }
+      const id = this.data.id
+      const total = this.data.total
+      const voucherId = this.data.voucherId || ''
+      api.settleCommodityOrder({
+        orderId: id,
+        addressId: addressId,
+        userVoucherId: voucherId,
+        userId:wx.getStorageSync('userId')
+      }).then(res => {
+        console.log(77777,res)
+        if (res.status == 200) {
+          const data = res.data
+          wx.requestPayment({
+            timeStamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: 'MD5',
+            paySign: data.paySign,
+            success(res) {
+              
+            },
+            fail(res) {}
+          })
         }
-
-        const id = this.data.id
-        const total = this.data.total
-        const voucherId = this.data.voucherId || ''
-        wx.navigateTo({
-            url: `/self/pay/index?id=${id}&total=${total}&voucherId=${voucherId}&addressId=${addressId}`,
-        })
+      })
+        // wx.navigateTo({
+        //     url: `/self/pay/index?id=${id}&total=${total}&voucherId=${voucherId}&addressId=${addressId}`,
+        // })
     },
     // 选择收货地址
     selectAddress() {
