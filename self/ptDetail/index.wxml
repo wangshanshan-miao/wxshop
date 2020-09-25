@@ -28,8 +28,12 @@
 			<image class="order_state_img" src="{{imgUrl+'ptcg.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==9}}">
-			<view class='f32 cff'>已取消</view>
-			<image class="order_state_img" src="{{imgUrl+'or_yqx.png'}}" />
+			<view>
+				<view class='f32 cff m10'>已取消</view>
+				<view class="cff f28 m10">{{endTime}}已结束</view>
+				<view class="cff f28 m10">少侠，你忘记呼唤好友啦</view>
+			</view>
+			<image class="order_state_img" src="{{imgUrl+'ptsb.png'}}" />
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==8}}">
 			<view class='f32 cff'>交易成功</view>
@@ -57,8 +61,8 @@
 	<view class="shopckOrderList">
 		<view class="goodckOrder boxs">
 			<!-- 收获地址 -->
-			<view class="orderAddress" catchtap="selectAddress">
-				<!-- <view class="flex_row al">
+			<view class="orderAddress flex_row jb al" catchtap="selectAddress" wx:if="{{orderStatus==0}}">
+				<view class="flex_row al">
 					<image src="{{imgUrl+'address.png'}}" class="address_img" />
 					<view class="">
 						<view class='flex_row' wx:if="{{name}}">
@@ -69,20 +73,22 @@
 						<view class='f24 buyUser_address c99'>{{address}}</view>
 					</view>
 				</view>
-				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" /> -->
-				<view class="roundList flex_row jb al">
+				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" />
+			</view>
+			<view class="orderAddress" catchtap="selectAddress" wx:if="{{orderStatus!=0}}">
+				<view class="roundList flex_row jb al" wx:if="{{orderStatus!=0}}">
 					<view class="round"></view>
 					<view class="line"></view>
 					<view class="round"></view>
 					<view class="line"></view>
 					<view class="round failure" wx:if="{{orderStatus==11}}"></view>
-					<view class="round success" wx:if="{{orderStatus==6||orderStatus==5}}"></view>
+					<view class="round success" wx:if="{{orderStatus==6||orderStatus==5||orderStatus==9}}"></view>
 				</view>
-				<view class="flex_row jb al roundListTips">
+				<view class="flex_row jb al roundListTips" wx:if="{{orderStatus!=0}}">
 					<view class="c33 f28">开团</view>
 					<view class="c33 f28">邀请好友</view>
 					<view class="c33 f28" wx:if="{{orderStatus==6||orderStatus==11}}">拼团成功</view>
-					<view class="c33 f28" wx:if="{{orderStatus==5}}">拼团失败</view>
+					<view class="c33 f28" wx:if="{{orderStatus==5||orderStatus==9}}">拼团失败</view>
 				</view>
 			</view>
 			<!-- 订单内容 -->
@@ -93,7 +99,7 @@
                     <image src="{{imgUrl+'rjt.png'}}" class="goShopImg" />
                 </view>
             </view> -->
-			<view class="flex_row userList">
+			<view class="flex_row userList" wx:if="{{orderStatus!=0}}">
 				<view wx:for="{{userList}}" wx:key="index" class="userInfo pr">
 					<image class="avatar" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}" wx:if="{{item.headUrl!=''}}"></image>
 					<image class="avatar" src="{{imgUrl+'hhead.png'}}" wx:else></image>
@@ -101,7 +107,7 @@
 				</view>
 			</view>
 			<view class="invition f28 cff" wx:if="{{orderStatus==11}}">邀请好友参与拼团</view>
-			<view class="invition f28 cff" wx:if="{{orderStatus==5||orderStatus==6}}" bindtap="morePt">查看更多拼团商品</view>
+			<view class="invition f28 cff" wx:if="{{orderStatus==5||orderStatus==6||orderStatus==9}}" bindtap="morePt">查看更多拼团商品</view>
 			<view class="goodckOrder_list" wx:for="{{list}}" wx:key="index">
 				<view class="flex_row">
 					<image class="goodckOrder_list_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" />
@@ -137,12 +143,88 @@
 		<!-- <view class="line"></view> -->
 	</view>
 	<!-- 订单金额数据 -->
-
+	<!-- 订单金额数据 -->
+	<view class="amountModel boxs" wx:if="{{orderStatus == 0}}">
+		<!-- <view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c99'>订单总数：</view>
+			<view class="f28 c33 fb">x{{list.length}}</view>
+		</view> -->
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>商品合计: </view>
+			<view class="f28 cf0">¥{{orderPrice}}</view>
+		</view>
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>运费(快递)：</view>
+			<view class="f28 c99">¥{{expressFee}}</view>
+		</view>
+		<view class="flex_row amountModel_list al jb" catchtap="showModal">
+			<!-- <view class="flex_row"> -->
+			<view class='f28 amountModel_list_title c33'>优惠券：</view>
+			<view class="f28 c99">
+				-¥{{voucherPrice}}
+				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" wx:if="{{orderStatus == 0}}" />
+			</view>
+			<!-- </view> -->
+		</view>
+		<view class="flex_row amountModel_list">
+			<view class='f28 amountModel_list_title c33'>实付款：</view>
+			<view class="f28 cf0">¥{{total}}</view>
+		</view>
+	</view>
+	<!-- <view class="line"></view> -->
+	<!-- 订单信息 -->
+	<view class="orderIntro boxs" wx:if="{{orderStatus == 0}}">
+		<view class="mt40">
+			<!-- <view class="orderIntro_title flex_row al">
+				<view class='longLine'></view>
+				<view class="f30 c33">订单详情</view>
+			</view> -->
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">订单编号：</view>
+				<view class="orderIntro_list_warn f28">{{orderNumber}}</view>
+			</view>
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">提交时间：</view>
+				<view class="orderIntro_list_warn f28">{{orderTime}}</view>
+			</view>
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">支付方式：</view>
+				<view class="orderIntro_list_warn f28">微信支付</view>
+			</view>
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28">付款时间：</view>
+				<view class="orderIntro_list_warn f28">{{updateTime}}</view>
+			</view>
+			<!-- 暂定 -->
+			<!-- <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">成交时间：</view>
+                <view class="orderIntro_list_warn f28 c33">2019-11-03 12:12:12</view>
+            </view> -->
+		</view>
+		<view class="orderGroup flex_row jb" wx:if="{{orderStatus==4|| orderStatus==8 || orderStatus==7}}">
+			<!-- <view class="ckOrder_ewm f28 cff tc">查看二维码</view> -->
+			<!-- <view bindtap="refundBtn" data-id="{{orderId}}" class="ckOrder_ewm f28 cff tc" wx:if="{{orderStatus==1 || orderStatus==8 || orderStatus==7}}">
+				退款
+			</view> -->
+			<!-- <view catchtap="lookLogistics" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				查看物流
+			</view> -->
+			<view catchtap="confirm" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				确认收货
+			</view>
+			<view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==7}}">
+				立即评价
+			</view>
+			<view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
+				查看评价
+			</view>
+		</view>
+	</view>
 
 	<!-- 待付款底部操作区域 -->
 	<view class="orderFoot_opra al jb boxs  flex_row" wx:if="{{orderStatus==0}}">
 		<view class="flex_col pr orderFoot_opra_left">
-      <view class='f24 c33'>应付金额(含运费)：</view>
+			<view class='f24 c33'>应付金额(含运费)：</view>
 			<view class="al cf0 f32 fb">
 				<text class="orderFoot_opra_dw">￥</text>
 				<text class="orderFoot_opra_num">{{total}}</text>

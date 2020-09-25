@@ -27,7 +27,7 @@
 			<view class='flex_col' style="margin-top: 14rpx;">
 				<view class="f32 mb10 cff">等待买家付款</view>
 				<view class="f28 cff">
-          {{tools.diffMinute(nowTime,endTime)}}分钟后自动取消
+					{{tools.diffMinute(nowTime,endTime)}}分钟后自动取消
 					<!-- {{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭 -->
 				</view>
 			</view>
@@ -41,19 +41,19 @@
 			<view class="orderAddress flex_row jb al">
 				<view class="flex_row al">
 					<image src="{{imgUrl+'address.png'}}" class="address_img" />
-          <view class="flex_col" wx:if="{{orderStatus==0}}">
+					<view class="flex_col" wx:if="{{orderStatus==0}}">
 						<view class='flex_row' style="margin-bottom: 7rpx;">
 							<view class="f28 buyUser_name c33">{{buyAddress.addressName}}</view>
 							<view class="f24 c99">{{buyAddress.addressPhone}}</view>
 						</view>
-            <view class="f24 c99">{{buyAddress.receiverAddress}}</view>
+						<view class="f24 c99">{{buyAddress.receiverAddress}}</view>
 					</view>
 					<view class="flex_col" wx:else>
 						<view class='flex_row' style="margin-bottom: 7rpx;">
 							<view class="f28 buyUser_name c33">{{name}}</view>
 							<view class="f24 c99">{{phone}}</view>
 						</view>
-            <view class="f24 c99">{{address}}</view>
+						<view class="f24 c99">{{address}}</view>
 					</view>
 				</view>
 				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" />
@@ -71,12 +71,12 @@
 					<image class="goodckOrder_list_img" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_30'}}" />
 					<view class="">
 						<view class='f28 goodName c33'>{{item.commodityName}}</view>
-                        <view class="amount flex_row">
-                            <view class="f26 c99" wx:if="{{item.specificationName}}">{{item.specificationName}}</view>
-                            <view class="f26 c99">x{{item.amount}}</view>
-                        </view>
+						<view class="amount flex_row">
+							<view class="f26 c99" wx:if="{{item.specificationName}}">{{item.specificationName}}</view>
+							<view class="f26 c99">x{{item.amount}}</view>
+						</view>
 						<view class='flex_row goodckOrder_list_num pr'>
-							
+
 							<view class="f32 goodckOrder_list_money fb cf0">
 								￥{{item.realPrice}}
 								<text class="unitMy" wx:if="{{item.unit}}">/{{item.unit}}</text>
@@ -93,8 +93,8 @@
 			</view>
 		</view>
 		<!-- <view class="shopckOrderList_foot flex_row jb"> -->
-			<!-- <view class="f26 c99">共{{list.length}}件商品</view> -->
-			<!-- <view class="foot_btn_group flex_row">
+		<!-- <view class="f26 c99">共{{list.length}}件商品</view> -->
+		<!-- <view class="foot_btn_group flex_row">
 				<view wx:if="{{index==0}}" class="cancle_btn tc f26 c99">取消测量</view>
 				<view wx:if="{{index==1}}" class="sure_btn tc f26 cff">确认测量</view>
 			</view> -->
@@ -145,7 +145,7 @@
 				<view class="orderIntro_list_title f28">提交时间：</view>
 				<view class="orderIntro_list_warn f28">{{orderTime}}</view>
 			</view>
-      <view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+			<view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
 				<view class="orderIntro_list_title f28">支付方式：</view>
 				<view class="orderIntro_list_warn f28">微信支付</view>
 			</view>
@@ -173,7 +173,7 @@
 			<view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==7}}">
 				立即评价
 			</view>
-            <view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
+			<view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
 				查看评价
 			</view>
 		</view>
@@ -181,7 +181,7 @@
 	<!-- 待付款底部操作区域 -->
 	<view class="orderFoot_opra al jb boxs  flex_row" wx:if="{{orderStatus==0}}">
 		<view class="flex_col pr orderFoot_opra_left">
-      <view class='f24 c33'>应付金额(含运费)：</view>
+			<view class='f24 c33'>应付金额(含运费)：</view>
 			<view class="al cf0 f32 fb">
 				<text class="orderFoot_opra_dw">￥</text>
 				<text class="orderFoot_opra_num">{{total}}</text>
