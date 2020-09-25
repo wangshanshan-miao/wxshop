@@ -573,8 +573,8 @@ Page({
           commoditySpecificationId: this.data.specificationId,
           amount: this.data.goodNum,
           outId: this.data.id,
-          userId: '81'
-          // userId: wx.getStorageSync("userId")
+          // userId: '81'
+          userId: wx.getStorageSync("userId")
         }).then(res => {
           this.setData({
             goodSizeShow: false

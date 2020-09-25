@@ -128,8 +128,8 @@ Page({
       commoditySpecificationId: this.data.specificationId,
       amount: this.data.goodNum,
       outId: this.data.id,
-      userId: '81'
-      // userId: wx.getStorageSync("userId")
+      // userId: '81'
+      userId: wx.getStorageSync("userId")
     }).then(res => {
       this.setData({
         goodSizeShow: false
@@ -443,7 +443,7 @@ Page({
     })
     api.getAgencyId({
       areaCode: wx.getStorageSync('shortAreaCode'),
-      // areaCode: '420117',
+      // areaCode: '330703',
       appId: wx.getStorageSync('appId')
     }).then(res => {
       if (res.status == 200) {
@@ -454,7 +454,12 @@ Page({
           wx.setStorageSync('merchantId', data.merchantId)
         } else {
           wx.setStorageSync('agencyId', 31)
-          wx.setStorageSync('merchantId', 155)
+          wx.setStorageSync('merchantId', 155) 
+          // wx.hideLoading()
+          // this.setData({
+          //   poster: true
+          // })
+          // return false
         }
         this.getHome()
         this.swiper()

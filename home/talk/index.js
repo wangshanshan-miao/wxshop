@@ -49,8 +49,8 @@ Page({
     debugger
     api.addTalk({
       // outId: this.data.id
-      // userId: wx.getStorageSync("userId"),
-      userId: 81,
+      userId: wx.getStorageSync("userId"),
+      // userId: 81,
       merchantId: wx.getStorageSync("merchantId"),
       content: this.data.articleContent
     }).then(res => {

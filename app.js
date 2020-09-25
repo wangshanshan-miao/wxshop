@@ -5,7 +5,7 @@ App({
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
-        wx.setStorageSync('appId', this.data.appid)
+        // wx.setStorageSync('appId', )
         // 登录
         wx.login({
             success: res => {
@@ -35,7 +35,7 @@ App({
         })
     },
     data: {
-      appid: "wx270b910c890ce4ed"
+      // appid: "wx270b910c890ce4ed"
     },
     globalData: {
       

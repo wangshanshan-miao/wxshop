@@ -5,7 +5,7 @@
 		<view class="userIntro_con boxs">
 			<view class="userIntro_con_top flex_row al jb">
 				<view class="flex_row jb al">
-					<view class="flex_row al">
+					<view class="flex_row al"  catchtap="goBasic">
 						<image wx:if="{{userInfo.headUrl}}" class="userIntro_head" src="{{imgBaseUrl+userInfo.headUrl+'?x-image-process=image/resize,p_30'}}" />
 						<image wx:else class="userIntro_head" src="" />
                         
@@ -16,7 +16,7 @@
 							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
 						</view>
 					</view>
-					<image bindtap="goBasic" src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
+					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
 				</view>
 				<!-- <image bindtap="goBasic" src="{{imgUrl+'rjtb.png'}}" class="rjtb" /> -->
 			</view>

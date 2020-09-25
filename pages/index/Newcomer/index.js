@@ -100,9 +100,10 @@ Page({
   },
   receive() {
     api.getVoucherToUser({
-      // areaCode: wx.getStorageSync('shortAreaCode'),
-      areaCode: '420117',
-      userId: '81'
+      areaCode: wx.getStorageSync('shortAreaCode'),
+      // areaCode: '420117',
+      userId: wx.getStorageSync("userId")
+      // userId: '81'
     }).then(res => {
       if (res.data.status === 1) {
         wx.showToast({
