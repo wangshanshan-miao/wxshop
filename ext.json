@@ -1,0 +1,146 @@
+{
+  "extEnable": true,
+  "extAppid": "wxaa835451b57f805a",
+  "directCommit": false,
+  "ext": {
+    "name": "wechat",
+    "attr": {
+      "host": "open.weixin.qq.com",
+      "users": [
+        "user_1",
+        "user_2"
+      ]
+    }
+  },
+  "extPages": [
+    "pages/index/index/index",
+    "pages/index/cg/cg",
+    "pages/index/Newcomer/index",
+    "pages/index/goodsList/cg",
+    "pages/index/al/al",
+    "pages/index/alxq/alxq",
+    "pages/index/pt/pt",
+    "pages/index/ms/ms",
+    "pages/index/qc/qc",
+    "pages/index/shops/shop",
+    "pages/index/shops1/shop",
+    "pages/index/lghd/lghd",
+    "pages/index/dztj/dztj",
+    "pages/index/shlm/shlm",
+    "pages/index/product/product",
+    "pages/message/index/message",
+    "pages/message/detail/index",
+    "pages/sort/index",
+    "pages/self/self"
+  ],
+  "subpackages": [
+    {
+      "root": "self",
+      "pages": [
+        "yhq/detail2/index",
+        "ptDetail/index",
+        "allDetail/index",
+        "refund/index",
+        "yhq/detail/index",
+        "yhq/explain/index",
+        "invite/index",
+        "invite/list/index",
+        "cooperation/index",
+        "join/index",
+        "address/add/index",
+        "address/edit/index",
+        "comment/index",
+        "pay/index",
+        "basic/basic",
+        "yj/yj",
+        "txlist/index",
+        "txjg/index",
+        "fx/fx",
+        "yhq/yhq",
+        "address/index",
+        "ptorder/index",
+        "allorder/index",
+        "editName/index",
+        "evaluate/evaluate",
+        "msg/msg",
+        "msgDetail/index",
+        "news/news",
+        "djq/djq",
+        "pj/pj"
+      ]
+    },
+    {
+      "root": "home",
+      "pages": [
+        "search/index/index",
+        "buyCar/index/car",
+        "craftsman/index/craftsman",
+        "store/store",
+        "goodsDe/index",
+        "alleva/index",
+        "voucher/voucher",
+        "ptDe/index",
+        "ptDe/bookingList/index",
+        "msDe/index",
+        "qcDe/index",
+        "notice/index",
+        "talk/index",
+        "order/order",
+        "address/editAdd/index",
+        "address/list/index"
+      ]
+    }
+  ],
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.5",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#333333",
+    "backgroundColor": "#FEFBFB",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "text": "首页",
+        "iconPath": "./img/home.png",
+        "selectedIconPath": "./img/home1.png"
+      },
+      {
+        "pagePath": "pages/sort/index",
+        "text": "分类",
+        "iconPath": "./img/types.png",
+        "selectedIconPath": "./img/types1.png"
+      },
+      {
+        "pagePath": "pages/message/index/message",
+        "text": "消息",
+        "iconPath": "./img/news.png",
+        "selectedIconPath": "./img/news1.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我的",
+        "iconPath": "./img/mine.png",
+        "selectedIconPath": "./img/mine1.png"
+      }
+    ]
+  }
+}
