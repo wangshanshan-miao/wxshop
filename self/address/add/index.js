@@ -102,7 +102,7 @@ Page({
         //   complete: (res) => {},
         // })
         wx.navigateTo({
-          url: '../index?from=${this.data.from}',
+          url: '../index?from=' + this.data.from,
         })
       }
     })
@@ -113,7 +113,7 @@ Page({
   onLoad: function (options) {
     if (options.from) {
       this.setData({
-        form: options.from
+        from: options.from
       })
     } else {
       this.setData({

@@ -75,14 +75,14 @@ Page({
   // 前往列表页
   toList () {
     wx.navigateTo({
-      url: '/self/address/index?form="order"',
+      url: '/self/address/index?from=list',
     })
   },
 
   // 新增收货地址
   newAdd () {
     wx.navigateTo({
-      url: '/self/address/add/index?form="order"',
+      url: '/self/address/add/index?from=add',
     })
   },
   

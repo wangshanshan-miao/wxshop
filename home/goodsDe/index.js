@@ -305,11 +305,15 @@ Page({
     },
     // 商品详情
     goodDetail() {
+      wx.showLoading({
+        title: '加载中...',
+      })
         if (this.data.goodType == 0) { // 限时秒杀
           api.seckillDetail({
             outId: this.data.id
             // outId: 38
           }).then(res => {
+            wx.hideLoading()
             if (res.status == 200) {
               console.log(res)
               this.setData({
@@ -334,6 +338,7 @@ Page({
             outId: this.data.id
             // outId: 70
           }).then(res => {
+            wx.hideLoading()
             if (res.status == 200) {
               console.log(res)
               this.setData({
@@ -366,6 +371,7 @@ Page({
             outId: this.data.id
             // outId: 34
           }).then(res => {
+            wx.hideLoading()
             if (res.status == 200) {
               console.log(res)
               this.setData({
@@ -387,6 +393,7 @@ Page({
             outId: this.data.id
             // outId: 100
           }).then(res => {
+            wx.hideLoading()
             if (res.status == 200) {
               console.log(res)
               this.setData({

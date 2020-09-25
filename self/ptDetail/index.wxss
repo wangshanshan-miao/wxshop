@@ -117,7 +117,7 @@ page {
   width: 142rpx;
   height: 49rpx;
   line-height: 49rpx;
-  background: rgba(0, 157, 255, 1);
+  background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
   opacity: 1;
   border-radius: 60rpx;
 }
@@ -258,7 +258,7 @@ page {
 .orderFoot_opra {
   width: 100%;
   height: 130rpx;
-  line-height: 130rpx;
+  /* line-height: 130rpx; */
   position: fixed;
   z-index: 99;
   bottom: 0;
@@ -268,33 +268,23 @@ page {
   padding: 0 40rpx 0 26rpx;
 }
 
-.orderFoot_opra_dw {
-  color: #d32e32;
-}
-
-.orderFoot_opra_num {
-  color: #d32e32;
-  font-size: 46rpx;
-}
 
 .cancleOrder_btn {
-  width: 210rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: rgba(126, 198, 243, 1);
-  opacity: 1;
-  border-top-left-radius: 50rpx;
-  border-bottom-left-radius: 50rpx;
+    width: 224rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    border: 1px solid #d5d5d5;
+    border-radius: 42rpx;
+    opacity: 1;
+    margin-right: 16rpx; 
 }
 
 .sureOrder_btn {
-  width: 210rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: rgba(0, 157, 255, 1);
-  opacity: 1;
-  border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
+    width: 224rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
+    border-radius: 42rpx;
 }
 
 .orderFoot_opra_left {

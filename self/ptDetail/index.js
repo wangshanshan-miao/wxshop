@@ -70,9 +70,13 @@ Page({
   },
     // 订单详情
     orderDetail() {
+      wx.showLoading({
+        title: '加载中...',
+      })
         api.orderDetail({
             orderId: this.data.id
         }).then(res => {
+            wx.hideLoading()
             const data = res.data
             for (let i = 0; i < data.oneBookingSum; i++) {
                 if (!data.userList[i]) {

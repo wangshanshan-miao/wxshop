@@ -1,8 +1,9 @@
 // pages/self/address/index.js
 import api from "../../utils/api"
-/* import {
-  baseURL
-} from "../../../utils/http" */
+import {
+  baseURL,
+  imgUrl
+} from "../../utils/http"
 const app = getApp()
 Page({
   /**
@@ -28,20 +29,33 @@ Page({
   select(e){
     let pages = getCurrentPages()
     let prevPage = pages[pages.length - 2]
+    let curPage = pages[pages.length - 3];
     const index = app.getValue(e).index
     // console.log(id)
-    prevPage.setData({
-      address: this.data.list[index]
-    })
-    wx.navigateBack({
-      delta: 1
-    })
+    if (this.data.from == 'list') {
+      prevPage.setData({
+        address: this.data.list[index]
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      curPage.setData({
+        address: this.data.list[index],
+        hasAddress: true
+      })
+      wx.navigateBack({
+        delta: 2
+      })
+    }
+    
   },
   // 编辑
   edit(e) {
     const id = app.getValue(e).id
+    let from = this.data.from
     wx.navigateTo({
-      url: `/self/address/edit/index?id=${id}`,
+      url: `/self/address/edit/index?id=${id}&from=${from}`,
     })
   },
   // 收货地址列表
@@ -69,6 +83,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    debugger
     if (options.flag) {
       this.setData({
         flag : true
@@ -76,13 +91,17 @@ Page({
     }
     if (options.from !== '') {
       this.setData({
-        isClick: true
+        isClick: true,
+        from: options.from
       })
     } else {
       this.setData({
         isClick: false
       })
     }
+    this.setData({
+      imgUrl
+    })
   },
 
   /**

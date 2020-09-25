@@ -208,6 +208,9 @@ Page({
   },
   // 获取所有区域code
   gitAllareaCode() {
+    wx.showLoading({
+      title: '加载中...',
+    })
     const self = this
     api.getAllArea({
       areaCode: wx.getStorageSync('shortAreaCode')
@@ -435,6 +438,9 @@ Page({
   },
   // 获取区域id
   getmerchantId() {
+    wx.showLoading({
+      title: '加载中...',
+    })
     api.getAgencyId({
       areaCode: wx.getStorageSync('shortAreaCode'),
       // areaCode: '420117',
@@ -892,6 +898,9 @@ Page({
   },
   // 首页信息
   getHome() {
+    wx.showLoading({
+      title: '加载中...',
+    })
     clearInterval(timer)
     var that = this;
     api.home({
@@ -935,6 +944,7 @@ Page({
         messageStatus: data.messageStatus,
         endTime: data.seckill.endTime,
       })
+      wx.hideLoading()
       timer = setInterval(() => {
         that.date_format(that.data.endTime)
       }, 1000)

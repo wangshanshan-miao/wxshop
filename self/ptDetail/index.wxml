@@ -45,8 +45,8 @@
 		</view>
 		<view class="flex_row flex_row jb al" wx:if="{{orderStatus==0}}">
 			<view class=''>
-				<view class="f32 mb10 c33">等待付款</view>
-				<view class="f28 c99">
+				<view class="f32 mb10 cff">等待付款</view>
+				<view class="f28 cff">
 					剩{{tools.diffMinute(nowTime,endTime)}}分{{tools.diffSecond(nowTime,endTime)}}秒 自动关闭
 				</view>
 			</view>
@@ -142,14 +142,14 @@
 	<!-- 待付款底部操作区域 -->
 	<view class="orderFoot_opra al jb boxs  flex_row" wx:if="{{orderStatus==0}}">
 		<view class="flex_col pr orderFoot_opra_left">
-			<view class="flex_row al">
-				<view class="f22 orderFoot_opra_dw fb">￥</view>
-				<view class="orderFoot_opra_num fb">{{total}}</view>
+      <view class='f24 c33'>应付金额(含运费)：</view>
+			<view class="al cf0 f32 fb">
+				<text class="orderFoot_opra_dw">￥</text>
+				<text class="orderFoot_opra_num">{{total}}</text>
 			</view>
-			<view class='f26 freight  pa c66'>应付金额(含运费)：</view>
 		</view>
 		<view class="flex_row">
-			<view catchtap="cancel" class="cancleOrder_btn tc f26 cff">取消订单</view>
+			<view catchtap="cancel" class="cancleOrder_btn tc f26 c98">取消订单</view>
 			<view bindtap="pay" class="sureOrder_btn tc f26 cff">付款</view>
 		</view>
 	</view>

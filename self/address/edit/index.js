@@ -98,6 +98,11 @@ Page({
           icon: 'none'
         })
       }
+      let pages = getCurrentPages();
+      let prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        from: this.data.from,
+      })
       wx.navigateBack({
         delta: 1
       })
@@ -126,6 +131,11 @@ Page({
     if (id) {
       this.setData({
         id
+      })
+    }
+    if (options.from) {
+      this.setData({
+        from: options.from
       })
     }
   },
