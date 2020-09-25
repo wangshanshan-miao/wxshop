@@ -11,7 +11,7 @@
                         
 						<view>
 							<view class="f40 fb c33 userIntro_name" wx:if="{{userInfo.userName}}">{{userInfo.userName}}</view>
-							<view catchtap="login1" class="f40 fb c33 userIntro_name" wx:elif="{{!userInfo.userName}}">登录/注册</view>
+							<view catchtap="login" class="f40 fb c33 userIntro_name" wx:elif="{{!userInfo.userName}}">登录/注册</view>
 							<view wx:elif="{{!userInfo.userName}}" class="tips">登陆后享受更多服务哦~</view>
 							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
 						</view>
