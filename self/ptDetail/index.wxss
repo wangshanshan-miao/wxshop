@@ -299,7 +299,7 @@ page {
 .delete {
   width: 568rpx;
   height: 88rpx;
-  background: rgba(0, 157, 255, 1);
+  background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
   border-radius: 210rpx;
   margin: -100rpx auto;
 }
