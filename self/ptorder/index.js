@@ -17,6 +17,9 @@ Page({
       name: '全部',
       index: ''
     }, {
+      name: '待支付',
+      index: 0
+    }, {
       name: '拼团中',
       index: 11
     }, {

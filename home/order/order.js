@@ -57,7 +57,7 @@ Page({
       // userId: '81'
     }).then(res => {
       this.setData({
-        addressList: res.data.list
+        addressList: res.data.list || ''
       })
       if (this.data.addressList.length > 0) {
         this.data.addressList.map(item =>{
@@ -68,6 +68,12 @@ Page({
             })
           }
         })
+        if (!this.data.hasAddress) {
+          this.setData({
+            hasAddress: true,
+            address: this.data.addressList[0]
+          })
+        }
       }
     })
   },
@@ -88,6 +94,13 @@ Page({
   
   // 提交订单
   submit () {
+    if (!this.data.address) {
+      wx.showToast({
+        title: '收货地址不能为空',
+        icon: 'none'
+      })
+      return false
+    }
     let params
     if (this.data.voucherId) {
       params = {

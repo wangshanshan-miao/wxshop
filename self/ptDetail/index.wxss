@@ -87,10 +87,6 @@ page {
   margin: 10rpx 0;
 }
 
-.goodckOrder_list_money {
-  color: #d32e32;
-}
-
 .goodckOrder_list {
   /* margin-bottom: 25rpx; */
   background: #fff;

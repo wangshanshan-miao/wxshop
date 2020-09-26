@@ -72,8 +72,10 @@
     color: #009DFF;
 }
 .bookingSum {
-  left: 45rpx;
+  left: 30rpx;
   bottom: 0;
+  width: 162rpx;
+  text-align: center;
 }
 
 .status0,

@@ -61,17 +61,24 @@
 	<view class="shopckOrderList">
 		<view class="goodckOrder boxs">
 			<!-- 收获地址 -->
-			<view class="orderAddress flex_row jb al" catchtap="selectAddress" wx:if="{{orderStatus==0}}">
+			<view class="orderAddress flex_row jb al" catchtap="{{!address.addressId ? 'newAdd' : 'toList'}}" wx:if="{{orderStatus==0}}">
 				<view class="flex_row al">
 					<image src="{{imgUrl+'address.png'}}" class="address_img" />
-					<view class="">
-						<view class='flex_row' wx:if="{{name}}">
+					<view wx:if="{{!hasAddress}}">
+						<view class='flex_row'>
 							<view class="f28 buyUser_name c33">{{name}}</view>
 							<view class="f24 c99">{{phone}}</view>
 						</view>
-						<view wx:else>点击添加收货地址</view>
-						<view class='f24 buyUser_address c99'>{{address}}</view>
+						<view class='f24 buyUser_address c99'>{{orderAddress || ''}}</view>
 					</view>
+          <view wx:elif="{{address.addressId}}">
+            <view class='flex_row'>
+							<view class="f28 buyUser_name c33">{{address.addressName}}</view>
+							<view class="f24 c99">{{address.addressPhone}}</view>
+						</view>
+            <view class='f24 buyUser_address c99'>{{address.receiverAddress}}</view>
+          </view>
+          <view wx:else>点击添加收货地址</view>
 				</view>
 				<image src="{{imgUrl+'rjt.png'}}" class="rjtImg" />
 			</view>
@@ -119,7 +126,7 @@
 						</view> -->
 						<view class='flex_row goodckOrder_list_num pr jb'>
 
-							<view class="f32 goodckOrder_list_money fb">
+							<view class="f32 goodckOrder_list_money cf0 fb">
 								￥{{item.realPrice}}
 								<text class="unitMy" wx:if="{{item.unit}}">/{{item.unit}}</text>
 							</view>

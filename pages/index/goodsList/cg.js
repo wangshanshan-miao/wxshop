@@ -89,6 +89,14 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 商品详情
+  toDetail (e) {
+    const type = e.currentTarget.dataset.type //0：限时秒杀；1：拼团；2：清仓
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/home/goodsDe/index?id=${id}&type=${type}`,
+    })
+  },
   // 一级分类
   getList(item) {
     wx.setNavigationBarTitle({ title: '分类' })

@@ -24,7 +24,9 @@ Page({
         voucherId: null,
         userList: [],
         oneBookingSum: 0,
-        bookingSum: 0
+        bookingSum: 0,
+        address: [],
+        hasAddress: false
     },
     // 确认收货
     confirm() {
@@ -85,6 +87,15 @@ Page({
                     })
                 }
             }
+            if (!data.address) {
+              this.setData({
+                hasAddress: false
+              })
+            } else {
+              this.setData({
+                hasAddress: true
+              })
+            }
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
                 // addressId: data.address.addressId,
@@ -107,10 +118,11 @@ Page({
                 updateTime: data.order.updateTime, // 上一次操作的时间
                 name: data.order.addressName,
                 phone: data.order.addressPhone,
-                address: data.order.receiverAddress,
+                orderAddress: data.order.receiverAddress,
                 userList: data.userList,
                 oneBookingSum: data.oneBookingSum,
-                bookingSum: data.bookingSum
+                bookingSum: data.bookingSum,
+                address: data.address,
 
             })
             // let status = this.data.orderStatus
@@ -190,7 +202,8 @@ Page({
     },
     // 付款页面
     pay() {
-        const addressId = app.globalData.globalData || this.data.addressId
+      let self = this
+      const addressId = this.data.addressId || this.data.address.addressId
         if (!addressId) {
             wx.showToast({
                 title: '请添加收货地址',
@@ -198,23 +211,55 @@ Page({
             })
             return
         }
-
         const id = this.data.id
         const total = this.data.total
         const voucherId = this.data.voucherId || ''
-        wx.navigateTo({
-            url: `/self/pay/index?id=${id}&total=${total}&voucherId=${voucherId}&addressId=${addressId}`,
-        })
-    },
-    // 选择收货地址
-    selectAddress() {
-        // 待付款
-        if (this.data.orderStatus == 0) {
-            wx.navigateTo({
-                url: '/self/address/index?flag=true',
-            })
+      api.settleCommodityOrder({
+        orderId: id,
+        addressId: addressId,
+        userVoucherId: voucherId,
+        userId: wx.getStorageSync('userId')
+      }).then(res => {
+        console.log(res)
+        if (res.status == 200) {
+          const data = res.data
+          wx.requestPayment({
+            timeStamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: 'MD5',
+            paySign: data.paySign,
+            success(res) {
+              wx.showToast({
+                title: '付款成功',
+                icon: 'success',
+              })
+              self.orderDetail()
+            },
+            fail(res) { }
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none'
+          })
         }
+      })
     },
+  // 选择收货地址
+  // 前往列表页
+  toList() {
+    wx.navigateTo({
+      url: '/self/address/index?from=list',
+    })
+  },
+
+  // 新增收货地址
+  newAdd() {
+    wx.navigateTo({
+      url: '/self/address/add/index?from=add',
+    })
+  },
     reduce() {
         const self = this
         timer = setInterval(() => {

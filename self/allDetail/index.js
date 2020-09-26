@@ -21,7 +21,8 @@ Page({
         couponList: [],
         isRequest: false,
         pageNum: 1,
-        voucherId: null
+        voucherId: null,
+        hasAddress: false
     },
     // 确认收货
     confirm(){
@@ -48,6 +49,20 @@ Page({
           })
 
     },
+    // 选择收货地址
+  // 前往列表页
+  toList() {
+    wx.navigateTo({
+      url: '/self/address/index?from=list',
+    })
+  },
+
+  // 新增收货地址
+  newAdd() {
+    wx.navigateTo({
+      url: '/self/address/add/index?from=add',
+    })
+  },
     goStore(e) {
         const id = this.data.merchantId
         wx.navigateTo({
@@ -74,9 +89,11 @@ Page({
             const data = res.data
             let buyAddress = []
             let addressId = ''
+            let hasAddress = false
             if (data.address) {
               buyAddress = data.address
               addressId = data.address.addressId
+              hasAddress = true
             }
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
@@ -99,9 +116,10 @@ Page({
                 updateTime: data.order.updateTime ,// 付款时间
                 name: data.order.addressName,
                 phone: data.order.addressPhone,
-                address: data.order.receiverAddress,
-                buyAddress: buyAddress,
-                addressId: addressId
+                orderAddress: data.order.receiverAddress,
+                address: buyAddress,
+                addressId: addressId,
+                hasAddress: hasAddress
             })
             debugger
             // let status = this.data.orderStatus
