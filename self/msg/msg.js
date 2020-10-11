@@ -30,7 +30,6 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    debugger
     const feedbackType = this.data.feedbackType
     api.msgList({
       userId: wx.getStorageSync('userId'),
@@ -42,6 +41,12 @@ Page({
       this.setData({
         list: data.list
       })
+    })
+  },
+  // 去留言
+  goMsg () {
+    wx.navigateTo({
+      url: '/home/talk/index',
     })
   },
   // 留言详情

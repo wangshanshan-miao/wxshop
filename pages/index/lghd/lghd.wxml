@@ -1,34 +1,20 @@
 <!--pages/index/lghd/lghd.wxml-->
-<view class="line"></view>
-
-<view class="list pr flex_row al" wx:for="{{list}}" wx:key="index" bindtap="detail" data-id="{{item.voucherId}}">
-	<image class="bg pa" src="{{imgUrl+'yhqbg1.png'}}"></image>
-	<view class="left cff "><text class="f26">￥</text>{{item.sellingPrice}}</view>
-	<view class="right">
-		<view class="top cff flex_row al jc">代金券</view>
-		<view class="middle f30">{{item.voucherPrice}}元代金券</view>
-		<view class="bottom flex_row al jb">
-			<view class="f28" wx:if="{{item.condition == 0}}">无门槛</view>
-			<view class="f28" wx:else>满{{item.condition}}元可使用</view>
-			<view class="buy flex_row al jc">立即抢购</view>
-		</view>
-	</view>
-</view>
-
-
-<noData wx:if="{{list.length<1}}" />
-
-<!-- <view class="button cff flex_row al jc" catchtap="showModal">
-	<view class="flex_row al jc text">使用说明</view>
-</view> -->
-
-<view class="mask" wx:if="{{show}}" catchtap="closeModal"></view>
-<view class="modal pr scaleUp" wx:if="{{show}}">
-	<view class="header">
-		<view class="title">抵扣券使用说明</view>
-		<image catchtap="closeModal" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
-	</view>
-	<view class="content f28">
-		Praesent accumsan ligula eget elit porta, sed efficitur est varius. Sed quam tellus, iaculis vel ante nec, tincidunt tempus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia, enim a posuere molestie, ante est cursus nunc, quis fringilla tortor sapien sed nisl. Donec viverra, tortor quis commodo tincidunt, turpis sapien ornare nisi, sed maximus ipsum ligula eu diam. Praesent a lectus quis massa elementum mollis fermentum at purus. Nullam commodo nunc sit
-	</view>
+<view class="shadow" style="padding-top: 41rpx;">
+  <view class="list pr jb flex_row al" wx:for="{{list}}" wx:key="index" bindtap="detail" data-id="{{item.voucherId}}">
+    <image class="bg pa" src="{{imgUrl+'djqBg1.png'}}"></image>
+    <view class="left cff ">
+      <view class="middle f44 c33 fb">{{item.voucherPrice}}元代金券</view>
+      <view>
+        <text class="f26 cf1">￥</text>
+        <text class="cf1 fb f41">{{item.sellingPrice}}</text>
+      </view>
+    </view>
+    <view class="right">
+      <view class="bottom flex_col al jb">
+        <view class="buy tc jc cff f30 fb">抢购</view>
+        <view class="f24 num">已售{{item.sum}}</view>	
+      </view>
+    </view>
+  </view>
+  <noData wx:if="{{list.length<1}}" />
 </view>

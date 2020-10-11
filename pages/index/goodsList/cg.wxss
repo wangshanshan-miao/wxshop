@@ -1,3 +1,20 @@
+.swiper_group {
+  height: 428rpx;
+  width: 100%;
+}
+.search_group .swiper-item {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiperImg {
+  width: 93%;
+  border-radius: 6%;
+  height: 410rpx;
+}
+
 .index_tab .bottom_scroll {
   width: 100%;
   white-space: nowrap;
@@ -45,6 +62,14 @@
   border-radius: 33rpx;
 }
 
+.times {
+  width: 690rpx;
+  margin: 0 auto;
+  padding: 30rpx 0 0;
+  align-items: center;
+
+}
+
 .search_icon {
   width: 28rpx;
   height: 30rpx;
@@ -54,11 +79,7 @@
 .shopBox {
   padding: 30rpx;
 }
-.w1 {
-  width: 690rpx;
-  height: 248rpx !important;
 
-}
 .w1 .commodityName {
   width: 462rpx;
   margin: 35rpx 0 46rpx 0;
@@ -68,15 +89,22 @@
   width: 187rpx;
   height: 197rpx;
   float: left;
-  margin-right: 19rpx;
+  margin: 14px 8px 0 9px;
+}
+.w1 .right {
+  padding: 35rpx 0 29rpx;
+  width: calc(100% - 206rpx);
 }
 .w2 {
   width: 336rpx;
   margin-right: 20rpx;
+  flex-direction: column;
+  margin-bottom: 22rpx;
 }
 .w2 .cover {
   width: 336rpx;
   height: 192rpx;
+  margin-bottom: 13rpx;
 }
 .w3 {
   width: 219rpx;
@@ -87,10 +115,25 @@
   background: #ffffff;
   border-radius: 14rpx;
   box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.06);
-  display: inline-block;
-  padding: 6rpx;
+  display: inline-flex;
+  /* padding: 6rpx; */
   overflow: hidden;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
+}
+.w1 {
+  width: 690rpx;
+  height: 248rpx;
+  margin-bottom: 24rpx;
+}
+.sw1 {
+  height: auto;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.skillNum {
+  top: 153rpx;
+  left: 0;
+  width: 100%;
 }
 
 .w3:nth-child(3n) {
@@ -105,15 +148,9 @@
   height: 180rpx;
 }
 
-.commodityName {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  height: 79rpx;
+.pd12 {
+  
+  padding-left: 13rpx;
 }
 .car {
   width: 81rpx;
@@ -125,6 +162,13 @@
   align-items: center;
   justify-content: center;
 
+}
+.skill-car {
+  width: 115rpx;
+}
+.tcar {
+  width: 153rpx;
+  border-radius: 28rpx;
 }
 .car image {
   display: inline-block;

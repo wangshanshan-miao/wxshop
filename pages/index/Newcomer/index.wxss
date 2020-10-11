@@ -74,12 +74,12 @@
 }
 .couponBtn{
   width: 133rpx;
-height: 54rpx;
-line-height: 54rpx;
-background: #ff7f11;
-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.08); 
-text-align: center;
-border-radius: 54rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  background: #ff7f11;
+  box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.08); 
+  text-align: center;
+  border-radius: 54rpx;
 }
 .split-line {
   position: relative;

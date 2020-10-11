@@ -2,5 +2,5 @@
   "usingComponents": {
     "noData":"../../../components/noData/index"
   },
-  "navigationBarTitleText": "我的优惠券"
+  "navigationBarTitleText": "优惠券"
 }

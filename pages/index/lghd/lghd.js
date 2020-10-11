@@ -1,5 +1,8 @@
 // pages/index/lghd/lghd.js
 import api from "../../../utils/api"
+import {
+  imgUrl
+} from "../../../utils/http"
 const app = getApp()
 Page({
   /**
@@ -28,30 +31,25 @@ Page({
   detail(e) {
     const id = app.getValue(e).id
     wx.navigateTo({
-      url: `/pages/self/yhq/detail/index?id=${id}&state=1`,
+      url: `/self/yhq/detail/index?id=${id}&state=1`,
     })
   },
   // 代金券列表
   getList() {
-    const arr = this.data.list
-    wx.showLoading({
-      title: '加载中...',
-    })
-    api.getVoucherList({
-      areaCode: wx.getStorageSync('areaCode'),
-      allianceId : this.data.id,
-      pageNum: this.data.pageNum,
-      pageSize: 10
+    api.getVoucherList1({
+      useType: 1,
+      merchantId: wx.getStorageSync('merchantId')
     }).then(res => {
-      wx.hideLoading()
-      console.log(res)
+      // console.log(res)
       const data = res.data
       this.setData({
         totalPage: data.totalPage,
         pageNum: data.pageNum,
-        list: [...arr, ...data.list],
+        list: data.list,
         isRequest: false
       })
+      wx.hideLoading({})
+
     })
   },
   /**
@@ -59,7 +57,8 @@ Page({
    */
   onLoad: function (options) {
       this.setData({
-        id : options.id
+        id : options.id,
+        imgUrl
       })
   },
   /**

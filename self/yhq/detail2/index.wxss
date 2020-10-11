@@ -1,67 +1,62 @@
 /* pages/self/yhq/detail/index.wxss */
-page {
-  background-color: #F8F8F8;
+.ckOrderModel {
+    width: 100%;
+    padding-top: 25rpx;
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+}
+.showCkOrder_state {
+  width: 750rpx;
+  height: 191rpx;
+  padding: 0 66rpx;
+  background: linear-gradient(129deg, #fca153 10%, #fb8a29 96%);
+
+}
+.shopckOrderList {
+    /* background: white; */
+    margin: -50rpx 26rpx 0;
+}
+
+.main {
+  width: 93%;
+  left: 3.5%;
+  top: 144rpx;
+  padding: 32rpx 0 54rpx;
+}
+.main .title {
+  margin-bottom: 30rpx;
+}
+.order_state_img {
+    width: 124rpx;
+    height: 124rpx;
+    margin-top: 15rpx;
 }
 
 .coupon {
-  position: relative;
-  width: 697rpx;
-  height: 205rpx;
-  margin: 0rpx auto;
-  /* box-sizing: border-box; */
-  padding-top: 20rpx;
+  width: 93%;
+  height: 199rpx;
+  margin: 0 auto;
+  top: 450rpx;
+  left: 3.5%;
+  border-radius: 10px;
+  box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.06); 
+  background: #Fff;
+  justify-content: center;
 }
-
-.coupon>image {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  width: 100%;
-  height: 205rpx;
+.orderIntro {
+  width: 89%;
+  padding: 10rpx 2%;
+  top: 685rpx;
+  left: 3.5%;
 }
-
-.coupon>.left {
-  margin-left: 70rpx;
-  margin-right: 57rpx;
-  color: #fff;
-  font-size: 66rpx;
-  width: 160rpx;
-}
-
-.coupon>.left>text {
-  font-size: 26rpx;
-}
-
-.coupon>.right {
-  line-height: 53rpx;
-}
-
-.coupon>.right>.top>.top-left {
-  width: 67rpx;
-  height: 28rpx;
-  font-size: 17rpx;
-  background: linear-gradient(180deg, rgba(0, 144, 255, 1) 0%, rgba(78, 178, 255, 1) 100%);
-  opacity: 1;
-  border-radius: 5rpx;
-}
-
-.coupon>.right>.top>.top-right {
-  margin-left: 215rpx;
-  color: #B7B7B7;
-}
-
-.coupon>.right>.middle {
-  margin: 10rpx 0;
-  color: #484A59;
-  line-height: 36rpx;
+.orderIntro .price {
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .main {
   margin: 20rpx auto;
   background-color: #fff;
-  width: 699rpx;
-  height: 695rpx;
   overflow: hidden;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
@@ -76,8 +71,17 @@ page {
 
 .main>.destroy {
   color: #707070;
-  margin: 28rpx auto;
-  width: 597rpx;
+  margin: 0 auto;
+  width: 430rpx;
+  padding: 0 22rpx 0 50rpx;
+  background: #F6F6F6;
+  border-radius: 50rpx;
+  height: 77rpx;
+  line-height: 77rpx;
+}
+.destroy .input {
+  height: 77rpx;
+  line-height: 77rpx; 
 }
 
 .down {

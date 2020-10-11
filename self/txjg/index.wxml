@@ -1,14 +1,17 @@
 <view class="txDetailModel">
     <view class="txDetailBg pr">
-        <image src="{{imgUrl+'txxqbg.png'}}" />
+        <!-- <image src="{{imgUrl+'txxqbg.png'}}" /> -->
         <view class="txDetail_con tc">
-            <image wx:if="{{item.status==1}}" src="{{imgUrl+'txsb.png'}}" class="txResult" /> 
+            <!-- <image wx:if="{{item.status==1}}" src="{{imgUrl+'txsb.png'}}" class="txResult" /> 
             <image wx:if="{{item.status==2}}" src="{{imgUrl+'txcg.png'}}" class="txResult" />
              <image wx:if="{{item.status==0}}"  src="{{imgUrl+'waitPay.png'}}" class="txResult" />
             <view wx:if="{{item.status==1}}" class="f30 c33 txStatu">提现失败</view>
             <view wx:if="{{item.status==2}}" class="f30 c33 txStatu">提现成功</view>
-            <view wx:if="{{item.status==0}}" class="f30 c33 txStatu">待审核</view>
-
+            <view wx:if="{{item.status==0}}" class="f30 c33 txStatu">待审核</view> -->
+            <view class="flex_row jb">
+              <text class="f32 c33 fb">{{item.commissionName}}</text>
+              <text class=""></text>
+            </view>
             <view class='f24 c99'>{{item.createTime}}</view>
             <view class="txIntro">
                 <view class="flex_row txIntroCell jb">

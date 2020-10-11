@@ -21,6 +21,18 @@
 .swiperOut {
     width: 100%;
 }
+
+.dzw {
+  width: 188rpx;
+  height: 61rpx;
+  background: linear-gradient(118deg,#ff5e35 24%, #df1212 89%);
+  border-radius: 30rpx 0 0 30rpx;
+  right: 0;
+  top: 240rpx;
+  text-align: center;
+  line-height: 61rpx;
+}
+
 .pheight {
   height: 595rpx;
 }
@@ -857,7 +869,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 0 125rpx;
-    top: 175rpx;
+    top: 124rpx;
 }
 
 .share_area {
@@ -892,13 +904,12 @@
     width: 120rpx;
     height: 120rpx;
     border-radius: 50%;
-    background-color: #009DFF;
     flex-shrink: 0;
 }
 
 .share_icon1 {
-    width: 66rpx;
-    height: 73rpx;
+    width: 120rpx;
+    height: 120rpx;
     flex-shrink: 0;
 }
 
@@ -1073,10 +1084,10 @@
 }
 
 .close {
-    width: 24rpx;
-    height: 24rpx;
-    top: 39rpx;
-    right: 30rpx;
+  width: 24rpx;
+  height: 24rpx;
+  top: 24rpx;
+  right: 34rpx;
 }
 .avatarList {
   width: 100%;

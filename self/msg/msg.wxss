@@ -33,3 +33,15 @@
 .btn1 {
   border: 1rpx solid #ff7f11;
 }
+
+.goMsg {
+  width: 132rpx;
+  height: 55rpx;
+  background: linear-gradient(118deg,#ff5e35 24%, #df1212 89%);
+  border-radius: 28rpx 0 0 28rpx;
+  position: fixed;
+  bottom: 387rpx;
+  right: 0;
+  text-align: center;
+  line-height: 55rpx;
+}

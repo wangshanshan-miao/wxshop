@@ -18,5 +18,7 @@
       </view>
     </view>
   </view>
+  <view class="goMsg f28 cff" catchtap="goMsg">我要留言</view>
+  <noData wx:if="{{list.length<1}}" />
 </view>
 

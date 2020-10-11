@@ -2,7 +2,6 @@
 /* .yhqModel {
     padding: 14rpx;
 } */
-
 page {
     width: 100%;
     height: auto;
@@ -33,11 +32,61 @@ page {
     left: calc(50% - 23rpx);
     top: 47rpx;
 }
+.left{
+  width: 170rpx;
+  color: #FF784D;
+  padding: 20rpx;
+  box-sizing: border-box;
+  /* border-right: 1px dashed #FF784D; */
+}
+.left .num{
+  font-size: 55rpx;
+  padding: 0;
+}
+.split-line {
+  position: relative;
+  flex: 0 0 0;
+  border-left: 1px dashed #FF784D;
+  margin: -2px 5px -1px 3px;
+  background: #fff;
+  height: 188rpx;
+  top: 1px;
+}
+.split-line:before, .split-line:after {
+  content: '';
+  position: absolute;
+  width: 16rpx;
+  height: 8rpx;
+  background: #fff;
+  left: -9rpx;
+  z-index: 1;
+}
+.split-line:before {
+  border-radius: 0 0 8rpx 8rpx;
+  top: 0;
+}
+.split-line:after {
+  border-radius: 8rpx 8rpx 0 0;
+  bottom: 0;
+}
+.couponBtn{
+  width: 133rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  background: #ff7f11;
+  box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.08); 
+  text-align: center;
+  border-radius: 54rpx;
+  margin-right: 16rpx;
+}
 
 .yhqList {
-    overflow: hidden;
-    margin-top: 160rpx;
-    height: auto;
+  width: 690rpx;
+  background: #ffffff;
+  z-index: 9;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin:  68rpx auto 0;
 }
 
 .yhqImgBg {
@@ -46,10 +95,17 @@ page {
 }
 
 .yhqList_cell_con {
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 15rpx 41rpx 15rpx 49rpx;
+  background: #FEF5E4;
+  margin-bottom: 24rpx;
+  border: 1px solid #ff784d;
+  border-radius: 10rpx;
+}
+.overyhq .yhqList_cell_con {
+  background: #D5D5D5;
+  border: 1px solid #d5d5d5;
+}
+.overyhq .split-line {
+  border-left: 1px dashed #fff;
 }
 
 .yhq_money {
@@ -70,11 +126,12 @@ page {
 }
 
 .yhqIntro {
-    margin-left: 70rpx;
+    margin-left: 23rpx;
+    padding-top: 30rpx; 
 }
 
 .use_tj {
-    margin: 23rpx 0 21rpx 0;
+    margin: 16rpx 0;
 }
 
 .employ {
@@ -240,4 +297,8 @@ page {
     color: #FFF;
     font-size: 17rpx;
     margin-right: 20rpx;
+}
+.overdate {
+  color: #A4A4A4;
+  background: #fff;
 }

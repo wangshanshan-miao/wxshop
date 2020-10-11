@@ -1,4 +1,5 @@
 <wxs src="../../utils/filter.wxs" module="tools" />
+<wxs src="../../utils/phone.wxs" module="phone" />
 <!-- 个人中心 -->
 <view class="selfModel boxs">
 	<view class="userIntro pr">
@@ -8,12 +9,11 @@
 					<view class="flex_row al"  catchtap="goBasic">
 						<image wx:if="{{userInfo.headUrl}}" class="userIntro_head" src="{{imgBaseUrl+userInfo.headUrl+'?x-image-process=image/resize,p_30'}}" />
 						<image wx:else class="userIntro_head" src="" />
-                        
-						<view>
+						<view class="flex_col jb">
 							<view class="f40 fb c33 userIntro_name" wx:if="{{userInfo.userName}}">{{userInfo.userName}}</view>
 							<view catchtap="login" class="f40 fb c33 userIntro_name" wx:elif="{{!userInfo.userName}}">登录/注册</view>
 							<view wx:elif="{{!userInfo.userName}}" class="tips">登陆后享受更多服务哦~</view>
-							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
+							<view class="f26 c33 userIntro_phone" wx:if="{{userInfo.userPhone}}">{{phone.toHide(userInfo.userPhone)}}</view>
 						</view>
 					</view>
 					<image src="{{imgUrl+'arrow-left.png'}}" class="arrowLeft"></image>
@@ -21,7 +21,7 @@
 				<!-- <image bindtap="goBasic" src="{{imgUrl+'rjtb.png'}}" class="rjtb" /> -->
 			</view>
 			<view class="userIntro_treasure boxs flex_row">
-				<view class="flex_row al jb">
+				<view class="flex_row al jb" bindtap="goMoney">
 					<text class="c33">我的钱包</text>
 					<image src="{{imgUrl+'qb.png'}}"></image>
 				</view>
@@ -95,7 +95,7 @@
 
 					<!-- <view class="count flex_row al jc pa" wx:if="{{tools.filter(userInfo.shippedNum)}}">{{tools.filter(userInfo.shippedNum)}}</view> -->
 				</view>
-				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="allOrder">
+				<view class="commonOrder_cell flex_row jb al" data-index="4" data-status="7" bindtap="evaluate">
 					<view class="flex_row al">
 						<image src="{{imgUrl+'selfIcon4.png'}}" />
 						<text class="f30 c33 fb">待评价</text>

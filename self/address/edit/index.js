@@ -1,5 +1,10 @@
 // pages/self/address/update/index.js
 import api from "../../../utils/api"
+import {
+  baseURL,
+  imgBaseUrl,
+  imgUrl
+} from "../../../utils/http"
 Page({
   /**
    * 页面的初始数据
@@ -138,6 +143,9 @@ Page({
         from: options.from
       })
     }
+    this.setData({
+      imgUrl
+    })
   },
 
   /**

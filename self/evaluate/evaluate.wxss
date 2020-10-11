@@ -16,15 +16,82 @@
 }
 
 .evaUser_name {
-    margin: 0 37rpx 11rpx 10rpx;
+    margin: 0 0rpx 11rpx 10rpx;
 }
 .evaUser_name .stars {
   display: inline-block;
-  margin-left: 37rpx;
 }
 .stars image {
   display: inline-block;
   width: 24rpx;
   height: 23rpx;
   margin-right: 7rpx;
+}
+.evaList {
+  padding: 30rpx 30rpx 0;
+  margin-bottom: 45rpx;
+}
+.evaList .img {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 24rpx;
+}
+.content {
+  line-height: 52rpx;
+  /* margin-top: 22rpx; */
+  margin-bottom: 20rpx;
+}
+.good {
+  width: 100%;
+  background: #f6f6f6;
+  border-radius: 10rpx;
+  padding: 20rpx 0;
+}
+.good image {
+  width: 184rpx;
+  height: 178rpx;
+  margin: 0 27rpx 0 23rpx;
+  display: inline-block;
+}
+
+.goodOrder {
+    padding: 30rpx 30rpx 0;
+
+}
+
+.goodOrder_top {
+    margin-bottom: 32rpx;
+}
+
+.shopOrder_name {
+    margin: 0 15rpx;
+}
+
+.shop_icon {
+    width: 25.58rpx;
+    height: 25.06rpx;
+}
+.goodOrder_list_img {
+    width: 162rpx;
+    height: 157rpx;
+    flex-shrink: 0;
+    margin-right: 22rpx;
+    /* background-color: chartreuse; */
+}
+
+.shopOrderList_foot {
+    border-top: 1px solid #F6F6F6;
+    padding: 30rpx;
+}
+.goodOrder_list {
+    margin-bottom: 12rpx;
+}
+.sure_btn {
+    width: 142rpx;
+    height: 49rpx;
+    line-height: 49rpx;
+    background: linear-gradient(132deg, #fca153 11%, #fb8a29 80%);
+    border-radius: 25rpx;
+    opacity: 1;
 }

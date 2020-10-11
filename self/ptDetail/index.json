@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-popup": "/weapp/dist/popup/index"
+    "van-popup": "../../weapp/dist/popup/index",
+    "share-box": "../../components/shareBox/index"
   },
   "navigationBarTitleText": "拼团详情"
 }

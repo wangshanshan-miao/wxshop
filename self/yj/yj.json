@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "van-popup": "../../../weapp/dist/popup/index"
+        "van-popup": "../../weapp/dist/popup/index",
+        "noData": "../../components/noData/index"
     },
-    "navigationBarTitleText": "我的佣金"
+    "navigationBarTitleText": "我的钱包"
 }

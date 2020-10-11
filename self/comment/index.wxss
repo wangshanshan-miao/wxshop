@@ -25,10 +25,10 @@
 .guige {
   margin: 13rpx 0 10rpx;
 }
-.price {
+/* .price {
   color: #D32E32;
   font-size: 32rpx;
-}
+} */
 
 text {
   color: #999;
@@ -95,4 +95,22 @@ textarea {
  top: 0rpx;
  width: 24rpx;
  height: 23rpx;
+}
+
+.stars {
+  display: inline-block;
+}
+.stars image {
+  display: inline-block;
+  width: 24rpx;
+  height: 23rpx;
+  margin-right: 7rpx;
+}
+.evacontent {
+  padding: 23rpx 13rpx;
+  background: #f6f6f6;
+  border-radius: 10rpx;
+  min-height: 392rpx;
+  width: calc(94% - 26rpx);
+  margin: 0 auto;
 }

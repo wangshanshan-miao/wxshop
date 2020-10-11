@@ -1,5 +1,8 @@
 // pages/self/yhq/detail/index.js
 import api from "../../../utils/api"
+import {
+  imgUrl
+} from "../../../utils/http"
 Page({
   /**
    * 页面的初始数据
@@ -9,9 +12,13 @@ Page({
   },
   // 已拥有优惠券详情
   voucherDetail() {
+    wx.showLoading({
+      title: '',
+    })
     api.voucherDetail({
       userVoucherId: this.data.id
     }).then(res => {
+      wx.hideLoading()
       // console.log(res)
       const data = res.data
       this.setData({
@@ -23,8 +30,47 @@ Page({
         sum: data.sum,
         condition: data.condition,
         details: data.details,
-        voucherPrice: data.voucherPrice
+        voucherPrice: data.voucherPrice,
+        orderNumber: data.orderNumber,
+        userId: data.userId,
+        orderTime: data.orderTime,
+        buyTime: data.buyTime
       })
+    })
+  },
+  // 核銷
+  use() {
+    let verificationCode = this.data.verificationCode
+    if (!verificationCode) {
+      wx.showToast({
+        title: '请输入核销码',
+        icon: 'none'
+      })
+      return
+    }
+    wx.showLoading({
+      title: '',
+    })
+    api.userVoucher({
+      userId: this.data.userId,
+      userVoucherId: this.data.id
+    }).then(res => {
+      console.log(res)
+      wx.hideLoading()
+      if (res.data.status == 1) {
+        wx.showToast({
+          title: '使用成功',
+          icon: 'none'
+        })
+        setTimeout(() => {
+          wx.navigateBack()
+        }, 1000);
+      } else if (res.data.status == 0) {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none'
+        })
+      }
     })
   },
   inputReason(e) {
@@ -110,7 +156,8 @@ Page({
     // console.log(options.id)
     this.setData({
       id: options.id,
-      state: options.state
+      state: options.state,
+      imgUrl
     })
   },
 

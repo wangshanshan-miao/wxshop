@@ -280,7 +280,7 @@ page {
 .delete {
     width: 568rpx;
     height: 88rpx;
-    background: rgba(0, 157, 255, 1);
+    background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
     border-radius: 210rpx;
     margin: -100rpx auto;
 }
@@ -463,6 +463,44 @@ page {
     animation: sliderUp 0.5s ease both;
 }
 
+/* // 手机号 */
+.auth1 {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 682rpx;
+  z-index: 999;
+  height: 423rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(112, 112, 112, 1);
+  border-radius: 20rpx;
+}
+
+.auth1>.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 108rpx;
+}
+
+.auth1 .content {
+  margin-top: 39rpx;
+}
+
+.auth1>.button {
+  background-color: #009dff;
+  width: 568rpx;
+  font-size: 28rpx !important;
+  margin: 53rpx auto;
+  border-radius: 20rpx;
+}
+
+.close {
+  width: 24rpx;
+  height: 24rpx;
+  top: 36rpx;
+  right: 27rpx;
+}
 
 
 .tankuang {

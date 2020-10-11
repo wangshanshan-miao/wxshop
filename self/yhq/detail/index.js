@@ -1,5 +1,8 @@
 // pages/self/yhq/detail/index.js
 import api from "../../../utils/api"
+import {
+  imgUrl
+} from "../../../utils/http"
 Page({
   /**
    * 页面的初始数据
@@ -22,24 +25,33 @@ Page({
   },
   // 检测手机
   checkPhone() {
-    let tel = wx.getStorageSync('tel')
-    if (!tel) {
-      api.checkPhone().then(res => {
-        console.log(res)
-        const data = res.data
-        if (data) {
-          wx.setStorageSync('tel', true)
+    api.checkPhone({
+      userId: wx.getStorageSync('userId')
+    }).then(res => {
+      console.log(res)
+      const data = res.data
+      if (data == 1) {
+        if (this.data.status == 0) { // 去使用
+          this.use()
+        } else{ // 去购买
           this.buy()
-        }else{
-          this.showModal()
         }
-      })
-    }else{
-      this.buy()
-    }
+      }else if (data == 0){
+        this.showModal()
+      } else {
+        wx.login({
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      }
+    })
   },
   // 获取手机
   getPhoneNumber(e) {
+    wx.showLoading({
+      title: '',
+    })
     const res = e.detail
     if (res.errMsg == "getPhoneNumber:ok") {
       this.setData({
@@ -48,7 +60,6 @@ Page({
       })
       this.getUserPhone()
     }
-    this.closePhone()
   },
   // 获取用户手机号
   getUserPhone() {
@@ -63,12 +74,18 @@ Page({
       if (res.status == 200) {
         const phone = JSON.parse(data).phoneNumber
         api.updateUserDetail({
-          userPhone: phone
+          userPhone: phone,
+          userId: wx.getStorageSync('userId')
         }).then(res => {
+          wx.hideLoading()
           console.log(res)
           if (res.data == 1) {
-            wx.setStorageSync('tel', true)
+            // wx.setStorageSync('tel', true)
             self.buy()
+          } else {
+            wx.showToast({
+              title: res.msg,
+            })
           }
         })
       }
@@ -76,21 +93,43 @@ Page({
   },
   // 代金券详情
   voucherDetail() {
-    api.getVoucherDetail({
-      voucherId: this.data.id
-    }).then(res => {
-      // console.log(res)
-      const data = res.data
-      this.setData({
-        sellingPrice: data.sellingPrice,
-        useType: data.useType,
-        voucherName: data.voucherName,
-        sum: data.sum,
-        condition: data.condition,
-        details: data.details,
-        voucherPrice: data.voucherPrice
+    if (!this.data.status) {
+      api.getVoucherDetail({
+        voucherId: this.data.id
+      }).then(res => {
+        // console.log(res)
+        const data = res.data
+        let showEva = true
+        if (data.evaluateDto == '') {
+          showEva = false
+        }
+        this.setData({
+          list: data.voucher,
+          evaluateDto: data.evaluateDto,
+          showEva: showEva
+        })
       })
-    })
+    } else {
+      api.voucherDetail({ // 已拥有优惠券详情
+        userVoucherId: this.data.id
+      }).then(res => {
+        // console.log(res)
+        const data = res.data
+        this.setData({
+          returnReason: data.returnReason,
+          voucherStatus: data.voucherStatus, // 优惠券状态
+          sellingPrice: data.sellingPrice,
+          useType: data.useType,
+          voucherName: data.voucherName,
+          sum: data.sum,
+          condition: data.condition,
+          details: data.details,
+          voucherPrice: data.voucherPrice,
+          voucherId: data.voucherId,
+          userVoucherId: data.userVoucherId
+        })
+      })
+    }
   },
   // 删除
   delete() {
@@ -111,12 +150,24 @@ Page({
     })
   },
   buy() {
+    wx.showLoading({
+      title: '',
+    })
     wx.login({
       success: (res) => {
         api.bugVoucher({
-          voucherId: this.data.id
+          voucherId: this.data.id,
+          userId: wx.getStorageSync('userId'),
+          sum: 1
         }).then(res => {
+          wx.hideLoading()
           console.log(res)
+          wx.showToast({
+            title: res.data,
+          })
+          wx.navigateTo({
+            url: `/self/djq/djq`,
+          })
           if (res.status == 200) {
             const data = res.data
             wx.requestPayment({
@@ -137,6 +188,14 @@ Page({
       },
     })
   },
+  // 使用券
+  use() {
+    wx.navigateTo({
+      url: '../detail2/index?id=' + this.data.userVoucherId,
+    })
+  },
+  // 评价
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -144,7 +203,9 @@ Page({
     // console.log(options.id)
     this.setData({
       id: options.id,
-      state: options.state
+      state: options.state,
+      imgUrl,
+      status: options.status || null
     })
   },
 

@@ -24,14 +24,77 @@ Page({
    */
   onLoad: function (options) {
     const goodType = Number.parseInt(options.type)
+    let site
+    if (goodType == 0) { // 秒杀
+      site = 2
+      let seckillId = options.seckillId
+      this.setData({
+        seckillId
+      })
+    } else if (goodType == 1) { // 拼团
+      site = 1
+    } else if (goodType == 4) { // 清仓
+      site = 3
+    } else {
+      site = ''
+    }
     this.setData({
       baseURL,
       imgBaseUrl,
       nowTime: new Date().getTime(),
       goodType,
-      imgUrl
+      imgUrl,
+      site,
+      imgArr: []
     })
     this.getList()
+    if (site !== '') {
+      this.swiper()
+    }
+  },
+  // 首页轮播图
+  swiper() {
+    api.getSwiper({
+      merchantId: wx.getStorageSync('merchantId'),
+      site: this.data.site
+    }).then(res => {
+      if (res.status == 200) {
+        let arr = res.data
+        this.setData({
+          imgArr: arr
+        })
+      }
+      console.log(this.data.imgArr)
+    })
+  },
+  // 获取秒杀信息
+  selectSeckill() {
+    api.selectSeckill({
+      merchantId: wx.getStorageSync('merchantId'),
+      seckillId: this.data.seckillId
+    }).then(res => {
+      wx.hideLoading()
+      if (res.data.type == 0) {
+        wx.showToast({
+          title: '没有秒杀活动',
+        })
+      } else{
+        let systimestamp =  new Date().getTime();
+        this.setData({
+          // startTime: new Date().getTime(),
+          endTime: new Date(res.data.endTime).getTime()
+        })
+        var _this = this
+        this.setData({
+          servicetimeInterval: setInterval(function () { // 循环执行
+            systimestamp = (systimestamp / 1000 + 1) * 1000;
+            _this.setData({
+              startTime: systimestamp
+            })
+          }, 1000)
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -99,10 +162,14 @@ Page({
   },
   // 一级分类
   getList(item) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.setNavigationBarTitle({ title: '分类' })
     api.getAllClass({
       agencyId: wx.getStorageSync('agencyId')
     }).then(res => {
+      wx.hideLoading()
       res.data.unshift({
         className: "全部"
       })
@@ -114,11 +181,17 @@ Page({
     this.getShopList()
   },
   getShopList(classId) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     if (this.data.goodType == 0) {// 秒杀
       wx.setNavigationBarTitle({ title: '限时秒杀' })
       api.seckillList({
-        merchantId: wx.getStorageSync('merchantId')
+        merchantId: wx.getStorageSync('merchantId'),
+        seckillId: this.data.seckillId,
+        classId: classId
       }).then(res => {
+        this.selectSeckill()
         this.setData({
           list: res.data.list,
           totalPage: res.data.totalPage
@@ -127,12 +200,28 @@ Page({
     } else if (this.data.goodType == 1) {// 拼团
       wx.setNavigationBarTitle({ title: '多人拼团' })
       api.groupBookingList({
-        merchantId: wx.getStorageSync('merchantId')
+        merchantId: wx.getStorageSync('merchantId'),
+        classId: classId
       }).then(res => {
+        for(var i = 0;i<res.data.list.length; i++) {
+          res.data.list[i].endTime = new Date(res.data.list[i].endTime).getTime()
+          res.data.list[i].startTime = new Date().getTime()
+        }
         this.setData({
           list: res.data.list,
           totalPage: res.data.totalPage
         })
+        var _this = this
+        let systimestamp = new Date().getTime();
+        this.setData({
+          servicetimeInterval: setInterval(function () { // 循环执行
+            systimestamp = (systimestamp / 1000 + 1) * 1000;
+            _this.setData({
+              startTime: systimestamp
+            })
+          }, 1000)
+        })
+        wx.hideLoading()
       })
     } else if (this.data.goodType == 2 || this.data.goodType == 3) {
       let type
@@ -145,8 +234,10 @@ Page({
       }
       api.newList({
         merchantId: wx.getStorageSync('merchantId'),
-        type: type
+        type: type,
+        classId: classId
       }).then(res => {
+        wx.hideLoading()
         this.setData({
           list: res.data.list,
           totalPage: res.data.totalPage
@@ -155,8 +246,10 @@ Page({
     } else if (this.data.goodType == 4) {// 清仓
       wx.setNavigationBarTitle({ title: '样品清仓' })
       api.clearanceSaleList({
-        merchantId: wx.getStorageSync('merchantId')
+        merchantId: wx.getStorageSync('merchantId'),
+        classId: classId
       }).then(res => {
+        wx.hideLoading()
         this.setData({
           list: res.data.list,
           totalPage: res.data.totalPage
@@ -170,6 +263,7 @@ Page({
         pageNum: this.data.pageNum,
         pageSize: 24
       }).then(res => {
+        wx.hideLoading()
         this.setData({
           list: res.data.list,
           totalPage: res.data.totalPage
@@ -182,6 +276,7 @@ Page({
     this.setData({
       activeIndex: e.currentTarget.dataset.index
     })
+    let classId = e.currentTarget.dataset.id
     let screenWidth = wx.getSystemInfoSync().windowWidth;
 
     let itemWidth = screenWidth / 5;
@@ -210,7 +305,7 @@ Page({
     })
 
     this.triggerEvent("switchTap", type); //点击了导航,通知父组件重新渲染列表数据
-    this.getShopList(this.data.nav_list[e.currentTarget.dataset.index].classId)
+    this.getShopList(classId)
   },
   toSearch() {
     wx.navigateTo({

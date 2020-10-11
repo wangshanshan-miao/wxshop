@@ -51,9 +51,9 @@
 					确认收货
 				</view>
 				<!-- 已完成 退货 -->
-				<view data-id="{{item.orderId}}" catchtap="refund" wx:if="{{item.orderStatus==1 || item.orderStatus==7}}" class="cancle_btn tc chOrder_btn f26 cff">
+				<!-- <view data-id="{{item.orderId}}" catchtap="refund" wx:if="{{item.orderStatus==1 || item.orderStatus==7}}" class="cancle_btn tc chOrder_btn f26 cff">
 					退款
-				</view>
+				</view> -->
 				<!-- 待付款 付款 取消订单 -->
 				<view data-id="{{item.orderId}}" catchtap="goDetail" wx:if="{{item.orderStatus==0}}" class="sure_btn tc chOrder_btn f26 cff">
 					付款
@@ -70,9 +70,9 @@
 					删除
 				</view>
 				<!-- 待退款 已退款 -->
-				<view wx:if="{{item.orderStatus==2 ||item.orderStatus==3}}" class="sure_btn chOrder_btn tc f26 cff">
+				<!-- <view wx:if="{{item.orderStatus==2 ||item.orderStatus==3}}" class="sure_btn chOrder_btn tc f26 cff">
 					退款详情
-				</view>
+				</view> -->
 				<!-- 已取消 -->
 				<!-- <view wx:if="{{item.orderStatus==9}}" class="sure_btn tc chOrder_btn f26 cff">订单详情</view> -->
 			</view>

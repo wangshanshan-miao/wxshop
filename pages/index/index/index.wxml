@@ -6,7 +6,7 @@
   <view class="clearFloat pr model">
     <view class="index_topCon">
       <!-- 定位/搜素 -->
-      <view class="top flex_row al">
+      <view class="top flex_row al box">
         <view class="address_group flex_row">
           <image src="{{imgUrl+'address.png'}}" class="address_jt" />
           <text>{{location}}</text>
@@ -17,15 +17,15 @@
         </view>
       </view>
       <!-- 轮播图 -->
-      <view class="tab">
-        <swiper class="swiper_group" indicator-dots="true" autoplay interval="5000" duration="1000" circular="true" next-margin="20rpx" previous-margin="20rpx">
-        <swiper-item wx:for="{{imgArr}}" wx:key="index">
-          <image class="swiperImg" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
-        </swiper-item>
-      </swiper>
+      <view class="tab pageTwo">
+        <swiper class="swiper_group swiperClass" bindchange="bindchange" indicator-active-color ="rgba(255,207,94,1)"	indicator-color="rgba(213,213,213,1)" autoplay indicator-dots="true" interval="5000" duration="1000" circular="true" next-margin="60rpx" previous-margin="60rpx">
+          <swiper-item wx:for="{{imgArr}}" wx:key="index">
+            <image class="swiperImg slide-image {{swiperIdx == index ? 'active' : 'quiet'}}" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
+          </swiper-item>
+        </swiper>
       </view>
       <!-- 公告 -->
-      <view class="notice box flex_row al">
+      <view class="notice box flex_row al box">
         <view class='ceshi_swiper'>
           <image class="img1" src="{{imgUrl+'gonggao.png'}}"></image>
           <swiper class='read_swiper' indicator-dots='{{swiper.indicatorDots}}' autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" current="{{swiper.current}}">
@@ -41,14 +41,14 @@
 
       </view>
       <!-- 福利大放送 -->
-      <view class="fuli">
+      <view class="fuli box">
         <image wx:for="{{fuliList}}" src="{{item.url}}" bindtap="goPage" data-index="{{index}}"></image>
       </view>
     </view>
   </view>
   <!-- tab栏 -->
   <view class="tab box">
-    <swiper class='read_swiper' circular='true' indicator-dots='true' autoplay="true" duration="1000">
+    <swiper class='read_swiper' circular='true' indicator-active-color ="rgba(255,207,94,1)"	indicator-color="rgba(213,213,213,1)" indicator-dots='true' duration="1000">
       <block wx:for="{{classList}}" wx:for-item="items">
         <swiper-item>
           <view bindtap="goCg" class="{{((index+1) % 5 == 0 && index != 0) ? 'speItem tab-item jc al' : 'tab-item jc al'}}" data-agencyId="{{item.agencyId}}" data-index="{{index}}" wx:for="{{items}}" data-pId="{{item.pId}}" data-classId="{{item.classId}}">
@@ -84,7 +84,7 @@
           </view>
         </view>
         <view class="modelCell_topRight flex_row al">
-          <text class="more_text f28" data-type="0" bindtap="goList">查看更多</text>
+          <text class="more_text f28" data-type="0" data-id="{{seckillList.seckillId}}" bindtap="goList">查看更多</text>
           <image class="rjt" src="{{imgUrl+'arrow-left.png'}}"></image>
         </view>
       </view>
@@ -202,7 +202,7 @@
           <block wx:for="{{clearanceSaleList}}" wx:for-item="items">
             <swiper-item class="swiper-item">
               <view class="clear-list">
-                <view catchtap="goodDetail" data-type="2" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{items}}" wx:key="index" wx:for-item="item">
+                <view catchtap="goodDetail" data-type="4" data-id="{{item.outId}}" class="goodCell1 pr flex_row" wx:for="{{items}}" wx:key="index" wx:for-item="item">
                 <image class="goodCell_img1 img" lazy-load="{{true}}" data-id="{{item.merchantId}}" src="{{imgBaseUrl + item.coverUrl+'?x-image-process=image/resize,p_15'}}" />
                 <view class="goodeIntro1 boxs f24 oh flex_col jb" style="width: calc(100% - 190rpx);">
                   <view class="hidden2 wclear name color3 f30">{{item.commodityName}}</view>
@@ -363,24 +363,37 @@
 </view>
 
 <!-- 注册红包 -->
-<view class="gift" wx:if="{{gift}}">
-  <image class="img pa" src="{{imgUrl+'coupon.png'}}"></image>
-  <view class="price pa">
-    <text>￥</text>{{voucher.voucherPrice}}
+<view class="giftBox" wx:if="{{gift}}"></view>
+<view class="gift" wx:if="{{gift}}" >
+  <image class="img pa" src="../../../img/newBg.png"></image>
+  <!-- <image class="img pa" src="../../../img/coupon.png"></image> -->
+  <scroll-view scroll-y="true" class="couponList pa" bindscrolltolower="lower">
+  <view class="coupon flex_row jb al" wx:for="{{couponList}}">
+    <view class="left">
+      <text class="num">{{item.voucherPrice}}</text>
+      <text class="f24">元</text>
+    </view>
+    <view class="split-line"></view>
+
+    <view class="right flex_row jb al">
+      <view>
+        <view class="couponTitle f24 fb">{{item.voucherName}}</view>
+        <view class="couponCondition f22">满{{item.condition}}元可使用</view>
+        <view class="couponValidity f22">有效期至{{item.createTime}}</view>
+      </view>
+      <view catchtap="usequan" class="couponBtn f20 cff">去用券</view>
+    </view>
   </view>
-  <view class="content pa tc">
-    <view class="type c33">优惠券</view>
-    <view class="condition c99 f30" wx:if="{{voucher.condition==0}}">无门槛</view>
-    <view wx:else>满{{voucher.condition}}可用</view>
-  </view>
-  <image catchtap="lookCoupon" src="{{imgUrl+'look.png'}}" class="look pa"></image>
+  </scroll-view>
+  <view class="look pa f34 tc" catchtap="lookCoupon">立即领取</view>
   <image catchtap="closeCoupon" class="close2 pa" src="{{imgUrl+'close1.png'}}"></image>
 </view>
-
+<!-- 新人大礼包 -->
+<!-- <view class="gifts" wx:if="{{gift}}"></view> -->
 
 <!-- 回到顶部 -->
 <image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>
 
 <view class="poster " wx:if="{{poster}}">
-  <image src="{{imgBaseUrl + 'attractInvestment.png'}}"></image>
+  <image src="{{imgUrl + 'attractInvestment.png'}}"></image>
 </view>

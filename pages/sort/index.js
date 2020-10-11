@@ -157,7 +157,7 @@ Page({
   },
   // 加入购物车
   addToCart() {
-    this.checkUser()
+    app.checkUser()
     let specificationId = this.data.specificationId
     if (this.data.good.commoditySpecificationList.length > 0) {
       if (!specificationId) {

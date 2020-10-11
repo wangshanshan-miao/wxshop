@@ -15,10 +15,13 @@
 }
 
 .index_topCon {
-  padding: 30rpx 30rpx;
+  padding: 30rpx 0;
   top: 48rpx;
   left: 0;
   right: 0;
+}
+.box {
+  padding: 0 30rpx;
 }
 
 .search_input {
@@ -88,6 +91,25 @@
   margin: 0 24rpx 0 34rpx;
 }
 
+/* // 轮播图 */
+.pageTwo .swiperClass {
+  margin: 0;
+  margin-top: 10px;
+}
+.pageTwo .slide-image {
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  position: relative;
+}
+.pageTwo image.active {
+  transform: scale(0.95);
+  transition: all 0.2s ease-in 0s;
+}
+.pageTwo image.quiet {
+  transform: scale(0.95);
+  transition: all 0.2s ease-in 0s;
+}
 
 .jiantou {
   width: 10rpx;
@@ -215,9 +237,9 @@
   margin-top: 10rpx;
   height: 307rpx;
 }
-.swiper_group swiper-item {
+/* .swiper_group swiper-item {
   width: 92% !important;
-}
+} */
 .swiperImg {
   width: 90%;
   height: 307rpx;
@@ -748,10 +770,18 @@
   color: #333;
   line-height: 81rpx;
 }
-
+.giftBox {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  filter: blur(30rpx);
+  position: fixed;
+}
 .gift {
-  width: 566rpx;
-  height: 637rpx;
+  width: 606rpx;
+  height: 777rpx;
   position: fixed;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -759,22 +789,59 @@
   left: 50%;
 }
 
+.coupon{
+  background: #FEF5E4;
+  margin-bottom: 16rpx;
+  border: 1px solid #ff784d;
+  border-radius: 10rpx;
+}
+.coupon .left{
+  width: 140rpx;
+  color: #FF784D;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  /* border-right: 1px dashed #FF784D; */
+}
+.coupon .left .num{
+  font-size: 42rpx;
+  padding: 0;
+}
+.coupon .right{
+  flex: 1;
+  width: 0;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  color: #FF784D;
+}
+.coupon .right>view:first-child view{
+  margin-bottom: 7rpx;
+}
+
 .gift .img {
-  width: 566rpx;
-  height: 637rpx;
+  width: 100%;
+  height: 758rpx;
   top: 0;
   left: 0;
   z-index: -1;
 }
+.gift .couponList {
+  width: 500rpx;
+  height: 340rpx;
+  top: 167rpx;
+  left: 40rpx;
+}
 
 .gift .look {
   z-index: 9999;
-  width: 416rpx;
-  height: 167rpx;
+  width: 333rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  background: #ffffff;
+  border-radius: 27rpx;
   /* bottom: 9rpx; */
-  bottom: 0;
-  transform: translateX(-50%);
-  left: 50%;
+  bottom: 110rpx;
+  left: 21%;
+  color: #fc3209;
 }
 
 .gift .price {
@@ -805,7 +872,42 @@
   height: 62rpx;
   transform: translateX(-50%);
   left: 50%;
-  bottom: -120rpx;
+  bottom: -90rpx;
+}
+.couponBtn{
+  width: 103rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  background: #ff7f11;
+  box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.08); 
+  text-align: center;
+  border-radius: 42rpx;
+}
+.split-line {
+  position: relative;
+  flex: 0 0 0;
+  border-left: 1px dashed #FF784D;
+  margin: -2px 5px -1px 3px;
+  background: #fff;
+  height: 148rpx;
+  top: 1px;
+}
+.split-line:before, .split-line:after {
+  content: '';
+  position: absolute;
+  width: 16rpx;
+  height: 8rpx;
+  background: #fff;
+  left: -9rpx;
+  z-index: 1;
+}
+.split-line:before {
+  border-radius: 0 0 8rpx 8rpx;
+  top: 0;
+}
+.split-line:after {
+  border-radius: 8rpx 8rpx 0 0;
+  bottom: 0;
 }
 
 /* 位置授权 */

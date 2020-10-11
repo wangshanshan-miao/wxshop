@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "noData": "../../../components/noData/index"
+  },
+  "navigationBarTitleText": "品牌介绍"
+}

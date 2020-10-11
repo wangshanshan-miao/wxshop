@@ -45,23 +45,53 @@ Page({
             wx.hideLoading({})
             const data = res.data
             let newArr = [...arr, ...data.list]
-            // let result = newArr.map(item => {
-            //     item.commodityDtoList.map(item => {
-            //         item.select = false
-            //         return item
-            //     })
-            //     return item
-            // })
+            let result = newArr.map(item => {
+                item.isTouchMove = false
+                return item
+            })
             // console.log(result)
             this.setData({
                 totalPage: data.totalPage,
                 pageNum: data.pageNum,
                 // list: [...arr, ...data.list],
                 isRequest: false,
-                arr: newArr
+                arr: result
             })
             // this.checkSelectAll()
         })
+    },
+    touchstart: function (e) {
+      //开始触摸时 重置所有删除
+      let data = app.touch._touchstart(e, this.data.arr) //将修改过的list setData
+      this.setData({
+        arr: data
+      })
+    },
+
+    //滑动事件处理
+    touchmove: function (e) {
+      let data = app.touch._touchmove(e, this.data.arr, 'id')//将修改过的list setData
+      this.setData({
+        arr: data
+      })
+    },
+    deleteCar (e) {
+      wx.showLoading({
+        title: '',
+      })
+      let id = app.getValue(e).id
+      let param = {
+        shoppingTrolleyIds: [id]
+      }
+      api.delete(param).then(res => {
+        wx.hideLoading()
+        if (res.data > 0) {
+          wx.showToast({
+            title: '删除成功',
+          })
+        }
+        this.myCart()
+      })
     },
     // 总计
     totalNum() {

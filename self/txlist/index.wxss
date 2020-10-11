@@ -9,7 +9,7 @@
 }
 
 .txListModel_cell_num {
-    color: #D32E32;
+    color: #FF4600;
 }
 
 .txListModel_cell_time {

@@ -1,0 +1,4 @@
+<!--home/agencyDetail/index.wxml-->
+<view class="shadow intro f30 c33">
+  <rich-text nodes="{{detail}}"></rich-text>
+</view>

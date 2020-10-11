@@ -18,8 +18,9 @@ Page({
   },
   // 新增收货地址
   add() {
+    let from = this.data.from
     wx.navigateTo({
-      url: '/self/address/add/index',
+      url: `/self/address/add/index?from=${from}`,
     })
   },
   noclick () {
@@ -34,7 +35,8 @@ Page({
     // console.log(id)
     if (this.data.from == 'list') {
       prevPage.setData({
-        address: this.data.list[index]
+        address: this.data.list[index],
+        hasAddress: true
       })
       wx.navigateBack({
         delta: 1
@@ -83,7 +85,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
     if (options.flag) {
       this.setData({
         flag : true

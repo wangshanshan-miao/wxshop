@@ -42,6 +42,21 @@ Page({
             })
         })
     },
+    // 退出登录
+    logout () {
+      wx.showLoading({
+        title: '加载中',
+      })
+      wx.removeStorageSync('userId')
+      wx.removeStorageSync('agencyId')
+      wx.hideLoading()
+      wx.showToast({
+        title: '退出登录成功',
+      })
+      wx.switchTab({
+        url: '/pages/self/self',
+      })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -65,6 +80,9 @@ Page({
             fail: () => {},
             complete: () => {}
         });
+
+    },
+    editPhone() {
 
     },
     cahngeHead() {

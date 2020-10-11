@@ -53,9 +53,6 @@
     font-size: 28rpx;
 }
 
-.userIntro_phone {
-    color: rgba(255, 255, 255, .8);
-}
 
 .rjtb {
     width: 26rpx;
@@ -442,8 +439,8 @@
 
 }
 .contact .img {
-  width: 21rpx;
-  height: 21rpx;
+  width: 30rpx;
+  height: 30rpx;
   top: 28rpx;
   right: 28rpx;
 }

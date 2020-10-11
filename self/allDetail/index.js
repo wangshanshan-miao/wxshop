@@ -77,12 +77,16 @@ Page({
     },
     evaluate(){
       const id = this.data.id
+      let noChange = true
       wx.navigateTo({
-        url: `/self/evaluate/evaluate?id=${id}`,
+        url: `/self/comment/index?id=${id}&noChange=${noChange}`,//不能修改评价内容
       })
     },
     // 订单详情
     orderDetail() {
+      wx.showLoading({
+        title: '加载中',
+      })
         api.orderDetail({
             orderId: this.data.id
         }).then(res => {
@@ -91,10 +95,19 @@ Page({
             let addressId = ''
             let hasAddress = false
             if (data.address) {
-              buyAddress = data.address
-              addressId = data.address.addressId
-              hasAddress = true
+              if(!this.data.hasAddress) {
+                buyAddress = data.address
+                addressId = data.address.addressId
+                hasAddress = true
+              } else{
+                if (this.data.address.addressId !== data.address.addressId) {
+                  this.updateAddress()
+                }
+                buyAddress = this.data.address
+                addressId = this.address.addressId
+              }
             }
+            let endTime = new Date(data.order.endTime).getTime()
             this.setData({
                 metricalInformation: data.order.metricalInformation, // 商品规格信息
                 // addressId: data.address.addressId,
@@ -103,7 +116,7 @@ Page({
                 expressFee: data.order.expressFee, // 快递费
                 orderType: data.order.orderType,
                 merchantId: data.order.merchantId,
-                endTime: data.order.endTime,
+                endTime: endTime,
                 orderStatus: data.order.orderStatus,
                 storeName: data.order.merchantName,
                 list: data.orderCommodityList,
@@ -121,7 +134,17 @@ Page({
                 addressId: addressId,
                 hasAddress: hasAddress
             })
-            debugger
+            wx.hideLoading()
+            let systimestamp = new Date().getTime();
+            var _this = this
+            this.setData({
+              servicetimeInterval: setInterval(function () { // 循环执行
+                systimestamp = (systimestamp / 1000 + 1) * 1000;
+                _this.setData({
+                  startTime: systimestamp
+                })
+              }, 1000)
+            })
             // let status = this.data.orderStatus
             // if (status == 1) {
             //     this.setData({
@@ -136,6 +159,19 @@ Page({
                 })
             }
         })
+    },
+    // 更新地址
+    updateAddress () {
+      api.updateAddress({
+        orderId: this.data.id,
+        addressId: this.data.address.addressId
+      }).then(res => {
+        wx.hideLoading()
+        if (res.data == 1) {
+          console.log("更新地址成功")
+        }
+      })
+
     },
     onClose(){
         this.setData({ show: false });
@@ -195,6 +231,81 @@ Page({
             }
         })
     },
+    // 获取用户手机号
+    getUserPhone() {
+      api.getUserPhone({
+        encryptDataB64: this.data.encryptedData,
+        ivB64: this.data.iv,
+        sessionKeyB64: wx.getStorageSync('session_key')
+      }).then(res => {
+        // console.log(res)
+        const data = res.data
+        if (res.status == 200) {
+          // wx.setStorageSync('phone', JSON.parse(data).phoneNumber)
+          this.setData({
+            phoneNumber: JSON.parse(data).phoneNumber
+          })
+          this.updatePhone()
+        }
+        // this.register()
+      })
+    },
+    // 更新手机号
+    updatePhone () {
+      api.updateUserDetail({
+        userPhone: this.data.phoneNumber,
+        userId: wx.getStorageSync('userId')
+      }).then(res => {
+        wx.hideLoading()
+        // console.log(res)
+        if (res.data == 1) {
+          wx.showToast({
+            title: '手机号绑定成功',
+            icon: 'none'
+          })
+        }
+      })
+    },
+    // 获取手机
+    getPhoneNumber(e) {
+      wx.showLoading({
+        title: '',
+      })
+      const res = e.detail
+      if (res.errMsg == "getPhoneNumber:ok") {
+        this.setData({
+          iv: res.iv,
+          encryptedData: res.encryptedData
+        })
+        this.getUserPhone()
+      }
+      this.closeModal1()
+    },
+    // 验证手机号
+    checkPhone() {
+      wx.showLoading({
+        title: '',
+      })
+      api.checkPhone({
+        userId: wx.getStorageSync('userId')
+      }).then(res => {
+        wx.hideLoading()
+        if (res.data == 1) {
+          this.sureBuy()
+        } else {
+          this.setData({
+            show: true
+          })
+        }
+      })
+    },
+    // 关闭弹框
+    closeModal1() {
+      this.setData({
+        show: false,
+        modal: false
+      })
+    },
     // 付款页面
     pay() {
         let self=this
@@ -206,44 +317,48 @@ Page({
             })
             return
         }
-
-        const id = this.data.id
-        const total = this.data.total
-        const voucherId = this.data.voucherId || ''
-        api.settleCommodityOrder({
-            orderId: id,
-            addressId: addressId,
-            userVoucherId: voucherId,
-            userId:wx.getStorageSync('userId')
-          }).then(res => {
-            console.log(res)
-            if (res.status == 200) {
-              const data = res.data
-              wx.requestPayment({
-                timeStamp: data.timeStamp,
-                nonceStr: data.nonceStr,
-                package: data.package,
-                signType: 'MD5',
-                paySign: data.paySign,
-                success(res) {
-                    wx.showToast({
-                        title: '付款成功',
-                        icon: 'success',
-                    })
-                    self.orderDetail()
-                },
-                fail(res) {}
-              })
-            }else{
-              wx.showToast({
-                title: res.msg,
-                icon : 'none'
-              })
-            }
-          })
+        this.checkPhone()
         // wx.navigateTo({
         //     url: `/self/pay/index?id=${id}&total=${total}&voucherId=${voucherId}&addressId=${addressId}`,
         // })
+    },
+    // 验证成功后付款
+    sureBuy() {
+      const id = this.data.id
+      const total = this.data.total
+      const voucherId = this.data.voucherId || ''
+      const addressId = this.data.addressId
+      api.settleCommodityOrder({
+        orderId: id,
+        addressId: addressId,
+        userVoucherId: voucherId,
+        userId: wx.getStorageSync('userId')
+      }).then(res => {
+        console.log(res)
+        if (res.status == 200) {
+          const data = res.data
+          wx.requestPayment({
+            timeStamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: 'MD5',
+            paySign: data.paySign,
+            success(res) {
+              wx.showToast({
+                title: '付款成功',
+                icon: 'success',
+              })
+              self.orderDetail()
+            },
+            fail(res) { }
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none'
+          })
+        }
+      })
     },
     // 选择收货地址
     selectAddress() {
@@ -262,7 +377,7 @@ Page({
             if (diff <= 0) {
                 clearInterval(timer)
                 self.setData({
-                    diff: false
+                    endTime: endTime
                 })
                 // 刷新页面
                 self.orderDetail()
@@ -289,11 +404,9 @@ Page({
         })
         let arr = this.data.couponList
         api.usableVoucherList({
-            merchantId: this.data.merchantId,
-            userId: wx.getStorageSync('userId'),
-            condition: this.data.orderPrice,
-            pageNum: this.data.pageNum,
-            pageSize: 10
+          merchantId: wx.getStorageSync('merchantId'),
+          userId: wx.getStorageSync('userId'),
+          condition: this.data.orderPrice,
         }).then(res => {
             // console.log(res)
             const data = res.data
@@ -347,7 +460,8 @@ Page({
     closeModal() {
         this.setData({
             modal: false,
-            mask: false
+            mask: false,
+            show: false
         })
     },
     // 查看物流
@@ -382,6 +496,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        wx.setStorageSync('orderId', options.id)
         this.setData({
             id: options.id,
             baseURL,

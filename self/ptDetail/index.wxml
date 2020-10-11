@@ -113,7 +113,7 @@
 					<view class="userTag cff f24" wx:if="{{index===0}}">团长</view>
 				</view>
 			</view>
-			<view class="invition f28 cff" wx:if="{{orderStatus==11}}">邀请好友参与拼团</view>
+			<view class="invition f28 cff" catchtap="sharegood" wx:if="{{orderStatus==11}}">邀请好友参与拼团</view>
 			<view class="invition f28 cff" wx:if="{{orderStatus==5||orderStatus==6||orderStatus==9}}" bindtap="morePt">查看更多拼团商品</view>
 			<view class="goodckOrder_list" wx:for="{{list}}" wx:key="index">
 				<view class="flex_row">
@@ -291,6 +291,32 @@
 		<view class="text f26 c99">{{expressFee}}</view>
 	</view>
 </view>
+<!-- 分享弹框 -->
+<van-popup close-on-click-overlay="{{true}}" show="{{ share }}" position="bottom" custom-style="max-height: 90%" round>
+  <view class="share pr fadeUp sliderUp">
+      <view class="top flex_row al pr jc">
+          <!-- <view class="title c33 f28">分享到</view> -->
+          <image catchtap="closeShare" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
+      </view>
+      <view class="bottom flex_row al jb pa">
+          <view class="container pr">
+              <view class="share_area">
+                  <image class="share_icon pa" src="{{imgUrl+'share1.png'}}"></image>
+                  <button open-type="share" class="share_btn pa"></button>
+              </view>
+              <view class="f28 c33 tx text">分享给朋友</view>
+          </view>
+          <view class="right_site al jc">
+              <view class="share_bg flex_row al jc" catchtap="makePoster">
+                  <image class="share_icon1" src="{{imgUrl+'poster1.png'}}"></image>
+              </view>
+              <view class="f28 c33 tx text">生成商品海报</view>
+          </view>
+      </view>
+  </view>
+</van-popup>
+<!-- 海报 -->
+<share-box isCanDraw="{{poster}}" bind:initData="hiddlePoster" />
 <!-- 核销提示 -->
 <!-- <van-popup show="{{ show }}" round="true" closeable bind:close="onClose">
     <view class="tankuang">

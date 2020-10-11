@@ -24,7 +24,11 @@ class Api extends Http {
   }
   // 获取用户信息
   getImageInfo (data) {
-    return this.request('aapi/WeiXin/deciphering', data, 'GET')
+    return this.request('api/WeiXin/deciphering', data, 'GET')
+  }
+  // 品牌介绍
+  agencyDetail (data) {
+    return this.request('api/home/agencyDetail', data, 'GET')
   }
   // 轮播图
   getSwiper(data) {
@@ -114,6 +118,10 @@ class Api extends Http {
   comments(data) {
     return this.request('api/merchant/commodityList', data, 'POST')
   }
+  // 已评价列表
+  getEvaluateList(data) {
+    return this.request('api/order/getEvaluateList', data, 'GET')
+  } 
   // 收货地址列表
   addressList(data) {
     return this.request('api/address/getAddressList', data, 'POST')
@@ -228,7 +236,7 @@ class Api extends Http {
   }
   // 抵扣券详情（未拥有）
   getVoucherDetail(data) {
-    return this.request('api/common/getVoucherDetail', data, 'POST')
+    return this.request('api/common/getVoucherDetail', data, 'GET')
   }
   // 申请退券
   backUserVoucher(data) {
@@ -249,6 +257,10 @@ class Api extends Http {
   // 新增、编辑收货地址
   addAddress(data) {
     return this.request('api/address/addAddress', data, 'POST')
+  }
+  // 更新收货地址
+  updateAddress(data) {
+    return this.request('api/order/updateOrderAddressId', data, 'POST')
   }
   // 设置默认地址、删除地址
   changeAddress(data) {
@@ -312,7 +324,7 @@ class Api extends Http {
   }
   // 是否有限时秒杀
   selectSeckill(data) {
-    return this.request('api/seckill/selectSeckill', data, 'POST')
+    return this.request('api/seckill/selectSeckill', data, 'GET')
   }
   // 限时秒杀商品列表
   seckillList(data) {
@@ -348,7 +360,7 @@ class Api extends Http {
   } 
   // 检查手机号
   checkPhone(data) {
-    return this.request('api/user/checkPhone', data)
+    return this.request('api/user/checkPhone', data, 'GET')
   }
   // 获取所有参团人员信息
   getAllGroupUser(data) {

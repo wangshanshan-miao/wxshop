@@ -12,7 +12,8 @@ Page({
   data: {
     pageNum: 1,
     totalPage: 1,
-    isRequest: false
+    isRequest: false,
+    array: 5
   },
   // 全部评价
   comments() {

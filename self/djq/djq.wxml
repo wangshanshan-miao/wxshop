@@ -29,7 +29,7 @@
 
 <!-- 列表 -->
 <view class="yhqList">
-	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell flex_col pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
+	<view bindtap="detail" data-index="{{index}}" data-detailId="{{item.userVoucherId}}" class="yhqList_cell flex_col pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
 		<view class="flex_row jb" style="margin-bottom: 22rpx;">
       <view class="f36 c22 fb">
         {{item.voucherName}}
@@ -43,11 +43,11 @@
     </view>
     <view class="f24 c99 flex_col" style="margin-bottom: 15rpx;line-height: 33rpx;">
       <text>下单时间：{{item.orderTime}}</text>
-      <text>有效期至：{{item.expirationTime}}</text>
+      <!-- <text>有效期至：{{item.expirationTime}}</text> -->
     </view>
     <view class="cf0 f32 fb price">￥{{item.sellingPrice}}</view>
     <view class="btn1 f26 tc flex_row">
-      <view class="btns f26 cff tc" wx:if="{{item.voucherStatus == 0}}">去使用</view>
+      <view class="btns f26 cff tc" catchtap="goDjq" data-id="{{item.userVoucherId}}" wx:if="{{item.voucherStatus == 0}}">去使用</view>
       <text class="btns delete" wx:if="{{item.voucherStatus == 1}}">删除</text>
       <text class="btns cff" catchtap="sendTalk" wx:if="{{item.voucherStatus == 1}}">立即评价</text>
     </view>

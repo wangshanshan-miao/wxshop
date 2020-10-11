@@ -101,8 +101,13 @@ Page({
         // wx.navigateBack({
         //   complete: (res) => {},
         // })
-        wx.navigateTo({
-          url: '../index?from=' + this.data.from,
+        let pages = getCurrentPages();
+        let prevPage = pages[pages.length - 2];
+        prevPage.setData({
+          from: this.data.from,
+        })
+        wx.navigateBack({
+          delta: 1
         })
       }
     })
@@ -111,6 +116,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    debugger
     if (options.from) {
       this.setData({
         from: options.from

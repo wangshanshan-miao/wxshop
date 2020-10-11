@@ -17,21 +17,22 @@ Page({
     normalSrc: imgUrl+'star1.png',
     selectedSrc: imgUrl+'star.png',
     score: [],
-    number: 5
+    number: 5,
+    array: 5
   },
   // 订单详情
   orderDetail() {
-    api.orderDetail({
+    api.evaList({
       orderId: this.data.id
     }).then(res => {
       // console.log(res)
       const data = res.data
       const outIds = []
-      for(var i in data.orderCommodityList) {
-        outIds[i]= data.orderCommodityList[i].outId
+      for (var i in data.orderCommodityDtoList) {
+        outIds[i] = data.orderCommodityDtoList[i].outId
       }
       this.setData({
-        list: data.orderCommodityList,
+        list: data.orderCommodityDtoList,
         outId: outIds
       })
     })
@@ -116,11 +117,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.noChange) {
+      wx.setNavigationBarTitle({
+        title: '查看评价'
+      })
+    }
     this.setData({
         baseURL,
         imgBaseUrl,
         id: options.id,
-        imgUrl
+        imgUrl,
+        noChange: options.noChange || false
     })
   },
   // 

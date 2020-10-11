@@ -22,3 +22,6 @@
     height: 17rpx;
     margin-left: 10rpx;
 }
+.ckOrder_eva {
+  margin-top: 110rpx;
+}

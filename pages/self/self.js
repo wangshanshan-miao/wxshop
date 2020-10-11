@@ -108,7 +108,12 @@ Page({
         url: `/self/msg/msg`,
       })
     },
-
+    // 已评价、待评价订单
+    evaluate () {
+      wx.navigateTo({
+        url: `/self/evaluate/evaluate`,
+      })
+    },
     // 购物车
     car () {
       wx.navigateTo({
@@ -163,13 +168,25 @@ Page({
         api.selectUserDetail({
             userId: wx.getStorageSync('userId')
         }).then(res => {
-          console.log('res',res);
-          wx.setStorageSync('userName', res.data.userName);
-            wx.setStorageSync('userHead', imgBaseUrl+res.data.headUrl);
+          if (res.status == 200) {
+            console.log('res', res);
+            wx.setStorageSync('userName', res.data.userName);
+            wx.setStorageSync('userHead', imgBaseUrl + res.data.headUrl);
             this.setData({
-                userInfo: res.data
+              userInfo: res.data
             })
+          } else {
+            this.setData({
+              userInfo: ''
+            })
+          }
         })
+    },
+    //我的钱包
+    goMoney() {
+      wx.navigateTo({
+        url: `/self/yj/yj`,
+      })
     },
     // 登录弹框
     login1() {
@@ -181,8 +198,8 @@ Page({
               appId: appId
               }).then(res=>{
                   if(res.status == 200){
-                    //wx.setStorageSync('openid', 'res.data.openid')
-                    wx.setStorageSync('openid', 'abc123456')
+                    wx.setStorageSync('openid', 'res.data.openid')
+                    // wx.setStorageSync('openid', 'abc123456')
                     self.login()
                   }
               })
@@ -190,7 +207,6 @@ Page({
         })
     },
     login() {
-      debugger
       const self = this
       api.login({
         openid: wx.getStorageSync('openid'),
@@ -201,9 +217,22 @@ Page({
         if (res.data.status == 1) {
           // console.log('登录成功')
           wx.setStorageSync('userId', res.data.userId)
-          wx.setStorageSync('userName', res.data.userName)
-          wx.setStorageSync('headUrl', res.data.headUrl)
+          // wx.setStorageSync('userName', res.data.userName)
+          // wx.setStorageSync('headUrl', res.data.headUrl)
           wx.setStorageSync('agencyId', res.data.agencyId)
+          let user = {
+            userName: res.data.userName,
+            userPhone: res.data.userPhone,
+            headUrl: res.data.headUrl,
+            userId: res.data.userId
+          }
+          this.setData({
+            userInfo: user
+          })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
           console.log('userId', res.data.userId)
         } else if (res.data.status == 0) {
           wx.showToast({

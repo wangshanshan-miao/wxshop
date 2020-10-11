@@ -1,0 +1,5 @@
+/* home/agencyDetail/index.wxss */
+.intro {
+  width: 93%;
+  padding: 14rpx 3.5%;
+}

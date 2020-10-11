@@ -33,7 +33,8 @@ Page({
       imgBaseUrl,
       car: options.form,
       total: options.total,
-      imgUrl
+      imgUrl,
+      nowPrice: options.price || ''
     })
   },
 

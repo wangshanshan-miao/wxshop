@@ -94,8 +94,16 @@ Page({
     closeModal() {
         this.setData({
             mask: false,
-            show: false
+            show: false,
+            txShow: false
         })
+    },
+    // 支出明细
+    goDetail(e) {
+      let id = app.getValue(e).id
+      wx.navigateTo({
+        url: `/self/yjDetail/index?id=${id}`,
+      })
     },
     inputMoney(e) {
         const value = e.detail.value.trim()
@@ -167,7 +175,7 @@ Page({
     tx(e) {
         const id = app.getValue(e).id
         wx.navigateTo({
-            url: `/pages/self/txjg/index?id=${id}`
+            url: `/self/txjg/index?id=${id}`
         })
     },
     onReachBottom() {

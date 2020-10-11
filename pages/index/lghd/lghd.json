@@ -2,6 +2,6 @@
   "usingComponents": {
     "noData" :"../../../components/noData/index"
   },
-  "navigationBarTitleText": "联购活动"
+  "navigationBarTitleText": "领券中心"
 
 }

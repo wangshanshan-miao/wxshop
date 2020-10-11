@@ -1,3 +1,4 @@
+<wxs src="../../utils/phone.wxs" module="tools" />
 <view class="basic_model boxs">
     <view class="basic_list flex_row al jb">
         <view class="basic_list_title f26 c33">头像</view>
@@ -15,9 +16,10 @@
     </view>
     <view class="basic_list flex_row al jb">
         <view class="basic_list_title f26 c33">手机号</view>
-        <view class="flex_row al">
-            <view class="f28 c33 fb">{{phone}}</view>
+        <view catchtap="editPhone" class="flex_row al">
+            <view class="f28 c33 fb">{{tools.toHide(userInfo.userPhone)}}</view>
             <!-- <image class="basic_list_jt" src="{{imgUrl+'arrow-left.png'}}" /> -->
         </view>
     </view>
+    <view bindtap="logout" class="ckOrder_eva tc f28 cff">退出登录</view>
 </view>

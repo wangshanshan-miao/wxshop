@@ -1,5 +1,6 @@
 // pages/voucher/voucher.js
 import api from "../../utils/api"
+
 Page({
   /**
    * 页面的初始数据

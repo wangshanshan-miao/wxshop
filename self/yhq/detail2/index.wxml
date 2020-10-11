@@ -1,22 +1,87 @@
 <!--pages/self/yhq/detail/index.wxml-->
 <!-- 已拥有的代金券或优惠券详情 -->
-<view class="coupon flex_row al">
-	<image src="{{imgUrl+'yhqbg1.png'}}"></image>
-	<view class="left">
-		<text>￥</text>{{voucherPrice}}
-	</view>
-	<view class="right">
-		<view class="top flex_row  al">
-			<view class="top-left cff flex_row al jc">{{useType==0?'优惠券':'代金券'}}</view>
-			<!-- <view class="top-right f22">已售{{sum}}</view> -->
+
+<view class="ckOrderModel boxs pr shadow">
+	<!-- 显示订单状态 -->
+	<view class="showCkOrder_state boxs">
+		<view class="flex_row flex_row jb al">
+			<view class='flex_col' style="margin-top: 14rpx;">
+				<view class="f32 mb10 cff">等待买家付款</view>
+			</view>
+			<image class="order_state_img" src="{{imgUrl+'ddfk.png'}}" />
 		</view>
-		<view class="middle f30" wx:if="{{condition == 0}}">无门槛</view>
-		<view class="middle f30" wx:else>满{{condition}}可使用</view>
-		<!-- <view class="bottom c99 f20">有效期至 : {{expirationTime}}</view> -->
+	</view>
+	<!-- <view class="line"></view> -->
+  <view class="main pa">
+    <view class="title f32 fb c33 tc">核销码</view>
+    <view class="destroy flex_row">
+      <input bindinput="inputCode" class="input f28" placeholder-style="color:#CBCBCB" placeholder="待商家输入核销码"></input>
+      <view catchtap="use" class="cancel flex_row al jc f28 cf1">核销</view>
+    </view>
+  </view>
+  <view class="coupon flex_col pa">
+    <view class="f44 fb c33" style="margin: 0rpx 0 5rpx 51rpx;">{{voucherName}}</view>
+    <view style="margin-left: 51rpx;">
+      <text class="f25 cf1">￥</text>
+      <text class="f36 cf1 fb">{{voucherPrice}}</text>
+    </view>
+  </view>
+	<!-- 订单金额数据 -->
+	<!-- <view class="line"></view> -->
+	<!-- 订单信息 -->
+	<view class="orderIntro boxs pa">
+    <view class="flex_row jb price">
+      <text class="f28 c33">商品总价</text>
+      <view>
+        <text class="cf0 f24">￥</text>
+        <text class="f28 cf0">{{sellingPrice}}</text>
+      </view>
+    </view>
+		<view class="mt40" style="margin-top: 10rpx;">
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28 c98">订单编号：</view>
+				<view class="orderIntro_list_warn f28 c98">{{orderNumber}}</view>
+			</view>
+			<view class="orderIntro_list flex_row al">
+				<view class="orderIntro_list_title f28 c98">下单时间：</view>
+				<view class="orderIntro_list_warn f28 c98">{{orderTime || ''}}</view>
+			</view>
+			<view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+				<view class="orderIntro_list_title f28 c98">支付方式：</view>
+				<view class="orderIntro_list_warn f28 c98">微信支付</view>
+			</view>
+			<view class="orderIntro_list flex_row al" wx:if="{{orderStatus != 0}}">
+				<view class="orderIntro_list_title f28 c98">支付时间：</view>
+				<view class="orderIntro_list_warn f28 c98">{{buyTime}}</view>
+			</view>
+			<!-- 暂定 -->
+			<!-- <view class="orderIntro_list flex_row al">
+                <view class="orderIntro_list_title f28 c99">成交时间：</view>
+                <view class="orderIntro_list_warn f28 c33">2019-11-03 12:12:12</view>
+            </view> -->
+		</view>
+		<!-- <view class="orderGroup flex_row jb" wx:if="{{orderStatus==4|| orderStatus==8 || orderStatus==7}}">
+			<!-- <view class="ckOrder_ewm f28 cff tc">查看二维码</view> -->
+			<!-- <view bindtap="refundBtn" data-id="{{orderId}}" class="ckOrder_ewm f28 cff tc" wx:if="{{orderStatus==1 || orderStatus==8 || orderStatus==7}}">
+				退款
+			</view> -->
+			<!-- <view catchtap="lookLogistics" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				查看物流
+			</view> -->
+			<!-- <view catchtap="confirm" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==4}}">
+				确认收货
+			</view>
+			<view catchtap="comment" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==7}}">
+				立即评价
+			</view>
+			<view catchtap="evaluate" class="ckOrder_eva f28 cff tc" wx:if="{{orderStatus==8}}">
+				查看评价
+			</view>
+		</view> -->
 	</view>
 </view>
 
-<view class="main">
+<!-- <view class="main">
 	<view class="title f28">{{useType==0?'优惠券':'抵扣券'}}使用说明</view>
 	<view class="destroy flex_row f28">
 		{{details}}
@@ -56,4 +121,4 @@
   <view class="button flex_row al jc cff f28" catchtap="refund">
     申请退款
   </view>
-</view>
+</view> -->

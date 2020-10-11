@@ -20,25 +20,76 @@ Page({
       name: '已评价',
       status: 8
     }],
-    active: 0
+    active: 0,
+    array: 5
   },
   // 评价列表
   evaDetail () {
     const orderStatus = this.data.orderStatus
     const outIds = []
-    api.evaList({
-      orderId: this.data.orderId,
-      orderStatus
+    api.getEvaluateList({
+      userId: wx.getStorageSync('userId')
     }).then(res => {
       // console.log(res)
       const data = res.data
-      for (var i in data.orderCommodityDtoList) {
-        outIds[i] = data.orderCommodityDtoList[i].outId
+      for (var i in data.list) {
+        outIds[i] = data.list[i].outId
       }
       this.setData({
-        list: data.orderCommodityDtoList,
-        outId: outIds
+        list: data.list,
+        outId: outIds,
+        orderList: data
       })
+    })
+  },
+  // 未评价列表
+  orderList() {
+    let orderStatus = this.data.orderStatus
+    const arr = this.data.list
+    wx.showLoading({
+      title: '加载中...',
+    })
+    api.orderList({
+      userId: wx.getStorageSync('userId'),
+      buyType: 1, // 普通订单
+      pageNum: this.data.pageNum,
+      pageSize: 10,
+      orderStatus // 订单状态
+    }).then(res => {
+      wx.hideLoading({})
+      // console.log(res)
+      const data = res.data
+      let list = []
+      if (data.list.length > 0) {
+        list = [...arr, ...data.list]
+        list.forEach(m => {
+          let sum = 0
+          m.orderCommodityDtoList.forEach(n => {
+            sum = sum + n.amount * n.realPrice
+          })
+          m.totalPrice = sum
+        })
+      }
+      this.setData({
+        totalPage: data.totalPage,
+        pageNum: data.pageNum,
+        list: list,
+        isRequest: false
+      })
+    })
+  },
+  // 去评价
+  goComment(e) {
+    const id = app.getValue(e).id
+    wx.navigateTo({
+      url: `/self/comment/index.js?id=${id}`,
+    })
+  },
+  // 去评价
+  goComment(e) {
+    const id = app.getValue(e).id
+    wx.navigateTo({
+      url: `/self/comment/index.js?id=${id}`,
     })
   },
   clickTab (e) {
@@ -48,6 +99,11 @@ Page({
       active: index,
       orderStatus: status
     })
+    if (status == 7) {
+      this.orderList()
+    } else {
+      this.evaDetail()
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -56,9 +112,8 @@ Page({
     this.setData({
       baseURL,
       imgBaseUrl,
-      orderId: options.id,
-      active: 1,
-      orderStatus: 8,
+      active: 0,
+      orderStatus: 7,
       imgUrl
     })
   },
@@ -74,7 +129,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.evaDetail()
+    this.orderList()
   },
 
   /**

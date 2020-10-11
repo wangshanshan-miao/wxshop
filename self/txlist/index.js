@@ -43,7 +43,7 @@ Page({
             pageSize: 99
         }).then(res => {
             this.setData({
-                expendList: res.data
+                expendList: res.data.list
             })
         })
     },

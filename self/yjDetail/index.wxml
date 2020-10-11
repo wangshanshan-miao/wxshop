@@ -1,0 +1,30 @@
+<!--self/yjDetail/index.wxml-->
+<wxs src="../../utils/phone.wxs" module="tools" />
+<view class="boxs shadow">
+  <view class="pdBox">
+    <view class="flex_row jb mb">
+      <text class="f32 c33 fb">{{list.commissionName}}</text>
+      <view>
+        <!-- <text class="f28 cf46">-</text> -->
+        <text class="f32 cf46 fb">{{list.money}}</text>
+      </view>
+    </view>
+    <view class="f24 c99">{{list.createTime || ''}}</view>
+  </view>
+  <view class="line"></view>
+  <view class="pdBox border">
+    <view class="f32 c33 fb">订单详情</view>
+    <view class="flex_row" style="margin-top: 29rpx;">
+      <image class="headUrl" src="{{imgBaseUrl + list.headUrl+'?x-image-process=image/resize,p_30'}}"></image>
+      <view class="flex_col">
+        <text class="fb f34 c22" style="margin-bottom: 3rpx;">{{list.userName}}</text>
+        <text class="f28 c22">{{tools.toHide(list.userPhone)}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="pdBox lh">
+    <view class="f30 c33">消费总件数：{{list.count}}</view>
+    <view class="f30 c33">消费总额：{{list.totalPrices}}</view>
+    <view class="f30 c33">完成时间：{{list.updateTime}}</view>
+  </view>
+</view>

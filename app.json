@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index/index",
-    "pages/index/cg/cg",
     "pages/index/Newcomer/index",
     "pages/index/goodsList/cg",
     "pages/index/pt/pt",
+    "pages/index/cg/cg",
     "pages/index/ms/ms",
     "pages/index/qc/qc",
     "pages/index/shops/shop",
@@ -16,7 +16,8 @@
     "pages/message/index/message",
     "pages/message/detail/index",
     "pages/sort/index",
-    "pages/self/self"
+    "pages/self/self",
+    "pages/index/agencyDetail/index"
   ],
   "subpackages": [
     {
@@ -51,7 +52,8 @@
         "msgDetail/index",
         "news/news",
         "djq/djq",
-        "pj/pj"
+        "pj/pj",
+        "yjDetail/index"
       ]
     },
     {
@@ -72,7 +74,8 @@
         "talk/index",
         "order/order",
         "address/editAdd/index",
-        "address/list/index"
+        "address/list/index",
+        "goodsDe/morePt/index"
       ]
     }
   ],

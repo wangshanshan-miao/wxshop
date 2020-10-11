@@ -249,20 +249,22 @@ Page({
   // 优惠券详情
   detail(e) {
     const id = app.getValue(e).detailid
+    let index = app.getValue(e).index
     // console.log(id)
     const state = this.data.mananger;
     if (!state) {
       return false
     }
+    let status = this.data.list[index].voucherStatus
     wx.navigateTo({
-      url: `/self/yhq/detail2/index?id=${id}`,
+      url: `/self/yhq/detail/index?id=${id}&status=${status}`, // 0代表已购买，待使用; 1代表待评价
     })
   },
   // 去用券
   goDjq(e) {
     let id = app.getValue(e).id
     wx.navigateTo({
-      url: `/home/voucher/voucher?id=${id}`,
+      url: `/self/yhq/detail2/index?id=${id}`,
       success: (result) => {
 
       },

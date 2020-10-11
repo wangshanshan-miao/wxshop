@@ -45,7 +45,7 @@ Page({
     interval: 25, // 时间间隔
     swiper: {
       indicatorDots: false,
-      autoplay: false,
+      autoplay: true,
       interval: 5000,
       duration: 1000,
       current: 0
@@ -87,11 +87,25 @@ Page({
       goodNum: this.data.goodNum - 1
     })
   },
+  // 轮播特效果二
+  bindchange(e) {
+    this.setData({
+      swiperIdx: e.detail.current
+    })
+  },
   goPage(e) {
     console.log(e.currentTarget.dataset.index)
     if (e.currentTarget.dataset.index == 0) {
       wx.navigateTo({
         url: '/pages/index/Newcomer/index',
+      })
+    } else if (e.currentTarget.dataset.index == 1) {
+      wx.navigateTo({
+        url: '/pages/index/lghd/lghd',
+      })
+    } else if (e.currentTarget.dataset.index == 2) {
+      wx.navigateTo({
+        url: '/pages/index/agencyDetail/index',
       })
     }
   },
@@ -243,13 +257,45 @@ Page({
   },
   // 查看我的优惠券
   lookCoupon() {
-    wx.navigateTo({
-      url: '/self/yhq/yhq'
+    wx.showLoading({
+      title: '',
+    })
+    api.getVoucherToUser({
+      areaCode: wx.getStorageSync('shortAreaCode'),
+      // areaCode: '420117',
+      userId: wx.getStorageSync("userId"),
+      merchantId: wx.getStorageSync('merchantId')
+      // userId: '81'
+    }).then(res => {
+      wx.hideLoading()
+      if (res.data.status === 1) {
+        this.setData({
+          gift: false
+        })
+        wx.showToast({
+          title: '领取成功！',
+          icon: "success",
+          duration: 2000,
+          complete: () => {
+            wx.navigateTo({
+              url: `/self/yhq/yhq`,
+            })
+          }
+        })
+      }
+      wx.showToast({
+        title: res.data.message,
+      })
     })
   },
   benefit() {
     wx.navigateTo({
       url: '/pages/index/lghd/lghd',
+    })
+  },
+  usequan() {
+    wx.switchTab({
+      url: `/pages/index/index/index`,
     })
   },
   onPullDownRefresh() {
@@ -274,85 +320,85 @@ Page({
     }) */
 
     const self = this
-    wx.authorize({
-      scope: 'scope.userLocation',
-      success() {
-        // console.log('授权地理位置')
-        // 授权地理位置
-        wx.getLocation({
-          type: 'wgs84',
-          success(res) {
-            // console.log(res)
-            const latitude = res.latitude
-            const longitude = res.longitude
-            qqmapsdk.reverseGeocoder({
-              location: {
-                latitude,
-                longitude
-              },
-              success: function (res) {
-                console.log(res)
-                const result = res.result.ad_info.adcode
-                wx.setStorageSync('shortAreaCode', result)
-                self.getmerchantId()
-                self.setData({
-                  location: res.result.address_component.city + res.result.address_component.district
-                })
-                // wx.setStorageSync('areaCode', result)
-                self.setData({
-                  areaCode: result
-                })
+    // wx.authorize({
+    //   scope: 'scope.userLocation',
+    //   success() {
+    //     // console.log('授权地理位置')
+    //     // 授权地理位置
+    //     wx.getLocation({
+    //       type: 'wgs84',
+    //       success(res) {
+    //         // console.log(res)
+    //         const latitude = res.latitude
+    //         const longitude = res.longitude
+    //         qqmapsdk.reverseGeocoder({
+    //           location: {
+    //             latitude,
+    //             longitude
+    //           },
+    //           success: function (res) {
+    //             console.log(res)
+    //             const result = res.result.ad_info.adcode
+    //             wx.setStorageSync('shortAreaCode', result)
+    //             self.getmerchantId()
+    //             self.setData({
+    //               location: res.result.address_component.city + res.result.address_component.district
+    //             })
+    //             // wx.setStorageSync('areaCode', result)
+    //             self.setData({
+    //               areaCode: result
+    //             })
 
-                // self.gitAllareaCode()
-                wx.setStorageSync('location', self.data.location)
+    //             // self.gitAllareaCode()
+    //             wx.setStorageSync('location', self.data.location)
 
-                api.isOnLine().then(res => {
-                  if (res.data == 1) {
-                    api.getDictValue({
-                      dataType: 'area_code'
-                    }).then(res => {
-                      const data = res.data[0]
-                      // console.log(data)
-                      self.setData({
-                        areaCode: data.key,
-                      })
-                      wx.setStorageSync('shortAreaCode', data.key)
-                      wx.setStorageSync('location', data.text)
-                      // self.gitAllareaCode()
-                    })
-                  }
-                })
-              },
-              fail: function (error) {
-                // console.error(error);
+    //             api.isOnLine().then(res => {
+    //               if (res.data == 1) {
+    //                 api.getDictValue({
+    //                   dataType: 'area_code'
+    //                 }).then(res => {
+    //                   const data = res.data[0]
+    //                   // console.log(data)
+    //                   self.setData({
+    //                     areaCode: data.key,
+    //                   })
+    //                   wx.setStorageSync('shortAreaCode', data.key)
+    //                   wx.setStorageSync('location', data.text)
+    //                   // self.gitAllareaCode()
+    //                 })
+    //               }
+    //             })
+    //           },
+    //           fail: function (error) {
+    //             // console.error(error);
 
-              },
-              complete: function (res) {
-                // console.log(res);
-              }
-            })
-          }
-        })
-      },
-      fail() {
-        // console.log('fail')
+    //           },
+    //           complete: function (res) {
+    //             // console.log(res);
+    //           }
+    //         })
+    //       }
+    //     })
+    //   },
+    //   fail() {
+    //     // console.log('fail')
 
-        api.getDictValue({
-          dataType: 'area_code'
-        }).then(res => {
-          const data = res.data[0]
-          // console.log(data)
-          self.setData({
-            areaCode: data.key,
-            location: data.text
-          })
-          wx.setStorageSync('shortAreaCode', data.key)
-          wx.setStorageSync('location', data.text)
-          // self.gitAllareaCode()
-        })
+    //     api.getDictValue({
+    //       dataType: 'area_code'
+    //     }).then(res => {
+    //       const data = res.data[0]
+    //       // console.log(data)
+    //       self.setData({
+    //         areaCode: data.key,
+    //         location: data.text
+    //       })
+    //       wx.setStorageSync('shortAreaCode', data.key)
+    //       wx.setStorageSync('location', data.text)
+    //       // self.gitAllareaCode()
+    //     })
 
-      }
-    })
+    //   }
+    // })
 
   },
   // 关闭红包
@@ -385,12 +431,16 @@ Page({
     }).then(res => {
       // 登录成功 
       if (res.data.status == 1) {
-        // console.log('登录成功')
+        console.log('登录成功', res)
         wx.setStorageSync('userId', res.data.userId)
         wx.setStorageSync('userName', res.data.userName)
         wx.setStorageSync('headUrl', res.data.headUrl)
-        wx.setStorageSync('agencyId', res.data.agencyId)
-        console.log('userId', res.data.userId)
+        // wx.setStorageSync('agencyId', res.data.agencyId)
+        if (res.data.voucherFlag !== 0) {
+          this.getYhq()
+        }
+        this.getHome()
+        this.swiper()
       } else if (res.data.status == 0) {
         wx.showToast({
           title: res.data.message,
@@ -436,6 +486,34 @@ Page({
       }
     })
   },
+  // 获取新人优惠券
+  getYhq() {
+    wx.showLoading({
+      title: '',
+    })
+    api.getVoucherList1({
+      useType: 0,
+      merchantId: wx.getStorageSync('merchantId')
+    }).then(res => {
+      wx.hideLoading()
+      this.setData({
+        gift: true
+      })
+      // console.log(res)
+      const data = res.data
+      for (var i=0; i< data.list.length; i++ ) {
+        data.list[i].createTime = data.list[i].createTime.split(' ')[0]
+      }
+      this.setData({
+        totalPage: data.totalPage,
+        pageNum: data.pageNum,
+        couponList: data.list,
+        isRequest: false
+      })
+      wx.hideLoading({})
+
+    })
+  },
   // 获取区域id
   getmerchantId() {
     wx.showLoading({
@@ -453,17 +531,25 @@ Page({
           wx.setStorageSync('agencyId', data.agencyId)
           wx.setStorageSync('merchantId', data.merchantId)
         } else {
-          wx.setStorageSync('agencyId', 31)
-          wx.setStorageSync('merchantId', 155) 
-          // wx.hideLoading()
-          // this.setData({
-          //   poster: true
-          // })
-          // return false
+          // wx.setStorageSync('agencyId', 31)
+          // wx.setStorageSync('merchantId', 155) 
+          wx.hideLoading()
+          this.setData({
+            poster: true
+          })
+          return false
         }
         this.getHome()
         this.swiper()
         this.getList()
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.msg
+        })
+        this.setData({
+          poster: true
+        })
       }
     })
   },
@@ -484,11 +570,25 @@ Page({
       // console.log(res)
       const data = res.data
       if (res.status == 200) {
+        this.checkPhone()
+        // wx.setStorageSync('phone', JSON.parse(data).phoneNumber)
         this.setData({
           phone: JSON.parse(data).phoneNumber
         })
       }
-      this.register()
+      // this.register()
+    })
+  },
+  // 验证手机号
+  checkPhone () {
+    wx.showLoading({
+      title: '',
+    })
+    api.checkPhone({
+      userId: wx.getStorageSync('userId')
+    }).then(res => {
+      wx.hideLoading()
+      console.log(res)
     })
   },
   // 注册
@@ -545,77 +645,112 @@ Page({
     this.setData({
       location: wx.getStorageSync('location')
     })
-    if (!areaCode) {
-      wx.getSetting({
-        success(res) {
-          if (!res.authSetting['scope.userLocation']) {
-            wx.authorize({
-              scope: 'scope.userLocation',
-              success() {
-                // console.log('授权地理位置')
-                // 授权地理位置
-                wx.getLocation({
-                  type: 'wgs84',
-                  success(res) {
-                    // console.log(res)
-                    const latitude = res.latitude
-                    const longitude = res.longitude
-                    qqmapsdk.reverseGeocoder({
-                      location: {
-                        latitude,
-                        longitude
-                      },
-                      success: function (res) {
-                        debugger
-                        // console.log(res)
-                        const result = res.result.ad_info.adcode
-                        wx.setStorageSync('shortAreaCode', result)
+    debugger
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              // console.log('授权地理位置')
+              // 授权地理位置
+              wx.getLocation({
+                type: 'wgs84',
+                success(res) {
+                  // console.log(res)
+                  const latitude = res.latitude
+                  const longitude = res.longitude
+                  qqmapsdk.reverseGeocoder({
+                    location: {
+                      latitude,
+                      longitude
+                    },
+                    success: function (res) {
+                      // console.log(res)
+                      const result = res.result.ad_info.adcode
+                      wx.setStorageSync('shortAreaCode', result)
+                      self.getmerchantId()
+                      self.setData({
+                        location: res.result.address_component.city + res.result.address_component.district
+                      })
+                      // wx.setStorageSync('areaCode', result)
+                      self.setData({
+                        areaCode: result
+                      })
 
-                        self.setData({
-                          location: res.result.address_component.city + res.result.address_component.district
-                        })
-                        // wx.setStorageSync('areaCode', result)
-                        self.setData({
-                          areaCode: result
-                        })
-
-                        // self.gitAllareaCode()
-                        wx.setStorageSync('location', self.data.location)
-                      },
-                      fail: function (error) {
-                        // console.error(error);
-                      },
-                      complete: function (res) {
-                        // console.log(res);
-                      }
-                    })
-                  }
-                })
-              },
-              fail() {
-                // console.log('fail')
-
-                api.getDictValue({
-                  dataType: 'area_code'
-                }).then(res => {
-                  const data = res.data[0]
-                  // console.log(data)
-                  self.setData({
-                    areaCode: data.key,
-                    location: data.text
+                      // self.gitAllareaCode()
+                      wx.setStorageSync('location', self.data.location)
+                    },
+                    fail: function (error) {
+                      // console.error(error);
+                    },
+                    complete: function (res) {
+                      // console.log(res);
+                    }
                   })
-                  wx.setStorageSync('shortAreaCode', data.key)
-                  wx.setStorageSync('location', data.text)
-                  // self.gitAllareaCode()
-                })
+                }
+              })
+            },
+            fail() {
+              // console.log('fail')
 
-              }
-            })
-          }
+              api.getDictValue({
+                dataType: 'area_code'
+              }).then(res => {
+                const data = res.data[0]
+                // console.log(data)
+                self.setData({
+                  areaCode: data.key,
+                  location: data.text
+                })
+                wx.setStorageSync('shortAreaCode', data.key)
+                wx.setStorageSync('location', data.text)
+                // self.gitAllareaCode()
+              })
+
+            }
+          })
+        } else {
+          wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+              // console.log(res)
+              const latitude = res.latitude
+              const longitude = res.longitude
+              qqmapsdk.reverseGeocoder({
+                location: {
+                  latitude,
+                  longitude
+                },
+                success: function (res) {
+                  // console.log(res)
+                  const result = res.result.ad_info.adcode
+                  wx.setStorageSync('shortAreaCode', result)
+                  self.getmerchantId()
+                  self.setData({
+                    location: res.result.address_component.city + res.result.address_component.district
+                  })
+                  // wx.setStorageSync('areaCode', result)
+                  self.setData({
+                    areaCode: result
+                  })
+
+                  // self.gitAllareaCode()
+                  wx.setStorageSync('location', self.data.location)
+                },
+                fail: function (error) {
+                  // console.error(error);
+                },
+                complete: function (res) {
+                  // console.log(res);
+                }
+              })
+            }
+          })
         }
-      })
-    }
-    this.getmerchantId()
+      }
+    })
+    
     wx.login({
       success: (res) => {
         let code = res.code
@@ -735,8 +870,12 @@ Page({
   },
   goList(e) {
     const type = app.getValue(e).type
+    let seckillId
+    if (app.getValue(e).id) {
+      seckillId = app.getValue(e).id
+    }
     wx.navigateTo({
-      url: `/pages/index/goodsList/cg?type=${type}`
+      url: `/pages/index/goodsList/cg?type=${type}&seckillId=${seckillId}`
     })
     // wx.navigateTo({
     //   url: '/pages/location/index',
@@ -834,14 +973,15 @@ Page({
       }
     })
   },
-  // 点击轮播图 进入店铺
+  // 点击轮播图 进入
   handleTap(e) {
-    const id = e.currentTarget.dataset.id
-    if (id) {
-      wx.navigateTo({
-        url: `/home/store/store?id=${id}`,
-      })
-    }
+    wx.openLocation({
+      latitude: Number(this.data.merchantDetail.lat),	//维度
+      longitude: Number(this.data.merchantDetail.lng), //经度
+      name: this.data.merchantDetail.merchantName,	//目的地定位名称
+      scale: 15,	//缩放比例
+      address: this.data.merchantDetail.merchantAddress	//导航详细地址
+    })
   },
   addCar(e) {
     this.checkUser()
@@ -921,15 +1061,17 @@ Page({
       const classList2 = []
       for (var i = 0; i < num; i++) {
         var ar = [];
-        for (var j = 0; j < 10; j++) {
-          ar.push(data.classList[j])
+        for (var j = (i *10); j < 10 * (i+1); j++) {
+          if (j < data.classList.length) {
+            ar.push(data.classList[j])
+          }
         }
         classList1.push(ar)
       }
       for (var i = 0; i < num1; i++) {
         var ar = [];
-        for (var j = 0; j < 3; j++) {
-          if (data.clearanceSaleList[j]) {
+        for (var j = (0 * 3); j < 3 * (i + 1); j++) {
+          if (j < data.clearanceSaleList.length) {
             ar.push(data.clearanceSaleList[j])
           }
         }
@@ -947,7 +1089,7 @@ Page({
         clearanceSaleList: classList2,
         merchantDetail: data.merchantDetail,
         messageStatus: data.messageStatus,
-        endTime: data.seckill.endTime,
+        endTime: data.seckill.endTime
       })
       wx.hideLoading()
       timer = setInterval(() => {

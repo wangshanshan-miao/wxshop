@@ -4,12 +4,12 @@
 		{{item}}
 	</view>
 </view>
-<view class="container1">
+<!-- <view class="container1">
 	<view class="con pa">
 		<image wx:if="{{mananger}}" bindtap="manange" class="img" src="{{imgUrl+'mananger.png'}}"></image>
 		<image wx:else class="img" bindtap="complete" src="{{imgUrl+'complete.png'}}"></image>
 	</view>
-</view>
+</view> -->
 
 <!-- 使用说明 -->
 <!-- <view wx:if="{{mananger}}" class="instructions f24 cff flex_col" bindtap="explain">
@@ -30,67 +30,43 @@
 
 <!-- 待使用 -->
 <view class="yhqList" wx:if="{{yhqTabIndex==0}}">
-	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="{{imgUrl+'dxh.png'}}"></image>
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="{{imgUrl+'dxn.png'}}"></image>
-		<image class="yhqImgBg" src="{{imgUrl+'yhqbg.png'}}" />
-		<view class="yhqList_cell_con boxs flex_row jb al pa">
-			<view class="flex_row">
-				<view class="yhqList_cell_con_left">
-					<view class="yhq_money boxs flex_row">
-						<view class="yhq_dw f26 fb cff">￥</view>
-						<view class="fb yhq_num cff">{{item.voucherPrice}}</view>
-					</view>
-				</view>
-				<view class="yhqIntro">
-					<view class="f28 fb c33 flex_row al name">
-						<view class="tag flex_row al jc">{{item.useType==0?'优惠券':'代金券'}}</view>
-						<view>{{item.voucherName}}</view>
-					</view>
-					<view class="f26 use_tj c99" wx:if="{{item.condition == 0}}">无门槛</view>
-					<view class="f26 use_tj c99" wx:else>满{{item.condition}}元可使用</view>
-					<view class="f24 c99" wx:if="{{item.useType==0}}">有效期至{{item.expirationTime}}</view>
-				</view>
-			</view>
-			<view class="flex_col employ" catchtap="goDjq" data-id="{{item.userVoucherId}}">
-				<view class="f26">去</view>
-				<view class="f26">用</view>
-				<view class="f26">劵</view>
-			</view>
-		</view>
-	</view>
+  <view class="yhqList_cell_con boxs flex_row jb al" data-detailId="{{item.userVoucherId}}" wx:for="{{list}}" wx:key="index">
+    <view class="flex_row">
+      <view class="left">
+        <text class="num">{{item.voucherPrice}}</text>
+        <text class="f25">元</text>
+      </view>
+      <view class="split-line"></view>
+      <view class="yhqIntro">
+          <!-- <view class="tag flex_row al jc">{{item.useType==0?'优惠券':'代金券'}}</view> -->
+        <view class="cf78 f30 fb">{{item.voucherName}}</view>
+        <view class="f26 use_tj f24 cf78" wx:if="{{item.condition == 0}}">无门槛</view>
+        <view class="f26 use_tj f24 cf78" wx:else>满{{item.condition}}元可使用</view>
+        <view class="f24 cf78" wx:if="{{item.useType==0}}">有效期至{{item.expirationTime}}</view>
+      </view>
+    </view>
+    <view catchtap="usequan" data-id="{{item.userVoucherId}}" class="couponBtn f28 cff">去用券</view>
+  </view>
 </view>
 
 <!-- 已过期 -->
-<view class="yhqList" wx:if="{{yhqTabIndex==1}}">
-	<view bindtap="detail" data-detailId="{{item.userVoucherId}}" class="yhqList_cell pr {{!mananger?'move':''}}" wx:for="{{list}}" wx:key="index">
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:if="{{!mananger && item.select}}" catchtap="select" src="{{imgUrl+'dxh.png'}}"></image>
-		<image class="pa circle" data-detailId="{{item.userVoucherId}}" wx:else catchtap="select" src="{{imgUrl+'dxn.png'}}"></image>
-		<image class="yhqImgBg" src="{{imgUrl+'yhqbggq.png'}}" />
-		<view class="yhqList_cell_con boxs flex_row jb al pa">
-			<view class="flex_row">
-				<view class="yhqList_cell_con_left">
-					<view class="yhq_money boxs flex_row">
-						<view class="yhq_dw f26 fb cff">￥</view>
-						<view class="fb yhq_num cff">{{item.voucherPrice}}</view>
-					</view>
-				</view>
-				<view class="yhqIntro">
-					<view class="f28 fb c33 flex_row al name">
-						<view class="tag flex_row al jc">{{item.useType==0?'优惠券':'代金券'}}</view>
-						<view>{{item.voucherName}}</view>
-					</view>
-					<view class="f26 use_tj c99" wx:if="{{item.condition == 0}}">无门槛</view>
-					<view class="f26 use_tj c99" wx:else>满{{item.condition}}元可使用</view>
-					<view class="f24 c99" wx:if="{{item.useType==0}}">有效期至{{item.expirationTime}}</view>
-				</view>
-			</view>
-			<view class="flex_col employ" data-id="{{item.userVoucherId}}">
-				<view class="f26 c99">已</view>
-				<view class="f26 c99">过</view>
-				<view class="f26 c99">期</view>
-			</view>
-		</view>
+<view class="yhqList overyhq" wx:if="{{yhqTabIndex==1}}">
+	<view data-detailId="{{item.userVoucherId}}" class="yhqList_cell_con boxs flex_row jb al" wx:for="{{list}}" wx:key="index">
+    <view class="flex_row">
+      <view class="left">
+        <text class="num cff">{{item.voucherPrice}}</text>
+        <text class="f25 cff">元</text>
+      </view>
+      <view class="split-line"></view>
+      <view class="yhqIntro">
+          <!-- <view class="tag flex_row al jc">{{item.useType==0?'优惠券':'代金券'}}</view> -->
+        <view class="cff f30 fb">{{item.voucherName}}</view>
+        <view class="f26 use_tj f24 cff" wx:if="{{item.condition == 0}}">无门槛</view>
+        <view class="f26 use_tj f24 cff" wx:else>满{{item.condition}}元可使用</view>
+        <view class="f24 cff" wx:if="{{item.useType==0}}">有效期至{{item.expirationTime}}</view>
+      </view>
+    </view>
+    <view class="f28 overdate couponBtn">已过期</view>
 	</view>
 </view>
 

@@ -82,9 +82,7 @@ Page({
   getList() {
     api.getVoucherList1({
       useType: 0,
-      merchantId: wx.getStorageSync('merchantId'),
-      pageNum: this.data.pageNum,
-      pageSize: 3
+      merchantId: wx.getStorageSync('merchantId')
     }).then(res => {
       // console.log(res)
       const data = res.data
@@ -98,22 +96,40 @@ Page({
 
     })
   },
+  //去用券
+  usequan () {
+    wx.switchTab({
+      url: `/pages/index/index/index`,
+    })
+  },
+  // 领取
   receive() {
+    wx.showLoading({
+      title: '',
+    })
     api.getVoucherToUser({
       areaCode: wx.getStorageSync('shortAreaCode'),
       // areaCode: '420117',
-      userId: wx.getStorageSync("userId")
+      userId: wx.getStorageSync("userId"),
+      merchantId: wx.getStorageSync('merchantId')
       // userId: '81'
     }).then(res => {
+      wx.hideLoading()
       if (res.data.status === 1) {
         wx.showToast({
           title: '领取成功！',
           icon: "success",
           duration: 2000,
-          complete: () => { }
+          complete: () => {
+            wx.navigateTo({
+              url: `/self/yhq/yhq`,
+            })
+          }
         })
       }
-
+      wx.showToast({
+        title: res.data.message,
+      })
     })
   }
 })

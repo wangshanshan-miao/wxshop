@@ -5,12 +5,17 @@
             <view class="allEva_list_top flex_row al jb">
                 <view class="flex_row al">
                     <image class="txImg" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}" />
-                    <view class='c99 f26 allEvaUser_name'>{{item.userName}}</view>
-                    <view class="stars">
-                      <image wx:for="{{item.evaluateLevel | int}}" wx:key="index" src="{{imgUrl+'star.png'}}"></image>
+                    <view class="flex_col">
+                      <view class="flex_row al">
+                        <view class='c99 f26 allEvaUser_name'>{{item.userName}}</view>
+                        <view class="stars flex_row">
+                          <!-- <image wx:for="{{item.evaluateLevel | int}}" wx:key="index" src="{{imgUrl+'star.png'}}"></image> -->
+                          <image wx:for="{{array - 0}}" wx:for-item="item0" wx:for-index="index1" wx:key="index1" src="{{item.evaluateLevel > item0 ? imgUrl+'star.png' : imgUrl+'star1.png'}}"></image>
+                        </view>
+                      </view>
+                      <view class="evaTime f26 c99 allEvaUser_name">{{item.createTime}}</view>
                     </view>
                 </view>
-                <view class="evaTime f26 c99">{{item.createTime}}</view>
             </view>
             <view class="f26 c33">
                 <rich-text nodes="{{item.evaluateContent}}"></rich-text>

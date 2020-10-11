@@ -1,4 +1,5 @@
 //app.js
+import touch from './utils/touch.js'
 App({
     onLaunch: function () {
         // 展示本地存储能力
@@ -40,6 +41,7 @@ App({
     globalData: {
       
     },
+    touch: new touch(),
     checkUser() {
         const userId = wx.getStorageSync('userId')
         if (!userId) {

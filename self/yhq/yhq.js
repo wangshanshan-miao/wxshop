@@ -28,7 +28,7 @@ Page({
         })
         api.voucherList({
             userId: wx.getStorageSync('userId'),
-            voucherStatus: this.data.yhqTabIndex,
+            voucherStatus: this.data.yhqTabIndex == 1 ? 4 : this.data.yhqTabIndex,
             pageNum: this.data.pageNum,
             pageSize: 10,
             useType: this.data.useType
@@ -37,6 +37,7 @@ Page({
             const data = res.data
             let newArr = data.list.map(item => {
                 item.select = false
+                item.expirationTime = item.expirationTime.split(" ")[0]
                 return item
             })
             this.setData({
@@ -46,6 +47,12 @@ Page({
                 isRequest: false
             })
         })
+    },
+    //去用券
+    usequan() {
+      wx.switchTab({
+        url: `/pages/index/index/index`,
+      })
     },
     // 检测是否全选
     checkSelectAll() {

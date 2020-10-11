@@ -31,7 +31,8 @@ Page({
         share: false,
         poster: false,
         count_down: '',
-        endTime: ''
+        endTime: '',
+        array: 5
     },
     goBuyCar() {
         wx.navigateTo({
@@ -46,13 +47,13 @@ Page({
     // 分享弹框
     sharegood() {
         this.setData({
-            modal: true,
+            modal1: true,
             share: true
         })
     },
     closeShare() {
         this.setData({
-            modal: false,
+            modal1: false,
             share: false
         })
     },
@@ -318,7 +319,7 @@ Page({
               console.log(res)
               this.setData({
                 detail: res.data,
-                currentPrice: res.data.salePrice,
+                currentPrice: this.data.currentPrice || res.data.salePrice,
                 merchantId: res.data.merchantId,
                 evaluateLevel: Number(res.data.evaluateLevel),
                 endTime: res.data.endTime
@@ -343,10 +344,11 @@ Page({
               console.log(res)
               this.setData({
                 detail: res.data,
-                currentPrice: res.data.salePrice,
+                currentPrice: this.data.currentPrice || res.data.salePrice,
                 merchantId: res.data.merchantId,
                 evaluateLevel: Number(res.data.evaluateLevel),
-                groupUserDtoList: res.data.groupUserDtoList
+                groupUserDtoList: res.data.groupUserDtoList,
+                bookingId: res.data.bookingId
               })
               const endTimeList = []
 
@@ -366,7 +368,7 @@ Page({
               })
             }
           })
-        } else if (this.data.goodType == 2) { // 清仓
+        } else if (this.data.goodType == 4) { // 清仓
           api.clearDetail({
             outId: this.data.id
             // outId: 34
@@ -376,7 +378,7 @@ Page({
               console.log(res)
               this.setData({
                 detail: res.data,
-                currentPrice: res.data.salePrice,
+                currentPrice: this.data.currentPrice || res.data.salePrice,
                 merchantId: res.data.merchantId,
                 evaluateLevel: Number(res.data.evaluateLevel)
               })
@@ -398,7 +400,7 @@ Page({
               console.log(res)
               this.setData({
                 detail: res.data,
-                currentPrice: res.data.salePrice,
+                currentPrice: this.data.currentPrice || res.data.salePrice,
                 merchantId: res.data.merchantId,
                 status: res.data.appointmentType, //0 不可以预约测量  1 可以预约
                 evaluateLevel: Number(res.data.evaluateLevel)
@@ -499,8 +501,11 @@ Page({
       })
     },
     // 更多拼团
-    morePt () {
-
+    morePt (e) {
+      let bookingId = app.getValue(e).id
+      wx.navigateTo({
+        url: `./morePt/index?id=${bookingId}&outId=${this.data.id}` ,
+      })
     },
     // 开团
     startBooking () {
@@ -512,6 +517,12 @@ Page({
         amounts: [this.data.goodNum],
         userId: wx.getStorageSync('userId')
       }).then(res => {
+        if (res.status == 500) {
+          wx.showToast({
+            title: res.msg,
+          })
+          return false
+        }
         // console.log(res)
         this.setData({
           goodSizeShow1: false
@@ -776,11 +787,17 @@ Page({
                 goodSizeShow1: false
             })
             let id = res.data.orderId
+            let nowPrice = this.data.currentPrice
+            this.data.detail.nowPrice = nowPrice
+            this.setData({
+              detail: this.data.detail
+            })
             let guige = encodeURIComponent(JSON.stringify(this.data.good.commoditySpecificationList[this.data.skuIndex]))
+            
             let num = this.data.goodNum
             let info = encodeURIComponent(JSON.stringify(this.data.detail))
             wx.navigateTo({
-              url: `/home/order/order?detail=${info}&orderId=${id}&num=${num}&guige=${guige}`,
+              url: `/home/order/order?detail=${info}&orderId=${id}&num=${num}&guige=${guige}&price=${nowPrice}`,
             })
         })
     },

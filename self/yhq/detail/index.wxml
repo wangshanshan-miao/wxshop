@@ -1,28 +1,51 @@
 <!--pages/self/yhq/detail/index.wxml-->
-<view class="coupon flex_row al">
-	<image src="{{imgUrl+'yhqbg1.png'}}"></image>
-	<view class="left">
-		<text>￥</text>{{voucherPrice}}
-	</view>
-	<view class="right">
-		<view class="top flex_row  al">
-			<view class="top-left cff flex_row al jc">{{useType==0?'优惠券':'代金券'}}</view>
-			<view class="top-right f22">已售{{sum}}</view>
-		</view>
-		<view class="middle f30">{{sellingPrice}}元代金券</view>
-		<view class="bottom c99 f30" wx:if="{{condition == 0}}">无门槛</view>
-		<view class="bottom c99 f30" wx:else>满{{condition}}元可使用</view>
-	</view>
+<view class="list pr jb flex_row al" bindtap="detail" data-id="{{list.voucherId || voucherId}}">
+  <image class="bg pa" src="{{imgUrl+'djqBg1.png'}}"></image>
+  <view class="left cff ">
+    <view class="middle f44 c33 fb">{{list.voucherPrice || voucherPrice}}元代金券</view>
+    <!-- <view class="f24 c98">有效期：到期</view> -->
+    <view>
+      <text class="f26 cf1">￥</text>
+      <text class="cf1 fb f41">{{list.sellingPrice || sellingPrice}}</text>
+    </view>
+  </view>
+  <view class="right">
+    <view class="bottom flex_col al jb">
+      <!-- <view class="buy tc jc cff f30 fb">抢购</view> -->
+      <view class="f24 num" wx:if="{{!status}}">已售{{list.sum}}</view>	
+    </view>
+  </view>
 </view>
 
 <view class="main">
-	<view class="title f28">抵扣券使用说明</view>
-	<view class="destroy flex_row f28">
-		{{details}}
+	<view class="title f30 c33 fb">简介</view>
+	<view class="destroy flex_row f28 c33">
+		{{list.details || details}}
 	</view>
 </view>
 
-<view class="down flex_row al jc">
+<view class="evaluateDto" wx:if="{{ showEva && !status}}">
+	<view class="title flex_row jb ac">
+    <text class="f30 c33 fb">查看评价</text>
+    <image src="{{imgUrl+'arrow-left.png'}}" class="jtr" />
+  </view>
+	<view class="content flex_row f28 c33 ac">
+		<view class="flex_row">
+      <image src="{{imgBaseUrl + evaluateDto.headUrl+'?x-image-process=image/resize,p_40'}}"></image>
+      <view class="flex_col">
+        <view class="flex_row">
+          <text class="f26 c33" style="margin-right: 37rpx;">{{evaluateDto.userName}}</text>
+          <view class="stars">
+            <image wx:for="{{array - 0}}" wx:for-item="item0" wx:for-index="index1" wx:key="index1" src="{{evaluateDto.evaluateLevel > item0 ? imgUrl+'star.png' : imgUrl+'star1.png'}}"></image>
+          </view>
+        </view>
+        <text class="f24 c98">{{evaluateDto.createTime}}</text>
+      </view>
+    </view>
+	</view>
+</view>
+
+<view class="down flex_row al jb">
 	<!-- <view class="left">
 		<view class="left-top">
 			<text class="f22">￥</text>
@@ -30,7 +53,10 @@
 		</view>
 		<view class="left-down f26">门市价：￥15623</view>
 	</view> -->
-	<view bindtap="checkPhone" class="right flex_row al jc cff f28">立即抢购</view>
+  <text class="f32 fb cf0">￥{{list.sellingPrice || sellingPrice}}</text>
+  <view bindtap="checkPhone" wx:if="{{status == 0}}" class="right flex_row al jc cff f28">立即使用</view>
+  <view bindtap="checkPhone" wx:elif="{{status == 1}}" style="display:none;" class="right flex_row al jc cff f28">立即评价</view>
+  <view bindtap="checkPhone" wx:else class="right flex_row al jc cff f28">立即抢购</view>
 	<!-- <view wx:else bindtap="delete" class="right flex_row al jc cff f28">删除</view> -->
 </view>
 

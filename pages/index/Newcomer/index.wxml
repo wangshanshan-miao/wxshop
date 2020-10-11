@@ -5,7 +5,7 @@
     <view class="coupon flex_row jb al" wx:for="{{couponList}}">
       <view class="left">
         <text class="num">{{item.voucherPrice}}</text>
-        <text class="">元</text>
+        <text class="f25">元</text>
       </view>
       <view class="split-line"></view>
 
@@ -15,7 +15,7 @@
           <view class="couponCondition f22">满{{item.condition}}元可使用</view>
           <!-- <view class="couponValidity f22">有效期至2020-06-01</view> -->
         </view>
-        <view class="couponBtn f28 cff">去用券</view>
+        <view catchtap="usequan" class="couponBtn f28 cff">去用券</view>
       </view>
     </view>
     </scroll-view>
