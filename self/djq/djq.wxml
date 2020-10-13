@@ -37,9 +37,9 @@
       </view>
       <view class="cf1 f28 lh" wx:if="{{item.voucherStatus == 0}}">待使用</view>
       <view class="c07 f28 lh" wx:elif="{{item.voucherStatus == 1}}">已使用</view>
-      <view wx:elif="{{item.voucherStatus == 2}}">退券中</view>
-      <view wx:elif="{{item.voucherStatus == 3}}">已退款</view>
-      <view wx:else="{{item.voucherStatus == 0}}">已过期</view>
+      <view class="cf0 f28 lh" wx:elif="{{item.voucherStatus == 2}}">退券中</view>
+      <view class="ca4 f28 lh" wx:elif="{{item.voucherStatus == 3}}">已退款</view>
+      <view class="c07 f28 lh" wx:else="{{item.voucherStatus == 0}}">已过期</view>
     </view>
     <view class="f24 c99 flex_col" style="margin-bottom: 15rpx;line-height: 33rpx;">
       <text>下单时间：{{item.orderTime}}</text>
@@ -47,9 +47,10 @@
     </view>
     <view class="cf0 f32 fb price">￥{{item.sellingPrice}}</view>
     <view class="btn1 f26 tc flex_row">
+      <text class="btns delete" catchtap="refund" data-id="{{item.userVoucherId}}" wx:if="{{item.voucherStatus == 0}}">退款</text>
       <view class="btns f26 cff tc" catchtap="goDjq" data-id="{{item.userVoucherId}}" wx:if="{{item.voucherStatus == 0}}">去使用</view>
-      <text class="btns delete" wx:if="{{item.voucherStatus == 1}}">删除</text>
-      <text class="btns cff" catchtap="sendTalk" wx:if="{{item.voucherStatus == 1}}">立即评价</text>
+      <!-- <text class="btns delete" wx:if="{{item.voucherStatus == 1}}">删除</text>
+      <text class="btns cff" catchtap="sendTalk" wx:if="{{item.voucherStatus == 1}}">立即评价</text> -->
     </view>
 	</view>
 </view>

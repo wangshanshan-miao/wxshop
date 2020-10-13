@@ -122,14 +122,27 @@ page {
   opacity: 1;
   border-radius: 18rpx 18rpx 0px 0px;
 }
-
-.down>.right {
+.down .right {
   width: 431rpx;
   height: 88rpx;
   background: linear-gradient(129deg,#fca153 10%, #fb8a29 96%);
   opacity: 1;
   border-radius: 210rpx;
+  margin-left: 62rpx;
 }
+
+.down .rbtn {
+  width: 224rpx;
+  height: 84rpx;
+  opacity: 1;
+  border-radius: 210rpx;
+  margin-left: 16rpx;
+}
+.refund {
+  background: #fff !important;
+  border: 1rpx solid #D5D5D5;
+}
+
 
 .evaluateDto {
   width: 699rpx;
@@ -171,11 +184,6 @@ page {
 .down>.left>.left-down {
   color: #aaa;
 }
-
-.down .right {
-  margin-left: 62rpx;
-}
-
 
 .modal {
   position: fixed;

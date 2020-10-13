@@ -54,10 +54,17 @@
 		<view class="left-down f26">门市价：￥15623</view>
 	</view> -->
   <text class="f32 fb cf0">￥{{list.sellingPrice || sellingPrice}}</text>
-  <view bindtap="checkPhone" wx:if="{{status == 0}}" class="right flex_row al jc cff f28">立即使用</view>
-  <view bindtap="checkPhone" wx:elif="{{status == 1}}" style="display:none;" class="right flex_row al jc cff f28">立即评价</view>
-  <view bindtap="checkPhone" wx:else class="right flex_row al jc cff f28">立即抢购</view>
-	<!-- <view wx:else bindtap="delete" class="right flex_row al jc cff f28">删除</view> -->
+  <view class="flex_row ">
+    <view bindtap="refund" wx:if="{{status == 0}}" class="refund rbtn flex_row al jc c98 f28">退款</view>
+    <view bindtap="checkPhone" wx:if="{{status == 0}}" class="right rbtn flex_row al jc cff f28">立即使用</view>
+    <view bindtap="checkPhone" wx:elif="{{status == 1}}" style="display:none;" class="right rbtn flex_row al jc cff f28">立即评价</view>
+    <view wx:elif="{{status == 2}}" class="right rbtn refund flex_row al jc c98 f28">退券中</view>
+    <view wx:elif="{{status == 3}}" class="right rbtn refund flex_row al jc c98 f28">已退款</view>
+    <view wx:elif="{{status == 4}}" class="right rbtn refund flex_row al jc c98 f28">已过期</view>
+    <view bindtap="checkPhone" wx:else class="right flex_row al jc cff f28">立即抢购</view>
+	  <!-- <view wx:else bindtap="delete" class="right flex_row al jc cff f28">删除</view> -->
+  </view>
+  
 </view>
 
 

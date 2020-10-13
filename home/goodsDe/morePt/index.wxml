@@ -8,14 +8,17 @@
     </view>
     <view class="gright flex_row">
       <view class="person flex_col jb">
-        <text class="rcolor f28" style="margin-bottom: 6rpx;">差{{item.surplus}}人成一团</text>
-        <view class="c33 f28">
+        <text class="rcolor f28" style="margin-bottom: 6rpx;" wx:if="{{item.surplus != 0}}">差{{item.surplus}}人成一团</text>
+        <text class="rcolor f28" style="margin-bottom: 6rpx;" wx:if="{{item.surplus == 0}}">拼团成功</text>
+        <view class="c33 fb f28" wx:if="{{item.surplus != 0}}">
+          <text class='countDownList '>{{tools.diffDay(startTime,item.endTime)}}</text>:
           <text class='countDownList'>{{tools.diffHour(startTime,item.endTime)}}</text>:
           <text class='countDownList'>{{tools.diffMinute(startTime,item.endTime)}}</text>:
           <text class='countDownList'>{{tools.diffSecond(startTime,item.endTime)}}</text>
         </view>
       </view>
-      <button class="cf1 f26 btn" data-index="{{index}}" catchtap="goBooking">去拼团</button>
+      <button class="cf1 f26 btn" wx:if="{{item.surplus != 0}}" data-index="{{index}}" catchtap="goBooking">去拼团</button>
+      <button class="cf1 f26 btn" wx:if="{{item.surplus == 0}}" data-index="{{index}}" catchtap="goBooking">查看拼团</button>
     </view>
   </view>
   <noData wx:if="{{list.length<1}}" />
@@ -25,14 +28,14 @@
 <view class="modal fadeUp" wx:if="{{modal}}">
     <image catchtap="closeModal1" class="close pa" src="{{imgUrl+'cha.png'}}"></image>
     <view class="name tc c33 f32">参与 {{list[selectIndex].userName}} 的拼单</view>
-    <view wx:if="{{groupType==0}}" class="remain tc c33 f26">
+    <view wx:if="{{groupType==0 && list[selectIndex].surplus != 0}}" class="remain tc c33 f26">
         拼单中，差
         <text>{{list[selectIndex].surplus}}</text>
-        人, 还剩{{tools.diffHour(startTime,endtimes) || 00}}:{{tools.diffMinute(startTime,endtimes) || 00}}:{{tools.diffSecond(startTime,endtimes) || 00}}
+        人, 还剩{{tools.diffDay(startTime,item.endTime)}}:{{tools.diffHour(startTime,endtimes) || 00}}:{{tools.diffMinute(startTime,endtimes) || 00}}:{{tools.diffSecond(startTime,endtimes) || 00}}
     </view>
     <scroll-view class="scroll-y" scroll-y>
-        <view class="middle flex_row al jb" wx:for="{{groupList}}" wx:key="index">
-            <view class="pr avatarList">
+        <view class="middle flex_row al jb">
+            <view class="pr avatarList" wx:for="{{groupList}}" wx:key="index">
                 <image class="avatar" src="{{imgBaseUrl + item.headUrl+'?x-image-process=image/resize,p_30'}}"></image>
                 <image class="avatar" src="{{imgUrl+'hhead.png'}}" wx:for="{{list[selectIndex].surplus}}"></image>
                 <!-- <view wx:if="{{index == 0}}" class="tag pa flex_row al jc">拼主</view> -->
@@ -42,7 +45,7 @@
         </view>
     </scroll-view>
     <!-- {!tool.split(userIds,userId) && groupType==0 -->
-    <view wx:if="{{!tool.split(userIds,userId) && groupType==0}}" catchtap="booking" class="add cff f28 flex_row al jc">
+    <view wx:if="{{!tool.split(userIds,userId) && groupType==0 && list[selectIndex].surplus != 0}}" catchtap="booking" class="add cff f28 flex_row al jc">
         立即拼团
     </view>
 </view>

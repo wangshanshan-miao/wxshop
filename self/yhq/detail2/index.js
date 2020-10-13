@@ -38,6 +38,11 @@ Page({
       })
     })
   },
+  inputCode(event) {
+    this.setData({
+      verificationCode: event.detail.value
+    })
+  },
   // 核銷
   use() {
     let verificationCode = this.data.verificationCode
@@ -52,7 +57,7 @@ Page({
       title: '',
     })
     api.userVoucher({
-      userId: this.data.userId,
+      verificationCode: this.data.verificationCode,
       userVoucherId: this.data.id
     }).then(res => {
       console.log(res)

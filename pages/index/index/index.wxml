@@ -18,7 +18,7 @@
       </view>
       <!-- 轮播图 -->
       <view class="tab pageTwo">
-        <swiper class="swiper_group swiperClass" bindchange="bindchange" indicator-active-color ="rgba(255,207,94,1)"	indicator-color="rgba(213,213,213,1)" autoplay indicator-dots="true" interval="5000" duration="1000" circular="true" next-margin="60rpx" previous-margin="60rpx">
+        <swiper class="swiper_group swiperClass" bindchange="bindchange" indicator-active-color ="rgba(255,207,94,1)"	indicator-color="rgba(213,213,213,1)" autoplay indicator-dots="true" interval="5000" duration="1000" circular="true">
           <swiper-item wx:for="{{imgArr}}" wx:key="index">
             <image class="swiperImg slide-image {{swiperIdx == index ? 'active' : 'quiet'}}" src="{{imgBaseUrl + item.carouselUrl+'?x-image-process=image/resize,p_40'}}" data-id="{{item.merchantId}}" catchtap="handleTap" />
           </swiper-item>
@@ -235,7 +235,7 @@
       <view class="good_group box">
         <scroll-view class="scroll-view" scroll-x>
           <view class="">
-            <view class="goodCell1 flex_row al" catchtap="handleTap" data-id="{{merchantDetail.merchantId}}">
+            <view class="goodCell1 flex_row al" data-id="{{merchantDetail.merchantId}}">
               <image lazy-load="{{true}}" src="{{imgBaseUrl + merchantDetail.logoUrl+'?x-image-process=image/resize,p_10'}}" class="goodCell_img1" />
               <view class="shopIntro flex_col">
                 <view class="f34 fb color3 c33 shopName flex_row jb al">
@@ -249,11 +249,11 @@
                     <image src="{{imgUrl+'time.png'}}"></image>
                     <text class="f28 hcolor">营业时间：{{merchantDetail.merchantTime}}</text>
                   </view>
-                  <view>
+                  <view catchtap="freeTell">
                     <image src="{{imgUrl+'mobile.png'}}"></image>
                     <text class="f28 hcolor">联系电话：{{merchantDetail.merchantTel}}</text>
                   </view>
-                  <view class="flex_row">
+                  <view class="flex_row" catchtap="handleTap">
                     <image src="{{imgUrl+'addre.png'}}"></image>
                     <view class="address">
                       <text class="f28 hcolor">地址：</text>
@@ -392,8 +392,13 @@
 <!-- <view class="gifts" wx:if="{{gift}}"></view> -->
 
 <!-- 回到顶部 -->
-<image catchtap="toTop" class="toTop" src="{{imgUrl+'toTop.png'}}"></image>
+<view class="toTop pfbtn flex_row al jc" catchtap="toTop">
+  <image src="{{imgUrl+'toTop.png'}}"></image>
+</view>
 
+<view class="toCar pfbtn flex_row al jc" catchtap="toCar">
+  <image src="{{imgUrl+'wcar.png'}}"></image>
+</view>
 <view class="poster " wx:if="{{poster}}">
   <image src="{{imgUrl + 'attractInvestment.png'}}"></image>
 </view>

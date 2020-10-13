@@ -62,7 +62,7 @@ Page({
       })
       if (this.data.addressList.length > 0) {
         this.data.addressList.map(item =>{
-          if (item.def == 1) {
+          if (item.def == 1 && !this.data.address) {
             this.setData({
               hasAddress: true,
               address: item
@@ -74,11 +74,14 @@ Page({
             hasAddress: true,
             address: this.data.addressList[0]
           })
+        } else {
+          this.setData({
+            address: this.data.address
+          })
         }
       }
     })
   },
-
   // 前往列表页
   toList () {
     wx.navigateTo({

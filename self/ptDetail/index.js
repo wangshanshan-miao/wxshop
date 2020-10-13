@@ -274,6 +274,7 @@ Page({
                 expressFee: data.order.expressFee, // 快递费
                 orderType: data.order.orderType,
                 merchantId: data.order.merchantId,
+                endTime1: data.order.endTime,
                 endTime: endTime,
                 createTime:data.order.createTime,
                 orderStatus: data.order.orderStatus,

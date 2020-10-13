@@ -1168,6 +1168,13 @@ Page({
       url: `/home/qcDe/index?id=${id}`,
     })
   },
+  // 店铺拨打电话
+  freeTell () {
+    wx.makePhoneCall({
+      phoneNumber: this.data.merchantDetail.merchantTel,
+    })
+
+  },
   // 回到顶部
   toTop() {
     wx.pageScrollTo({
@@ -1175,4 +1182,11 @@ Page({
       duration: 300
     })
   },
+  // 去购物车
+  toCar () {
+    app.checkUser()
+    wx.navigateTo({
+      url: '/home/buyCar/index/car',
+    })
+  }
 })

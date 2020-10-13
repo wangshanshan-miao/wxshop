@@ -46,10 +46,7 @@ App({
         const userId = wx.getStorageSync('userId')
         if (!userId) {
             wx.showToast({
-                title: '请登录！',
-                icon: "none",
-                duration : 2000,
-                complete: () => {}
+                title: '请登录！'
             })
            return false
         }else{

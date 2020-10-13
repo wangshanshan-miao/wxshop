@@ -46,7 +46,7 @@ page {
   border-radius: 10rpx;
   box-shadow: 0px 3rpx 16rpx 0px rgba(0,0,0,0.16); 
   height: 277rpx;
-  padding: 20rpx 30rpx 25rpx;
+  padding: 20rpx 30rpx 0rpx;
 }
 .lh {
   line-height: 47rpx;

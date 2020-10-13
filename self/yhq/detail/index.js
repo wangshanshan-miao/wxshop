@@ -131,6 +131,29 @@ Page({
       })
     }
   },
+  // 退款
+  refund() {
+    wx.showLoading({
+      title: '',
+    })
+    api.backUserVoucher({
+      userVoucherId: this.data.id,
+      userId: wx.getStorageSync('userId')
+    }).then(res => {
+      wx.hideLoading()
+      // console.log(res)
+      if (res.status == 200) {
+        wx.showToast({
+          title: '退款申请成功',
+          icon: 'none'
+        })
+        this.setData({
+          show: false
+        })
+        this.voucherDetail()
+      }
+    })
+  },
   // 删除
   delete() {
     wx.showModal({

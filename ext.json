@@ -1,6 +1,6 @@
 {
   "extEnable": true,
-  "extAppid": "wxaa835451b57f805a",
+  "extAppid": "wx96e9902bcaabae53",
   "directCommit": false,
   "ext": {
     "name": "wechat",
@@ -12,27 +12,27 @@
       ]
     }
   },
-  "extPages": [
-    "pages/index/index/index",
-    "pages/index/cg/cg",
-    "pages/index/Newcomer/index",
-    "pages/index/goodsList/cg",
-    "pages/index/al/al",
-    "pages/index/alxq/alxq",
-    "pages/index/pt/pt",
-    "pages/index/ms/ms",
-    "pages/index/qc/qc",
-    "pages/index/shops/shop",
-    "pages/index/shops1/shop",
-    "pages/index/lghd/lghd",
-    "pages/index/dztj/dztj",
-    "pages/index/shlm/shlm",
-    "pages/index/product/product",
-    "pages/message/index/message",
-    "pages/message/detail/index",
-    "pages/sort/index",
-    "pages/self/self"
-  ],
+  "extPages": {
+    "pages/index/index/index": {},
+    "pages/index/cg/cg": {},
+    "pages/index/Newcomer/index": {},
+    "pages/index/goodsList/cg": {},
+    "pages/index/al/al": {},
+    "pages/index/alxq/alxq": {},
+    "pages/index/pt/pt": {},
+    "pages/index/ms/ms": {},
+    "pages/index/qc/qc": {},
+    "pages/index/shops/shop": {},
+    "pages/index/shops1/shop": {},
+    "pages/index/lghd/lghd": {},
+    "pages/index/dztj/dztj": {},
+    "pages/index/shlm/shlm": {},
+    "pages/index/product/product": {},
+    "pages/message/index/message": {},
+    "pages/message/detail/index": {},
+    "pages/sort/index": {},
+    "pages/self/self": {}
+  },
   "subpackages": [
     {
       "root": "self",

@@ -212,7 +212,13 @@ page {
 
 .cf0{
     color: #FF0000;
-  }
+}
+.ca4 {
+  color: #A4A4A4;
+}
+.c07 {
+  color: #A4A4A4;
+}
 
   /* 倒计时 */
 .t1 {

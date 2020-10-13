@@ -3,3 +3,8 @@
   width: 93%;
   padding: 14rpx 3.5%;
 }
+.detail {
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+}
